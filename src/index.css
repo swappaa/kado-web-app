@@ -1,0 +1,59 @@
+body, html {
+  font-family: Avenir-Roman !important;
+  overflow-x: hidden;
+  font-size: 1rem !important;
+  color: #414142 !important;
+}
+
+@font-face {
+  font-family: "Avenir-Black";
+  src: url("./assets/fonts/Avenir/Avenir Black.ttf");
+}
+
+@font-face {
+  font-family: "Avenir-Book";
+  src: url("./assets/fonts/Avenir/Avenir Book.ttf");
+}
+
+@font-face {
+  font-family: "Avenir-Heavy";
+  src: url("./assets/fonts/Avenir/Avenir Heavy.ttf");
+}
+
+@font-face {
+  font-family: "Avenir-Light";
+  src: url("./assets/fonts/Avenir/Avenir Light.ttf");
+}
+
+@font-face {
+  font-family: "Avenir-Regular";
+  src: url("./assets/fonts/Avenir/Avenir Regular.ttf");
+}
+
+@font-face {
+  font-family: "Avenir-Roman";
+  src: url("./assets/fonts/Avenir/Avenir Roman.ttf");
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Avenir-Heavy;
+  margin: 0 !important;
+}
+
+ul {
+  padding: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+ul li {
+  list-style: none !important;
+}
+
+a {
+  color: #414142 !important;
+  text-decoration: none !important;
+}
+
+a:focus {
+  outline: none !important;
+}
