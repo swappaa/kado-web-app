@@ -1,0 +1,27 @@
+.talent-signup .banner-wrapper {
+    padding-top: 80px !important;
+    padding-bottom: 80px !important;
+}
+
+.talent-signup .banner-wrapper p {
+    font-family: Avenir-Book;
+}
+
+.talent-signup .banner-wrapper img {
+    position: absolute;
+    bottom: -81px;
+    right: 86px;
+    height: 490px;
+}
+
+.talent-signup .why-join-kado .card {
+    background-color: #404041;
+}
+
+.talent-signup .why-join-kado .card img {
+    width: 90px;
+}
+
+.talent-signup .why-join-kado .purpose-wrapper {
+    background-color: #e8e8e8;
+}

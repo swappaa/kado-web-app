@@ -1,0 +1,104 @@
+.sign-up-btn {
+    padding: 10px 35px;
+}
+
+.search-wrapper::before {
+    content: '';
+    position: absolute;
+    height: 33px;
+    width: 3px;
+    background-color: #abadb0;
+    left: 3px;
+}
+
+.talent-home .filter-category ul li a {
+    padding: 54px 66px;
+    font-family: Avenir-Heavy;
+    color: #59595a !important;
+    max-width: 136px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20px 12px 0;
+}
+
+.talent-home .filter-category ul li a:hover, .talent-home .filter-category ul li a.active {
+    background-color: #ee2a59;
+    border-color: transparent !important;
+    transition: .2s all ease-in-out;
+    -moz-transition: .2s all ease-in-out;
+    -webkit-transition: .2s all ease-in-out;
+    color: #fff !important;
+}
+
+.talent-home .featured-wrapper:hover img {
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+}
+
+.talent-home .featured-wrapper:hover .image-wrapper {
+    -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .08), 0 5px 26px 0 rgba(67, 94, 131, .15);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .08), 0 5px 26px 0 rgba(67, 94, 131, .15);
+}
+
+.talent-home .searchbox-wrapper input, .searchbox-wrapper span {
+    border: 1px solid #404041;
+}
+
+.talent-home .featured-wrapper .image-wrapper {
+    border-radius: 56px;
+    border: 2px solid transparent;
+    overflow: hidden;
+}
+
+.talent-home .featured-wrapper .image-wrapper img {
+    object-fit: cover;
+    animation: 0.5s ease-in-out 0s 1 normal forwards running load-fade-in;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+@keyframes load-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.join-our-list input, .join-our-list .input-group span {
+    background-color: #f4f4f4 !important;
+}
+
+.talent-home .element-featured-wrapper {
+    max-width: 306px;
+    width: 100%;
+}
+
+.talent-home .how-it-works span {
+    padding: 15px 28px;
+}
+
+/* .featured-wrapper .image-wrapper img {
+    object-fit: cover;
+    animation-name: load-fade-in !important;
+    animation: 0.5s ease-in-out 0s 1 normal forwards running;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+}
+
+@keyframes load-fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} */

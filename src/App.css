@@ -1,0 +1,109 @@
+.theme-pink-bg-color {
+  background-color: #ee2a59 !important;
+}
+
+.theme-pink-color {
+  color: #ee2a59 !important;
+}
+
+.theme-dark-bg-color {
+  background-color: #404041 !important;
+}
+
+.banner-wrapper h2 {
+  font-family: Avenir-Regular;
+}
+
+.theme-dark-header-color {
+  background-color: #58595b !important;
+}
+
+.font-ave-heavy {
+  font-family: Avenir-Heavy;
+}
+
+.font-ave-black {
+  font-family: Avenir-Black;
+}
+
+.font-ave-reg {
+  font-family: Avenir-Regular;
+}
+
+.font-ave-roman {
+  font-family: Avenir-Roman;
+}
+
+.font-ave-book {
+  font-family: Avenir-Book;
+}
+
+.br-radius {
+  border-radius: 50px;
+}
+
+.br-radius-40 {
+  border-radius: 40px;
+}
+
+.svg-icon {
+  width: 24px;
+}
+
+.svg-icon-50 {
+  width: 50px !important;
+}
+
+.text-trans-unset {
+  text-transform: unset !important;
+}
+
+.modal-backdrop.show {
+  opacity: 0.72;
+}
+
+.modal-header {
+  background-color: #ececec;
+}
+
+.accordion-button:focus {
+  box-shadow: 0 0 0 .25rem transparent !important;
+}
+
+.form-check-input:checked {
+  background-color: #000;
+  border-color: #000;
+}
+
+.customs-wrapper {
+  max-width: 1610px;
+}
+
+.customs-wrapper ul {
+  background-color: #f7f8f8;
+}
+
+.customs-wrapper img.profile-image {
+  max-width: 152px;
+  width: 100%;
+  height: 152px;
+  object-fit: cover;
+  border: 4px solid #ee2a59;
+}
+
+.customs-wrapper ul li:nth-child(odd), .customs-wrapper .requested-list .card:nth-child(even) {
+  background-color: #f7f8f8;
+}
+
+.customs-wrapper ul li:nth-child(even), .customs-wrapper .requested-list .card:nth-child(odd) {
+  background-color: #e9eaeb;
+}
+
+.table> :not(:last-child)> :last-child>* {
+  border-bottom-color: transparent;
+}
+
+thead {
+  background: #58595b;
+  text-align: center;
+}

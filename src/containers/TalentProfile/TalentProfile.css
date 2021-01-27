@@ -1,0 +1,8 @@
+.d-reviews-wrapper {
+    background-color: #f4f4f4;
+}
+
+form [type="submit"] {
+    border-radius: 50px;
+    font-family: Avenir-Heavy;
+}

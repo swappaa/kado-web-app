@@ -1,0 +1,57 @@
+header ul li a {
+    font-family: Avenir-Regular !important;
+    margin-right: 52px;
+    cursor: pointer;
+}
+
+header ul li:last-child a {
+    margin-right: 0;
+}
+
+header ul li a>svg {
+    width: 54px;
+    height: 54px;
+    fill: #ee2a59;
+    -webkit-transition: fill .2s ease-out;
+    -moz-transition: fill .2s ease-out;
+    -o-transition: fill .2s ease-out;
+    transition: fill .2s ease-out;
+    cursor: pointer;
+}
+
+header ul li .alerts-wrapper:hover .count-message {
+    background-color: #404041;
+}
+
+header ul li a:hover>svg, header ul li a.active>svg {
+    fill: #404041;
+}
+
+header ul li a.active .count-message {
+    background-color: #404041;
+}
+
+header ul li a.active .nav-item, header ul li a:hover span.nav-item {
+    color: #404041 !important;
+}
+
+header ul li .count-message {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50px;
+    background-color: #ee2a59;
+    right: 6px;
+    top: -3px;
+}
+
+header .special-offer-header {
+    background-color: #404041;
+    border-radius: 0 0 42px 42px;
+    font-family: Avenir-Heavy;
+}
+
+header .special-offer-header span {
+    position: relative;
+    top: -12px;
+}

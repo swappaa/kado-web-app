@@ -1,0 +1,26 @@
+footer ul li a {
+    padding: 0 20px;
+    position: relative;
+}
+
+footer ul li a::before {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 22px;
+    background-color: #fff;
+    right: 0;
+    top: 16%;
+}
+
+footer ul li:first-child a, footer ul li:nth-child(5) a {
+    padding-left: 0;
+}
+
+footer ul li:nth-child(4) a::before, footer ul li:last-child a::before {
+    display: none;
+}
+
+footer .element-signup-talent button {
+    border-radius: 70px;
+}

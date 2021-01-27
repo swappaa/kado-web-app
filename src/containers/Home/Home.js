@@ -1,186 +1,198 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Spinner from '../../components/UI/Spinner/Spinner';
 
-import bt from '../../assets/bootstrap/dist/css/kado.module.css';
-import cst from '../.././App.module.css';
-import style from './Home.module.css';
-import cx from 'classnames';
+import './Home.css';
+import { ReactComponent as SearchIcon } from '../../assets/images/svg/Search-icon.svg';
 import banner from '../../assets/images/banner-send-personalized-images.jpg';
-import searchIcon from '../../assets/images/svg/Search-icon.svg';
-import delSearchIcon from '../../assets/images/delete-search.png';
 import talentProfile from '../../assets/images/talent/1.png';
-import subscribeIcon from '../../assets/images/subscribe-icon.png';
-
 
 class Home extends Component {
     render() {
         return (
             <div className="talent-home">
                 <section>
-                    <div className={cx(bt['container-fluid'], bt['px-5'])}>
-                        <div className={cx(bt['text-white'], cst['theme-pink-bg-color'], cst['banner-wrapper'], ['banner-wrapper'])}>
-                            <div className={bt['row']}>
-                                <div className={bt['col-lg-5']}>
-                                    <img className={cx(bt['img-fluid'], bt['w-100'])} src={banner} alt="personalized-message" />
+                    <div className="container-fluid px-5">
+                        <div className="banner-wrapper text-white theme-pink-bg-color">
+                            <div className="row">
+                                <div className="col-lg-5">
+                                    <img className="img-fluid w-100" src={banner}
+                                        alt="personalized-message" />
                                 </div>
-                                <div className={cx(bt['col-lg-7'], bt['p-5'], bt['d-flex'], bt['flex-column'], bt['justify-content-center'], bt['w-50'])}>
-                                    <h2 className={cx(bt['display-4'], bt['lh-base'])}>Send personalized messages to your family and friends from the stars they love!</h2>
+                                <div className="col-lg-7 p-5 d-flex flex-column justify-content-center w-50">
+                                    <h2 className="display-4 lh-base">Send personalized messages
+                                    to your family and friends
+                            from the stars they love!</h2>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section className={cx(bt['py-5'])}>
-                    <div className={cx(bt['container-fluid'], bt['px-5'])}>
-                        <div className={cx(bt['row'], bt['align-items-center'])}>
-                            <div className={cx(bt['col'])}>
-                                <div className={style['filter-category']}>
-                                    <ul className={cx(bt['d-flex'], bt['flex-wrap'])}>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'], bt['ms-0'])} href="#">Actors</a>
+                <section className="py-5">
+                    <div className="container-fluid px-5">
+                        <div className="row align-items-center">
+                            <div className="col">
+                                <div className="filter-category">
+                                    <ul className="d-flex flex-wrap">
+                                        <li><a className="text-uppercase border border-dark rounded-circle ms-0" href="#">Actors</a>
                                         </li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">Singers</a>
+                                        <li><a className="text-uppercase border border-dark rounded-circle active" href="#">Singers</a>
                                         </li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">Comedians</a></li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">Television</a></li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">radio</a></li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">Authors</a></li>
-                                        <li><a className={cx(bt['text-uppercase'], bt['border'], bt['border-dark'], bt['rounded-circle'])} href="#">Athletes</a></li>
+                                        <li><a className="text-uppercase border border-dark rounded-circle" href="#">Comedians</a></li>
+                                        <li><a className="text-uppercase border border-dark rounded-circle" href="#">Television</a></li>
+                                        <li><a className="text-uppercase border border-dark rounded-circle" href="#">radio</a></li>
+                                        <li><a className="text-uppercase border border-dark rounded-circle" href="#">Authors</a></li>
+                                        <li><a className="text-uppercase border border-dark rounded-circle" href="#">Athletes</a></li>
                                     </ul>
                                 </div>
                             </div>
-                            <div className={cx(bt['col-4'])}>
-                                <div className={style['searchbox-wrapper']}>
-                                    <div className={cx(bt['input-group'], bt['mb-3'])}>
+                            <div className="col-4">
+                                <div className="searchbox-wrapper">
+                                    <div className="input-group mb-3">
                                         <input type="text"
-                                            className={cx(bt['form-control'], bt['form-control-lg'], bt['px-4'], bt['py-3'], cst['br-radius'], bt['fs-6'], bt['border-end-0'])}
-                                            placeholder="SEARCH" aria-label="SEARCH" />
-                                        <span className={cx(bt['input-group-text'], bt['bg-transparent'], bt['del-search'], bt['border-start-0'])}><a href="#">
-                                            <img src={delSearchIcon} alt="delete-search" /></a></span>
-                                        <span className={cx(bt['input-group-text'], bt['bg-transparent'], cst['br-radius'], bt['px-3'])}><a href="#">
-                                            <img className={cx(bt['img-fluid'], cst['svg-icon'])} src={searchIcon}
-                                                alt="search-icon" /></a></span>
+                                            className="form-control form-control-lg px-4 py-3 br-radius fs-6 border-end-0"
+                                            placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2" />
+                                        <span className="input-group-text bg-transparent del-search border-start-0 border-end-0">
+                                            <a href="#">
+                                                <svg width="22x" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                    <g id="#0a09094d">
+                                                        <path fill="#0a0909" opacity="0.30" d=" M 0.00 0.00 L 2.20 0.00 C 5.18 2.59 7.97 5.38 11.00 7.90 C 14.03 5.38 16.82 2.61 19.75 0.00 L 22.00 0.00 L 22.00 1.86 C 19.24 4.71 16.13 7.19 13.33 10.00 C 16.13 12.80 19.21 15.30 22.00 18.10 L 22.00 20.00 L 19.79 20.00 C 16.82 17.41 14.03 14.62 11.00 12.10 C 7.97 14.62 5.18 17.39 2.24 20.00 L 0.00 20.00 L 0.00 18.00 C 2.85 15.30 5.89 12.78 8.67 10.00 C 5.89 7.22 2.87 4.70 0.00 2.02 L 0.00 0.00 Z" />
+                                                    </g>
+                                                </svg>
+                                            </a>
+                                        </span>
+                                        <span
+                                            className="input-group-text bg-transparent br-radius px-3 border-start-0 search-wrapper position-relative">
+                                            <a
+                                                href="#">
+                                                <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
+                                                    width="24px" height="24px" viewBox="0 0 10.812 10.771" enable-background="new 0 0 10.812 10.771" >
+                                                    <path fill="#ABADB0" d="M10.592,9.491L8.73,7.628c0.571-0.792,0.916-1.756,0.916-2.805C9.646,2.164,7.483,0,4.823,0
+	C2.164,0,0,2.164,0,4.823c0,2.659,2.164,4.822,4.823,4.822c1.07,0,2.05-0.361,2.851-0.953l1.858,1.859
+	c0.146,0.146,0.338,0.22,0.53,0.22s0.384-0.073,0.53-0.22C10.885,10.259,10.885,9.784,10.592,9.491z M1.5,4.823
+	C1.5,2.991,2.991,1.5,4.823,1.5s3.323,1.491,3.323,3.323c0,1.832-1.491,3.322-3.323,3.322S1.5,6.655,1.5,4.823z"/>
+                                                </svg>
+                                            </a>
+                                        </span>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className={bt['row']}>
-                            <div className={bt['col-12']}>
-                                <div className={cx(style['element-header'], bt['py-4'], bt['d-flex'], bt['align-items-center'], bt['justify-content-between'])}>
-                                    <h2 className={cx(bt['text-uppercase'], cst['theme-pink-color'], bt['display-5'])}>FEATURED SINGERS</h2>
-                                    <a className={cx(bt['text-uppercase'], bt['fs-3'], cst['theme-pink-color'], cst['font-ave-heavy'])} href="#">SEE ALL SINGERS {">"}</a>
+                        <div className="row">
+                            <div className="col-12">
+                                <div className="element-header py-4 d-flex align-items-center justify-content-between">
+                                    <h2 className="text-uppercase theme-pink-color display-5">FEATURED SINGERS</h2>
+                                    <a className="text-uppercase fs-3 theme-pink-color font-ave-heavy" href="#">SEE ALL SINGERS {'>'}</a>
                                 </div>
                             </div>
-                            <div className={bt['col-12']}>
-                                <div className={cx(bt['d-flex'], bt['flex-wrap'], bt['justify-content-between'])}>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                            <div className="col-12">
+                                <div className="d-flex flex-wrap justify-content-between">
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Sepideh</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Sepideh</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="talent_profile.php" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Yamscel Rubite</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Erfan</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Clarissa</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Sogand</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>KamyR</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">KamyR</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Azam Ali</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Azam Ali</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Morvarid</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Morvarid</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Andy</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Andy</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Navid Firoozi</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Navid Firoozi</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Googoosh</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Googoosh</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
-                                    <div className={cx(bt['col-lg-2'], style['element-featured-wrapper'], bt['mb-4'])}>
-                                        <div className={cx(style['featured-wrapper'], bt['text-center'], bt['position-relative'])}>
-                                            <div className={style['image-wrapper']}>
-                                                <img className={cx(bt['img-fluid'], bt['w-100'])} src={talentProfile} alt="talent-img" />
+                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                        <div className="featured-wrapper text-center position-relative">
+                                            <div className="image-wrapper">
+                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
                                             </div>
-                                            <div className={cx(style['featured-talent'], bt['my-2'])}>
-                                                <h5 className={cx(bt['fs-4'])}>Ebi</h5>
+                                            <div className="featured-talent my-2">
+                                                <h5 className="fs-4">Ebi</h5>
                                             </div>
-                                            <Link to="/talent-profile" className={cx(bt['stretched-link'])}></Link>
+                                            <a href="#" className="stretched-link"></a>
                                         </div>
                                     </div>
                                 </div>
@@ -189,43 +201,43 @@ class Home extends Component {
                     </div>
                 </section>
                 <section>
-                    <div className={cx(bt['container-fluid'], bt['px-5'])}>
-                        <div className={style['download-app-wrapper']}>
-                            <div className={cx(bt['d-flex'], bt['flex-row'], bt['align-items-center'])}>
+                    <div className="container-fluid px-5">
+                        <div className="download-app-wrapper">
+                            <div className="d-flex flex-row align-items-center">
                                 <button
-                                    className={cx(bt['btn'], cst['theme-pink-bg-color'], cst['br-radius'], cst['font-ave-heavy'], bt['text-white'], bt['fs-1'], bt['w-75'], bt['mw-100'], bt['text-uppercase'], bt['py-3'])}>DOWNLOAD
+                                    className="btn theme-pink-bg-color br-radius font-ave-heavy text-white fs-1 w-75 mw-100 text-uppercase py-3">DOWNLOAD
                                     THE
                         APP</button>
-                                <a className={cx(cst['theme-pink-color'], cst['font-ave-heavy'], bt['fs-3'], bt['ms-5'])} href="#">Why get the app?</a>
+                                <a className="theme-pink-color font-ave-heavy fs-3 ms-5" href="#">Why get the app?</a>
                             </div>
                         </div>
                     </div>
                 </section>
-                <section className={cx(bt['py-5'])}>
-                    <div className={cx(bt['container-fluid'], bt['px-5'])}>
-                        <div className={cx(style['how-it-works'], bt['text-white'], cst['theme-dark-bg-color'])}>
-                            <div className={cx(bt['row'], bt['row-cols-lg-auto'], bt['g-3'], bt['align-items-center'], bt['p-5'])}>
-                                <div className={cx(bt['col-lg-2'])}>
-                                    <p className={cx(bt['display-5'], bt['text-center'], bt['text-uppercase'], bt['lh-1'])}>How it
+                <section className="py-5">
+                    <div className="container-fluid px-5">
+                        <div className="how-it-works text-white theme-dark-bg-color">
+                            <div className="row row-cols-lg-auto g-3 align-items-center p-5">
+                                <div className="col-lg-2">
+                                    <p className="display-5 text-center text-uppercase lh-1">How it
                             works</p>
                                 </div>
-                                <div className={cx(bt['col-lg-10'])}>
-                                    <div className={cx(bt['d-flex'], bt['flex-wrap'])}>
-                                        <div className={cx(style['col-step-work'], bt['me-5'])}>
-                                            <div className={cx(bt['d-flex'], bt['justify-content-start'], bt['align-items-center'], bt['display-6'])}>
-                                                <span className={cx(bt['bg-white'], bt['rounded-circle'], cst['theme-pink-color'], cst['font-ave-black'], bt['me-3'])}>1</span>
+                                <div className="col-lg-10">
+                                    <div className="d-flex flex-wrap">
+                                        <div className="col-step-work me-5">
+                                            <div className="d-flex justify-content-start align-items-center display-6">
+                                                <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">1</span>
                                     Pick a Star
                                 </div>
                                         </div>
-                                        <div className={cx(style['col-step-work'], bt['me-5'])}>
-                                            <div className={cx(bt['d-flex'], bt['justify-content-start'], bt['align-items-center'], bt['display-6'])}>
-                                                <span className={cx(bt['bg-white'], bt['rounded-circle'], cst['theme-pink-color'], cst['font-ave-black'], bt['me-3'])}>2</span>
+                                        <div className="col-step-work me-5">
+                                            <div className="d-flex justify-content-start align-items-center display-6">
+                                                <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">2</span>
                                     Send a Request
                                 </div>
                                         </div>
-                                        <div className={cx(style['col-step-work'])}>
-                                            <div className={cx(bt['d-flex'], bt['justify-content-start'], bt['align-items-center'], bt['display-6'])}>
-                                                <span className={cx(bt['bg-white'], bt['rounded-circle'], cst['theme-pink-color'], cst['font-ave-black'], bt['me-3'])}>3</span>
+                                        <div className="col-step-work">
+                                            <div className="d-flex justify-content-start align-items-center display-6">
+                                                <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">3</span>
                                     Get a Video
                                 </div>
                                         </div>
@@ -236,28 +248,32 @@ class Home extends Component {
                     </div>
                 </section>
                 <section>
-                    <div className={cx(bt['container-fluid'], bt['px-5'])}>
-                        <div className={cx(style['join-our-list'])}>
-                            <div className={cx(bt['row'], bt['row-cols-lg-auto'], bt['g-3'], bt['align-items-center'], bt['p-5'], bt['py-3'])}>
-                                <div className={cx(bt['col-lg-6'])}>
-                                    <div className={cx(bt['input-group'], bt['mb-3'], bt['px-5'])}>
-                                        <input type="text" className={cx(bt['form-control'], bt['form-control-lg'], bt['py-4'], bt['px-5'], cst['br-radius'], bt['border-end-0'])}
+                    <div className="container-fluid px-5">
+                        <div className="join-our-list">
+                            <div className="row row-cols-lg-auto g-3 align-items-center p-5 py-3">
+                                <div className="col-lg-6">
+                                    <div className="input-group mb-3 px-5">
+                                        <input type="text" className="form-control form-control-lg py-4 px-5 br-radius border-end-0"
                                             placeholder="EMAIL ADDRESS" />
-                                        <span className={cx(bt['input-group-text'], cst['br-radius'], bt['bg-transparent'], bt['px-4'], bt['border-start-0'])}>
-                                            <a href="#"><img
-                                                src={subscribeIcon} alt="subscribe-icon" /></a></span>
+                                        <span className="input-group-text br-radius bg-transparent px-4 border-start-0"><a href="#">
+                                            <svg width="47px" height="41px" viewBox="0 0 47 41" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <g id="#aaaaaaff">
+                                                    <path fill="#aaaaaa" opacity="1.00" d=" M 27.37 0.00 L 29.74 0.00 C 33.44 1.90 35.80 5.45 38.80 8.19 C 41.87 11.57 46.20 14.40 47.00 19.23 L 47.00 21.91 C 46.11 26.67 41.86 29.46 38.81 32.81 C 35.88 35.57 33.44 38.92 29.93 41.00 L 27.62 41.00 C 24.78 40.20 22.86 37.00 24.15 34.18 C 26.32 30.82 29.59 28.38 32.26 25.44 C 23.15 25.37 14.04 25.56 4.94 25.37 C 2.56 25.56 0.89 23.73 0.00 21.74 L 0.00 19.42 C 0.75 17.26 2.55 15.41 5.01 15.63 C 14.08 15.44 23.17 15.64 32.25 15.56 C 29.57 12.59 26.26 10.16 24.11 6.75 C 22.90 3.98 24.77 1.05 27.37 0.00 Z" />
+                                                </g>
+                                            </svg>
+                                        </a></span>
                                     </div>
                                 </div>
-                                <div className={cx(bt['col-lg-6'])}>
-                                    <h3 className={cx(bt['display-5'], bt['text-uppercase'], bt['lh-1'])}>JOIN OUR LIST</h3>
-                                    <p className={cx(bt['fs-3'], cst['font-ave-reg'])}>to get inside info on new celebs, deals,
+                                <div className="col-lg-6">
+                                    <h3 className="display-5 text-uppercase lh-1">JOIN OUR LIST</h3>
+                                    <p className="fs-3 font-ave-reg">to get inside info on new celebs, deals,
                             and other kâdo news.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-            </div>
+            </div >
         )
     }
 }

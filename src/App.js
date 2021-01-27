@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import Aux from './hoc/Auxi/Auxi';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
 import signupTalent from './containers/SignupTalent/SignupTalent';
 import talentProfile from './containers/TalentProfile/TalentProfile';
 
+import './App.css';
 
 class App extends Component {
   render() {
