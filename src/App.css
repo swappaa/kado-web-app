@@ -107,3 +107,11 @@ thead {
   background: #58595b;
   text-align: center;
 }
+
+@media screen and (max-width: 991px) {
+  .container-fluid.px-5, .row.px-5 {
+    padding-right: 1rem !important;
+    padding-left: 1rem !important;
+    padding-left: 1rem !important;
+  }
+}
