@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
+import '../../App.css';
 import './Home.css';
-import { ReactComponent as SearchIcon } from '../../assets/images/svg/Search-icon.svg';
 import banner from '../../assets/images/banner-send-personalized-images.jpg';
 import talentProfile from '../../assets/images/talent/1.png';
 
@@ -17,7 +18,7 @@ class Home extends Component {
                                     <img className="img-fluid w-100" src={banner}
                                         alt="personalized-message" />
                                 </div>
-                                <div className="col-lg-7 p-5 d-flex flex-column justify-content-center w-50">
+                                <div className="col-lg-7 p-5 p-lg-3 p-xxl-4 d-flex flex-column justify-content-center w-50 cust-wrap-right">
                                     <h2 className="display-4 lh-base">Send personalized messages
                                     to your family and friends
                             from the stars they love!</h2>
@@ -29,7 +30,7 @@ class Home extends Component {
                 <section className="py-5">
                     <div className="container-fluid px-5">
                         <div className="row align-items-center">
-                            <div className="col">
+                            <div className="col-lg-8 order-2 order-lg-1">
                                 <div className="filter-category">
                                     <ul className="d-flex flex-wrap">
                                         <li><a className="text-uppercase border border-dark rounded-circle ms-0" href="#">Actors</a>
@@ -44,9 +45,9 @@ class Home extends Component {
                                     </ul>
                                 </div>
                             </div>
-                            <div className="col-4">
-                                <div className="searchbox-wrapper">
-                                    <div className="input-group mb-3">
+                            <div className="col-lg-4 order-1 order-lg-2 mb-4 mb-lg-0">
+                                <div className="searchbox-wrapper ">
+                                    <div className="input-group">
                                         <input type="text"
                                             className="form-control form-control-lg px-4 py-3 br-radius fs-6 border-end-0"
                                             placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2" />
@@ -64,7 +65,7 @@ class Home extends Component {
                                             <a
                                                 href="#">
                                                 <svg version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
-                                                    width="24px" height="24px" viewBox="0 0 10.812 10.771" enable-background="new 0 0 10.812 10.771" >
+                                                    width="24px" height="24px" viewBox="0 0 10.812 10.771" enableBackground="new 0 0 10.812 10.771" >
                                                     <path fill="#ABADB0" d="M10.592,9.491L8.73,7.628c0.571-0.792,0.916-1.756,0.916-2.805C9.646,2.164,7.483,0,4.823,0
 	C2.164,0,0,2.164,0,4.823c0,2.659,2.164,4.822,4.823,4.822c1.07,0,2.05-0.361,2.851-0.953l1.858,1.859
 	c0.146,0.146,0.338,0.22,0.53,0.22s0.384-0.073,0.53-0.22C10.885,10.259,10.885,9.784,10.592,9.491z M1.5,4.823
@@ -78,14 +79,14 @@ class Home extends Component {
                         </div>
                         <div className="row">
                             <div className="col-12">
-                                <div className="element-header py-4 d-flex align-items-center justify-content-between">
+                                <div className="element-header py-4 d-flex flex-wrap align-items-center justify-content-between">
                                     <h2 className="text-uppercase theme-pink-color display-5">FEATURED SINGERS</h2>
                                     <a className="text-uppercase fs-3 theme-pink-color font-ave-heavy" href="#">SEE ALL SINGERS {'>'}</a>
                                 </div>
                             </div>
                             <div className="col-12">
-                                <div className="d-flex flex-wrap justify-content-between">
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                <div className="d-flex flex-wrap justify-content-around">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -93,10 +94,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Sepideh</h5>
                                             </div>
-                                            <a href="talent_profile.php" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -104,10 +105,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Erfan</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -115,10 +116,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Sogand</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -126,10 +127,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">KamyR</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -137,10 +138,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Azam Ali</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -148,10 +149,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Morvarid</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -159,10 +160,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Andy</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -170,10 +171,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Navid Firoozi</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -181,10 +182,10 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Googoosh</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
-                                    <div className="col-lg-2 element-featured-wrapper mb-4">
+                                    <div className="col-lg-2 col-md-4 element-featured-wrapper mb-4">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
                                                 <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -192,7 +193,7 @@ class Home extends Component {
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Ebi</h5>
                                             </div>
-                                            <a href="#" className="stretched-link"></a>
+                                            <Link className="stretched-link" to="/talent-profile"></Link>
                                         </div>
                                     </div>
                                 </div>
@@ -203,12 +204,12 @@ class Home extends Component {
                 <section>
                     <div className="container-fluid px-5">
                         <div className="download-app-wrapper">
-                            <div className="d-flex flex-row align-items-center">
+                            <div className="d-flex flex-wrap flex-md-nowrap flex-row align-items-center justify-content-md-start justify-content-center">
                                 <button
                                     className="btn theme-pink-bg-color br-radius font-ave-heavy text-white fs-1 w-75 mw-100 text-uppercase py-3">DOWNLOAD
                                     THE
                         APP</button>
-                                <a className="theme-pink-color font-ave-heavy fs-3 ms-5" href="#">Why get the app?</a>
+                                <a className="theme-pink-color font-ave-heavy fs-3 ms-0 ms-md-3 mt-4 mt-md-0" href="#">Why get the app?</a>
                             </div>
                         </div>
                     </div>
@@ -216,26 +217,26 @@ class Home extends Component {
                 <section className="py-5">
                     <div className="container-fluid px-5">
                         <div className="how-it-works text-white theme-dark-bg-color">
-                            <div className="row row-cols-lg-auto g-3 align-items-center p-5">
-                                <div className="col-lg-2">
+                            <div className="row row-cols-lg-auto g-3 align-items-center p-4 p-sm-5">
+                                <div className="col-xxl-2 col-lg-3">
                                     <p className="display-5 text-center text-uppercase lh-1">How it
                             works</p>
                                 </div>
-                                <div className="col-lg-10">
-                                    <div className="d-flex flex-wrap">
-                                        <div className="col-step-work me-5">
+                                <div className="col-lg-9">
+                                    <div className="d-flex flex-wrap align-items-center">
+                                        <div className="col-step-work me-5 my-2">
                                             <div className="d-flex justify-content-start align-items-center display-6">
                                                 <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">1</span>
                                     Pick a Star
                                 </div>
                                         </div>
-                                        <div className="col-step-work me-5">
+                                        <div className="col-step-work me-5 my-2">
                                             <div className="d-flex justify-content-start align-items-center display-6">
                                                 <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">2</span>
                                     Send a Request
                                 </div>
                                         </div>
-                                        <div className="col-step-work">
+                                        <div className="col-step-work my-2">
                                             <div className="d-flex justify-content-start align-items-center display-6">
                                                 <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">3</span>
                                     Get a Video
@@ -250,9 +251,9 @@ class Home extends Component {
                 <section>
                     <div className="container-fluid px-5">
                         <div className="join-our-list">
-                            <div className="row row-cols-lg-auto g-3 align-items-center p-5 py-3">
-                                <div className="col-lg-6">
-                                    <div className="input-group mb-3 px-5">
+                            <div className="row row-cols-lg-auto g-3 align-items-center p-3 p-sm-5 py-3">
+                                <div className="col-lg-6 order-2 order-lg-1">
+                                    <div className="input-group mb-3 px-0 px-xl-5">
                                         <input type="text" className="form-control form-control-lg py-4 px-5 br-radius border-end-0"
                                             placeholder="EMAIL ADDRESS" />
                                         <span className="input-group-text br-radius bg-transparent px-4 border-start-0"><a href="#">
@@ -264,7 +265,7 @@ class Home extends Component {
                                         </a></span>
                                     </div>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-lg-6 order-1 order-lg-2">
                                     <h3 className="display-5 text-uppercase lh-1">JOIN OUR LIST</h3>
                                     <p className="fs-3 font-ave-reg">to get inside info on new celebs, deals,
                             and other kâdo news.</p>

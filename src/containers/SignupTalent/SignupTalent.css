@@ -11,7 +11,7 @@
     position: absolute;
     bottom: -81px;
     right: 86px;
-    height: 490px;
+    width: 464px;
 }
 
 .talent-signup .why-join-kado .card {
@@ -24,4 +24,56 @@
 
 .talent-signup .why-join-kado .purpose-wrapper {
     background-color: #e8e8e8;
+}
+
+@media screen and (max-width: 1500px) {
+    .counter-earning h3 {
+        font-size: 38px;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .talent-signup .banner-wrapper img {
+        right: 0;
+    }
+    .counter-earning h3 {
+        font-size: 35px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .custom-wrapper-contact {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .talent-signup .banner-wrapper {
+        padding-top: 40px !important;
+        padding-bottom: 40px !important;
+    }
+    .talent-signup .banner-wrapper img {
+        bottom: -41px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .talent-signup .banner-wrapper img {
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .sign-up-wrapper form {
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .sign-up-wrapper button {
+        font-size: 22px !important;
+    }
+    .talent-signup .why-join-kado .card img {
+        width: 76px;
+    }
 }

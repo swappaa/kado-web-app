@@ -1,0 +1,24 @@
+.signapp-modal .accordion-button::after, .signin-continue .accordion-button::after {
+    margin-left: 20px !important;
+}
+
+.signapp-modal .accordion-button:not(.collapsed), .signin-continue .accordion-button:not(.collapsed) {
+    background-color: unset;
+}
+
+.signapp-modal button svg, .signin-continue button svg {
+    width: 96px;
+    height: 96px;
+}
+
+@media screen and (max-width: 767px) {
+    .signin-continue .accordion-body {
+        width: 85% !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #signapp-modal .accordion-body, #signin-modal .accordion-body {
+        width: 100% !important;
+    }
+}

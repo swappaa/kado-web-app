@@ -1,65 +1,64 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
-import talentProf from '../../assets/images/profile.png';
+
+import '../../App.css';
+import './TalentProfile.css';
+import talentProf from '../../assets/images/banner-surprise-message.png';
 import highlightKado from '../../assets/images/highlighted-kados.png';
 import charityLogo from '../../assets/images/charity logo.png';
-import ratingStarFull from '../../assets/images/svg/Star-Pink-Full.svg';
-import ratingStarHalf from '../../assets/images/svg/Star-Pink-Half.svg';
+import { ReactComponent as RatingStarFull } from '../../assets/images/svg/Star-Pink-Full.svg';
+import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-Pink-Half.svg';
 
 
 class talentProfile extends Component {
     render() {
         return (
             <div className="talent-profile">
-                <section className="py-5">
+                <section>
                     <div className="container-fluid px-5">
                         <div className="profile-wrapper">
                             <div className="row px-5">
-                                <div className="col-lg-4">
-                                    <img className="img-fluid w-100" src="./assets/images/profile.png" alt="profile" />
+                                <div className="col-md-4">
+                                    <img className="img-fluid w-100 br-radius" src={talentProf} alt="profile" />
                                 </div>
-                                <div className="col-lg-7">
-                                    <div className="element-wrapper px-4">
-                                        <div className="d-flex flex-wrap justify-content-between">
+                                <div className="col-xl-7 col-md-8">
+                                    <div className="element-wrapper px-sm-4 mt-4 mt-md-0">
+                                        <div className="d-flex flex-wrap justify-content-between position-relative">
                                             <div className="profile-name theme-pink-color">
                                                 <h2 className="display-4 lh-base">KamyR</h2>
                                                 <span className="fs-1">Singer / Songwriter</span>
                                             </div>
-                                            <div className="charity-wrapper">
-                                                <div className="element-wrapper text-center p-4" style="border: 1px solid #a4a4a4">
-                                                    <img src="./assets/images/charity logo.png" alt="charity-logo" />
+                                            <div className="charity-wrapper position-absolute top-0 end-0">
+                                                <div className="element-wrapper text-center p-2 p-sm-4" style={{ border: '1px solid #a4a4a4' }}>
+                                                    <img src={charityLogo} alt="charity-logo" />
                                                     <span className="theme-pink-color fs-3 w-100 d-block">25% to Charity</span>
                                                 </div>
                                             </div>
                                         </div>
                                         <div className="rating-star my-4">
                                             <div className="str-rating-icon mb-3">
-                                                <img className="img-fluid" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid" src="./assets/images/svg/Star-Pink-Half.svg"
-                                                    alt="rating-star" />
+                                                <RatingStarFull className="me-1" />
+                                                <RatingStarFull className="me-1" />
+                                                <RatingStarFull className="me-1" />
+                                                <RatingStarFull className="me-1" />
+                                                <RatingStarHalf className="me-1" />
                                             </div>
                                             <span className="fs-4">Replies in 8.5 hrs</span>
                                         </div>
-                                        <div className="profile-details pe-5">
+                                        <div className="profile-details pe-0 pe-lg-5">
                                             <p className="fs-1 lh-sm mb-4">Born in Tehran, Iran, KamyR is a popular
                                             Persian vocalist and songwriter. KamyR
                                     was raised and educated in France.</p>
-                                            <div className="btn-wrapper text-end pe-4">
+                                            <div className="btn-wrapper text-end pe-sm-4">
                                                 <a className="text-uppercase theme-pink-color fs-3" href="#">Read More {'>'}</a>
                                             </div>
                                         </div>
                                         <div className="book-now d-grid my-5">
-                                            <button className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3">
+                                            <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3">
                                                 <span className="display-4 text-uppercase">BOOK NOW</span> <br />
                                                 <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video $150.00 ]</span>
-                                            </button>
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
@@ -70,9 +69,9 @@ class talentProfile extends Component {
                 <section>
                     <div className="container-fluid px-5">
                         <div className="reviews-wrapper">
-                            <div className="element-header d-flex justify-content-between align-items-center px-5 mb-2">
+                            <div className="element-header d-flex flex-wrap justify-content-between align-items-center px-5 mb-2">
                                 <h3 className="text-uppercase theme-pink-color fs-2">REVIEWS</h3> <a
-                                    className="theme-pink-color text-uppercase fs-3" href="#">Read ALL 32 REVIEWS{'>'}</a>
+                                    className="theme-pink-color text-uppercase fs-3 btn-read-all-reviews" href="#">Read ALL 32 REVIEWS{'>'}</a>
                             </div>
                             <div className="row row-cols-1 g-3 px-5">
                                 <div className="col">
@@ -80,16 +79,11 @@ class talentProfile extends Component {
                                         <div
                                             className="rating-star d-flex align-items-center justify-content-center align-self-start px-3">
                                             <div className="str-rating-icon d-flex align-items-center">
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
                                                 <span className="font-ave-black fs-3 ms-4">5.0</span>
                                             </div>
                                         </div>
@@ -112,16 +106,11 @@ class talentProfile extends Component {
                                         <div
                                             className="rating-star d-flex align-items-center justify-content-center align-self-start px-3">
                                             <div className="str-rating-icon d-flex align-items-center">
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
                                                 <span className="font-ave-black fs-3 ms-4">5.0</span>
                                             </div>
                                         </div>
@@ -144,16 +133,11 @@ class talentProfile extends Component {
                                         <div
                                             className="rating-star d-flex align-items-center justify-content-center align-self-start px-3">
                                             <div className="str-rating-icon d-flex align-items-center">
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
-                                                <img className="img-fluid svg-icon me-1" src="./assets/images/svg/Star-Pink-Full.svg"
-                                                    alt="rating-star" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
+                                                <RatingStarFull className="img-fluid svg-icon me-1" />
                                                 <span className="font-ave-black fs-3 ms-4">5.0</span>
                                             </div>
                                         </div>
@@ -178,44 +162,36 @@ class talentProfile extends Component {
                 <section className="py-5">
                     <div className="container-fluid px-5">
                         <div className="highlighted-kados">
-                            <div className="element-header px-5 my-4">
+                            <div className="element-header px-3 px-sm-5 my-4">
                                 <h3 className="text-uppercase theme-pink-color fs-2">HIGHLIGHTED KâdOS</h3>
                             </div>
-                            <div className="row row-cols-1 row-cols-md-4 g-5 px-5">
+                            <div className="row row-cols-2 row-cols-md-4 g-3 g-sm-5 px-5">
                                 <div className="col">
                                     <div className="card border-0">
-                                        <img className="br-radius img-fluid" src="./assets/images/highlighted-kados.png"
+                                        <img className="br-radius img-fluid" src={highlightKado}
                                             className="card-img-top" alt="highlight-kados" />
-                                        <div className="card-body">
-                                        </div>
-                                        <a href="#" className="stretched-link"></a>
+                                        <Link className="stretched-link" to="/talent-profile"></Link>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="card border-0">
-                                        <img className="br-radius img-fluid" src="./assets/images/highlighted-kados.png"
+                                        <img className="br-radius img-fluid" src={highlightKado}
                                             className="card-img-top" alt="highlight-kados" />
-                                        <div className="card-body">
-                                        </div>
-                                        <a href="#" className="stretched-link"></a>
+                                        <Link className="stretched-link" to="/talent-profile"></Link>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="card border-0">
-                                        <img className="br-radius img-fluid" src="./assets/images/highlighted-kados.png"
+                                        <img className="br-radius img-fluid" src={highlightKado}
                                             className="card-img-top" alt="highlight-kados" />
-                                        <div className="card-body">
-                                        </div>
-                                        <a href="#" className="stretched-link"></a>
+                                        <Link className="stretched-link" to="/talent-profile"></Link>
                                     </div>
                                 </div>
                                 <div className="col">
                                     <div className="card border-0">
-                                        <img className="br-radius img-fluid" src="./assets/images/highlighted-kados.png"
+                                        <img className="br-radius img-fluid" src={highlightKado}
                                             className="card-img-top" alt="highlight-kados" />
-                                        <div className="card-body">
-                                        </div>
-                                        <a href="#" className="stretched-link"></a>
+                                        <Link className="stretched-link" to="/talent-profile"></Link>
                                     </div>
                                 </div>
                             </div>

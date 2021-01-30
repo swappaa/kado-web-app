@@ -1,0 +1,73 @@
+.color-set {
+    color: #58595b !important;
+}
+
+.customs-wrapper .requested-list img.profile-image {
+    border: 4px solid #58585a;
+    max-width: 182px;
+    height: 182px;
+}
+
+.requested-list .card::before {
+    content: '';
+    background: url(../../../src/assets/images/svg/arrow-pink-details.svg) center/contain no-repeat;
+    width: 113px;
+    height: 10px;
+    position: absolute;
+    right: -50px;
+    top: 30%;
+    transform: translate(0%, 50%);
+    z-index: 9;
+}
+
+.requested-list .card:last-child::before {
+    display: none;
+}
+
+@media screen and (max-width: 991px) {
+    .requested-list .card::before {
+        width: 89px;
+        height: 6px;
+    }
+    .customs-wrapper .requested-list img.profile-image {
+        max-width: 169px;
+        height: 169px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .customs-wrapper .requested-list img.profile-image {
+        max-width: 150px;
+        height: 150px;
+    }
+    .list-requested-wrapper .date-wrapper small {
+        font-size: 26px !important
+    }
+    .requested-list .card {
+        width: 100%;
+        max-width: 100%;
+        flex-basis: 100%;
+    }
+    .requested-list .card::before {
+        top: unset;
+        bottom: 0;
+        right: 50%;
+        left: 44.2%;
+        transform: rotate(90deg);
+        width: 75px;
+        height: 8px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .kados-details .footer-text p {
+        font-size: 20px !important;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .requested-list .card::before {
+        right: 50%;
+        left: 39.2%;
+    }
+}

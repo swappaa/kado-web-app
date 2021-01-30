@@ -49,9 +49,17 @@ header .special-offer-header {
     background-color: #404041;
     border-radius: 0 0 42px 42px;
     font-family: Avenir-Heavy;
+    position: relative;
+    top: -11px;
 }
 
 header .special-offer-header span {
     position: relative;
     top: -12px;
+}
+
+@media screen and (max-width: 1300px) {
+    header .special-offer-header {
+        display: none;
+    }
 }

@@ -24,3 +24,58 @@ footer ul li:nth-child(4) a::before, footer ul li:last-child a::before {
 footer .element-signup-talent button {
     border-radius: 70px;
 }
+
+.footer-link-wrapper {
+    width: 434px !important;
+}
+
+@media screen and (max-width: 1200px) {
+    .footer-link-wrapper {
+        width: 450px !important;
+    }
+}
+
+@media screen and (max-width: 1163px) {
+    footer ul li:nth-child(3) a::before {
+        display: none;
+    }
+    footer ul li:nth-child(4) a::before {
+        display: block;
+    }
+    footer ul li:nth-child(4) a {
+        padding-left: 0;
+    }
+    footer ul li:nth-child(5) a {
+        padding-left: 20px;
+    }
+    .footer-link-wrapper {
+        width: 384px !important;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    footer ul li a {
+        font-size: 25px;
+    }
+    .footer-link-wrapper {
+        width: 381px !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .footer-link-wrapper {
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    footer ul li a {
+        font-size: 22px;
+    }
+    .element-signup-talent p {
+        font-size: 19px;
+    }
+    footer ul li a::before {
+        height: 18px;
+    }
+}

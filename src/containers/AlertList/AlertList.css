@@ -1,0 +1,37 @@
+.response-item .message-item-wrapper p {
+    margin-left: auto;
+}
+
+.profile-wrapper {
+    top: -100px;
+}
+
+.profile-wrapper .profile-image {
+    max-width: 196px !important;
+    height: 196px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .customs-wrapper img.profile-image {
+        max-width: 116px;
+        height: 116px;
+    }
+    .alerts-list .notif-date-wrapper {
+        position: absolute;
+        right: 16px;
+        top: 22px;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .customs-wrapper img.profile-image {
+        max-width: 86px;
+        height: 86px;
+    }
+    .alerts-list .notif-date-wrapper svg {
+        width: 13px;
+    }
+    .alerts-list .notif-date-wrapper span {
+        font-size: 14px !important;
+    }
+}

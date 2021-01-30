@@ -51,6 +51,7 @@
     border-radius: 56px;
     border: 2px solid transparent;
     overflow: hidden;
+    margin: 0 15px;
 }
 
 .talent-home .featured-wrapper .image-wrapper img {
@@ -102,3 +103,92 @@
         opacity: 1;
     }
 } */
+
+@media screen and (max-width: 1400px) {
+    .banner-wrapper h2 {
+        font-size: 46px;
+    }
+    .talent-home .filter-category ul li a {
+        padding: 38px 50px;
+        max-width: 98px;
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .banner-wrapper h2 {
+        font-size: 45px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .banner-wrapper h2 {
+        font-size: 36px;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .banner-wrapper .cust-wrap-right {
+        width: 100% !important;
+    }
+    .talent-home .how-it-works span {
+        padding: 17px 28px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .col-step-work>div {
+        font-size: 30px;
+    }
+    .talent-home .how-it-works span {
+        padding: 14px 24px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .talent-home .filter-category ul li a {
+        padding: 38px 48px;
+        font-size: 12px;
+        margin-right: 12px;
+    }
+    .talent-home .element-featured-wrapper {
+        max-width: 180px;
+        width: 100%;
+    }
+    .download-app-wrapper button {
+        width: 100% !important;
+        font-size: 25px !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .banner-wrapper h2 {
+        font-size: 30px;
+    }
+    .talent-home .filter-category ul li a {
+        padding: 32px 42px;
+        max-width: 86px;
+        margin-right: 8px;
+    }
+    .col-step-work>div {
+        font-size: 26px;
+    }
+    .talent-home .how-it-works span {
+        padding: 16px 24px;
+    }
+    .join-our-list .input-group span svg {
+        width: 32px;
+    }
+    .talent-home .element-featured-wrapper {
+        max-width: 191px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .talent-home .element-featured-wrapper {
+        max-width: 300px;
+    }
+    .join-our-list input {
+        font-size: 13px;
+    }
+}

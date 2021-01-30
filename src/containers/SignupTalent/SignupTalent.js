@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import '../../App.css';
+import './SignupTalent.css';
 import bannerSurpriseMessage from '../../assets/images/banner-surprise-message.png';
 import earn from '../../assets/images/earn.png';
 import uplift from '../../assets/images/uplift.png';
@@ -12,16 +14,16 @@ class signupTalent extends Component {
             <div className="talent-signup">
                 <section>
                     <div className="container-fluid px-5">
-                        <div className="banner-wrapper p-5 text-white theme-pink-bg-color">
-                            <div className="row px-5">
+                        <div className="banner-wrapper p-3 p-xl-3 text-white theme-pink-bg-color">
+                            <div className="row px-5 position-relative">
                                 <div className="col-lg-7">
                                     <h2 className="display-5 mb-5">Surprise your fans with a personalized
                             video message… a kâdo.</h2>
                                     <p className="fs-3">Connect with fans by sending personal messages that’ll
                             thrill and entertain. Make people smile and get paid.</p>
                                 </div>
-                                <div className="col-lg-5 position-relative">
-                                    <img className="img-fluid float-end" src="./assets/images/banner-surprise-message.png"
+                                <div className="col-lg-5 position-relative text-center text-md-left">
+                                    <img className="img-fluid float-none float-lg-end" src={bannerSurpriseMessage}
                                         alt="suprise-message" />
                                 </div>
                             </div>
@@ -32,10 +34,10 @@ class signupTalent extends Component {
                     <div className="container-fluid px-5">
                         <div className="why-join-kado text-center">
                             <h2 className="mb-5 display-3 theme-pink-color">Why Join kâdo as Talent</h2>
-                            <div className="row row-cols-1 row-cols-md-3 g-4 px-5">
+                            <div className="row row-cols-1 row-cols-lg-2 row-cols-xl-3 g-4 px-5">
                                 <div className="col">
                                     <div className="card rounded-0 text-center py-5 px-3 h-100">
-                                        <img className="img-fluid mx-auto" src="./assets/images/earn.png" alt="earn" />
+                                        <img className="img-fluid mx-auto" src={earn} alt="earn" />
                                         <div className="card-body text-white pb-0">
                                             <h5 className="card-title text-uppercase display-4">EARN</h5>
                                             <p className="card-text fs-5 font-ave-reg">Connecting with fans directly is rewarding by
@@ -48,7 +50,7 @@ class signupTalent extends Component {
                                 </div>
                                 <div className="col">
                                     <div className="card rounded-0 text-center py-5 px-3 h-100">
-                                        <img className="img-fluid mx-auto" src="./assets/images/uplift.png" alt="earn" />
+                                        <img className="img-fluid mx-auto" src={uplift} alt="uplift" />
                                         <div className="card-body text-white pb-0">
                                             <h5 className="card-title text-uppercase display-4">UPLIFT</h5>
                                             <p className="card-text fs-5 font-ave-reg">A part of the proceeds (you decide how much) goes
@@ -60,7 +62,7 @@ class signupTalent extends Component {
                                 </div>
                                 <div className="col">
                                     <div className="card rounded-0 text-center py-5 px-3 h-100">
-                                        <img className="img-fluid mx-auto" src="./assets/images/enjoy.png" alt="earn" />
+                                        <img className="img-fluid mx-auto" src={enjoy} alt="enjoy" />
                                         <div className="card-body text-white pb-0">
                                             <h5 className="card-title text-uppercase display-4">ENJOY</h5>
                                             <p className="card-text fs-5 font-ave-reg">Everything is done right in the app. It’s easy,
@@ -73,8 +75,8 @@ class signupTalent extends Component {
                             </div>
                             <div className="row row-cols-1 px-5 mt-4">
                                 <div className="col">
-                                    <div className="py-5 px-5 d-flex align-items-center pe-5 purpose-wrapper text-start">
-                                        <div className="charity-logo-wrapper me-3">
+                                    <div className="py-3 py-sm-5 px-3 px-sm-5 d-flex flex-wrap flex-sm-nowrap align-items-center pe-3 pe-sm-5 purpose-wrapper text-start">
+                                        <div className="charity-logo-wrapper me-sm-3 mx-auto">
                                             <svg width="74px" height="112px" viewBox="0 0 74 112" version="1.1"
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <g id="#231f20ff">
@@ -93,7 +95,7 @@ class signupTalent extends Component {
                                             in support of impactful organizations on a mission to make our world a better place.
                                     A portion of all proceeds are donated to the deserving NGOs. <a
                                                     className="theme-pink-color" href="#"> Learn More
-                                        {'>'}</a></p>
+                                         {' >'}</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,39 +105,39 @@ class signupTalent extends Component {
                 </section>
                 <section className="pb-5 px-2">
                     <div className="container-fluid px-5">
-                        <div className="counter-earning px-5 text-white">
+                        <div className="counter-earning px-3 px-sm-5 text-white">
                             <div className="row row-cols-lg-auto g-3 align-items-center px-5 py-4 theme-pink-bg-color">
-                                <div className="col-lg-3">
+                                <div className="col-xl-3 col-lg-12">
                                     <h3 className="display-5 text-center">HOW MUCH
                             WILL I EARN?</h3>
                                 </div>
-                                <div className="col-lg-6">
+                                <div className="col-xl-6 col-lg-12">
                                     <div className="row g-3">
                                         <div className="col">
                                             <div className="mb-3">
-                                                <label for="exampleFormControlInput1" className="form-label">If my fee per video
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">If my fee per video
                                         is</label>
                                                 <input type="text" className="form-control text-center theme-pink-color fw-bold" />
                                             </div>
                                         </div>
                                         <div className="col">
                                             <div className="mb-3">
-                                                <label for="exampleFormControlInput1" className="form-label">I make this many
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">I make this many
                                         videos</label>
                                                 <input type="text" className="form-control text-center theme-pink-color fw-bold" />
                                             </div>
                                         </div>
                                         <div className="col">
                                             <div className="mb-3">
-                                                <label for="exampleFormControlInput1" className="form-label">add donate % to
+                                                <label htmlFor="exampleFormControlInput1" className="form-label">add donate % to
                                         charity</label>
                                                 <input type="text" className="form-control text-center theme-pink-color fw-bold" />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-lg-3">
-                                    <div className="element-wrapper px-5">
+                                <div className="col-xl-3 col-lg-12">
+                                    <div className="element-wrapper px-5 text-center text-xl-start">
                                         <h5 className="fs-2">
                                             I make $ <span>630.00</span>
                                         </h5>
@@ -157,8 +159,8 @@ class signupTalent extends Component {
                                 process.
                     </p>
                             </div>
-                            <form className="p-5 w-75 mw-100 mx-auto">
-                                <div className="row-cols-1 row-cols-md-2 row gx-5 gy-4 w-75 mw-100 px-5 mx-auto mb-5">
+                            <form className="px-3 p-xl-5 w-75 mw-100 mx-auto">
+                                <div className="row-cols-1 row-cols-md-2 row gx-5 gy-4 w-75 mw-100 p-3 p-xl-5 mx-auto mb-5 custom-wrapper-contact">
                                     <div className="col">
                                         <input type="text"
                                             className="form-control form-control-lg py-3 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0"

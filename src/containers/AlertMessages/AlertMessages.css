@@ -1,0 +1,27 @@
+.response-item .message-item-wrapper p {
+    margin-left: auto;
+}
+
+.profile-wrapper {
+    top: -100px;
+}
+
+.profile-wrapper .profile-image {
+    max-width: 196px !important;
+    height: 196px !important;
+}
+
+@media screen and (max-width: 767px) {
+    .profile-wrapper {
+        top: 0;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .alerts-messages ul li svg {
+        width: 70px !important;
+    }
+    .alerts-messages .input-message-wrapper {
+        width: 100% !important;
+    }
+}

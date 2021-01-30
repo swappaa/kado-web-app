@@ -6,3 +6,72 @@ form [type="submit"] {
     border-radius: 50px;
     font-family: Avenir-Heavy;
 }
+
+.talent-profile .profile-wrapper img {
+    background-color: #414042;
+}
+
+.profile-name {
+    z-index: 9;
+}
+
+@media screen and (max-width: 1300px) {
+    .charity-wrapper {
+        right: -28% !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .profile-details p {
+        font-size: 34px !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .charity-wrapper {
+        right: -6% !important;
+    }
+    .profile-name span {
+        font-size: 30px !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .profile-wrapper img {
+        max-width: 350px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .charity-wrapper img {
+        max-width: 65px;
+        width: 100%;
+    }
+    .charity-wrapper span {
+        font-size: 16px !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .profile-wrapper img {
+        max-width: 376px;
+    }
+    .profile-name span {
+        font-size: 25px !important;
+    }
+    .profile-details p {
+        font-size: 27px !important;
+    }
+    .book-now span {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .profile-name span {
+        font-size: 21px !important;
+    }
+    .btn-read-all-reviews {
+        font-size: 20px !important;
+    }
+}
