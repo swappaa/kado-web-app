@@ -80,12 +80,12 @@ const navigationItems = (props) => (
         {!props.isAuthenticated
             ? <Aux>
                 <li>
-                    <button data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-4 text-uppercase">
+                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-4 text-uppercase">
                         <span> Sign up</span>
                     </button>
                 </li>
                 <li>
-                    <button data-bs-toggle="modal" data-bs-target="#signin-modal"
+                    <button onClick={props.AuthSignInMode} data-bs-toggle="modal" data-bs-target="#signin-modal"
                         className="btn btn-sign bg-transparent d-flex align-items-center text-decoration-none text-uppercase font-ave-reg">
                         <span className="me-3 fs-5 nav-item">Sign in</span>
                         <svg width="59px" height="62px" viewBox="0 0 59 62" version="1.1" xmlns="http://www.w3.org/2000/svg">

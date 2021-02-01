@@ -13,7 +13,7 @@ import './Auth.css';
 class Auth extends Component {
 
     state = {
-        isSignup: false
+        isAcceptTerms: false
     }
 
     componentDidMount() {
@@ -22,9 +22,20 @@ class Auth extends Component {
         }
     }
 
-    submitHandler = (event) => {
+    termsConditionToggleClicked = () => {
+        this.setState((prevState) => {
+            return { isAcceptTerms: !prevState.isAcceptTerms }
+        });
+    }
+
+    submitLoginHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(event.target.username.value, event.target.password.value, this.state.isSignup);
+        this.props.onAuth(event.target.username.value, event.target.password.value, this.props.switchAuthMode);
+    }
+
+    submitSignUpHandler = (event) => {
+        event.preventDefault();
+        this.props.onAuth(event.target.name.value, event.target.username.value, event.target.email.value, event.target.password.value, event.target.birth_day.value, this.props.switchAuthMode);
     }
 
     render() {
@@ -34,9 +45,9 @@ class Auth extends Component {
         if (this.props.error) {
             errorMessage = (
                 <div>
-                    <div class="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+                    <div className="alert alert-danger alert-dismissible fade show mb-4" role="alert">
                         <strong>{this.props.error}</strong>
-                        <button type="button" class="btn-close position-absolute" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <button type="button" className="btn-close position-absolute" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
             );
@@ -59,6 +70,7 @@ class Auth extends Component {
 
         return (
             <div>
+                <h1>{this.props.switchAuthMode}</h1>
                 <div className="modal fade signapp-modal" id="signapp-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                     aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-xl">
@@ -124,7 +136,7 @@ class Auth extends Component {
                                         <div id="email-signup" className="accordion-collapse collapse show border-0" aria-labelledby="email"
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body w-75 mw-100 mx-auto px-0">
-                                                <form>
+                                                <form onSubmit={this.submitSignUpHandler}>
                                                     <div className="input-group mb-4">
                                                         <span
                                                             className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
@@ -144,7 +156,7 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Full Name" aria-label="Fullname" />
+                                                            placeholder="Full Name" aria-label="Fullname" name="name" />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -161,7 +173,7 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Username" aria-label="Username" />
+                                                            placeholder="Username" aria-label="Username" name="username" />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -176,7 +188,7 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Email" aria-label="Email" />
+                                                            placeholder="Email" aria-label="Email" name="email" />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -189,9 +201,9 @@ class Auth extends Component {
                                                                 </g>
                                                             </svg>
                                                         </span>
-                                                        <input type="text"
+                                                        <input type="password"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Password" aria-label="Password" />
+                                                            placeholder="Password" aria-label="Password" name="password" />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -210,12 +222,12 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Birthday (optional)" aria-label="Birthday" />
+                                                            placeholder="Birthday (optional)" aria-label="Birthday" name="birth_day" />
                                                         <span className="underline"></span>
                                                     </div>
                                                     <div className="form-check form-switch">
                                                         <input className="form-check-input" type="checkbox" id="flexSwitchCheckChecked"
-                                                            checked />
+                                                            onChange={this.termsConditionToggleClicked} checked={this.state.isAcceptTerms} />
                                                         <label className="text-dark form-check-label font-ave-book"
                                                         >I
                                                             accept kâdo’s
@@ -229,7 +241,7 @@ class Auth extends Component {
                                                         </h6>
                                                         <button clicked={this.switchAuthModeHandler}
                                                             className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100"
-                                                            type="submit">SIGN
+                                                            type="submit" disabled={this.state.isAcceptTerms ? false : true}>SIGN
                                             UP</button>
                                                         <label className="text-dark form-check-label font-ave-book"
                                                         >By
@@ -315,7 +327,7 @@ class Auth extends Component {
                                             <div className="accordion-body w-75 mw-100 mx-auto px-0">
                                                 {authRedirect}
                                                 {errorMessage}
-                                                <form onSubmit={this.submitHandler}>
+                                                <form onSubmit={this.submitLoginHandler}>
                                                     <div className="input-group mb-5">
                                                         <span
                                                             className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">

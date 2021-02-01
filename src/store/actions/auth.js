@@ -43,16 +43,18 @@ export const checkAuthTimeout = (expirationTime) => {
 export const auth = (email, password, isSignup) => {
     return dispatch => {
         dispatch(authStart());
+
         const authData = {
             username: email,
             password: password,
             returnSecureToken: true
         };
 
-        let url = 'https://adh4km0r5g.execute-api.us-west-2.amazonaws.com/dev/auth/login';
+        let url = null;
         if (!isSignup) {
             url = 'https://adh4km0r5g.execute-api.us-west-2.amazonaws.com/dev/auth/login';
         }
+
         axios.post(url, authData)
             .then(response => {
                 console.log(response);
@@ -68,6 +70,33 @@ export const auth = (email, password, isSignup) => {
             });
     };
 };
+
+export const authSignup = (name, username, email, password, birth_day, isSignup) => {
+    return dispatch => {
+        dispatch(authStart());
+
+        const authData = {
+            account_status: "active",
+            name: name,
+            username: username,
+            email: email,
+            password: password,
+            birth_day: birth_day,
+            returnSecureToken: true
+        };
+
+        let url = 'https://adh4km0r5g.execute-api.us-west-2.amazonaws.com/dev/account/signup/email';
+
+        axios.post(url, authData)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => {
+                dispatch(authFail(err.response.data.message));
+            });
+    };
+};
+
 
 export const setAuthRedirectPath = (path) => {
     return {

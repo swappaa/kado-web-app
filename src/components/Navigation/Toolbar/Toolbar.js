@@ -28,7 +28,11 @@ const toolbar = (props) => (
                         </div>
                     </div>
                     <div className="text-uppercase py-5">
-                        <NavigationItems isAuthenticated={props.isAuth} />
+                        <NavigationItems
+                            isAuthenticated={props.isAuth}
+                            AuthSignUpMode={props.isSignup}
+                            AuthSignInMode={props.isSignin}
+                        />
                     </div>
                 </div>
             </div>

@@ -7,12 +7,22 @@ import Auth from '../../containers/Auth/Auth';
 import { connect } from 'react-redux';
 
 class Layout extends Component {
+
     state = {
-        showSideDrawer: false
+        showSideDrawer: false,
+        isSignup: true
     }
 
     SideDrawerClosedHandler = () => {
         this.setState({ showSideDrawer: false });
+    }
+
+    SignInHandler = () => {
+        this.setState({ isSignup: false });
+    }
+
+    SignUpHandler = () => {
+        this.setState({ isSignup: true });
     }
 
     drawerToggleClicked = () => {
@@ -25,14 +35,16 @@ class Layout extends Component {
         return (
             <Aux>
                 <Toolbar
-                    isAuth={this.props.isAuthenticated} />
+                    isAuth={this.props.isAuthenticated}
+                    isSignup={this.SignUpHandler}
+                    isSignin={this.SignInHandler} />
                 {/* <SideDrawer
                     open={this.state.showSideDrawer}
                     closed={this.SideDrawerClosedHandler} /> */}
                 <main className="py-5">
                     {this.props.children}
                 </main>
-                <Auth />
+                <Auth switchAuthMode={this.state.isSignup} />
                 <Footer />
             </Aux>
         )

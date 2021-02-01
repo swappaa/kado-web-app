@@ -47,13 +47,13 @@ class Home extends Component {
                             </div>
                             <div className="col-lg-4 order-1 order-lg-2 mb-4 mb-lg-0">
                                 <div className="searchbox-wrapper ">
-                                    <div className="input-group">
+                                    <div className="input-group flex-nowrap">
                                         <input type="text"
                                             className="form-control form-control-lg px-4 py-3 br-radius fs-6 border-end-0"
                                             placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2" />
                                         <span className="input-group-text bg-transparent del-search border-start-0 border-end-0">
                                             <a href="#">
-                                                <svg width="22x" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                                                <svg width="22px" height="20px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg">
                                                     <g id="#0a09094d">
                                                         <path fill="#0a0909" opacity="0.30" d=" M 0.00 0.00 L 2.20 0.00 C 5.18 2.59 7.97 5.38 11.00 7.90 C 14.03 5.38 16.82 2.61 19.75 0.00 L 22.00 0.00 L 22.00 1.86 C 19.24 4.71 16.13 7.19 13.33 10.00 C 16.13 12.80 19.21 15.30 22.00 18.10 L 22.00 20.00 L 19.79 20.00 C 16.82 17.41 14.03 14.62 11.00 12.10 C 7.97 14.62 5.18 17.39 2.24 20.00 L 0.00 20.00 L 0.00 18.00 C 2.85 15.30 5.89 12.78 8.67 10.00 C 5.89 7.22 2.87 4.70 0.00 2.02 L 0.00 0.00 Z" />
                                                     </g>

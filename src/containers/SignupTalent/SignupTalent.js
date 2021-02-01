@@ -88,13 +88,13 @@ class signupTalent extends Component {
                                             </svg>
                                         </div>
                                         <div className="card-body">
-                                            <p className="card-text fs-5 font-ave-reg text-dark">kâdo is a purpose-driven platform,
+                                            <p className="card-text fs-3 font-ave-reg text-dark">kâdo is a purpose-driven platform,
                                             leveraging
                                             the collective
                                             influence of our talent
                                             in support of impactful organizations on a mission to make our world a better place.
                                     A portion of all proceeds are donated to the deserving NGOs. <a
-                                                    className="theme-pink-color" href="#"> Learn More
+                                                    className="theme-pink-color fw-bold" href="#"> Learn More
                                          {' >'}</a></p>
                                         </div>
                                     </div>
