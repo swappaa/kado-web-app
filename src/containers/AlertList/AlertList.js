@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 import '../../App.css';
 import './AlertList.css';
@@ -12,6 +12,7 @@ class alertList extends Component {
     render() {
         return (
             <div className="alerts-list">
+                <Redirect to="./alert-list" />
                 <section className="pb-5">
                     <div className="container-fluid px-5">
                         <div className="customs-wrapper w-100 mx-auto">

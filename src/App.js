@@ -46,6 +46,7 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
+          <Route path="/talent-profile" component={talentProfile} />
           <Route path="/alert-list" component={alertList} />
           <Route path="/alert-messages" component={alertMessages} />
           <Route path="/kados-list" component={kadosList} />

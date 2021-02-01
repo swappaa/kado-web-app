@@ -69,8 +69,7 @@ class Auth extends Component {
         }
 
         return (
-            <div>
-                <h1>{this.props.switchAuthMode}</h1>
+            <Aux>
                 <div className="modal fade signapp-modal" id="signapp-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                     aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-xl">
@@ -259,7 +258,7 @@ class Auth extends Component {
                     </div>
                 </div>
 
-                <div className="modal fade signapp-modal" id="signin-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+                <div className={"modal fade signapp-modal" + this.props.isModalOpen ? "modal fade signapp-modal show" : null} id="signin-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                     aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-xl">
 
@@ -384,7 +383,7 @@ class Auth extends Component {
                         </div>
                     </div>
                 </div>
-            </div>
+            </Aux>
         )
     }
 }
@@ -395,7 +394,8 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
-        authRedirectPath: state.auth.authRedirectPath
+        authRedirectPath: state.auth.authRedirectPath,
+        isModalOpen: state.auth.isModalOpen
     };
 };
 

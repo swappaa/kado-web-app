@@ -7,7 +7,7 @@ const navigationItems = (props) => (
 
         {props.isAuthenticated ?
             <Aux>
-                <NavigationItem link="/alert-list" classes="d-flex flex-column align-items-center text-decoration-none text-center alerts-wrapper position-relative">
+                <NavigationItem link="/alert-list" exact classes="d-flex flex-column align-items-center text-decoration-none text-center alerts-wrapper position-relative">
                     <svg width="50pt" height="56pt" viewBox="0 0 50 56" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -20,8 +20,7 @@ const navigationItems = (props) => (
                     <span className="count-message text-white">2</span>
                     <span className="fs-5 d-block theme-pink-color nav-item">alerts</span>
                 </NavigationItem>
-
-                <NavigationItem link="/kados-list" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem link="/kados-list" exact classes="d-flex flex-column align-items-center text-decoration-none text-center">
                     <svg width="59pt" height="54pt" viewBox="0 0 59 54" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -41,7 +40,7 @@ const navigationItems = (props) => (
                     </svg>
                     <span className="fs-5 d-block theme-pink-color nav-item">kâdos</span>
                 </NavigationItem>
-                <NavigationItem link="/browse" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem link="/browse" exact classes="d-flex flex-column align-items-center text-decoration-none text-center">
                     <svg width="45pt" height="53pt" viewBox="0 0 45 53" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -53,7 +52,7 @@ const navigationItems = (props) => (
                     </svg>
                     <span className="fs-5 d-block theme-pink-color nav-item">Browse</span>
                 </NavigationItem>
-                <NavigationItem link="/favorites" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem link="/favorites" exact classes="d-flex flex-column align-items-center text-decoration-none text-center">
                     <svg width="56pt" height="49pt" viewBox="0 0 56 49" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -63,8 +62,7 @@ const navigationItems = (props) => (
                     </svg>
                     <span className="fs-5 d-block theme-pink-color nav-item">Favorites</span>
                 </NavigationItem>
-
-                <NavigationItem link="/account" classes="d-flex flex-column align-items-center text-decoration-none text-center me-0">
+                <NavigationItem link="/account" exact classes="d-flex flex-column align-items-center text-decoration-none text-center me-0">
                     <svg width="54pt" height="52pt" viewBox="0 0 54 52" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -77,8 +75,8 @@ const navigationItems = (props) => (
             </Aux>
             : null}
 
-        {!props.isAuthenticated
-            ? <Aux>
+        {!props.isAuthenticated ?
+            <Aux>
                 <li>
                     <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-4 text-uppercase">
                         <span> Sign up</span>
@@ -110,10 +108,6 @@ const navigationItems = (props) => (
                 </button>
             </li>
         }
-
-
-
-
     </ul>
 );
 
