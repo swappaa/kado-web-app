@@ -191,4 +191,9 @@
     .join-our-list input {
         font-size: 13px;
     }
+    .talent-home .filter-category ul li a {
+        padding: 26px 34px;
+        max-width: 70px;
+        font-size: 9px;
+    }
 }

@@ -120,10 +120,6 @@ thead {
   box-shadow: 0 0 0 .25rem transparent !important;
 }
 
-button {
-  position: relative !important;
-}
-
 /* button:before {
   content: '';
   display: block;

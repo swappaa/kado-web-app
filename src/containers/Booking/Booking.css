@@ -76,6 +76,13 @@
     color: #58585a;
 }
 
+.language button {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .08), 0 5px 26px 0 rgba(67, 94, 131, .15);
+    color: #0f2741;
+    transition: transform .3s;
+    transform: scale(1.025);
+}
+
 @media screen and (max-width: 1400px) {
     .booking-wrapper-proc .language .btn-wrapper {
         width: 100% !important;

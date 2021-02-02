@@ -32,6 +32,12 @@ class App extends Component {
 
   render() {
 
+    const Page404 = ({ location }) => (
+      <div>
+        <h2>No match found for <code>{location.pathname}</code></h2>
+      </div>
+    );
+
     let routes = (
       <Switch>
         <Route path="/talent-profile" component={talentProfile} />
@@ -40,6 +46,7 @@ class App extends Component {
         <Route path="/signin" component={asyncAuth} />
         <Route path="/" exact component={Home} />
         <Redirect to="/" />
+        <Route component={Page404} />
       </Switch>
     );
 
@@ -47,7 +54,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/talent-profile" component={talentProfile} />
-          <Route path="/alert-list" component={alertList} />
+          <Route exact path="/alert-list" component={alertList} />
           <Route path="/alert-messages" component={alertMessages} />
           <Route path="/kados-list" component={kadosList} />
           <Route path="/kados-details" component={kadosDetails} />
@@ -56,6 +63,7 @@ class App extends Component {
           <Route path="/account" component={Account} />
           <Route path="/logout" component={Logout} />
           <Route path="/" exact component={Home} />
+          <Route component={Page404} />
           <Redirect to="/" />
         </Switch>
       );

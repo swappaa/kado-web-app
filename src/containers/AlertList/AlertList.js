@@ -8,11 +8,9 @@ import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
 import prof3 from '../../assets/images/highlighted-kados.png';
 
 class alertList extends Component {
-
     render() {
         return (
             <div className="alerts-list">
-                <Redirect to="./alert-list" />
                 <section className="pb-5">
                     <div className="container-fluid px-5">
                         <div className="customs-wrapper w-100 mx-auto">
