@@ -444,7 +444,7 @@ class Booking extends Component {
                                                     <div className="card-body px-0 w-75 mw-100">
                                                         <div className="book-now d-grid my-3">
 
-                                                            <button className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3">
+                                                            <button className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
                                                                 <span className="display-4 text-uppercase">BOOK NOW</span>
                                                                 <br />
                                                                 <span className="text-trans-unset fs-4 font-ave-reg">

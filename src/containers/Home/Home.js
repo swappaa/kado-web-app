@@ -206,7 +206,7 @@ class Home extends Component {
                         <div className="download-app-wrapper">
                             <div className="d-flex flex-wrap flex-md-nowrap flex-row align-items-center justify-content-md-start justify-content-center">
                                 <button
-                                    className="btn theme-pink-bg-color br-radius font-ave-heavy text-white fs-1 w-75 mw-100 text-uppercase py-3">DOWNLOAD
+                                    className="btn theme-pink-bg-color br-radius font-ave-heavy text-white fs-1 w-75 mw-100 text-uppercase py-3 btn-hvr">DOWNLOAD
                                     THE
                         APP</button>
                                 <a className="theme-pink-color font-ave-heavy fs-3 ms-0 ms-md-3 mt-4 mt-md-0" href="#">Why get the app?</a>

@@ -55,7 +55,7 @@ class Auth extends Component {
 
         let btnSubmit = (
             <button
-                className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100"
+                className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
                 type="submit">SIGN in</button>
         );
 
@@ -239,7 +239,7 @@ class Auth extends Component {
                                                             href="#">Sign in</a>
                                                         </h6>
                                                         <button clicked={this.switchAuthModeHandler}
-                                                            className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100"
+                                                            className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
                                                             type="submit" disabled={this.state.isAcceptTerms ? false : true}>SIGN
                                             UP</button>
                                                         <label className="text-dark form-check-label font-ave-book"

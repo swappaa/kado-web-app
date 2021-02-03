@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
 import '../../App.css';
 import './TalentProfile.css';
 import talentProf from '../../assets/images/banner-surprise-message.png';
@@ -12,6 +11,11 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 
 
 class talentProfile extends Component {
+
+    componentDidMount() {
+        window.scrollTo(0, 0);
+    }
+
     render() {
         return (
             <div className="talent-profile">
@@ -55,7 +59,7 @@ class talentProfile extends Component {
                                             </div>
                                         </div>
                                         <div className="book-now d-grid my-5">
-                                            <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3">
+                                            <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
                                                 <span className="display-4 text-uppercase">BOOK NOW</span> <br />
                                                 <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video $150.00 ]</span>
                                             </Link>
