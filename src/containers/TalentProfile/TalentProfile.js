@@ -15,7 +15,7 @@ class talentProfile extends Component {
     render() {
         return (
             <div className="talent-profile">
-                <section>
+                <section className="py-5">
                     <div className="container-fluid px-5">
                         <div className="profile-wrapper">
                             <div className="row px-5">

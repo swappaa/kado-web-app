@@ -14,12 +14,7 @@ const toolbar = (props) => (
                 <Link className="navbar-brand py-0" to="/">
                     <Logo />
                 </Link>
-                <DrawerToggle className="navbar-toggler" clicked={props.drawerToggleClicked} />
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span className="navbar-toggler-icon"></span>
-                </button>
+                <DrawerToggle className="navbar-toggler" clicked={props.drawerToggleClicked} show={props.open} />
                 <div className="collapse navbar-collapse">
                     <div className="mx-auto text-center text-white">
                         <div className={"special-offer-header px-5 py-3 " + (props.isAuth ? 'd-none' : '')}>

@@ -1,3 +1,4 @@
+import qs from 'qs';
 import axios from 'axios';
 
 import * as actionTypes from './actionsType';
@@ -52,10 +53,17 @@ export const auth = (email, password, isSignup) => {
 
         let url = null;
         if (!isSignup) {
-            url = 'https://adh4km0r5g.execute-api.us-west-2.amazonaws.com/dev/auth/login';
+            url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email';
         }
 
-        axios.post(url, authData)
+        axios.post(url, authData, {
+            headers: {
+                'content-type': 'application/x-www-form-urlencoded',
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+                'Access-Control-Allow-Headers': 'Content-Type'
+            },
+        })
             .then(response => {
                 console.log(response);
                 const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
@@ -66,8 +74,66 @@ export const auth = (email, password, isSignup) => {
                 dispatch(checkAuthTimeout(response.data.ExpiresIn));
             })
             .catch(err => {
-                dispatch(authFail(err.response.data.message));
+                // console.log(err);
+                // dispatch(authFail(err.response.data.error));
+                dispatch(authFail(err.message));
             });
+
+
+        // axios.post(url, authData)
+        //     .then(response => {
+        //         console.log(response);
+        //         const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+        //         localStorage.setItem('token', response.data.AccessToken);
+        //         localStorage.setItem('expirationDate', expirationDate);
+        //         localStorage.setItem('userId', response.data.IdToken);
+        //         dispatch(authSuccess(response.data.AccessToken, response.data.IdToken));
+        //         dispatch(checkAuthTimeout(response.data.ExpiresIn));
+        //     })
+        //     .catch(err => {
+        //         // console.log(err);
+        //         // dispatch(authFail(err.response.data.error));
+        //         // dispatch(authFail(err.message));
+        //     });
+
+
+        // axios.post(url, qs.stringify(authData), {
+        //     headers: {
+        //         'content-type': 'application/x-www-form-urlencoded',
+        //         'Access-Control-Allow-Origin': '*',
+        //         'Access-Control-Allow-Methods': 'GET,PUT,POST,DELETE',
+        //         'Access-Control-Allow-Headers': 'Content-Type'
+        //     },
+        // })
+        //     .then(response => {
+        //         console.log(response);
+        //         const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+        //         localStorage.setItem('token', response.data.AccessToken);
+        //         localStorage.setItem('expirationDate', expirationDate);
+        //         localStorage.setItem('userId', response.data.IdToken);
+        //         dispatch(authSuccess(response.data.AccessToken, response.data.IdToken));
+        //         dispatch(checkAuthTimeout(response.data.ExpiresIn));
+        //     })
+        //     .catch(err => {
+        //         // console.log(err);
+        //         // dispatch(authFail(err.response.data.error));
+        //         dispatch(authFail(err.message));
+        //     });
+
+        // axios.post(url, authData)
+        //     .then(response => {
+        //         console.log(response);
+        //         const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+        //         localStorage.setItem('token', response.data.AccessToken);
+        //         localStorage.setItem('expirationDate', expirationDate);
+        //         localStorage.setItem('userId', response.data.IdToken);
+        //         dispatch(authSuccess(response.data.AccessToken, response.data.IdToken));
+        //         dispatch(checkAuthTimeout(response.data.ExpiresIn));
+        //     })
+        //     .catch(err => {
+        //         dispatch(authFail(err.response.data.message));
+        //         // dispatch(authFail(err.message));
+        //     });
     };
 };
 
@@ -85,7 +151,7 @@ export const authSignup = (name, username, email, password, birth_day, isSignup)
             returnSecureToken: true
         };
 
-        let url = 'https://adh4km0r5g.execute-api.us-west-2.amazonaws.com/dev/account/signup/email';
+        let url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/email';
 
         axios.post(url, authData)
             .then(response => {

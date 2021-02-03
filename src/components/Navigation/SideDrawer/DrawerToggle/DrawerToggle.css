@@ -1,23 +1,42 @@
-.DrawerToggle {
+.drawer-toggle {
     width: 40px;
-    height: 100%;
     display: flex;
     flex-flow: column;
     justify-content: space-around;
     align-items: center;
     padding: 10px 0;
-    box-sizing: border-box;
     cursor: pointer;
 }
 
-.DrawerToggle div {
+.drawer-toggle>div {
     width: 90%;
-    height: 3px;
-    background-color: white;
+    height: 5px;
+    background-color: #414142;
+    margin: 3px 0;
+    border-radius: 20px;
+    transition: .2s all ease-in-out;
+    -moz-transition: .2 all ease-in-out;
+    -webkit-transition: .2s all ease-in-out;
 }
 
-@media (min-width: 500px) {
-    .DrawerToggle {
-        display: none;
-    }
+.drawer-toggle.show>div {
+    background-color: #ee2f58;
+    z-index: 9999;
+    position: absolute;
+}
+
+.drawer-toggle.show>div:nth-child(2) {
+    display: none;
+}
+
+.drawer-toggle.show>div:last-child {
+    transform: rotate(44deg);
+    -webkit-transform: rotate(44deg);
+    -moz-transform: rotate(44deg);
+}
+
+.drawer-toggle.show>div:first-child {
+    transform: rotate(134deg);
+    -webkit-transform: rotate(134deg);
+    -moz-transform: rotate(134deg);
 }

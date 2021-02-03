@@ -54,7 +54,7 @@ class App extends Component {
       routes = (
         <Switch>
           <Route path="/talent-profile" component={talentProfile} />
-          <Route exact path="/alert-list" component={alertList} />
+          <Route path="/alert-list" component={alertList} />
           <Route path="/alert-messages" component={alertMessages} />
           <Route path="/kados-list" component={kadosList} />
           <Route path="/kados-details" component={kadosDetails} />

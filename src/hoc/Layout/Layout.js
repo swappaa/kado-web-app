@@ -36,11 +36,13 @@ class Layout extends Component {
             <Aux>
                 <Toolbar
                     isAuth={this.props.isAuthenticated}
+                    drawerToggleClicked={this.drawerToggleClicked}
                     isSignup={this.SignUpHandler}
-                    isSignin={this.SignInHandler} />
-                {/* <SideDrawer
+                    isSignin={this.SignInHandler}
+                    open={this.state.showSideDrawer} />
+                <SideDrawer
                     open={this.state.showSideDrawer}
-                    closed={this.SideDrawerClosedHandler} /> */}
+                    closed={this.SideDrawerClosedHandler} />
                 <main className="py-5">
                     {this.props.children}
                 </main>

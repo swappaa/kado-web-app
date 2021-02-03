@@ -3,7 +3,7 @@ import NavigationItem from './NavigationItem/NavigationItem';
 import Aux from '../../../hoc/Auxi/Auxi';
 
 const navigationItems = (props) => (
-    <ul className="d-flex align-items-center">
+    <ul className="d-flex flex-column flex-lg-row align-items-center">
 
         {props.isAuthenticated ?
             <Aux>
@@ -78,7 +78,7 @@ const navigationItems = (props) => (
         {!props.isAuthenticated ?
             <Aux>
                 <li>
-                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-4 text-uppercase">
+                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-0 me-lg-4 text-uppercase">
                         <span> Sign up</span>
                     </button>
                 </li>

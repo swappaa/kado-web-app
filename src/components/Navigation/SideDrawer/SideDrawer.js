@@ -1,23 +1,24 @@
 import React from 'react';
 import Logo from '../../Logo/Logo';
 import NavigationItems from '../NavigationItems/NavigationItems';
-import classes from './SideDrawer.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Aux from '../../../hoc/Auxi/Auxi';
 
+import classes from './SideDrawer.module.css';
+
 const sideDrawer = (props) => {
-    let attachedClasses = [classes.SideDrawer, classes.Close];
+    let attachedClasses = [classes['side-drawer'], classes.close];
     if (props.open) {
-        attachedClasses = [classes.SideDrawer, classes.Open];
+        attachedClasses = [classes['side-drawer'], classes.open];
     }
     return (
         <Aux>
             <Backdrop show={props.open} clicked={props.closed} />
-            <div className={attachedClasses.join(' ')} onClick={props.closed}>
-                <div className={classes.Logo}>
+            <div className={`d-block d-lg-none ${attachedClasses.join(' ')}`} onClick={props.closed}>
+                <div className={classes['side-logo']}>
                     <Logo />
                 </div>
-                <nav>
+                <nav className="d-flex align-items-center h-100">
                     <NavigationItems isAuthenticated={props.isAuth} />
                 </nav>
             </div>
