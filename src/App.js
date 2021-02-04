@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
-import { ScrollToTop } from 'react-router-scroll-to-top';
 
 import Aux from './hoc/Auxi/Auxi';
 import Layout from './hoc/Layout/Layout';
@@ -53,22 +52,20 @@ class App extends Component {
 
     if (this.props.isAuthenticated) {
       routes = (
-        <ScrollToTop>
-          <Switch>
-            <Route path="/talent-profile" component={talentProfile} />
-            <Route path="/alert-list" component={alertList} />
-            <Route path="/alert-messages" component={alertMessages} />
-            <Route path="/kados-list" component={kadosList} />
-            <Route path="/kados-details" component={kadosDetails} />
-            <Route path="/booking" component={Booking} />
-            <Route path="/favorites" component={Favorites} />
-            <Route path="/account" component={Account} />
-            <Route path="/logout" component={Logout} />
-            <Route path="/" exact component={Home} />
-            <Route component={Page404} />
-            <Redirect to="/" />
-          </Switch>
-        </ScrollToTop >
+        <Switch>
+          <Route path="/talent-profile" component={talentProfile} />
+          <Route path="/alert-list" component={alertList} />
+          <Route path="/alert-messages" component={alertMessages} />
+          <Route path="/kados-list" component={kadosList} />
+          <Route path="/kados-details" component={kadosDetails} />
+          <Route path="/booking" component={Booking} />
+          <Route path="/favorites" component={Favorites} />
+          <Route path="/account" component={Account} />
+          <Route path="/logout" component={Logout} />
+          <Route path="/" exact component={Home} />
+          <Route component={Page404} />
+          <Redirect to="/" />
+        </Switch>
       );
     }
 
