@@ -137,6 +137,18 @@ export const auth = (email, password, isSignup) => {
     };
 };
 
+export const authFB = (AccessToken, ExpiresIn, userId) => {
+    return dispatch => {
+        dispatch(authStart());
+        const expirationDate = new Date(new Date().getTime() + ExpiresIn * 1000);
+        localStorage.setItem('token', AccessToken);
+        localStorage.setItem('expirationDate', expirationDate);
+        localStorage.setItem('userId', userId);
+        dispatch(authSuccess(AccessToken, userId));
+        dispatch(checkAuthTimeout(ExpiresIn));
+    };
+};
+
 export const authSignup = (name, username, email, password, birth_day, isSignup) => {
     return dispatch => {
         dispatch(authStart());

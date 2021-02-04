@@ -14,7 +14,7 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 class talentProfile extends Component {
 
     componentDidMount() {
-        scroll.scrollToTop();
+        scroll.scrollToTop({ smooth: false });
     }
 
     render() {

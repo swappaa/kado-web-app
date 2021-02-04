@@ -3,6 +3,7 @@ import Aux from '../../hoc/Auxi/Auxi';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
+import FacebookLogin from 'react-facebook-login';
 
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
 
@@ -13,7 +14,8 @@ import './Auth.css';
 class Auth extends Component {
 
     state = {
-        isAcceptTerms: false
+        isAcceptTerms: false,
+        isLoginFB: false
     }
 
     componentDidMount() {
@@ -36,6 +38,15 @@ class Auth extends Component {
     submitSignUpHandler = (event) => {
         event.preventDefault();
         this.props.onAuth(event.target.name.value, event.target.username.value, event.target.email.value, event.target.password.value, event.target.birth_day.value, this.props.switchAuthMode);
+    }
+
+    responseFacebook = (response) => {
+        if (response.accessToken) {
+            this.setState({ isLoginFB: true })
+            this.props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
+        } else {
+            this.setState({ isLoginFB: false })
+        }
     }
 
     render() {
@@ -293,6 +304,20 @@ class Auth extends Component {
                                         <div id="fb-signup" className="accordion-collapse collapse border-0" aria-labelledby="facebook"
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
+                                                <div className="fb-btn-wrapper text-center">
+                                                    <FacebookLogin
+                                                        appId="3024473317658669"
+                                                        autoLoad={false}
+                                                        fields="name,email,picture"
+                                                        scope="public_profile,user_friends"
+                                                        callback={this.responseFacebook}
+                                                        icon="fa-facebook me-3"
+                                                        cssClass="my-facebook-button-class my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
+                                                        render={renderProps => (
+                                                            <button onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</button>
+                                                        )}
+                                                    />
+                                                </div>
 
                                             </div>
                                         </div>
@@ -402,6 +427,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+        onFBAuth: (accessToken, expiresIn, userID) => dispatch(actions.authFB(accessToken, expiresIn, userID)),
         onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
     };
 };
