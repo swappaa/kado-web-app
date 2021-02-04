@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { animateScroll as scroll } from 'react-scroll';
 
 import '../../App.css';
 import './Booking.css';
@@ -28,6 +29,11 @@ import thankyou from '../../assets/images/svg/occasion/thank you.svg';
 import wedding from '../../assets/images/svg/occasion/wedding.svg';
 
 class Booking extends Component {
+
+    componentDidMount() {
+        scroll.scrollToTop();
+    }
+
     render() {
         return (
             <div className="booking">
