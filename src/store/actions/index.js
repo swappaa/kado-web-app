@@ -1,6 +1,8 @@
 export {
     auth,
+    signUp,
     authFB,
+    FBSignUp,
     logout,
     setAuthRedirectPath,
     authCheckState

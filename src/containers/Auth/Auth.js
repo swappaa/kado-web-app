@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import Aux from '../../hoc/Auxi/Auxi';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -6,6 +7,7 @@ import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
 
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
+import DatePicker from '../../components/UI/DatePicker/DatePicker';
 
 
 import '../../App.css';
@@ -37,16 +39,26 @@ class Auth extends Component {
 
     submitSignUpHandler = (event) => {
         event.preventDefault();
-        this.props.onAuth(event.target.name.value, event.target.username.value, event.target.email.value, event.target.password.value, event.target.birth_day.value, this.props.switchAuthMode);
+        this.props.onSignUp(event.target.name.value, event.target.username.value, event.target.email.value, event.target.password.value, event.target.date_picker.value, this.props.switchAuthMode);
     }
 
     responseFacebook = (response) => {
-        if (response.accessToken) {
-            this.setState({ isLoginFB: true })
-            this.props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
+        if (this.props.switchAuthMode) {
+            if (response.accessToken) {
+                this.setState({ isLoginFB: true })
+                this.props.onFBSignUp(response.name, response.email, response.email, response.picture.data.url, this.props.switchAuthMode);
+            } else {
+                this.setState({ isLoginFB: false })
+            }
         } else {
-            this.setState({ isLoginFB: false })
+            if (response.accessToken) {
+                this.setState({ isLoginFB: true })
+                this.props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
+            } else {
+                this.setState({ isLoginFB: false })
+            }
         }
+
     }
 
     render() {
@@ -64,7 +76,11 @@ class Auth extends Component {
             );
         }
 
-        let btnSubmit = (
+        let btnSubmit = (this.props.switchAuthMode ?
+            <button
+                className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
+                type="submit" disabled={this.state.isAcceptTerms ? false : true}>SIGN
+                                            UP</button> :
             <button
                 className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
                 type="submit">SIGN in</button>
@@ -115,7 +131,21 @@ class Auth extends Component {
                                         <div id="fb-signup" className="accordion-collapse collapse border-0" aria-labelledby="facebook"
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body">
-
+                                                <div className="fb-btn-wrapper text-center">
+                                                    <FacebookLogin
+                                                        appId="3024473317658669"
+                                                        autoLoad={false}
+                                                        fields="name,email,picture"
+                                                        scope="public_profile,user_friends,user_birthday"
+                                                        callback={this.responseFacebook}
+                                                        icon="fa-facebook me-3"
+                                                        cssClass="my-facebook-button-class my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
+                                                        textButton="SIGNUP WITH FACEBOOK"
+                                                        render={renderProps => (
+                                                            <button onClick={renderProps.onClick}></button>
+                                                        )}
+                                                    />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -146,6 +176,8 @@ class Auth extends Component {
                                         <div id="email-signup" className="accordion-collapse collapse show border-0" aria-labelledby="email"
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body w-75 mw-100 mx-auto px-0">
+                                                {authRedirect}
+                                                {errorMessage}
                                                 <form onSubmit={this.submitSignUpHandler}>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -183,7 +215,7 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Username" aria-label="Username" name="username" />
+                                                            placeholder="Username" aria-label="Username" name="username" required />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -198,7 +230,7 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="text"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Email" aria-label="Email" name="email" />
+                                                            placeholder="Email" aria-label="Email" name="email" required />
                                                     </div>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -213,11 +245,11 @@ class Auth extends Component {
                                                         </span>
                                                         <input type="password"
                                                             className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Password" aria-label="Password" name="password" />
+                                                            placeholder="Password" aria-label="Password" name="password" required />
                                                     </div>
-                                                    <div className="input-group mb-4">
+                                                    <div className="input-group mb-4 border border-2 border-dark border-top-0 border-end-0 border-start-0">
                                                         <span
-                                                            className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
+                                                            className="input-group-text border border-2 border-dark border-top-0 border-bottom-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
                                                             <svg width="25px" height="25px" viewBox="0 0 24 28" version="1.1"
                                                                 xmlns="http://www.w3.org/2000/svg">
                                                                 <g id="#000000">
@@ -230,9 +262,7 @@ class Auth extends Component {
                                                                 </g>
                                                             </svg>
                                                         </span>
-                                                        <input type="text"
-                                                            className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
-                                                            placeholder="Birthday (optional)" aria-label="Birthday" name="birth_day" />
+                                                        <DatePicker />
                                                         <span className="underline"></span>
                                                     </div>
                                                     <div className="form-check form-switch">
@@ -241,23 +271,20 @@ class Auth extends Component {
                                                         <label className="text-dark form-check-label font-ave-book"
                                                         >I
                                                             accept kâdo’s
-                                            <a className="text-decoration-underline" href="#">Terms of Service</a> & <a
-                                                                className="text-decoration-underline" href="">Privacy Policy</a>.</label>
+                                            <Link className="text-decoration-underline" >Terms of Service</Link> & <Link
+                                                                className="text-decoration-underline">Privacy Policy</Link>.</label>
                                                     </div>
                                                     <div className="py-5 text-center">
-                                                        <h6 className="fs-5 text-dark">Already have an account? <a data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signin-modal"
+                                                        <h6 className="fs-5 text-dark">Already have an account? <Link data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signin-modal"
                                                             className="theme-pink-color link-danger text-decoration-underline"
-                                                            href="#">Sign in</a>
+                                                        >Sign in</Link>
                                                         </h6>
-                                                        <button clicked={this.switchAuthModeHandler}
-                                                            className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
-                                                            type="submit" disabled={this.state.isAcceptTerms ? false : true}>SIGN
-                                            UP</button>
+                                                        {btnSubmit}
                                                         <label className="text-dark form-check-label font-ave-book"
                                                         >By
                                             signing in you agree to kâdo’s <br />
-                                                            <a className="text-decoration-underline" href="#">Terms of Service</a> & <a
-                                                                className="text-decoration-underline" href="">Privacy Policy</a>.</label>
+                                                            <Link className="text-decoration-underline" >Terms of Service</Link> & <Link
+                                                                className="text-decoration-underline" >Privacy Policy</Link>.</label>
                                                     </div>
                                                 </form>
                                             </div>
@@ -318,7 +345,6 @@ class Auth extends Component {
                                                         )}
                                                     />
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -385,19 +411,19 @@ class Auth extends Component {
                                                             placeholder="Password" aria-label="Password" />
                                                     </div>
                                                     <div className="text-end">
-                                                        <p><a className="fs-5 text-dark font-ave-book" href="">Forgot password?</a></p>
+                                                        <p><Link className="fs-5 text-dark font-ave-book">Forgot password?</Link></p>
                                                     </div>
                                                     <div className="py-5 text-center">
-                                                        <h6 className="fs-5 text-dark">Don't have an account? <a data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signapp-modal"
+                                                        <h6 className="fs-5 text-dark">Don't have an account? <Link data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signapp-modal"
                                                             className="theme-pink-color link-danger text-decoration-underline"
-                                                            href="#">Sign up</a>
+                                                        >Sign up</Link>
                                                         </h6>
                                                         {btnSubmit}
                                                         <label className="text-dark form-check-label font-ave-book"
                                                         >By
                                             signing in you agree to kâdo’s <br />
-                                                            <a className="text-decoration-underline" href="#">Terms of Service</a> & <a
-                                                                className="text-decoration-underline" href="">Privacy Policy</a>.</label>
+                                                            <Link className="text-decoration-underline" >Terms of Service</Link> & <Link
+                                                                className="text-decoration-underline" >Privacy Policy</Link>.</label>
                                                     </div>
                                                 </form>
                                             </div>
@@ -427,7 +453,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password, isSignup)),
+        onSignUp: (name, username, email, password, date_picker) => dispatch(actions.signUp(name, username, email, password, date_picker)),
         onFBAuth: (accessToken, expiresIn, userID) => dispatch(actions.authFB(accessToken, expiresIn, userID)),
+        onFBSignUp: (name, username, email, profile_picture) => dispatch(actions.FBSignUp(name, username, email, profile_picture)),
         onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
     };
 };

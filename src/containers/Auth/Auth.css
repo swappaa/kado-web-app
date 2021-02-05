@@ -20,6 +20,20 @@
     opacity: .8;
 }
 
+@media screen and (max-width: 1199px) {
+    .fb-btn-wrapper button {
+        font-size: 16px !important;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .fb-btn-wrapper button {
+        width: 86% !important;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .signin-continue .accordion-body {
         width: 85% !important;
@@ -29,5 +43,30 @@
 @media screen and (max-width: 440px) {
     #signapp-modal .accordion-body, #signin-modal .accordion-body {
         width: 100% !important;
+    }
+    .fb-btn-wrapper button {
+        font-size: 14px !important;
+        width: 100% !important;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .signapp-modal button svg, .signin-continue button svg {
+        width: 76px;
+        height: 76px;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    .signapp-modal button svg, .signin-continue button svg {
+        width: 100% !important;
+        height: 46px !important;
+        max-width: 46px !important;
+    }
+    .fb-btn-wrapper button {
+        font-size: 11px !important;
+    }
+    form button[type="submit"] {
+        font-size: 16px !important;
     }
 }
