@@ -40,3 +40,10 @@
     -webkit-transform: rotate(134deg);
     -moz-transform: rotate(134deg);
 }
+
+.drawer-toggle.show {
+    position: fixed !important;
+    top: 8.5%;
+    right: 10px;
+    z-index: 999;
+}

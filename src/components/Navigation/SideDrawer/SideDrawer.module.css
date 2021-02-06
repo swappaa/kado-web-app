@@ -1,3 +1,29 @@
+.side-drawer ul li a {
+    font-family: Avenir-Regular !important;
+    margin-right: 52px;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.side-drawer ul li:last-child a {
+    margin-right: 0;
+}
+
+.side-drawer ul li a>svg {
+    width: 54px;
+    height: 54px;
+    fill: #ee2a59;
+    -webkit-transition: fill .2s ease-out;
+    -moz-transition: fill .2s ease-out;
+    -o-transition: fill .2s ease-out;
+    transition: fill .2s ease-out;
+    cursor: pointer;
+}
+
+.side-drawer ul li a:hover>svg, .side-drawer ul li a.active>svg {
+    fill: #404041;
+}
+
 .side-drawer {
     position: fixed;
     width: 400px;
@@ -30,4 +56,17 @@
 
 .side-logo {
     height: 11%;
+}
+
+@media screen and (max-width: 991px) {
+    .sidebar-nav ul li a span {
+        margin-left: 1rem;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .sidebar-nav ul li a>svg {
+        width: 40px;
+        height: 40px;
+    }
 }

@@ -2,12 +2,14 @@ import React from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
 import Aux from '../../../hoc/Auxi/Auxi';
 
+import classes from './NavigationItems.module.css';
+
 const navigationItems = (props) => (
     <ul className="d-flex flex-column flex-lg-row align-items-center">
 
         {props.isAuthenticated ?
             <Aux>
-                <NavigationItem exact link="/alert-list" classes="d-flex flex-column align-items-center text-decoration-none text-center alerts-wrapper position-relative">
+                <NavigationItem exact link="/alert-list" classes={`d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center position-relative ${classes['alerts-wrapper']}`}>
                     <svg width="50pt" height="56pt" viewBox="0 0 50 56" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -17,10 +19,10 @@ const navigationItems = (props) => (
                                 d=" M 15.37 47.84 C 21.23 47.81 27.09 47.76 32.95 47.87 C 31.35 56.95 16.80 57.03 15.37 47.84 Z" />
                         </g>
                     </svg>
-                    <span className="count-message text-white">2</span>
-                    <span className="fs-5 d-block theme-pink-color nav-item">alerts</span>
+                    <span className={`text-white ${classes['count-message']}`}>2</span>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`} >alerts</span>
                 </NavigationItem>
-                <NavigationItem exact link="/kados-list" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem exact link="/kados-list" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                     <svg width="59pt" height="54pt" viewBox="0 0 59 54" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -38,9 +40,9 @@ const navigationItems = (props) => (
                                 d=" M 35.19 25.75 C 43.13 25.59 51.06 25.74 59.00 25.68 L 59.00 37.44 C 55.03 48.71 41.10 43.47 32.19 44.60 C 32.03 39.26 32.14 33.92 32.14 28.58 C 34.36 30.45 36.30 32.63 38.35 34.68 C 39.12 33.45 40.36 32.79 41.66 32.23 C 39.50 30.08 37.17 28.09 35.19 25.75 Z" />
                         </g>
                     </svg>
-                    <span className="fs-5 d-block theme-pink-color nav-item">kâdos</span>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>kâdos</span>
                 </NavigationItem>
-                <NavigationItem exact link="/browse" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem exact link="/browse" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                     <svg width="45pt" height="53pt" viewBox="0 0 45 53" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -50,9 +52,9 @@ const navigationItems = (props) => (
                                 d=" M 0.75 32.08 C 8.03 25.39 15.35 18.74 22.67 12.08 C 29.98 18.72 37.27 25.38 44.56 32.04 C 44.49 39.03 44.73 46.02 44.42 53.00 L 2.30 53.00 L 0.81 52.27 C 0.66 45.54 0.80 38.81 0.75 32.08 Z" />
                         </g>
                     </svg>
-                    <span className="fs-5 d-block theme-pink-color nav-item">Browse</span>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Browse</span>
                 </NavigationItem>
-                <NavigationItem exact link="/favorites" classes="d-flex flex-column align-items-center text-decoration-none text-center">
+                <NavigationItem exact link="/favorites" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                     <svg width="56pt" height="49pt" viewBox="0 0 56 49" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -60,9 +62,9 @@ const navigationItems = (props) => (
                                 d=" M 0.68 16.05 C 0.69 8.34 7.08 1.06 14.95 0.92 C 20.43 0.38 25.15 3.80 28.35 7.91 C 31.46 3.08 37.24 -0.00 43.03 1.06 C 50.32 1.97 55.75 8.93 55.78 16.12 C 56.09 22.38 52.38 27.89 48.12 32.11 C 42.13 38.00 35.54 43.20 29.07 48.54 L 28.75 49.00 L 27.36 49.00 C 22.84 44.08 17.10 40.36 12.23 35.76 C 6.47 30.71 0.28 24.30 0.68 16.05 Z" />
                         </g>
                     </svg>
-                    <span className="fs-5 d-block theme-pink-color nav-item">Favorites</span>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Favorites</span>
                 </NavigationItem>
-                <NavigationItem exact link="/account" classes="d-flex flex-column align-items-center text-decoration-none text-center me-0">
+                <NavigationItem exact link="/account" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center me-0">
                     <svg width="54pt" height="52pt" viewBox="0 0 54 52" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -70,7 +72,7 @@ const navigationItems = (props) => (
                                 d=" M 21.42 0.00 L 32.22 0.00 C 32.33 1.46 32.42 2.92 32.53 4.38 C 34.49 5.07 36.42 5.86 38.31 6.72 C 39.47 5.74 40.64 4.79 41.84 3.88 C 44.30 6.41 46.89 8.81 49.34 11.35 C 48.35 12.45 47.36 13.53 46.38 14.63 C 47.28 16.50 48.08 18.40 48.81 20.34 C 50.29 20.45 51.77 20.54 53.25 20.64 C 53.25 24.16 53.26 27.68 53.24 31.20 C 51.75 31.30 50.27 31.40 48.79 31.51 C 48.08 33.44 47.28 35.34 46.39 37.19 C 47.37 38.31 48.36 39.43 49.35 40.54 C 46.81 43.03 44.27 45.52 41.75 48.02 C 40.59 47.02 39.42 46.05 38.23 45.09 C 36.38 46.02 34.47 46.80 32.52 47.48 C 32.42 48.94 32.32 50.40 32.22 51.86 C 28.73 51.89 25.23 51.81 21.74 52.00 L 21.52 52.00 C 21.38 50.48 21.25 48.97 21.11 47.45 C 19.15 46.76 17.22 46.00 15.34 45.10 C 14.21 46.07 13.07 47.04 11.95 48.02 C 9.41 45.56 6.93 43.04 4.34 40.64 C 5.31 39.49 6.28 38.33 7.27 37.19 C 6.39 35.32 5.58 33.41 4.84 31.48 C 3.36 31.39 1.87 31.30 0.39 31.22 C 0.36 27.69 0.37 24.17 0.38 20.65 C 1.88 20.55 3.38 20.45 4.88 20.34 C 5.59 18.41 6.39 16.51 7.28 14.66 C 6.30 13.54 5.31 12.43 4.32 11.32 C 6.85 8.81 9.38 6.30 11.97 3.84 C 13.08 4.81 14.21 5.77 15.33 6.74 C 17.28 5.87 19.24 5.04 21.23 4.26 C 21.29 2.84 21.36 1.42 21.42 0.00 M 24.13 16.13 C 20.77 17.00 17.93 19.67 16.93 23.01 C 15.02 28.59 19.16 34.99 24.90 35.89 C 30.89 37.24 37.28 32.20 37.19 26.03 C 37.45 19.47 30.36 14.19 24.13 16.13 Z" />
                         </g>
                     </svg>
-                    <span className="fs-5 d-block theme-pink-color nav-item">Account</span>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Account</span>
                 </NavigationItem>
             </Aux>
             : null}

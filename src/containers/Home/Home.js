@@ -223,14 +223,14 @@ class Home extends Component {
                             works</p>
                                 </div>
                                 <div className="col-lg-9">
-                                    <div className="d-flex flex-wrap align-items-center">
-                                        <div className="col-step-work me-5 my-2">
+                                    <div className="d-flex align-items-center justify-content-between">
+                                        <div className="col-step-work me-2 me-xl-5 my-2">
                                             <div className="d-flex justify-content-start align-items-center display-6">
                                                 <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">1</span>
                                     Pick a Star
                                 </div>
                                         </div>
-                                        <div className="col-step-work me-5 my-2">
+                                        <div className="col-step-work me-2 me-xl-5 my-2">
                                             <div className="d-flex justify-content-start align-items-center display-6">
                                                 <span className="bg-white rounded-circle theme-pink-color font-ave-black me-3">2</span>
                                     Send a Request

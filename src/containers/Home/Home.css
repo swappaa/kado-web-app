@@ -113,6 +113,12 @@
         max-width: 98px;
         font-size: 14px;
     }
+    .how-it-works .col-step-work>div {
+        font-size: 25px;
+    }
+    .talent-home .how-it-works span {
+        padding: 15px 23px;
+    }
 }
 
 @media screen and (max-width: 1300px) {
@@ -125,6 +131,12 @@
     .banner-wrapper h2 {
         font-size: 36px;
     }
+    .how-it-works .col-step-work>div {
+        font-size: 20px;
+    }
+    .talent-home .how-it-works span {
+        padding: 14px 20px;
+    }
 }
 
 @media screen and (max-width: 991px) {
@@ -132,16 +144,13 @@
         width: 100% !important;
     }
     .talent-home .how-it-works span {
-        padding: 17px 28px;
+        padding: 17px 24px;
     }
 }
 
 @media screen and (max-width: 767px) {
     .col-step-work>div {
         font-size: 30px;
-    }
-    .talent-home .how-it-works span {
-        padding: 14px 24px;
     }
 }
 

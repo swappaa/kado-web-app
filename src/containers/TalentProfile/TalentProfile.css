@@ -67,6 +67,14 @@ form [type="submit"] {
     }
 }
 
+@media screen and (max-width: 375px) {
+    .talent-home .filter-category ul li a {
+        padding: 29px 37px;
+        max-width: 76px;
+        font-size: 10px !important;
+    }
+}
+
 @media screen and (max-width: 360px) {
     .profile-name span {
         font-size: 21px !important;

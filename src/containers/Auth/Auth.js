@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
+import $ from 'jquery';
 
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
 import DatePicker from '../../components/UI/DatePicker/DatePicker';
@@ -25,6 +26,20 @@ class Auth extends Component {
             this.props.onSetAuthRedirectPath();
         }
     }
+    // constructor(props) {
+    //     super(props);
+    //     this.handleCloseClick = this.handleCloseClick.bind(this);
+    // }
+    // componentDidMount() {
+    //     const { handleModalCloseClick } = this.props;
+    //     $(this.modal).modal('show');
+    //     $(this.modal).on('hidden.bs.modal', handleModalCloseClick);
+    // }
+    // handleCloseClick() {
+    //     const { handleModalCloseClick } = this.props;
+    //     $(this.modal).modal('hide');
+    //     handleModalCloseClick();
+    // }
 
     termsConditionToggleClicked = () => {
         this.setState((prevState) => {
@@ -93,6 +108,10 @@ class Auth extends Component {
         let authRedirect = null;
         if (this.props.isAuthenticated) {
             authRedirect = <Redirect to={this.props.authRedirectPath} />
+        }
+
+        if (!this.props.isModalOpen) {
+            $('.modal-backdrop.fade.show').remove();
         }
 
         return (
@@ -296,7 +315,7 @@ class Auth extends Component {
                     </div>
                 </div>
 
-                <div className={"modal fade signapp-modal" + this.props.isModalOpen ? "modal fade signapp-modal show" : null} id="signin-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+                <div className={`modal fade signapp-modal ${this.props.isModalOpen ? 'show' : ''}`} style={{ display: this.props.isModalOpen ? 'block !important' : 'none' }} id="signin-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
                     aria-hidden="true">
                     <div className="modal-dialog modal-dialog-centered modal-xl">
 

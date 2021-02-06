@@ -42,7 +42,8 @@ class Layout extends Component {
                     open={this.state.showSideDrawer} />
                 <SideDrawer
                     open={this.state.showSideDrawer}
-                    closed={this.SideDrawerClosedHandler} />
+                    closed={this.SideDrawerClosedHandler}
+                    isAuth={this.props.isAuthenticated} />
                 <main className="py-5">
                     {this.props.children}
                 </main>
