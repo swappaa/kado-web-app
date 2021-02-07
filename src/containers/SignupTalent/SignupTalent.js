@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { animateScroll as scroll } from 'react-scroll';
 
 import '../../App.css';
 import './SignupTalent.css';
@@ -12,7 +11,9 @@ import enjoy from '../../assets/images/enjoy.png';
 class signupTalent extends Component {
 
     componentDidMount() {
-        scroll.scrollToTop();
+        window.scroll({
+            top: 0
+        });
     }
 
     render() {

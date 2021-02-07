@@ -23,15 +23,15 @@ nav ul li .alerts-wrapper:hover .count-message {
     background-color: #404041;
 }
 
-nav ul li a:hover>svg, nav ul li a.active>svg {
+nav ul li a:hover>svg, nav ul li a[aria-current="page"]>svg {
     fill: #404041;
 }
 
-nav ul li a.active .count-message {
+nav ul li a[aria-current="page"] .count-message {
     background-color: #404041;
 }
 
-nav ul li a.active .nav-item, nav ul li a:hover span.nav-item {
+nav ul li a[aria-current="page"] .nav-item, nav ul li a:hover span.nav-item {
     color: #404041 !important;
 }
 

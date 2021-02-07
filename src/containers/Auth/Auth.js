@@ -26,20 +26,6 @@ class Auth extends Component {
             this.props.onSetAuthRedirectPath();
         }
     }
-    // constructor(props) {
-    //     super(props);
-    //     this.handleCloseClick = this.handleCloseClick.bind(this);
-    // }
-    // componentDidMount() {
-    //     const { handleModalCloseClick } = this.props;
-    //     $(this.modal).modal('show');
-    //     $(this.modal).on('hidden.bs.modal', handleModalCloseClick);
-    // }
-    // handleCloseClick() {
-    //     const { handleModalCloseClick } = this.props;
-    //     $(this.modal).modal('hide');
-    //     handleModalCloseClick();
-    // }
 
     termsConditionToggleClicked = () => {
         this.setState((prevState) => {
@@ -58,6 +44,7 @@ class Auth extends Component {
     }
 
     responseFacebook = (response) => {
+        console.log(response);
         if (this.props.switchAuthMode) {
             if (response.accessToken) {
                 this.setState({ isLoginFB: true })
@@ -154,7 +141,7 @@ class Auth extends Component {
                                                     <FacebookLogin
                                                         appId="3024473317658669"
                                                         autoLoad={false}
-                                                        fields="name,email,picture"
+                                                        fields="name,email,picture,username"
                                                         scope="public_profile,user_friends,user_birthday"
                                                         callback={this.responseFacebook}
                                                         icon="fa-facebook me-3"

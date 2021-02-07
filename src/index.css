@@ -57,3 +57,7 @@ a {
 a:focus {
   outline: none !important;
 }
+
+:root {
+  scroll-behavior: unset !important;
+}

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { animateScroll as scroll } from 'react-scroll';
+// import { animateScroll as scroll } from 'react-scroll';
 
 import '../../App.css';
 import './TalentProfile.css';
@@ -14,11 +14,8 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 class talentProfile extends Component {
 
     componentDidMount() {
-        scroll.scrollToTop(100, 100, {
-            duration: 0,
-            delay: 0,
-            smooth: 'linear',
-            offset: 50, // Scrolls to element + 50 pixels down the page
+        window.scroll({
+            top: 0
         });
     }
 
@@ -76,7 +73,7 @@ class talentProfile extends Component {
                         </div>
                     </div>
                 </section>
-                <section>
+                <section className="pb-5">
                     <div className="container-fluid px-5">
                         <div className="reviews-wrapper">
                             <div className="element-header d-flex flex-wrap justify-content-between align-items-center px-5 mb-2">
@@ -163,45 +160,6 @@ class talentProfile extends Component {
                                             massive relief for me.
                                 </p>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="py-5">
-                    <div className="container-fluid px-5">
-                        <div className="highlighted-kados">
-                            <div className="element-header px-3 px-sm-5 my-4">
-                                <h3 className="text-uppercase theme-pink-color fs-2">HIGHLIGHTED KâdOS</h3>
-                            </div>
-                            <div className="row row-cols-2 row-cols-md-4 g-3 g-sm-5 px-5">
-                                <div className="col">
-                                    <div className="card border-0">
-                                        <img className="br-radius img-fluid" src={highlightKado}
-                                            className="card-img-top" alt="highlight-kados" />
-                                        <Link className="stretched-link" to="/talent-profile"></Link>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="card border-0">
-                                        <img className="br-radius img-fluid" src={highlightKado}
-                                            className="card-img-top" alt="highlight-kados" />
-                                        <Link className="stretched-link" to="/talent-profile"></Link>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="card border-0">
-                                        <img className="br-radius img-fluid" src={highlightKado}
-                                            className="card-img-top" alt="highlight-kados" />
-                                        <Link className="stretched-link" to="/talent-profile"></Link>
-                                    </div>
-                                </div>
-                                <div className="col">
-                                    <div className="card border-0">
-                                        <img className="br-radius img-fluid" src={highlightKado}
-                                            className="card-img-top" alt="highlight-kados" />
-                                        <Link className="stretched-link" to="/talent-profile"></Link>
                                     </div>
                                 </div>
                             </div>
