@@ -54,6 +54,9 @@
     .kados-list table .sent-wrapper {
         font-size: 16px !important;
     }
+    .kados-list .table> :not(caption)>*>* {
+        width: 132px;
+    }
 }
 
 @media screen and (max-width: 576px) {
@@ -62,5 +65,17 @@
         width: 100%;
         table-layout: fixed;
         word-break: break-word;
+    }
+    .kados-list .display-5 {
+        font-size: 4.3vw !important;
+    }
+    .kados-list .fs-2 {
+        font-size: 4.6vw !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .kados-list .display-5 {
+        font-size: 6vw !important;
     }
 }

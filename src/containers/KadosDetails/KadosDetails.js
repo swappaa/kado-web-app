@@ -55,6 +55,10 @@ class kadosDetails extends Component {
                                 </div>
                                 <div className="footer-text text-center p-3 py-5 color-set">
                                     <div className="f-header-text mb-5">
+                                        <h3 className="text-uppercase display-5">PRONOUN</h3>
+                                        <p className="font-ave-roman fs-1">He / Him</p>
+                                    </div>
+                                    <div className="f-header-text mb-5">
                                         <h3 className="text-uppercase display-5">OCCASION</h3>
                                         <p className="font-ave-roman fs-1">Birthday</p>
                                     </div>

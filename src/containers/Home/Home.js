@@ -29,15 +29,16 @@ class Home extends Component {
             dots: false,
             arrows: false,
             infinite: true,
-            swipeToSlide: true,
+            speed: 500,
             slidesToShow: 1,
-            slidesToScroll: 1,
+            slidesToScroll: 2,
             variableWidth: true,
+            focusOnSelect: true,
             responsive: [
                 {
-                    breakpoint: 991,
+                    breakpoint: 575,
                     settings: {
-                        slidesToScroll: 3
+                        slidesToScroll: 1
                     }
                 }
             ]
@@ -63,20 +64,9 @@ class Home extends Component {
 
     render() {
 
-
-        const settings2 = {
-            dots: false,
-            arrows: false,
-            infinite: true,
-            swipeToSlide: true,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            centerMode: true,
-            variableWidth: true
-        };
-
         const center = {
-            centerMode: true
+            centerMode: true,
+            adaptiveHeight: true
         };
 
         const settingFeatureSlider = { ...this.settings, ...center };
@@ -924,9 +914,9 @@ class Home extends Component {
                 </section>
                 <section>
                     <div className="container-fluid px-5">
-                        <div className="join-our-list">
+                        <div className="join-our-list mt-4 mt-md-0">
                             <div className="row row-cols-lg-auto g-3 align-items-center p-3 p-sm-5 py-3">
-                                <div className="col-lg-6 order-2 order-lg-1">
+                                <div className="col-lg-6 order-2 order-lg-1 mt-0">
                                     <div className="input-group mb-3 px-0 px-xl-5">
                                         <input type="text" className="form-control form-control-lg py-4 px-5 br-radius border-end-0"
                                             placeholder="EMAIL ADDRESS" />

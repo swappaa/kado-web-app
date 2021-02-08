@@ -193,6 +193,19 @@
     }
     .featured-wrapper-column a {
         font-size: 3.5vw !important;
+        white-space: nowrap;
+    }
+    .join-our-list h3 {
+        font-size: 5.5vw;
+    }
+    .join-our-list p {
+        font-size: 3vw !important;
+    }
+    .join-our-list svg {
+        width: 22px;
+    }
+    .join-our-list input {
+        padding: 12px 20px !important;
     }
 }
 
@@ -237,9 +250,6 @@
     }
     .col-step-work>div {
         font-size: 26px;
-    }
-    .join-our-list .input-group span svg {
-        width: 32px;
     }
     .talent-home .element-featured-wrapper {
         max-width: 198px;

@@ -40,6 +40,16 @@
     }
 }
 
+@media screen and (max-width: 575px) {
+    .signapp-modal button svg, .signin-continue button svg {
+        width: 70px;
+        height: 70px;
+    }
+    #signapp-modal input, #signin-modal input {
+        font-size: 4vw !important;
+    }
+}
+
 @media screen and (max-width: 440px) {
     #signapp-modal .accordion-body, #signin-modal .accordion-body {
         width: 100% !important;
@@ -47,6 +57,10 @@
     .fb-btn-wrapper button {
         font-size: 14px !important;
         width: 100% !important;
+    }
+    .signapp-modal button svg, .signin-continue button svg {
+        width: 50px;
+        height: 50px;
     }
 }
 

@@ -107,6 +107,11 @@
   background-color: #e9eaeb;
 }
 
+.table> :not(caption)>*>* {
+  text-align: center;
+  vertical-align: middle;
+}
+
 .table> :not(:last-child)> :last-child>* {
   border-bottom-color: transparent;
 }
@@ -160,5 +165,14 @@ button:hover:before {
   .container-fluid.px-5, .row.px-5 {
     padding-right: 1rem !important;
     padding-left: 1rem !important;
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .svg-icon {
+    width: 18px;
+  }
+  .svg-icon-50 {
+    width: 30px !important;
   }
 }

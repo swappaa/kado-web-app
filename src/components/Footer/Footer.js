@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import '../../App.css';
 import './Footer.css';
 
+import appStore from '../../assets/images/svg/app-store.svg';
+import googlePlay from '../../assets/images/svg/google-play.svg';
+
 const footer = () => (
     <footer className="theme-pink-bg-color py-5 mt-auto">
         <div className="container-fluid px-5">
             <div className="row">
-                <div className="col-lg-4">
-                    <div className="element-logo-wrapper mb-5 text-center text-sm-start">
+                <div className="col-lg-6">
+                    <div className="element-logo-wrapper mb-2 mb-sm-5 text-center text-sm-start">
                         <svg width="307px" height="99px" viewBox="0 0 307 99" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g id="#ffffffff">
                                 <path fill="#ffffff" opacity="1.00" d=" M 15.57 0.00 L 50.63 0.00 C 50.66 6.54 50.54 13.08 50.70 19.63 C 45.50 14.03 35.77 13.90 30.69 19.72 C 25.69 24.77 25.99 33.27 30.49 38.55 C 20.33 38.44 10.16 38.53 0.00 38.50 L 0.00 15.74 C 0.70 7.66 7.50 0.79 15.57 0.00 Z" />
@@ -27,43 +30,46 @@ const footer = () => (
                         </svg>
                     </div>
                 </div>
-                <div className="col-lg-8">
-                    <div className="element-signup-talent mb-5 text-end float-end">
+                <div className="col-lg-6 align-self-end">
+                    <div className="download-app d-flex justify-content-center justify-content-lg-end my-5 px-5">
+                        <img className="img-fluid me-3" src={appStore} alt="app-store" />
+                        <img className="img-fluid" src={googlePlay} alt="app-store" />
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-lg-6 align-self-end order-2 order-lg-1 text-center text-lg-start mt-5 mt-lg-0">
+                    <div className="footer-link-wrapper mw-100 mb-5 mb-lg-0">
+                        <ul className="text-uppercase fs-3 d-flex flex-wrap justify-content-center justify-content-lg-start">
+                            <li><Link className="text-white" to="/">About us</Link></li>
+                            <li><Link className="text-white" to="/faq">faq</Link></li>
+                            <li><Link className="text-white" to="/press">News</Link></li>
+                            <li><Link className="text-white" to="/help">support</Link></li>
+                            <li><Link className="text-white" to="/careers">Blog</Link></li>
+                        </ul>
+                    </div>
+                    <div className="footer-copyright-wrapper align-self-end text-white fs-4 mt-5">
+                        <p className="mb-0">© <span>2021</span> Kado Enterprises, Inc. All rights reserved.
+                            <Link className="text-white" to="/terms-service"> Terms of
+                        Service.</Link>
+                            <Link className="text-white" to="/privacy-policy"> Privacy Policy.</Link></p>
+                    </div>
+
+                </div>
+                <div className="col-lg-6 align-self-end order-1 order-lg-2">
+                    <div className="element-signup-talent float-lg-end">
                         <Link to="/signup-talent">
-                            <button className="d-flex align-items-center lh-1 btn font-ave-heavy text-white fs-1 border border-white p-3 px-sm-5 px-3 mb-3">
+                            <button className="d-flex align-items-center justify-content-center lh-1 btn font-ave-heavy text-white fs-1 border border-white p-3 py-4 px-sm-5 px-3 mx-auto">
                                 <svg fill="#fff" version="1.0" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                     width="78px" height="78px" viewBox="0 0 22.697 21.58" enableBackground="new 0 0 22.697 21.58" >
                                     <path d="M4.334,21.58l7.014-3.688l7.014,3.688l-1.338-7.811l5.673-5.531L14.855,7.1L11.349,0L7.841,7.1L0,8.238l5.673,5.531
 	L4.334,21.58z M9.421,9.393l1.928-3.9l1.928,3.9l4.306,0.627l-3.116,3.037l0.736,4.291l-3.854-2.027l-3.851,2.027l0.734-4.291
 	L5.115,10.02L9.421,9.393z"/>
                                 </svg>
-                                <p className="mx-2 m-0">SIGN UP AS TALENT    <span className="fs-4 font-ave-reg">Earn and connect with fans.</span></p>
+                                <p className="mx-2 m-0 text-start">SIGN UP AS TALENT    <span className="fs-4 font-ave-reg d-block text-start mt-2">Earn and connect with fans.</span></p>
                             </button>
                         </Link>
-                        <br />
-                        <Link className="font-ave-heavy text-white fs-4 me-5" to="/privacy-policy">LEARN MORE {'>'}</Link>
                     </div>
-                </div>
-            </div>
-            <div className="row">
-                <div className="col-lg-5">
-                    <div className="footer-link-wrapper mw-100 mb-5 mb-lg-0">
-                        <ul className="text-uppercase fs-3 d-flex flex-wrap justify-content-center justify-content-lg-start">
-
-                            <li><Link className="text-white" to="/">HOME</Link></li>
-                            <li><Link className="text-white" to="/faq">faq</Link></li>
-                            <li><Link className="text-white" to="/press">press</Link></li>
-                            <li><Link className="text-white" to="/help">help</Link></li>
-                            <li><Link className="text-white" to="/careers">careers</Link></li>
-                            <li><Link className="text-white" to="/about">about</Link></li>
-                        </ul>
-                    </div>
-                </div>
-                <div className="col-lg-7 align-self-end text-white fs-4 text-center text-lg-end">
-                    <p className="mb-0">© <span>2021</span> Kado Enterprises, Inc. All rights reserved.
-                            <Link className="text-white" to="/terms-service">Terms of
-                        Service.</Link>
-                        <Link className="text-white" to="/privacy-policy">Privacy Policy.</Link></p>
                 </div>
             </div>
         </div>

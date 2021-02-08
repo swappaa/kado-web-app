@@ -41,6 +41,15 @@
     }
 }
 
+@media screen and (max-width: 1300px) {
+    .talent-signup .why-join-kado .card img {
+        width: 60px;
+    }
+    .talent-signup h5 {
+        font-size: 36px;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .custom-wrapper-contact {
         width: 100% !important;
@@ -64,8 +73,34 @@
 }
 
 @media screen and (max-width: 575px) {
+    .talent-signup .why-join-kado .card img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+    }
     .sign-up-wrapper form {
         width: 100% !important;
+    }
+    .talent-signup .display-3 {
+        font-size: 7.5vw;
+    }
+    .talent-signup .display-4 {
+        font-size: 6.6vw;
+    }
+    .talent-signup .display-5 {
+        font-size: 6.3vw;
+    }
+    .talent-signup .fs-1 {
+        font-size: 5.3vw !important;
+    }
+    .talent-signup .fs-3 {
+        font-size: 4.6vw !important;
+    }
+    .talent-signup .fs-5 {
+        font-size: 3.6vw !important;
+    }
+    .sign-up-wrapper form input {
+        font-size: 3.6vw;
     }
 }
 
@@ -75,5 +110,8 @@
     }
     .talent-signup .why-join-kado .card img {
         width: 76px;
+    }
+    .talent-signup .display-5 {
+        font-size: 5.7vw;
     }
 }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import '../../App.css';
 import './Booking.css';
-import prof1 from '../../assets/images/banner-surprise-message.png';
+import prof1 from '../../assets/images/banner-send-personalized-images.jpg';
 import recepientMyself from '../../assets/images/svg/myself.svg';
 import recepientFriend from '../../assets/images/svg/friend.svg';
 import tips from '../../assets/images/svg/tips.svg';
@@ -59,7 +59,7 @@ class Booking extends Component {
                                                 <div className="col-lg-8">
                                                     <div className="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
                                                         <img src={prof1}
-                                                            className="profile-image rounded-pill card-img-top me-4"
+                                                            className="profile-image rounded-pill card-img-top me-4 border-0"
                                                             alt="request-profile" />
                                                         <h5 className="card-title fs-1">KamyR</h5>
                                                     </div>
@@ -148,7 +148,7 @@ class Booking extends Component {
                                             OCCASION</p>
                                                 </div>
                                                 <div className="col-lg-8 py-4 p-0 p-sm-4 p-lg-0">
-                                                    <div className="row g-3 justify-content-center">
+                                                    <div className="row g-3 justify-content-center justify-content-lg-start">
                                                         <div className="col-2 occasion-item">
                                                             <div className="border-0 text-center p-2 position-relative">
                                                                 <img src={birthday}
@@ -350,7 +350,7 @@ class Booking extends Component {
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div className="input-group mt-4">
+                                                    <div className="input-group mt-4 w-50 mw-100">
                                                         <span
                                                             className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
                                                         </span>
@@ -412,22 +412,22 @@ class Booking extends Component {
                                                 <div className="col-lg-8">
                                                     <div className="card-body px-0 w-75 mw-100">
                                                         <div className="row row-cols-2 g-4 w-75 mw-100 btn-wrapper">
-                                                            <div className="col">
+                                                            <div className="col text-center">
                                                                 <button className="btn text-uppercase bg-white fs-4 py-2"
                                                                     type="button">English</button>
                                                             </div>
-                                                            <div className="col">
+                                                            <div className="col text-center">
                                                                 <button className="btn text-uppercase bg-white fs-4 py-2"
                                                                     type="button">Mix
                                                                     is
                                                         ok</button>
                                                             </div>
-                                                            <div className="col">
+                                                            <div className="col text-center">
                                                                 <button className="btn text-uppercase bg-white fs-4 py-2"
                                                                     type="button">Persian
                                                         (farsi)</button>
                                                             </div>
-                                                            <div className="col">
+                                                            <div className="col text-center">
                                                                 <button className="btn text-uppercase bg-white fs-4 py-2"
                                                                     type="button">No
                                                         Reference</button>
@@ -440,14 +440,64 @@ class Booking extends Component {
                                     </div>
                                 </div>
                             </div>
+                            <div className="col payment step">
+                                <div className="container-fluid px-5">
+                                    <div className="customs-wrapper w-100 mx-auto">
+                                        <div className="card border-0 bg-transparent pt-5">
+                                            <div className="row g-0">
+                                                <div className="col-lg-4">
+                                                    <p className="font-ave-heavy fs-1 text-uppercase theme-pink-color booking-title-step"><span
+                                                        className="rounded-circle p-3 px-4 theme-pink-bg-color text-white text-center proc-book font-ave-black fs-1 me-4">6</span>
+                                            PAYMENT</p>
+                                                </div>
+                                                <div className="col-lg-8">
+                                                    <div className="card-body px-0 w-50 mw-100 p-0">
+                                                        <h2 className="font-ave-heavy">DO YOU HAVE A PROMO CODE?</h2>
+                                                        <div class="input-group mb-3">
+                                                            <input type="text" class="form-control rounded-0 border border-2 py-3" />
+                                                            <span class="input-group-text fs-5 px-4 rounded-0"><a class="text-white" href="#">Apply</a></span>
+                                                        </div>
+                                                        <ul class="list-group pe-5 bg-transparent">
+                                                            <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                                Video  Message
+                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">$155.00</span>
+                                                            </li>
+                                                            <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                                Credits
+                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">- $25.00</span>
+                                                            </li>
+                                                            <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                                Promo Code
+                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">- $20.00</span>
+                                                            </li>
+                                                            <li class="d-flex justify-content-between align-items-center font-ave-heavy fs-2 bg-transparent px-4 py-2 text-muted">
+                                                                Total
+                                                                <span class="badge bg-transparent rounded-pill text-muted fs-2">$110.00</span>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div className="col-12 booknow">
                                 <div className="container-fluid px-5">
                                     <div className="customs-wrapper w-100 mx-auto">
-                                        <div className="card border-0  bg-transparent py-4">
+                                        <div className="card border-0  bg-transparent p-0">
                                             <div className="row g-0 align-items-center  justify-content-center  justify-content-lg-start">
-                                                <div className="col-md-4 d-none d-lg-block">
+                                                <div className="col-lg-4 order-2 order-lg-1">
+                                                    <div className="text-end fs-5 text-muted font-ave-book pe-4">
+                                                        <p>Clicking Book does not guarantee the Talent will accept
+                                                        your request. All kâdo requests are filled at the Talent’s
+                                                        discretion. Requests must comply with our
+                                                                <a className="text-decoration-underline me-2" href="#">Terms of Service</a>
+                                                                and  <a className="text-decoration-underline ms-2" href="#">Privacy Policies</a>.
+                                                                </p>
+                                                    </div>
                                                 </div>
-                                                <div className="col-md-8">
+                                                <div className="col-lg-8 order-1 order-lg-2">
                                                     <div className="card-body px-0 w-75 mw-100">
                                                         <div className="book-now d-grid my-3">
 
@@ -457,14 +507,6 @@ class Booking extends Component {
                                                                 <span className="text-trans-unset fs-4 font-ave-reg">
                                                                     [ Personal Video $150.00]</span>
                                                             </button>
-                                                        </div>
-                                                        <div className="text-center w-75 mw-100 mx-auto fs-5 text-muted font-ave-book">
-                                                            <p>Clicking Book does not guarantee the Talent will accept
-                                                            your request. All kâdo requests are filled at the Talent’s
-                                                            discretion. Requests must comply with our
-                                                                <a className="text-decoration-underline me-2" href="#">Terms of Service</a>
-                                                                and  <a className="text-decoration-underline ms-2" href="#">Privacy Policies</a>.
-                                                                </p>
                                                         </div>
                                                     </div>
                                                 </div>

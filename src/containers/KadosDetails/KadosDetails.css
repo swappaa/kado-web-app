@@ -59,9 +59,24 @@
     }
 }
 
-@media screen and (max-width: 576px) {
-    .kados-details .footer-text p {
-        font-size: 20px !important;
+@media screen and (max-width: 575px) {
+    .kados-details .display-5 {
+        font-size: 5vw !important;
+    }
+    .kados-details .fs-1 {
+        font-size: 5vw !important;
+    }
+    .kados-details .fs-2 {
+        font-size: 4.5vw !important;
+    }
+    .list-requested-wrapper .date-wrapper small {
+        font-size: 5vw !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .kados-details .display-4 {
+        font-size: 6vw !important;
     }
 }
 

@@ -15,6 +15,7 @@ import kadosDetails from './containers/KadosDetails/KadosDetails';
 import Booking from './containers/Booking/Booking';
 import Favorites from './containers/Favorites/Favorites';
 import Account from './containers/Auth/ContinueSignIn/ContinueSignIn';
+import FanSettings from './containers/Settings/FanSettings/FanSettings';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
@@ -40,6 +41,7 @@ class App extends Component {
 
     let routes = (
       <Switch>
+        <Route path="/fan-settings" component={FanSettings} />
         <Route path="/talent-profile" component={talentProfile} />
         <Route path="/signup-talent" component={signupTalent} />
         <Route path="/booking" component={Booking} />

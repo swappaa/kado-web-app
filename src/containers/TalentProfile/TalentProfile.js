@@ -76,7 +76,7 @@ class talentProfile extends Component {
                 <section className="pb-5">
                     <div className="container-fluid px-5">
                         <div className="reviews-wrapper">
-                            <div className="element-header d-flex flex-wrap justify-content-between align-items-center px-5 mb-2">
+                            <div className="element-header d-flex flex-wrap justify-content-between align-items-center px-3 px-lg-5 mb-2">
                                 <h3 className="text-uppercase theme-pink-color fs-2">REVIEWS</h3> <a
                                     className="theme-pink-color text-uppercase fs-3 btn-read-all-reviews" href="#">Read ALL 32 REVIEWS{'>'}</a>
                             </div>

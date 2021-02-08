@@ -21,6 +21,12 @@
     top: 0;
 }
 
+@media screen and (max-width: 575px) {
+    .favorites .display-4 {
+        font-size: 5vw !important;
+    }
+}
+
 @media screen and (max-width: 440px) {
     .favorite-item-wrapper {
         max-width: 212px;

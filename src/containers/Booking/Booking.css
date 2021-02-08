@@ -76,16 +76,33 @@
     color: #58585a;
 }
 
-.language button {
+.language button:hover {
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .08), 0 5px 26px 0 rgba(67, 94, 131, .15);
     color: #0f2741;
     transition: transform .3s;
     transform: scale(1.025);
 }
 
+.booking-wrapper-proc .payment input {
+    border: 2px solid #58585a !important;
+}
+
+.booking .payment input~span {
+    background-color: #58585a !important;
+    border: 2px solid #58585a;
+}
+
 @media screen and (max-width: 1400px) {
     .booking-wrapper-proc .language .btn-wrapper {
         width: 100% !important;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .payment .card-body {
+        width: 100% !important;
+        max-width: 600px !important;
     }
 }
 
@@ -99,12 +116,12 @@
 }
 
 @media screen and (max-width: 991px) {
-    .booking-wrapper-proc .instructions .card-body, .booking-wrapper-proc .language .card-body, .booknow .card-body {
+    .booking-wrapper-proc .instructions .card-body, .booking-wrapper-proc .language .card-body, .booknow .card-body, .payment .card-body {
         margin: auto;
     }
 }
 
-@media screen and (max-width: 576px) {
+@media screen and (max-width: 575px) {
     .booking-wrapper-proc .recipient .svg-icon {
         max-width: 70px;
         height: 70px;
@@ -116,25 +133,67 @@
     .booking-wrapper-proc .language .card-body, .booknow .card-body {
         width: 100% !important;
     }
+    .booking-wrapper-proc .proc-book {
+        max-width: 60px;
+        height: 60px;
+        font-size: 21px !important;
+    }
+    .booking .display-4 {
+        font-size: 7vw !important;
+    }
+    .booking input {
+        font-size: 4vw !important;
+    }
+    .booking-wrapper-proc .booking-title-step {
+        font-size: 4.6vw !important;
+    }
+    .booking .fs-4 {
+        font-size: 3.5vw !important;
+    }
+    .booking .fs-5 {
+        font-size: 3.6vw !important;
+    }
+    .booking-wrapper-proc .language .btn-wrapper button {
+        font-size: 3vw !important;
+    }
 }
 
 @media screen and (max-width: 440px) {
     .booking-wrapper-proc .proc-book {
-        max-width: 60px;
-        height: 60px;
-        font-size: 22px !important;
+        max-width: 52px;
+        height: 52px;
+        font-size: 16px !important;
+    }
+    .booking-wrapper-proc .occasion-icon {
+        max-width: 25px;
+        height: 25px;
+    }
+    .booking-wrapper-proc .occasion-item small {
+        font-size: 7px;
+    }
+    .booking-wrapper-proc .occasion-item {
+        max-width: 88px;
+    }
+    .payment h2 {
+        font-size: 16px;
     }
 }
 
 @media screen and (max-width: 414px) {
     .booking-wrapper-proc .occasion-icon {
-        max-width: 30px;
-        height: 30px;
+        max-width: 20px;
+        height: 20px;
     }
     .booking-wrapper-proc .occasion-item {
-        max-width: 99px;
+        max-width: 93px;
     }
     .booking-wrapper-proc .occasion-item small {
         font-size: 8px;
+    }
+    .payment ul li {
+        font-size: 16px !important;
+    }
+    .payment ul li span {
+        font-size: 18px !important;
     }
 }

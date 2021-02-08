@@ -19,6 +19,9 @@ form [type="submit"] {
     .charity-wrapper {
         right: -28% !important;
     }
+    .profile-details p {
+        font-size: 3vw !important;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -40,6 +43,15 @@ form [type="submit"] {
     .profile-wrapper img {
         max-width: 350px;
     }
+    .profile-details p {
+        font-size: 3.5vw !important;
+    }
+    .reviews-wrapper .card-body p {
+        font-size: 3vw !important;
+    }
+    .reviews-wrapper .card-body h5 {
+        font-size: 3.6vw !important;
+    }
 }
 
 @media screen and (max-width: 575px) {
@@ -50,6 +62,15 @@ form [type="submit"] {
     .charity-wrapper span {
         font-size: 16px !important;
     }
+    .profile-details a {
+        font-size: 4.2vw !important;
+    }
+    .reviews-wrapper .element-header h3 {
+        font-size: 5vw !important;
+    }
+    .reviews-wrapper .element-header a {
+        font-size: 4.2vw !important;
+    }
 }
 
 @media screen and (max-width: 440px) {
@@ -59,11 +80,17 @@ form [type="submit"] {
     .profile-name span {
         font-size: 25px !important;
     }
-    .profile-details p {
-        font-size: 27px !important;
-    }
     .book-now span {
         font-size: 26px;
+    }
+    .reviews-wrapper .card-body h5 {
+        font-size: 3.3vw !important;
+    }
+    .profile-wrapper .rating-star svg {
+        width: 25px;
+    }
+    .reviews-wrapper .rating-star span {
+        font-size: 4.5vw !important;
     }
 }
 

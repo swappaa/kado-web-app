@@ -19,7 +19,7 @@ class signupTalent extends Component {
     render() {
         return (
             <div className="talent-signup">
-                <section>
+                <section className="pt-5">
                     <div className="container-fluid px-5">
                         <div className="banner-wrapper p-3 p-xl-3 text-white theme-pink-bg-color">
                             <div className="row px-5 position-relative">
@@ -167,7 +167,7 @@ class signupTalent extends Component {
                     </p>
                             </div>
                             <form className="px-3 p-xl-5 w-75 mw-100 mx-auto">
-                                <div className="row-cols-1 row-cols-md-2 row gx-5 gy-4 w-75 mw-100 p-3 p-xl-5 mx-auto mb-5 custom-wrapper-contact">
+                                <div className="row-cols-1 row-cols-md-2 row gx-5 gy-4 w-75 mw-100 mx-auto mb-5 custom-wrapper-contact">
                                     <div className="col">
                                         <input type="text"
                                             className="form-control form-control-lg py-3 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0"
@@ -193,12 +193,13 @@ class signupTalent extends Component {
                                             className="form-control form-control-lg py-3 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0"
                                             placeholder="NOTE" />
                                     </div>
-                                </div>
-                                <div className="d-grid text-center">
-                                    <button className="btn btn-lg text-upperase py-3 fs-1 text-uppercase theme-pink-bg-color text-white"
-                                        type="submit">Submit
+                                    <div className="col-lg-12 d-grid text-center mt-5 w-100">
+                                        <button className="btn btn-lg text-upperase py-3 fs-1 text-uppercase theme-pink-bg-color text-white btn-hvr"
+                                            type="submit">Submit
                             Application</button>
+                                    </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>

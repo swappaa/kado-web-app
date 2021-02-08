@@ -13,26 +13,21 @@ footer ul li a::before {
     top: 16%;
 }
 
-footer ul li:first-child a, footer ul li:nth-child(5) a {
+footer ul li:first-child a {
     padding-left: 0;
 }
 
-footer ul li:nth-child(4) a::before, footer ul li:last-child a::before {
+footer ul li:last-child a::before {
     display: none;
 }
 
 footer .element-signup-talent button {
-    border-radius: 70px;
+    border-radius: 36px;
 }
 
-.footer-link-wrapper {
-    width: 434px !important;
-}
-
-@media screen and (max-width: 1200px) {
-    .footer-link-wrapper {
-        width: 450px !important;
-    }
+footer .download-app img {
+    max-width: 230px;
+    width: 100%;
 }
 
 @media screen and (max-width: 1163px) {
@@ -48,23 +43,90 @@ footer .element-signup-talent button {
     footer ul li:nth-child(5) a {
         padding-left: 20px;
     }
-    .footer-link-wrapper {
-        width: 384px !important;
+}
+
+@media screen and (max-width: 1500px) {
+    footer ul li a {
+        font-size: 1.9vw;
     }
 }
 
-@media screen and (max-width: 1100px) {
+@media screen and (max-width: 1300px) {
     footer ul li a {
-        font-size: 25px;
+        font-size: 1.6vw;
     }
-    .footer-link-wrapper {
-        width: 381px !important;
+    footer .element-signup-talent p {
+        font-size: 3vw;
+    }
+    footer ul li a::before {
+        height: 20px;
+        top: 6%;
+    }
+    footer .footer-copyright-wrapper p {
+        font-size: 1.2vw;
+    }
+    footer .element-signup-talent p span {
+        font-size: 1.9vw !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    footer .element-signup-talent p {
+        font-size: 2.5vw;
     }
 }
 
 @media screen and (max-width: 991px) {
-    .footer-link-wrapper {
-        margin: auto;
+    footer ul li a {
+        font-size: 2.2vw;
+    }
+    footer .footer-copyright-wrapper p {
+        font-size: 2vw;
+    }
+    footer ul li:first-child a {
+        padding-left: 20px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    footer .element-signup-talent svg {
+        width: 46px;
+        height: 46px;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    footer ul li a {
+        font-size: 2.6vw;
+    }
+    footer ul li a::before {
+        height: 16px;
+    }
+    footer .element-signup-talent p {
+        font-size: 4vw;
+    }
+    footer .element-signup-talent p span {
+        font-size: 2.9vw !important;
+    }
+    footer .footer-copyright-wrapper p {
+        font-size: 3.8vw;
+    }
+    footer ul li a {
+        font-size: 3.3vw;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    footer ul li a {
+        padding: 0 12px;
+        font-size: 3vw;
+    }
+    footer .footer-copyright-wrapper p {
+        font-size: 3.7vw;
+    }
+    footer .element-signup-talent button {
+        max-width: 310px;
+        width: 100%;
     }
 }
 

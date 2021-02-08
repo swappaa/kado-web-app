@@ -13,7 +13,7 @@ class alertMessages extends Component {
                     <div className="container-fluid px-5">
                         <div className="customs-wrapper w-100 mx-auto">
                             <h2 className="text-uppercase theme-pink-color display-5 mx-3 mb-3">Messages</h2>
-                            <div className="profile-wrapper w-75 mw-100 mx-auto text-center position-relative">
+                            <div className="profile-wrapper w-75 mw-100 mx-auto text-center position-relative mb-4">
                                 <img src={prof1}
                                     className="flex-shrink-0 me-4 profile-image rounded-circle" alt="fan-profile" />
                                 <div className="profile-name mt-3">

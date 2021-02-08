@@ -2,18 +2,29 @@
     margin-left: auto;
 }
 
-.profile-wrapper {
-    top: -100px;
-}
-
 .profile-wrapper .profile-image {
     max-width: 196px !important;
     height: 196px !important;
 }
 
-@media screen and (max-width: 767px) {
-    .profile-wrapper {
-        top: 0;
+@media screen and (max-width: 575px) {
+    .alerts-messages .display-5 {
+        font-size: 6.2vw !important;
+    }
+    .alerts-messages .fs-5 {
+        font-size: 4.3vw !important;
+    }
+    .alerts-messages .fs-2 {
+        font-size: 4.6vw !important;
+    }
+    .alerts-messages .fs-3 {
+        font-size: 4.2vw !important;
+    }
+    .alerts-messages .fs-4 {
+        font-size: 4.6vw !important;
+    }
+    .alerts-messages .fs-1 {
+        font-size: 5.5vw !important;
     }
 }
 
@@ -23,5 +34,8 @@
     }
     .alerts-messages .input-message-wrapper {
         width: 100% !important;
+    }
+    .alerts-messages .display-5 {
+        font-size: 6vw !important;
     }
 }
