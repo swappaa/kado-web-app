@@ -9,7 +9,7 @@ nav ul li:last-child a {
 }
 
 nav ul li a>svg {
-    width: 54px;
+    width: 75px;
     height: 54px;
     fill: #ee2a59;
     -webkit-transition: fill .2s ease-out;
@@ -41,14 +41,41 @@ nav ul li .count-message {
     height: 25px;
     border-radius: 50px;
     background-color: #ee2a59;
-    right: 6px;
+    right: 8px;
     top: -3px;
+}
+
+@media screen and (max-width: 1300px) {
+    nav ul li a>svg {
+        width: 55px;
+        height: 39px;
+    }
+    nav ul li .count-message {
+        right: 8px;
+        top: -8px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    nav ul li a>svg {
+        width: 45px;
+    }
+    nav ul li a span.nav-item {
+        font-size: 16px !important;
+    }
+    nav ul li .count-message {
+        right: 1px;
+    }
 }
 
 @media screen and (max-width: 991px) {
     nav ul li .count-message {
         right: unset;
         left: 15px;
+        top: -3px;
+    }
+    nav ul li a span.nav-item {
+        font-size: 1.25rem !important;
     }
 }
 

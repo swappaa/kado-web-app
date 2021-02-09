@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import prof1 from '../../../assets/images/banner-surprise-message.png';
-import '../../../App.css';
-import '../Settings.css';
+import prof1 from '../../assets/images/banner-surprise-message.png';
+import '../../App.css';
+import './Settings.css';
 
 
 
@@ -10,11 +10,11 @@ class fanSettings extends Component {
 
     render() {
         return (
-            <div className="fan-settings">
+            <div className="settings">
                 <section className="py-5">
                     <div className="container-fluid px-5">
                         <div className="customs-wrapper w-100 mx-auto">
-                            <div className="fan-setting-wrapper">
+                            <div className="setting-wrapper">
                                 <div className="d-flex align-items-start">
                                     <div className="nav flex-column nav-pills me-3 position-relative" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <h2 className="text-uppercase theme-pink-color display-4 mx-3 mb-3">Settings</h2>

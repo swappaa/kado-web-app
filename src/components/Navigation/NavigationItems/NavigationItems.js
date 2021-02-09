@@ -54,6 +54,10 @@ const navigationItems = (props) => (
                     </svg>
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Browse</span>
                 </NavigationItem>
+                <NavigationItem exact link="/dashboard" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="54pt" height="52pt" viewBox="0 0 29.27 20.52"><title>dashboard</title><g id="Layer_2" data-name="Layer 2"><g id="Talent_Dashboard-v1" data-name="Talent Dashboard-v1"><path class="cls-1" d="M19.32.76A14.61,14.61,0,0,0,0,14.66a22.29,22.29,0,0,0,.59,5.27.63.63,0,0,0,.58.59H28c.29,0,.58-.3.73-.59a34.36,34.36,0,0,0,.58-5.27A14.5,14.5,0,0,0,19.32.76ZM14.64,3A1.38,1.38,0,0,1,16.1,4.42a1.38,1.38,0,0,1-1.46,1.46,1.38,1.38,0,0,1-1.47-1.46A1.38,1.38,0,0,1,14.64,3ZM4.39,16.13a1.38,1.38,0,0,1-1.46-1.47A1.38,1.38,0,0,1,4.39,13.2a1.38,1.38,0,0,1,1.46,1.46A1.38,1.38,0,0,1,4.39,16.13Zm4.1-7.61a1.43,1.43,0,0,1-2,0,1.77,1.77,0,0,1-.15-2.2,1.41,1.41,0,0,1,2.05,0A1.77,1.77,0,0,1,8.49,8.52Zm6.15,9.07c-1.61,0-3.08-1.46-2.64-2.93s2.64-5.85,2.64-5.85,2.19,4.39,2.63,5.85S16.25,17.59,14.64,17.59ZM23,8.52a1.45,1.45,0,1,1-2.05-2,1.41,1.41,0,0,1,2.05,0A1.75,1.75,0,0,1,23,8.52Zm1.9,7.61a1.38,1.38,0,0,1-1.46-1.47,1.47,1.47,0,0,1,2.93,0A1.39,1.39,0,0,1,24.88,16.13Z" /></g></g></svg>
+                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Dashboard</span>
+                </NavigationItem>
                 <NavigationItem exact link="/favorites" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                     <svg width="56pt" height="49pt" viewBox="0 0 56 49" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -64,7 +68,7 @@ const navigationItems = (props) => (
                     </svg>
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Favorites</span>
                 </NavigationItem>
-                <NavigationItem exact link="/account" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center me-0">
+                <NavigationItem exact link="/talent-settings" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center me-0">
                     <svg width="54pt" height="52pt" viewBox="0 0 54 52" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">

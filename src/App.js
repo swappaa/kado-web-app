@@ -15,7 +15,9 @@ import kadosDetails from './containers/KadosDetails/KadosDetails';
 import Booking from './containers/Booking/Booking';
 import Favorites from './containers/Favorites/Favorites';
 import Account from './containers/Auth/ContinueSignIn/ContinueSignIn';
-import FanSettings from './containers/Settings/FanSettings/FanSettings';
+import FanSettings from './containers/Settings/Settings';
+import Payment from './containers/Payment/Payment';
+import Dashboard from './containers/Dashboard/Dashboard';
 import Logout from './containers/Auth/Logout/Logout';
 import * as actions from './store/actions/index';
 
@@ -41,7 +43,8 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/fan-settings" component={FanSettings} />
+        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/payment" component={Payment} />
         <Route path="/talent-profile" component={talentProfile} />
         <Route path="/signup-talent" component={signupTalent} />
         <Route path="/booking" component={Booking} />
@@ -55,6 +58,8 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
+          <Route path="/talent-settings" component={FanSettings} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/talent-profile" component={talentProfile} />
           <Route path="/alert-list" component={alertList} />
           <Route path="/alert-messages" component={alertMessages} />

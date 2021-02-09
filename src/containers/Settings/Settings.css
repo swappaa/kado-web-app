@@ -2,22 +2,22 @@
     background-color: #f7f8f8;
 }
 
-.table-responsive table tr th {
+.settings .table-responsive table tr th {
     text-align: start;
 }
 
-.table-responsive table tr th {
+.settings .table-responsive table tr th {
     text-align: start;
     font-size: 1.8vw;
     color: #404041;
     font-weight: inherit;
 }
 
-.table-responsive table tr {
+.settings .table-responsive table tr {
     color: #404041;
 }
 
-.table> :not(caption)>*>* {
+.settings .table> :not(caption)>*>* {
     text-align: start;
 }
 
@@ -30,6 +30,6 @@
     right: -50px;
 }
 
-.fan-settings .customs-wrapper img.profile-image {
+.settings .customs-wrapper img.profile-image {
     border: 4px solid #58585a;
 }
