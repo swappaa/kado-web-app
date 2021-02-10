@@ -130,6 +130,12 @@ footer .download-app img {
     }
 }
 
+@media screen and (max-width: 375px) {
+    footer ul li a::before {
+        height: 11px;
+    }
+}
+
 @media screen and (max-width: 360px) {
     footer ul li a {
         font-size: 22px;

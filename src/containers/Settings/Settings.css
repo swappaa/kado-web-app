@@ -33,3 +33,75 @@
 .settings .customs-wrapper img.profile-image {
     border: 4px solid #58585a;
 }
+
+@media screen and (max-width: 991px) {
+    #v-pills-tab::before {
+        right: 0;
+    }
+    .settings .fs-2 {
+        font-size: 3vw !important;
+    }
+    .settings .fs-3 {
+        font-size: 2.5vw !important;
+    }
+    .settings .display-4 {
+        font-size: 5vw !important;
+    }
+    .settings .fs-1 {
+        font-size: 3.7vw !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .settings .customs-wrapper img.profile-image {
+        max-width: 95px;
+        height: 95px;
+    }
+    #v-pills-tabContent {
+        width: 100% !important;
+    }
+    .settings .fs-2 {
+        font-size: 1.9vw !important;
+    }
+}
+
+@media screen and (max-width: 575px) {
+    .settings svg {
+        width: 20px;
+    }
+    .settings .customs-wrapper img.profile-image {
+        max-width: 80px;
+        height: 80px;
+    }
+    .settings table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        word-break: break-word;
+    }
+    #v-pills-tabContent {
+        overflow-y: hidden;
+        overflow-x: scroll;
+    }
+    #v-pills-tabContent>div {
+        width: 366px;
+    }
+    .settings .table-responsive table tr th {
+        font-size: 3vw;
+    }
+    .settings .fs-2 {
+        font-size: 2.6vw !important;
+    }
+    #v-pills-tab {
+        min-width: 203px;
+    }
+}
+
+@media screen and (max-width: 414px) {
+    .settings .fs-2 {
+        font-size: 3.6vw !important;
+    }
+    .settings .fs-3 {
+        font-size: 3.3vw !important;
+    }
+}

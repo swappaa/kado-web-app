@@ -504,7 +504,7 @@ class Booking extends Component {
                                                         <div className="card-body px-0 w-75 mw-100">
                                                             <div className="book-now d-grid my-3">
 
-                                                                <button data-bs-toggle="modal" data-bs-target="#success-booking-modal" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-4 btn-hvr">
+                                                                <button data-bs-toggle="modal" data-bs-target="#success-modal" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-4 btn-hvr">
                                                                     <span className="display-4 text-uppercase">BOOK NOW</span>
                                                                 </button>
                                                             </div>

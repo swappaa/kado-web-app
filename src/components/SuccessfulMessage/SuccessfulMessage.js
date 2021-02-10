@@ -1,7 +1,9 @@
 import React from 'react';
 
+import './SuccessfulMessage.css';
+
 const sucessfulBooking = () => (
-    <div className="modal fade signapp-modal" id="success-booking-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
+    <div className="modal fade" id="success-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"
         aria-hidden="true">
         <div className="modal-dialog modal-dialog-centered modal-xl">
             <div className="modal-content rounded-0 border-0">

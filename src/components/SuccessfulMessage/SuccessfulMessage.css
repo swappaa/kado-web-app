@@ -1,0 +1,20 @@
+@media screen and (max-width: 991px) {
+    #success-modal .fs-2 {
+        font-size: 2.2vw !important;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    #success-modal svg {
+        max-width: 100px;
+    }
+    #success-modal .fs-2 {
+        font-size: 3.1vw !important;
+    }
+}
+
+@media screen and (max-width: 360px) {
+    #success-modal svg {
+        max-width: 85px;
+    }
+}

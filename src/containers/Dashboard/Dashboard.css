@@ -33,10 +33,205 @@
     background-color: #f3f3f4;
 }
 
-.dashboard .sec-wrapper-3 .quick-set-item {
+.dashboard .sec-wrapper-4 .quick-set-item {
     background-color: #f3f3f4;
     max-width: 172px;
     width: 100%;
     height: 172px;
     margin: 0 16px;
+}
+
+@media screen and (max-width:1676px) {
+    .dashboard .sec-wrapper-1 .step-2>div>div {
+        max-width: 9.3vw;
+        height: 9.3vw;
+    }
+    .dashboard .fs-5 {
+        font-size: 1.1vw !important;
+    }
+    .dashboard .display-1 {
+        font-size: 4vw;
+    }
+    .dashboard .fs-1 {
+        font-size: 2.3vw !important;
+    }
+    .dashboard .fs-2 {
+        font-size: 2vw !important;
+    }
+    .dashboard .display-4 {
+        font-size: 3.4vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item {
+        max-width: 10.5vw;
+        height: 10.5vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item svg {
+        width: 5vw;
+        height: 5vw;
+    }
+    .dashboard .sec-wrapper-3 .column:last-child svg {
+        width: unset;
+        height: unset;
+    }
+    .dashboard .sec-wrapper-3 svg {
+        width: 4vw;
+        height: 4vw;
+    }
+    .dashboard .fs-3 {
+        font-size: 1.7vw !important;
+    }
+}
+
+@media screen and (max-width:1400px) {
+    .dashboard .sec-wrapper-4 .quick-set-item svg {
+        width: 4vw;
+        height: 4vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item p {
+        font-size: 1vw;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .dashboard .sec-wrapper-2 .chart-container {
+        width: 31vw !important;
+    }
+}
+
+@media screen and (max-width:991px) {
+    .dashboard .sec-wrapper-4 .quick-set-item {
+        max-width: 12.5vw;
+        height: 12.5vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item p {
+        font-size: 1.4vw;
+    }
+    .dashboard .sec-wrapper-3 svg {
+        width: 6vw;
+        height: 6vw;
+    }
+    .dashboard .sec-wrapper-2 .card-group>.card {
+        min-width: 320px;
+    }
+    .dashboard .sec-wrapper-2 .chart-container {
+        width: 48vw !important;
+        margin: 0 auto;
+    }
+    .dashboard .sec-wrapper-2 {
+        margin-bottom: 0 !important;
+    }
+}
+
+@media screen and (max-width:767px) {
+    .dashboard .sec-wrapper-4 .quick-set-item {
+        max-width: 13.2vw;
+        height: 13.2vw;
+    }
+    .dashboard .rounded-wrapper {
+        max-width: 225px;
+    }
+    .dashboard .sec-wrapper-1 .card-group>.card {
+        min-width: 225px;
+        width: 100%;
+    }
+    .dashboard .sec-wrapper-2 .chart-container {
+        width: 60vw !important;
+    }
+}
+
+@media screen and (max-width:706px) {
+    .dashboard .sec-wrapper-1 .card-group>.card:last-child>div {
+        justify-content: center !important;
+    }
+    .dashboard .sec-wrapper-1 .card-group>.card:last-child {
+        margin-top: 20px;
+    }
+    .dashboard .fs-5 {
+        font-size: 2vw !important;
+    }
+    .dashboard .sec-wrapper-1 .step-2>div>div {
+        max-width: 13.2vw;
+        height: 13.2vw;
+    }
+}
+
+@media screen and (max-width:671px) {
+    .dashboard .sec-wrapper-2 .rounded-wrapper {
+        background-color: #f3f3f4;
+        margin: 0 auto;
+    }
+    .dashboard .sec-wrapper-2 .card-group>.card {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width:575px) {
+    .dashboard .sec-wrapper-4 .quick-set-item {
+        max-width: 19.5vw;
+        height: 19.5vw;
+        margin: 0 6px;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item p {
+        font-size: 1.8vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item svg {
+        width: 5vw;
+        height: 5vw;
+    }
+    .dashboard .fs-1 {
+        font-size: 3vw !important;
+    }
+    .dashboard .fs-3 {
+        font-size: 3.5vw !important;
+    }
+    .dashboard .display-1 {
+        font-size: 6vw;
+    }
+    .dashboard .sec-wrapper-1 .step-2>div>div {
+        max-width: 17vw;
+        height: 17vw;
+    }
+    .dashboard .fs-5 {
+        font-size: 2.5vw !important;
+    }
+    .dashboard .fs-2 {
+        font-size: 4vw !important;
+    }
+    .dashboard .display-4 {
+        font-size: 5.3vw;
+    }
+    .dashboard .rounded-wrapper {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    .dashboard .card-group>.card {
+        margin-bottom: 1.75rem;
+    }
+    .dashboard .sec-wrapper-2 .chart-container {
+        width: 75vw !important;
+    }
+}
+
+@media screen and (max-width:440px) {
+    .dashboard .sec-wrapper-3 svg {
+        width: 8vw;
+        height: 8vw;
+    }
+    .dashboard .sec-wrapper-2 .chart-container {
+        width: 95vw !important;
+    }
+}
+
+@media screen and (max-width:414px) {
+    .dashboard .sec-wrapper-4 .quick-set-item svg {
+        width: 7.5vw;
+        height: 7.5vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item p {
+        font-size: 2.5vw;
+    }
+    .dashboard .sec-wrapper-4 .quick-set-item {
+        max-width: 21vw;
+        height: 21vw;
+    }
 }
