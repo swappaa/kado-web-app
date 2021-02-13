@@ -19,7 +19,10 @@ const sideDrawer = (props) => {
                     <Logo />
                 </div>
                 <nav className={`d-flex align-items-center h-100 ${classes['sidebar-nav']}`}>
-                    <NavigationItems isAuthenticated={props.isAuth} />
+                    <NavigationItems
+                        isAuthenticated={props.isAuth}
+                        AuthSignUpMode={props.isSignup}
+                        AuthSignInMode={props.isSignin} />
                 </nav>
             </div>
         </Aux>
