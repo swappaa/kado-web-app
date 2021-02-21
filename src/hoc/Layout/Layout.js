@@ -4,6 +4,7 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../containers/Auth/Auth';
+import InviteFriends from '../../components/InviteFriends/InviteFriends';
 import { connect } from 'react-redux';
 
 class Layout extends Component {
@@ -32,6 +33,12 @@ class Layout extends Component {
     }
 
     render() {
+
+        let inviteFriends = null;
+        if (this.props.isAuthenticated) {
+            inviteFriends = <InviteFriends />
+        }
+
         return (
             <Aux>
                 <Toolbar
@@ -46,10 +53,11 @@ class Layout extends Component {
                     isAuth={this.props.isAuthenticated}
                     isSignup={this.SignUpHandler}
                     isSignin={this.SignInHandler} />
-                <main>
+                <main className="py-5">
                     {this.props.children}
                 </main>
                 <Auth switchAuthMode={this.state.isSignup} />
+                {inviteFriends}
                 <Footer />
             </Aux>
         )

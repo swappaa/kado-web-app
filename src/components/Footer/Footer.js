@@ -13,7 +13,7 @@ const footer = () => (
             <div className="row">
                 <div className="col-lg-6">
                     <div className="element-logo-wrapper mb-2 mb-sm-5 text-center text-sm-start">
-                        <svg width="307px" height="99px" viewBox="0 0 307 99" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <svg width="226px" height="73px" viewBox="0 0 307 99" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g id="#ffffffff">
                                 <path fill="#ffffff" opacity="1.00" d=" M 15.57 0.00 L 50.63 0.00 C 50.66 6.54 50.54 13.08 50.70 19.63 C 45.50 14.03 35.77 13.90 30.69 19.72 C 25.69 24.77 25.99 33.27 30.49 38.55 C 20.33 38.44 10.16 38.53 0.00 38.50 L 0.00 15.74 C 0.70 7.66 7.50 0.79 15.57 0.00 Z" />
                                 <path fill="#ffffff" opacity="1.00" d=" M 59.18 0.00 L 93.23 0.00 C 101.40 0.71 108.46 7.77 108.87 16.01 C 109.05 23.51 108.89 31.01 108.93 38.51 C 99.08 38.53 89.22 38.44 79.36 38.56 C 83.81 33.29 84.17 24.89 79.24 19.82 C 74.17 13.94 64.35 13.97 59.12 19.65 C 59.26 13.10 59.15 6.55 59.18 0.00 Z" />

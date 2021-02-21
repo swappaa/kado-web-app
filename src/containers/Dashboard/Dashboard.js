@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import { Pie } from 'react-chartjs-2';
 import { Link } from 'react-router-dom';
 
@@ -6,6 +7,11 @@ import '../../App.css';
 import './Dashboard.css'
 
 class Dashboard extends Component {
+    componentDidMount() {
+        const { auth } = this.props
+    }
+
+
     render() {
 
         const state = {
@@ -216,4 +222,4 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+export default withAuthorization(Dashboard);

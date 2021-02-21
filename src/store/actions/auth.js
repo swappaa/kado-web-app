@@ -148,6 +148,9 @@ export const setAuthRedirectPath = (path) => {
 export const authCheckState = () => {
     return dispatch => {
         const token = localStorage.getItem('token');
+        const path = localStorage.getItem('path');
+        dispatch(setAuthRedirectPath(path));
+
         if (!token) {
             dispatch(logout());
         } else {

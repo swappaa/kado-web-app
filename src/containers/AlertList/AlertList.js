@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import '../../App.css';
 import './AlertList.css';
@@ -8,8 +10,20 @@ import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
 import prof3 from '../../assets/images/highlighted-kados.png';
 
 class alertList extends Component {
+
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
+
+        let authRedirect = null;
+        if (this.props.isAuthenticated) {
+            authRedirect = <Redirect to={this.props.authRedirectPath} />
+        }
+
         return (
+
             <div className="alerts-list">
                 <section className="pb-5">
                     <div className="container-fluid px-5">
@@ -140,5 +154,7 @@ class alertList extends Component {
         )
     }
 }
+
+
 
 export default alertList;

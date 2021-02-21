@@ -8,6 +8,8 @@ import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
 
 class kadosList extends Component {
 
+
+
     render() {
         return (
             <div className="kados-list">

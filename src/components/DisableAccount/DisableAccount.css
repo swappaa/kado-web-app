@@ -1,0 +1,16 @@
+ #disable-account-modal .form-check-input:checked {
+     background-color: #ee2a59;
+     border-color: #ee2a59;
+ }
+
+ @media screen and (max-width: 991px) {
+     #disable-account-modal .fs-2 {
+         font-size: 2.2vw !important;
+     }
+ }
+
+ @media screen and (max-width: 440px) {
+     #disable-account-modal .fs-2 {
+         font-size: 3.1vw !important;
+     }
+ }

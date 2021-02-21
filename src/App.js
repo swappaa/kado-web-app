@@ -6,6 +6,7 @@ import asyncComponent from './hoc/asyncComponent/asyncComponent';
 import Aux from './hoc/Auxi/Auxi';
 import Layout from './hoc/Layout/Layout';
 import Home from './containers/Home/Home';
+import Category from './containers/Category/Category';
 import signupTalent from './containers/SignupTalent/SignupTalent';
 import talentProfile from './containers/TalentProfile/TalentProfile';
 import alertList from './containers/AlertList/AlertList';
@@ -19,6 +20,7 @@ import FanSettings from './containers/Settings/Settings';
 import Payment from './containers/Payment/Payment';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Logout from './containers/Auth/Logout/Logout';
+import requireAuth from './hoc/requiresAuth';
 import * as actions from './store/actions/index';
 
 import './App.css';
@@ -26,6 +28,10 @@ import './App.css';
 const asyncAuth = asyncComponent(() => {
   return import('./containers/Auth/Auth');
 });
+
+// const asyncDashboard = requireAuth(() => {
+//   return import('./containers/Dashboard/Dashboard');
+// });
 
 
 class App extends Component {
@@ -35,6 +41,11 @@ class App extends Component {
 
   render() {
 
+    let authRedirect = null;
+    if (this.props.isAuthenticated) {
+      authRedirect = <Redirect to={this.props.authRedirectPath} />
+    }
+
     const Page404 = ({ location }) => (
       <div>
         <h2>No match found for <code>{location.pathname}</code></h2>
@@ -43,7 +54,7 @@ class App extends Component {
 
     let routes = (
       <Switch>
-        <Route path="/dashboard" component={Dashboard} />
+        <Route path="/category" component={Category} />
         <Route path="/payment" component={Payment} />
         <Route path="/talent-profile" component={talentProfile} />
         <Route path="/signup-talent" component={signupTalent} />
@@ -58,6 +69,7 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
+          <Route path="/category" component={Category} />
           <Route path="/talent-settings" component={FanSettings} />
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/talent-profile" component={talentProfile} />
@@ -78,6 +90,7 @@ class App extends Component {
 
     return (
       <Aux>
+        { authRedirect}
         <Layout>
           {routes}
         </Layout>
@@ -88,7 +101,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    authRedirectPath: state.auth.authRedirectPath
   }
 }
 const mapDispatchToProps = dispatch => {

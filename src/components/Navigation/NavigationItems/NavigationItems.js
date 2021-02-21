@@ -9,6 +9,11 @@ const navigationItems = (props) => (
 
         {props.isAuthenticated ?
             <Aux>
+                <li>
+                    <button data-bs-toggle="modal" data-bs-target="#invite-friends-modal" className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4  me-0 me-lg-5 px-4 py-2 ${classes['invite-friends-btn']}`}>
+                        Invite Friends - Earn <span className="ms-2">$5</span>
+                    </button>
+                </li>
                 <NavigationItem exact link="/alert-list" classes={`d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center position-relative ${classes['alerts-wrapper']}`}>
                     <svg width="50pt" height="56pt" viewBox="0 0 50 56" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -55,7 +60,7 @@ const navigationItems = (props) => (
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Browse</span>
                 </NavigationItem>
                 <NavigationItem exact link="/dashboard" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="54pt" height="52pt" viewBox="0 0 29.27 20.52"><title>dashboard</title><g id="Layer_2" data-name="Layer 2"><g id="Talent_Dashboard-v1" data-name="Talent Dashboard-v1"><path class="cls-1" d="M19.32.76A14.61,14.61,0,0,0,0,14.66a22.29,22.29,0,0,0,.59,5.27.63.63,0,0,0,.58.59H28c.29,0,.58-.3.73-.59a34.36,34.36,0,0,0,.58-5.27A14.5,14.5,0,0,0,19.32.76ZM14.64,3A1.38,1.38,0,0,1,16.1,4.42a1.38,1.38,0,0,1-1.46,1.46,1.38,1.38,0,0,1-1.47-1.46A1.38,1.38,0,0,1,14.64,3ZM4.39,16.13a1.38,1.38,0,0,1-1.46-1.47A1.38,1.38,0,0,1,4.39,13.2a1.38,1.38,0,0,1,1.46,1.46A1.38,1.38,0,0,1,4.39,16.13Zm4.1-7.61a1.43,1.43,0,0,1-2,0,1.77,1.77,0,0,1-.15-2.2,1.41,1.41,0,0,1,2.05,0A1.77,1.77,0,0,1,8.49,8.52Zm6.15,9.07c-1.61,0-3.08-1.46-2.64-2.93s2.64-5.85,2.64-5.85,2.19,4.39,2.63,5.85S16.25,17.59,14.64,17.59ZM23,8.52a1.45,1.45,0,1,1-2.05-2,1.41,1.41,0,0,1,2.05,0A1.75,1.75,0,0,1,23,8.52Zm1.9,7.61a1.38,1.38,0,0,1-1.46-1.47,1.47,1.47,0,0,1,2.93,0A1.39,1.39,0,0,1,24.88,16.13Z" /></g></g></svg>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="54pt" height="52pt" viewBox="0 0 29.27 20.52"><title>dashboard</title><g id="Layer_2" data-name="Layer 2"><g id="Talent_Dashboard-v1" data-name="Talent Dashboard-v1"><path className="cls-1" d="M19.32.76A14.61,14.61,0,0,0,0,14.66a22.29,22.29,0,0,0,.59,5.27.63.63,0,0,0,.58.59H28c.29,0,.58-.3.73-.59a34.36,34.36,0,0,0,.58-5.27A14.5,14.5,0,0,0,19.32.76ZM14.64,3A1.38,1.38,0,0,1,16.1,4.42a1.38,1.38,0,0,1-1.46,1.46,1.38,1.38,0,0,1-1.47-1.46A1.38,1.38,0,0,1,14.64,3ZM4.39,16.13a1.38,1.38,0,0,1-1.46-1.47A1.38,1.38,0,0,1,4.39,13.2a1.38,1.38,0,0,1,1.46,1.46A1.38,1.38,0,0,1,4.39,16.13Zm4.1-7.61a1.43,1.43,0,0,1-2,0,1.77,1.77,0,0,1-.15-2.2,1.41,1.41,0,0,1,2.05,0A1.77,1.77,0,0,1,8.49,8.52Zm6.15,9.07c-1.61,0-3.08-1.46-2.64-2.93s2.64-5.85,2.64-5.85,2.19,4.39,2.63,5.85S16.25,17.59,14.64,17.59ZM23,8.52a1.45,1.45,0,1,1-2.05-2,1.41,1.41,0,0,1,2.05,0A1.75,1.75,0,0,1,23,8.52Zm1.9,7.61a1.38,1.38,0,0,1-1.46-1.47,1.47,1.47,0,0,1,2.93,0A1.39,1.39,0,0,1,24.88,16.13Z" /></g></g></svg>
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Dashboard</span>
                 </NavigationItem>
                 <NavigationItem exact link="/favorites" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
@@ -84,15 +89,15 @@ const navigationItems = (props) => (
         {!props.isAuthenticated ?
             <Aux>
                 <li>
-                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-reg fs-3 sign-up-btn me-0 me-lg-4 text-uppercase">
+                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase">
                         <span> Sign up</span>
                     </button>
                 </li>
                 <li>
                     <button onClick={props.AuthSignInMode} data-bs-toggle="modal" data-bs-target="#signin-modal"
                         className="btn btn-sign bg-transparent d-flex align-items-center text-decoration-none text-uppercase font-ave-reg">
-                        <span className="me-3 fs-5 nav-item">Sign in</span>
-                        <svg width="59px" height="62px" viewBox="0 0 59 62" version="1.1" xmlns="http://www.w3.org/2000/svg">
+                        <span className="me-3 fs-6 nav-item">Sign in</span>
+                        <svg width="46px" height="48px" viewBox="0 0 59 62" version="1.1" xmlns="http://www.w3.org/2000/svg">
                             <g id="#414142ff">
                                 <path fill="#414142" opacity="1.00" d=" M 25.62 0.00 L 30.81 0.00 C 45.52 1.16 58.00 13.84 59.00 28.55 L 59.00 33.35 C 58.07 48.04 45.67 60.70 31.01 62.00 L 25.73 62.00 C 14.71 61.11 4.52 54.01 0.00 43.91 L 0.00 41.66 C 1.29 40.75 3.00 39.28 4.59 40.49 C 7.09 43.32 8.48 47.02 11.47 49.43 C 18.60 56.11 29.81 57.82 38.61 53.56 C 48.75 48.97 54.79 37.08 52.46 26.17 C 50.74 17.19 43.71 9.46 34.86 7.05 C 24.77 4.01 12.87 8.39 7.46 17.49 C 6.59 18.91 5.66 20.28 4.57 21.55 C 2.96 22.70 1.30 21.26 0.00 20.36 L 0.00 18.07 C 4.55 8.04 14.64 0.94 25.62 0.00 Z" />
                                 <path fill="#414142" opacity="1.00" d=" M 29.24 22.77 C 27.69 20.34 30.82 17.21 33.27 18.63 C 36.04 20.84 38.32 23.59 40.89 26.02 C 43.49 28.13 44.40 32.32 41.88 34.86 C 39.08 37.91 36.24 40.97 33.01 43.57 C 30.50 44.58 27.81 41.56 29.24 39.24 C 30.68 37.34 32.43 35.71 34.16 34.08 C 28.11 33.90 22.04 34.36 16.01 33.87 C 13.45 33.01 13.43 29.02 15.98 28.14 C 22.01 27.63 28.07 28.12 34.11 27.90 C 32.38 26.30 30.70 24.63 29.24 22.77 Z" />
@@ -101,18 +106,7 @@ const navigationItems = (props) => (
                     </button>
                 </li>
             </Aux>
-            : <li>
-                <button data-bs-toggle="modal" data-bs-target="#signin-modal"
-                    className="d-none btn btn-sign bg-transparent d-flex align-items-center text-decoration-none text-uppercase font-ave-reg">
-                    <span className="me-3 fs-5 nav-item">Sign out</span>
-                    <svg width="59px" height="62px" viewBox="0 0 59 62" version="1.1" xmlns="http://www.w3.org/2000/svg">
-                        <g id="#414142ff">
-                            <path fill="#414142" opacity="1.00" d=" M 25.62 0.00 L 30.81 0.00 C 45.52 1.16 58.00 13.84 59.00 28.55 L 59.00 33.35 C 58.07 48.04 45.67 60.70 31.01 62.00 L 25.73 62.00 C 14.71 61.11 4.52 54.01 0.00 43.91 L 0.00 41.66 C 1.29 40.75 3.00 39.28 4.59 40.49 C 7.09 43.32 8.48 47.02 11.47 49.43 C 18.60 56.11 29.81 57.82 38.61 53.56 C 48.75 48.97 54.79 37.08 52.46 26.17 C 50.74 17.19 43.71 9.46 34.86 7.05 C 24.77 4.01 12.87 8.39 7.46 17.49 C 6.59 18.91 5.66 20.28 4.57 21.55 C 2.96 22.70 1.30 21.26 0.00 20.36 L 0.00 18.07 C 4.55 8.04 14.64 0.94 25.62 0.00 Z" />
-                            <path fill="#414142" opacity="1.00" d=" M 29.24 22.77 C 27.69 20.34 30.82 17.21 33.27 18.63 C 36.04 20.84 38.32 23.59 40.89 26.02 C 43.49 28.13 44.40 32.32 41.88 34.86 C 39.08 37.91 36.24 40.97 33.01 43.57 C 30.50 44.58 27.81 41.56 29.24 39.24 C 30.68 37.34 32.43 35.71 34.16 34.08 C 28.11 33.90 22.04 34.36 16.01 33.87 C 13.45 33.01 13.43 29.02 15.98 28.14 C 22.01 27.63 28.07 28.12 34.11 27.90 C 32.38 26.30 30.70 24.63 29.24 22.77 Z" />
-                        </g>
-                    </svg>
-                </button>
-            </li>
+            : null
         }
     </ul>
 );

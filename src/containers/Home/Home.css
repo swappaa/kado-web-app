@@ -10,7 +10,7 @@
     content: '';
     position: absolute;
     height: 33px;
-    width: 3px;
+    width: 1px;
     background-color: #abadb0;
     left: 3px;
 }
@@ -19,10 +19,11 @@
     content: '';
     position: absolute;
     width: 4px;
-    height: 49vh;
+    height: 100vh;
     background-color: #fff;
-    top: -97px;
     right: 0;
+    transform: translate(50%, -50%);
+    top: 50%;
 }
 
 .talent-home .featured-wrapper:hover img {
@@ -41,10 +42,9 @@
 }
 
 .talent-home .featured-wrapper .image-wrapper {
-    border-radius: 56px;
+    border-radius: 25px;
     border: 2px solid transparent;
     overflow: hidden;
-    margin: 0 15px;
 }
 
 .talent-home .featured-wrapper .image-wrapper img {
@@ -70,7 +70,7 @@
 }
 
 .talent-home .element-featured-wrapper {
-    max-width: 360px;
+    max-width: 245px;
     width: 100%;
 }
 
@@ -81,6 +81,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+/* the slides */
+
+.slick-slide {
+    margin: 0 15px;
 }
 
 /* .featured-wrapper .image-wrapper img {
@@ -147,9 +153,6 @@
 }
 
 @media screen and (max-width: 1200px) {
-    .banner-wrapper h2 {
-        font-size: 36px;
-    }
     .how-it-works .col-step-work>div {
         font-size: 20px;
     }
@@ -168,6 +171,9 @@
     .left-wrapper p {
         font-size: 5.5vw;
     }
+    .banner-wrapper h2 {
+        font-size: 3vw;
+    }
 }
 
 @media screen and (max-width: 767px) {
@@ -175,7 +181,7 @@
         font-size: 30px;
     }
     .banner-wrapper h2 {
-        font-size: 26px;
+        font-size: 4vw;
     }
     .talent-home .how-it-works .col-step-work span {
         max-width: 56px;
@@ -241,7 +247,7 @@
 
 @media screen and (max-width: 440px) {
     .banner-wrapper h2 {
-        font-size: 24px;
+        font-size: 3.9vw;
     }
     .talent-home .filter-category ul li a {
         padding: 32px 42px;

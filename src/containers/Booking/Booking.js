@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMessage';
+import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
+
 
 import '../../App.css';
 import './Booking.css';
@@ -380,13 +382,14 @@ class Booking extends Component {
                                                     <div className="col-lg-8">
                                                         <div className="card-body px-0 w-75 mw-100">
                                                             <div className="mb-3">
-                                                                <div className="d-flex align-items-center mb-2">
+                                                                <div className="d-flex align-items-center mb-2 position-relative">
                                                                     <img className="svg-icon-50 img-fluid me-3"
                                                                         src={tips} alt="tips" />
                                                                     <label className="form-label font-ave-book fs-4 m-0">
 
                                                                         Tips for great
                                                         kâdos!</label>
+                                                                    <button className="btn stretched-link" data-bs-toggle="modal" data-bs-target="#tips-modal" ></button>
                                                                 </div>
                                                                 <textarea className="form-control border-dark rounded-0"
                                                                     rows="6"></textarea>
@@ -520,6 +523,7 @@ class Booking extends Component {
                     </section>
                 </div>
                 <SuccessfulBooking />
+                <Tips />
             </Aux>
         )
     }
