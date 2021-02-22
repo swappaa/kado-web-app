@@ -112,12 +112,12 @@ export const authFB = (AccessToken, ExpiresIn, userId) => {
     };
 };
 
-export const FBSignUp = (name, username, email, profile_picture,) => {
+export const FBSignUp = (name, username, email, profile_picture) => {
     return dispatch => {
         dispatch(authStart());
 
         const authData = {
-            account_status: "",
+            account_status: '',
             name: name,
             username: username,
             email: email,
@@ -128,13 +128,20 @@ export const FBSignUp = (name, username, email, profile_picture,) => {
 
         let url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/social';
 
-        axios.post(url, authData)
+        const options = {
+            method: 'POST',
+            headers: { 'content-type': 'multipart/form-data' },
+            data: qs.stringify(authData),
+            url,
+        };
+
+        axios(options)
             .then(response => {
                 console.log(response);
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
-            });
+            });;
     };
 };
 

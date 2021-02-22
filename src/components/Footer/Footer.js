@@ -41,10 +41,10 @@ const footer = () => (
                 <div className="col-lg-6 align-self-end order-2 order-lg-1 text-center text-lg-start mt-5 mt-lg-0">
                     <div className="footer-link-wrapper mw-100 mb-5 mb-lg-0">
                         <ul className="text-uppercase fs-3 d-flex flex-wrap justify-content-center justify-content-lg-start">
-                            <li><Link className="text-white" to="/">About us</Link></li>
+                            <li><Link className="text-white" to="/about">About us</Link></li>
                             <li><Link className="text-white" to="/faq">faq</Link></li>
                             <li><Link className="text-white" to="/press">News</Link></li>
-                            <li><Link className="text-white" to="/help">support</Link></li>
+                            <li><Link className="text-white" to="/support">support</Link></li>
                             <li><Link className="text-white" to="/careers">Blog</Link></li>
                         </ul>
                     </div>

@@ -141,7 +141,7 @@ class Auth extends Component {
                                                     <FacebookLogin
                                                         appId="3024473317658669"
                                                         autoLoad={false}
-                                                        fields="name,email,picture,username"
+                                                        fields="name,email,picture"
                                                         scope="public_profile,user_friends,user_birthday"
                                                         callback={this.responseFacebook}
                                                         icon="fa-facebook me-3"

@@ -21,6 +21,9 @@ import Payment from './containers/Payment/Payment';
 import Dashboard from './containers/Dashboard/Dashboard';
 import Logout from './containers/Auth/Logout/Logout';
 import requireAuth from './hoc/requiresAuth';
+import Support from './containers/Support/Support';
+import About from './containers/About/About';
+import VerificationCode from './containers/VerificationCode/VerificationCode';
 import * as actions from './store/actions/index';
 
 import './App.css';
@@ -54,6 +57,9 @@ class App extends Component {
 
     let routes = (
       <Switch>
+        <Route path="/verification-code" component={VerificationCode} />
+        <Route path="/about" component={About} />
+        <Route path="/support" component={Support} />
         <Route path="/category" component={Category} />
         <Route path="/payment" component={Payment} />
         <Route path="/talent-profile" component={talentProfile} />
@@ -69,6 +75,8 @@ class App extends Component {
     if (this.props.isAuthenticated) {
       routes = (
         <Switch>
+          <Route path="/about" component={About} />
+          <Route path="/support" component={Support} />
           <Route path="/category" component={Category} />
           <Route path="/talent-settings" component={FanSettings} />
           <Route path="/dashboard" component={Dashboard} />
