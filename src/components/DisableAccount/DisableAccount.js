@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { RadioGroup, RadioButton } from 'react-radio-buttons';
+import React from 'react';
 
 import './DisableAccount.css';
 

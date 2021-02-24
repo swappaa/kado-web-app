@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
 import $ from 'jquery';
+import { store } from 'react-notifications-component';
 
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
 import DatePicker from '../../components/UI/DatePicker/DatePicker';
@@ -24,6 +25,25 @@ class Auth extends Component {
     componentDidMount() {
         if (this.props.authRedirectPath !== '/') {
             this.props.onSetAuthRedirectPath();
+        }
+    }
+
+    componentDidUpdate() {
+        if (this.props.error !== null) {
+            console.log(this.props.error);
+            store.addNotification({
+                message: 'Error! ' + this.props.error,
+                type: "danger",
+                insert: "top",
+                container: "top-right",
+                animationIn: ["animate__animated", "animate__fadeIn"],
+                animationOut: ["animate__animated", "animate__fadeOut"],
+                dismiss: {
+                    duration: 5000,
+                    onScreen: false,
+                    showIcon: true
+                }
+            });
         }
     }
 
@@ -65,17 +85,29 @@ class Auth extends Component {
 
     render() {
 
-        let errorMessage = null;
-
         if (this.props.error) {
-            errorMessage = (
-                <div>
-                    <div className="alert alert-danger alert-dismissible fade show mb-4" role="alert">
-                        <strong>{this.props.error}</strong>
-                        <button type="button" className="btn-close position-absolute" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                </div>
-            );
+            console.log(this.props.error);
+            // store.addNotification({
+            //     message: 'Error! ' + this.props.error,
+            //     type: "danger",
+            //     insert: "top",
+            //     container: "top-right",
+            //     animationIn: ["animate__animated", "animate__fadeIn"],
+            //     animationOut: ["animate__animated", "animate__fadeOut"],
+            //     dismiss: {
+            //         duration: 5000,
+            //         onScreen: false,
+            //         showIcon: true
+            //     }
+            // });
+            // errorMessage = (
+            //     <div>
+            //         <div className="alert alert-danger alert-dismissible fade show mb-4" role="alert">
+            //             <strong>{this.props.error}</strong>
+            //             <button type="button" className="btn-close position-absolute" data-bs-dismiss="alert" aria-label="Close"></button>
+            //         </div>
+            //     </div>
+            // );
         }
 
         let btnSubmit = (this.props.switchAuthMode ?
@@ -183,7 +215,6 @@ class Auth extends Component {
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body w-75 mw-100 mx-auto px-0">
                                                 {authRedirect}
-                                                {errorMessage}
                                                 <form onSubmit={this.submitSignUpHandler}>
                                                     <div className="input-group mb-4">
                                                         <span
@@ -382,7 +413,6 @@ class Auth extends Component {
                                             data-bs-parent="#accordionExample">
                                             <div className="accordion-body w-75 mw-100 mx-auto px-0">
                                                 {authRedirect}
-                                                {errorMessage}
                                                 <form onSubmit={this.submitLoginHandler}>
                                                     <div className="input-group mb-5">
                                                         <span

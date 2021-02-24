@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
 import Aux from './hoc/Auxi/Auxi';
@@ -102,6 +104,7 @@ class App extends Component {
         <Layout>
           {routes}
         </Layout>
+        <ReactNotification />
       </Aux>
     )
   }

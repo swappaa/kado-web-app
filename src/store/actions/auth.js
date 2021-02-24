@@ -1,6 +1,4 @@
-import qs from 'qs';
 import axios from 'axios';
-
 import * as actionTypes from './actionsType';
 
 export const authStart = () => {
@@ -116,34 +114,31 @@ export const FBSignUp = (name, username, email, profile_picture) => {
     return dispatch => {
         dispatch(authStart());
 
-        const authData = {
-            account_status: '',
-            name: name,
-            username: username,
-            email: email,
-            profile_picture: profile_picture
-        };
+        let formData = new FormData();
 
-        console.log(authData);
+        formData.append("account_status", '');
+        formData.append("name", name);
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("profile_picture", profile_picture);
 
         let url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/social';
 
-        const options = {
-            method: 'POST',
-            headers: { 'content-type': 'multipart/form-data' },
-            data: qs.stringify(authData),
-            url,
-        };
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
 
-        axios(options)
+        axios.post(url, formData, config)
             .then(response => {
                 console.log(response);
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
-            });;
+            });
     };
 };
+
+
 
 export const setAuthRedirectPath = (path) => {
     return {
