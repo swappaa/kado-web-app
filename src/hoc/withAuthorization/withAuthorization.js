@@ -7,11 +7,8 @@ const withAuthorization = Component => {
 
         render() {
             const { auth } = this.props
-            // const { isAuthUser, type } = props;
-            // if (type === "guest" && isAuthUser) return <Redirect to="/home" />;
-            // else if (type === "private" && !isAuthUser) return <Redirect to="/" />;
-            console.log(auth.accountType);
-            return auth.token ? <Component {...this.props} /> : null;
+            if (auth.accountType === "talent" && auth.token) return <Component {...this.props} />;
+            else if (auth.accountType === "fan" || !auth.token) return <Redirect to="/" />;
         }
     }
 

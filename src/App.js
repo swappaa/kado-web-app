@@ -30,12 +30,6 @@ const App = props => {
   );
 };
 
-const mapStateToProps = state => {
-  return {
-    isAuthenticated: state.auth.token !== null
-  };
-};
-
 const mapDispatchToProps = dispatch => {
   return {
     onTryAutoSignup: () => dispatch(actions.authCheckState())
@@ -44,7 +38,7 @@ const mapDispatchToProps = dispatch => {
 
 export default withRouter(
   connect(
-    mapStateToProps,
+    null,
     mapDispatchToProps
   )(App)
 );

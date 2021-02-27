@@ -1,5 +1,9 @@
-import React, { Component } from 'react';
+import React, { useEffect  } from 'react';
+import { connect } from 'react-redux';
 
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import axios from '../../axios-kado';
+import * as actions from '../../store/actions/index';
 import '../../App.css';
 import './SignupTalent.css';
 import bannerSurpriseMessage from '../../assets/images/banner-surprise-message.png';
@@ -7,19 +11,22 @@ import earn from '../../assets/images/earn.png';
 import uplift from '../../assets/images/uplift.png';
 import enjoy from '../../assets/images/enjoy.png';
 
+const SignupTalent = props => {
 
-class signupTalent extends Component {
-
-    componentDidMount() {
+    useEffect(() => {    
         window.scroll({
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-    }
+    });
 
-    render() {
-        return (
-            <div className="talent-signup">
+  const submitSignUpHandler = event => {
+    event.preventDefault();
+    this.props.onSignUp(event.target.name.value, event.target.username.value, event.target.email.value, event.target.password.value, event.target.date_picker.value, this.props.switchAuthMode);
+  };
+
+  return (
+ <div className="talent-signup">
                 <section className="pt-5">
                     <div className="container-fluid px-5">
                         <div className="banner-wrapper p-3 p-xl-3 text-white theme-pink-bg-color">
@@ -167,7 +174,7 @@ class signupTalent extends Component {
                                 process.
                     </p>
                             </div>
-                            <form className="px-3 p-xl-5 w-75 mw-100 mx-auto">
+                            <form className="px-3 p-xl-5 w-75 mw-100 mx-auto"  onSubmit={submitSignUpHandler}>
                                 <div className="row-cols-1 row-cols-md-2 row gx-5 gy-4 w-75 mw-100 mx-auto mb-5 custom-wrapper-contact">
                                     <div className="col">
                                         <input type="text"
@@ -206,8 +213,17 @@ class signupTalent extends Component {
                     </div>
                 </section>
             </div>
-        )
-    }
-}
+  );
+};
 
-export default signupTalent;
+
+const mapDispatchToProps = dispatch => {
+  return {
+        onSignUp: (name, username, email, profile_picture) => dispatch(actions.FBSignUp(name, username, email, profile_picture)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(withErrorHandler(SignupTalent, axios));

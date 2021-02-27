@@ -1,11 +1,39 @@
-import React from 'react';
+import React, { useEffect } from 'react'
+import { connect } from 'react-redux';
+
 import NavigationItem from './NavigationItem/NavigationItem';
 import Aux from '../../../hoc/Auxi/Auxi';
-
 import classes from './NavigationItems.module.css';
 
-const navigationItems = (props) => (
-    <ul className="d-flex flex-column flex-lg-row align-items-center">
+const navigationItems = props => {
+
+    let routes = (
+        <NavigationItem exact link="/browse" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
+            <svg width="45pt" height="53pt" viewBox="0 0 45 53" version="1.1"
+                xmlns="http://www.w3.org/2000/svg">
+                <g id="#ee2a59ff">
+                    <path opacity="1.00"
+                        d=" M 0.73 20.63 C 7.99 13.89 15.35 7.26 22.66 0.58 C 29.90 7.14 37.11 13.73 44.32 20.33 C 44.91 22.77 44.39 25.39 44.56 27.89 C 37.30 21.22 29.98 14.63 22.74 7.94 C 15.32 14.49 8.12 21.27 0.76 27.87 C 0.75 25.46 0.75 23.04 0.73 20.63 Z" />
+                    <path opacity="1.00"
+                        d=" M 0.75 32.08 C 8.03 25.39 15.35 18.74 22.67 12.08 C 29.98 18.72 37.27 25.38 44.56 32.04 C 44.49 39.03 44.73 46.02 44.42 53.00 L 2.30 53.00 L 0.81 52.27 C 0.66 45.54 0.80 38.81 0.75 32.08 Z" />
+                </g>
+            </svg>
+            <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Browse</span>
+        </NavigationItem>
+    );
+
+    if (props.isAuthenticated && props.accountType == 'talent') {
+        routes = (
+        <NavigationItem exact link="/dashboard" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="54pt" height="52pt" viewBox="0 0 29.27 20.52"><title>dashboard</title><g id="Layer_2" data-name="Layer 2"><g id="Talent_Dashboard-v1" data-name="Talent Dashboard-v1"><path className="cls-1" d="M19.32.76A14.61,14.61,0,0,0,0,14.66a22.29,22.29,0,0,0,.59,5.27.63.63,0,0,0,.58.59H28c.29,0,.58-.3.73-.59a34.36,34.36,0,0,0,.58-5.27A14.5,14.5,0,0,0,19.32.76ZM14.64,3A1.38,1.38,0,0,1,16.1,4.42a1.38,1.38,0,0,1-1.46,1.46,1.38,1.38,0,0,1-1.47-1.46A1.38,1.38,0,0,1,14.64,3ZM4.39,16.13a1.38,1.38,0,0,1-1.46-1.47A1.38,1.38,0,0,1,4.39,13.2a1.38,1.38,0,0,1,1.46,1.46A1.38,1.38,0,0,1,4.39,16.13Zm4.1-7.61a1.43,1.43,0,0,1-2,0,1.77,1.77,0,0,1-.15-2.2,1.41,1.41,0,0,1,2.05,0A1.77,1.77,0,0,1,8.49,8.52Zm6.15,9.07c-1.61,0-3.08-1.46-2.64-2.93s2.64-5.85,2.64-5.85,2.19,4.39,2.63,5.85S16.25,17.59,14.64,17.59ZM23,8.52a1.45,1.45,0,1,1-2.05-2,1.41,1.41,0,0,1,2.05,0A1.75,1.75,0,0,1,23,8.52Zm1.9,7.61a1.38,1.38,0,0,1-1.46-1.47,1.47,1.47,0,0,1,2.93,0A1.39,1.39,0,0,1,24.88,16.13Z" /></g></g></svg>
+            <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Dashboard</span>
+        </NavigationItem>
+        );
+    }
+
+
+  return (
+      <ul className="d-flex flex-column flex-lg-row align-items-center">
 
         {props.isAuthenticated ?
             <Aux>
@@ -47,22 +75,9 @@ const navigationItems = (props) => (
                     </svg>
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>kâdos</span>
                 </NavigationItem>
-                <NavigationItem exact link="/browse" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
-                    <svg width="45pt" height="53pt" viewBox="0 0 45 53" version="1.1"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <g id="#ee2a59ff">
-                            <path opacity="1.00"
-                                d=" M 0.73 20.63 C 7.99 13.89 15.35 7.26 22.66 0.58 C 29.90 7.14 37.11 13.73 44.32 20.33 C 44.91 22.77 44.39 25.39 44.56 27.89 C 37.30 21.22 29.98 14.63 22.74 7.94 C 15.32 14.49 8.12 21.27 0.76 27.87 C 0.75 25.46 0.75 23.04 0.73 20.63 Z" />
-                            <path opacity="1.00"
-                                d=" M 0.75 32.08 C 8.03 25.39 15.35 18.74 22.67 12.08 C 29.98 18.72 37.27 25.38 44.56 32.04 C 44.49 39.03 44.73 46.02 44.42 53.00 L 2.30 53.00 L 0.81 52.27 C 0.66 45.54 0.80 38.81 0.75 32.08 Z" />
-                        </g>
-                    </svg>
-                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Browse</span>
-                </NavigationItem>
-                <NavigationItem exact link="/dashboard" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="54pt" height="52pt" viewBox="0 0 29.27 20.52"><title>dashboard</title><g id="Layer_2" data-name="Layer 2"><g id="Talent_Dashboard-v1" data-name="Talent Dashboard-v1"><path className="cls-1" d="M19.32.76A14.61,14.61,0,0,0,0,14.66a22.29,22.29,0,0,0,.59,5.27.63.63,0,0,0,.58.59H28c.29,0,.58-.3.73-.59a34.36,34.36,0,0,0,.58-5.27A14.5,14.5,0,0,0,19.32.76ZM14.64,3A1.38,1.38,0,0,1,16.1,4.42a1.38,1.38,0,0,1-1.46,1.46,1.38,1.38,0,0,1-1.47-1.46A1.38,1.38,0,0,1,14.64,3ZM4.39,16.13a1.38,1.38,0,0,1-1.46-1.47A1.38,1.38,0,0,1,4.39,13.2a1.38,1.38,0,0,1,1.46,1.46A1.38,1.38,0,0,1,4.39,16.13Zm4.1-7.61a1.43,1.43,0,0,1-2,0,1.77,1.77,0,0,1-.15-2.2,1.41,1.41,0,0,1,2.05,0A1.77,1.77,0,0,1,8.49,8.52Zm6.15,9.07c-1.61,0-3.08-1.46-2.64-2.93s2.64-5.85,2.64-5.85,2.19,4.39,2.63,5.85S16.25,17.59,14.64,17.59ZM23,8.52a1.45,1.45,0,1,1-2.05-2,1.41,1.41,0,0,1,2.05,0A1.75,1.75,0,0,1,23,8.52Zm1.9,7.61a1.38,1.38,0,0,1-1.46-1.47,1.47,1.47,0,0,1,2.93,0A1.39,1.39,0,0,1,24.88,16.13Z" /></g></g></svg>
-                    <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Dashboard</span>
-                </NavigationItem>
+              
+                 {routes}
+
                 <NavigationItem exact link="/favorites" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                     <svg width="56pt" height="49pt" viewBox="0 0 56 49" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
@@ -109,6 +124,18 @@ const navigationItems = (props) => (
             : null
         }
     </ul>
-);
+  )
+}
 
-export default navigationItems;
+
+const mapStateToProps = state => {
+  return {
+    isAuthenticated: state.auth.token !== null,
+    accountType: state.auth.accountType
+  };
+};
+
+export default 
+  connect(
+    mapStateToProps
+  )(navigationItems);
