@@ -159,9 +159,7 @@ export const authCheckState = () => {
         const token = localStorage.getItem('token');
         const path = localStorage.getItem('path');
         dispatch(setAuthRedirectPath(path));
-        console.log(path);
         if (!token) {
-            console.log('logout');
             dispatch(logout());
         } else {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
@@ -170,7 +168,7 @@ export const authCheckState = () => {
             } else {
                 const userId = localStorage.getItem('userId');
                 const accountType = localStorage.getItem('accountType');
-                dispatch(authSuccess(token, userId));
+                dispatch(authSuccess(token, userId, accountType));
                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
             }
         }

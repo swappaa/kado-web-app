@@ -85,31 +85,6 @@ class Auth extends Component {
 
     render() {
 
-        if (this.props.error) {
-            console.log(this.props.error);
-            // store.addNotification({
-            //     message: 'Error! ' + this.props.error,
-            //     type: "danger",
-            //     insert: "top",
-            //     container: "top-right",
-            //     animationIn: ["animate__animated", "animate__fadeIn"],
-            //     animationOut: ["animate__animated", "animate__fadeOut"],
-            //     dismiss: {
-            //         duration: 5000,
-            //         onScreen: false,
-            //         showIcon: true
-            //     }
-            // });
-            // errorMessage = (
-            //     <div>
-            //         <div className="alert alert-danger alert-dismissible fade show mb-4" role="alert">
-            //             <strong>{this.props.error}</strong>
-            //             <button type="button" className="btn-close position-absolute" data-bs-dismiss="alert" aria-label="Close"></button>
-            //         </div>
-            //     </div>
-            // );
-        }
-
         let btnSubmit = (this.props.switchAuthMode ?
             <button
                 className="my-3 btn br-radius-40 font-ave-heavy fs-3 text-uppercase theme-pink-bg-color text-white px-5 py-3 w-75 mw-100 btn-hvr"
