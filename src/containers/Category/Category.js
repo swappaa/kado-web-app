@@ -9,6 +9,10 @@ import prof3 from '../../assets/images/highlighted-kados.png';
 
 class Category extends Component {
 
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
         return (
             <div className="category">

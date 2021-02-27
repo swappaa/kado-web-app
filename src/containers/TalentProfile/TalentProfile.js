@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-// import { animateScroll as scroll } from 'react-scroll';
 
 import '../../App.css';
 import './TalentProfile.css';
@@ -17,6 +16,7 @@ class talentProfile extends Component {
         window.scroll({
             top: 0
         });
+        localStorage.setItem('path', window.location.pathname);
     }
 
     render() {

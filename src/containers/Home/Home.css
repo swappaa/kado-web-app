@@ -2,10 +2,6 @@
     object-fit: cover;
 }
 
-.sign-up-btn {
-    padding: 10px 35px;
-}
-
 .search-wrapper::before {
     content: '';
     position: absolute;
@@ -24,6 +20,30 @@
     right: 0;
     transform: translate(50%, -50%);
     top: 50%;
+}
+
+.talent-home .featured-wrapper::before {
+    content: '';
+    position: absolute;
+    background: url(../../assets/images/svg/not-favorite.svg) center/contain no-repeat;
+    height: 46px;
+    width: 46px;
+    right: -9px;
+    top: -10px;
+    z-index: 9;
+}
+
+.talent-home .fav-btn-wrapper {
+    z-index: 99;
+}
+
+.talent-home .fav-btn-wrapper button {
+    height: 46px;
+    width: 46px;
+    right: -9px;
+    top: 7px;
+    padding: 0;
+    position: absolute;
 }
 
 .talent-home .featured-wrapper:hover img {

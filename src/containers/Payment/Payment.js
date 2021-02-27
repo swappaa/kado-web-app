@@ -7,6 +7,10 @@ import './Payment.css';
 
 class Payment extends Component {
 
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
         return (
             <div className="payments">

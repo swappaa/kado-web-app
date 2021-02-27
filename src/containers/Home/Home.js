@@ -161,7 +161,13 @@ class Home extends Component {
                             <div className="col-12">
                                 <div>
                                     <Slider {...this.settings}>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -174,7 +180,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -187,7 +196,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -199,7 +211,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={3}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -211,7 +226,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={4}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -223,7 +241,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={5}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -235,7 +256,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={6}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -247,7 +271,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={7}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -259,7 +286,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={8}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -271,7 +301,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={9}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -410,7 +443,10 @@ class Home extends Component {
                             <div className="col-12">
                                 <div>
                                     <Slider {...this.settings}>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -423,7 +459,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -436,7 +475,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -448,7 +490,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={3}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -460,7 +505,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={4}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -472,7 +520,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={5}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -484,7 +535,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={6}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -496,7 +550,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={7}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -508,7 +565,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={8}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -520,7 +580,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={9}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -659,7 +722,10 @@ class Home extends Component {
                             <div className="col-12">
                                 <div>
                                     <Slider {...this.settings}>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -671,7 +737,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={7}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -683,7 +752,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={8}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -695,7 +767,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={9}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -707,7 +782,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={10}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -720,7 +798,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -733,7 +814,10 @@ class Home extends Component {
                                                 ></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -745,7 +829,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={3}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -757,7 +844,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={4}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
@@ -769,7 +859,10 @@ class Home extends Component {
                                                     onClick={(e) => this.handleOnClick(e)} key={5}></Link>
                                             </div>
                                         </div>
-                                        <div className="element-featured-wrapper">
+                                        <div className="element-featured-wrapper py-3 position-relative">
+                                            <div class="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+                                                <button className="btn"> </button>
+                                            </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
                                                     <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />

@@ -52,18 +52,18 @@ const support = () => (
                     </div>
                     <div className="element-body">
                         <form className="w-50 mw-100 ps-5">
-                            <div class="col mb-5">
-                                <input type="text" class="form-control form-control-lg py-3 px-0 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0" placeholder="Name" />
+                            <div className="col mb-5">
+                                <input type="text" className="form-control form-control-lg py-3 px-0 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0" placeholder="Name" />
                             </div>
-                            <div class="col mb-5">
-                                <input type="text" class="form-control form-control-lg py-3 px-0 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0" placeholder="Email Address" />
+                            <div className="col mb-5">
+                                <input type="text" className="form-control form-control-lg py-3 px-0 border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0" placeholder="Email Address" />
                             </div>
-                            <div class="col mb-5">
-                                <label class="form-label fs-5" style={{ color: '#6c757d' }}>Message</label>
-                                <textarea class="form-control border border-1 border-dark" rows="5" style={{ borderRadius: ' 15px' }}></textarea>
+                            <div className="col mb-5">
+                                <label className="form-label fs-5" style={{ color: '#6c757d' }}>Message</label>
+                                <textarea className="form-control border border-1 border-dark" rows="5" style={{ borderRadius: ' 15px' }}></textarea>
                             </div>
                             <div className="btn-wrapper w-50 mw-100 float-end">
-                                <button class="btn btn-hvr theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4 px-4 py-2 text-uppercase w-100">Submit</button>
+                                <button className="btn btn-hvr theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4 px-4 py-2 text-uppercase w-100">Submit</button>
                             </div>
                         </form>
                     </div>

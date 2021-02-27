@@ -8,7 +8,9 @@ import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
 
 class kadosList extends Component {
 
-
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
 
     render() {
         return (

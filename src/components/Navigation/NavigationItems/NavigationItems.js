@@ -73,7 +73,7 @@ const navigationItems = (props) => (
                     </svg>
                     <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`}>Favorites</span>
                 </NavigationItem>
-                <NavigationItem exact link="/talent-settings" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center me-0">
+                <NavigationItem exact link="/settings" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center me-0">
                     <svg width="54pt" height="52pt" viewBox="0 0 54 52" version="1.1"
                         xmlns="http://www.w3.org/2000/svg">
                         <g id="#ee2a59ff">
@@ -89,7 +89,7 @@ const navigationItems = (props) => (
         {!props.isAuthenticated ?
             <Aux>
                 <li>
-                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className="btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase">
+                    <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase ${classes['sign-up-btn']}`}>
                         <span> Sign up</span>
                     </button>
                 </li>

@@ -8,6 +8,10 @@ import prof3 from '../../assets/images/highlighted-kados.png';
 
 class Favorites extends Component {
 
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
         return (
             <div className="favorites">

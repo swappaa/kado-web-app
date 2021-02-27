@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 import '../../App.css';
 import './KadosDetails.css';
@@ -7,7 +8,12 @@ import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
 
 class kadosDetails extends Component {
 
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
+
         return (
             <div className="kados-details">
                 <section className="pb-5">

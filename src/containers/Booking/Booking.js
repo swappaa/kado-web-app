@@ -3,7 +3,6 @@ import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMess
 import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
 
-
 import '../../App.css';
 import './Booking.css';
 import prof1 from '../../assets/images/banner-send-personalized-images.jpg';
@@ -37,6 +36,7 @@ class Booking extends Component {
         window.scroll({
             top: 0
         });
+        localStorage.setItem('path', window.location.pathname);
     }
 
     render() {
@@ -459,26 +459,26 @@ class Booking extends Component {
                                                     <div className="col-lg-8">
                                                         <div className="card-body px-0 w-50 mw-100 p-0">
                                                             <h2 className="font-ave-heavy">DO YOU HAVE A PROMO CODE?</h2>
-                                                            <div class="input-group mb-3">
-                                                                <input type="text" class="form-control rounded-0 border border-2 py-3" />
-                                                                <span class="input-group-text fs-5 px-4 rounded-0"><a class="text-white" href="#">Apply</a></span>
+                                                            <div className="input-group mb-3">
+                                                                <input type="text" className="form-control rounded-0 border border-2 py-3" />
+                                                                <span className="input-group-text fs-5 px-4 rounded-0"><a className="text-white" href="#">Apply</a></span>
                                                             </div>
-                                                            <ul class="list-group pe-5 bg-transparent">
-                                                                <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                            <ul className="list-group pe-5 bg-transparent">
+                                                                <li className="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
                                                                     Video  Message
-                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">$155.00</span>
+                                                                <span className="badge bg-transparent rounded-pill text-muted fs-4">$155.00</span>
                                                                 </li>
-                                                                <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                                <li className="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
                                                                     Credits
-                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">- $25.00</span>
+                                                                <span className="badge bg-transparent rounded-pill text-muted fs-4">- $25.00</span>
                                                                 </li>
-                                                                <li class="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
+                                                                <li className="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
                                                                     Promo Code
-                                                                <span class="badge bg-transparent rounded-pill text-muted fs-4">- $20.00</span>
+                                                                <span className="badge bg-transparent rounded-pill text-muted fs-4">- $20.00</span>
                                                                 </li>
-                                                                <li class="d-flex justify-content-between align-items-center font-ave-heavy fs-2 bg-transparent px-4 py-2 text-muted">
+                                                                <li className="d-flex justify-content-between align-items-center font-ave-heavy fs-2 bg-transparent px-4 py-2 text-muted">
                                                                     Total
-                                                                <span class="badge bg-transparent rounded-pill text-muted fs-2">$110.00</span>
+                                                                <span className="badge bg-transparent rounded-pill text-muted fs-2">$110.00</span>
                                                                 </li>
                                                             </ul>
                                                         </div>

@@ -14,6 +14,7 @@ class signupTalent extends Component {
         window.scroll({
             top: 0
         });
+        localStorage.setItem('path', window.location.pathname);
     }
 
     render() {

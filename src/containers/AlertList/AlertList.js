@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
 
 import '../../App.css';
 import './AlertList.css';
@@ -16,12 +14,6 @@ class alertList extends Component {
     }
 
     render() {
-
-        let authRedirect = null;
-        if (this.props.isAuthenticated) {
-            authRedirect = <Redirect to={this.props.authRedirectPath} />
-        }
-
         return (
 
             <div className="alerts-list">

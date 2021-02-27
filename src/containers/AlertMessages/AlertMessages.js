@@ -6,6 +6,10 @@ import prof1 from '../../assets/images/banner-surprise-message.png';
 
 class alertMessages extends Component {
 
+    componentDidMount() {
+        localStorage.setItem('path', window.location.pathname);
+    }
+
     render() {
         return (
             <div className="alerts-messages">

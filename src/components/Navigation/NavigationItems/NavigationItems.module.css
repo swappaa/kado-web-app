@@ -45,6 +45,10 @@ nav ul li .count-message {
     top: -3px;
 }
 
+.sign-up-btn {
+    padding: 10px 35px;
+}
+
 @media screen and (max-width: 1600px) {
     nav ul li .invite-friends-btn {
         font-size: 1.4vw !important;

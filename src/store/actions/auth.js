@@ -7,11 +7,12 @@ export const authStart = () => {
     };
 };
 
-export const authSuccess = (token, userId) => {
+export const authSuccess = (token, userId, accountType) => {
     return {
         type: actionTypes.AUTH_SUCCESS,
         idToken: token,
-        userId: userId
+        userId: userId,
+        accountType: accountType
     };
 };
 
@@ -26,6 +27,7 @@ export const logout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('expirationDate');
     localStorage.removeItem('userId');
+    localStorage.removeItem('accountType');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
@@ -43,30 +45,35 @@ export const auth = (email, password, isSignup) => {
     return dispatch => {
         dispatch(authStart());
 
-        const authData = {
-            username: email,
-            password: password,
-            returnSecureToken: true
-        };
+
+        let formData = new FormData();
+
+        formData.append("username", email);
+        formData.append("password", password);
+        formData.append("returnSecureToken", true);
 
         let url = null;
         if (!isSignup) {
             url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email';
         }
 
-        axios.post(url, authData)
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post(url, formData, config)
             .then(response => {
-                console.log(response);
+                console.log(response.data.account_type);
                 const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
                 localStorage.setItem('token', response.data.AccessToken);
                 localStorage.setItem('expirationDate', expirationDate);
                 localStorage.setItem('userId', response.data.IdToken);
-                dispatch(authSuccess(response.data.AccessToken, response.data.IdToken));
+                localStorage.setItem('accountType', response.data.account_type);
+                dispatch(authSuccess(response.data.AccessToken, response.data.IdToken, response.data.account_type));
                 dispatch(checkAuthTimeout(response.data.ExpiresIn));
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
-                // dispatch(authFail(err.message));
             });
     };
 };
@@ -152,8 +159,9 @@ export const authCheckState = () => {
         const token = localStorage.getItem('token');
         const path = localStorage.getItem('path');
         dispatch(setAuthRedirectPath(path));
-
+        console.log(path);
         if (!token) {
+            console.log('logout');
             dispatch(logout());
         } else {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
@@ -161,6 +169,7 @@ export const authCheckState = () => {
                 dispatch(logout());
             } else {
                 const userId = localStorage.getItem('userId');
+                const accountType = localStorage.getItem('accountType');
                 dispatch(authSuccess(token, userId));
                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
             }
