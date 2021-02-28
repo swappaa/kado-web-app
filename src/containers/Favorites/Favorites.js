@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Favorites.css';
 import prof1 from '../../assets/images/banner-surprise-message.png';
@@ -97,4 +98,4 @@ class Favorites extends Component {
     }
 }
 
-export default Favorites;
+export default withAuthorization(Favorites);

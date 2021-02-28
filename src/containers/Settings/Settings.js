@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Switch from "react-switch";
 
 import Aux from '../../hoc/Auxi/Auxi';
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import DisableAccount from '../../components/DisableAccount/DisableAccount';
 import prof1 from '../../assets/images/banner-surprise-message.png';
 import '../../App.css';
@@ -425,4 +426,4 @@ const mapStateToProps = state => {
 export default
     withRouter(connect(
         mapStateToProps
-    )(Settings));
+    )(withAuthorization(Settings)));

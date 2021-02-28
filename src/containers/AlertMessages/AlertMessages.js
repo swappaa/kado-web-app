@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './AlertMessages.css';
 import prof1 from '../../assets/images/banner-surprise-message.png';
@@ -157,4 +158,4 @@ class alertMessages extends Component {
     }
 }
 
-export default alertMessages;
+export default withAuthorization(alertMessages);

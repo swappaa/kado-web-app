@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './AlertList.css';
 import prof1 from '../../assets/images/banner-surprise-message.png';
@@ -149,4 +150,4 @@ class alertList extends Component {
 
 
 
-export default alertList;
+export default withAuthorization(alertList);

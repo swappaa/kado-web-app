@@ -3,6 +3,7 @@ import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMess
 import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Booking.css';
 import prof1 from '../../assets/images/banner-send-personalized-images.jpg';
@@ -529,4 +530,4 @@ class Booking extends Component {
     }
 }
 
-export default Booking;
+export default withAuthorization(Booking);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './KadosList.css';
 import prof1 from '../../assets/images/banner-surprise-message.png';
@@ -124,4 +125,4 @@ class kadosList extends Component {
     }
 }
 
-export default kadosList;
+export default withAuthorization(kadosList);

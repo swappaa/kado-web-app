@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './KadosDetails.css';
 import prof1 from '../../assets/images/banner-surprise-message.png';
@@ -89,4 +90,4 @@ class kadosDetails extends Component {
     }
 }
 
-export default kadosDetails;
+export default withAuthorization(kadosDetails);

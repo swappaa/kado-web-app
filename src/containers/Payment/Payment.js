@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Payment.css';
-
-
 
 class Payment extends Component {
 
@@ -66,4 +65,4 @@ class Payment extends Component {
     }
 }
 
-export default Payment;
+export default withAuthorization(Payment);
