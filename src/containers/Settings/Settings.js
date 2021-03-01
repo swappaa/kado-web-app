@@ -44,7 +44,7 @@ class Settings extends Component {
         let button_kado;
         let button_payment;
 
-        if (isLoggedIn && this.props.accountType == 'talent') {
+        if (isLoggedIn && this.props.accountType === 'talent') {
             button = (
                 <Aux>
                     <button className="btn nav-link text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-vacation-mode-tab" data-bs-toggle="pill" href="#v-pills-vacation-mode" role="tab" aria-controls="v-pills-vacation-mode" aria-selected="false">

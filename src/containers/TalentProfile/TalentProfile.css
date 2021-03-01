@@ -7,8 +7,27 @@ form [type="submit"] {
     font-family: Avenir-Heavy;
 }
 
+.talent-profile .profile-wrapper .prof-picture img {
+    max-height: 75vh;
+    object-fit: cover;
+}
+
 .talent-profile .profile-wrapper img {
     background-color: #414042;
+}
+
+.category-details ul li:first-child {
+    padding-left: 0;
+}
+
+.category-details ul li:last-child::after {
+    display: none;
+}
+
+.category-details ul li::after {
+    content: '/';
+    position: relative;
+    left: 16px;
 }
 
 .profile-name {

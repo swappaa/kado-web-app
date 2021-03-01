@@ -175,7 +175,7 @@ class Home extends Component {
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sepideh</h5>
                                                 </div>
-                                                <Link className="stretched-link" to="/talent-profile" onMouseDown={(e) => this.handleOnMouseDown(e)}
+                                                <Link className="stretched-link" to="/talent-profile/maryapick" onMouseDown={(e) => this.handleOnMouseDown(e)}
                                                     onClick={(e) => this.handleOnClick(e)} key={1}
                                                 ></Link>
                                             </div>

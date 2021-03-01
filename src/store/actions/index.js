@@ -6,4 +6,7 @@ export {
     logout,
     setAuthRedirectPath,
     authCheckState
-} from './auth'; 
+} from './auth';
+export {
+    fetchTalent
+} from './talent';

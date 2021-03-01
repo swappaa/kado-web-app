@@ -7,7 +7,7 @@ import './InviteFriends.css';
 const InviteFriends = () => {
 
     const [copied, setCopied] = useState(false);
-    const [code, setCode] = useState('549321');
+    const [code] = useState('549321');
 
     return (
         <div className="modal fade" id="invite-friends-modal" tabIndex="-1" aria-labelledby="staticBackdropLabel"

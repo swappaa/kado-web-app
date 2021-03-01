@@ -12,15 +12,15 @@ import Account from './containers/Auth/ContinueSignIn/ContinueSignIn';
 import VerificationCode from './containers/VerificationCode/VerificationCode';
 import Logout from './containers/Auth/Logout/Logout';
 
-const Home =  React.lazy(() => import('./containers/Home/Home'));
-const AlertList =  React.lazy(() => import('./containers/AlertList/AlertList'));
-const AlertMessages =  React.lazy(() => import('./containers/AlertMessages/AlertMessages'));
-const KadosList =  React.lazy(() => import('./containers/KadosList/KadosList'));
-const KadosDetails =  React.lazy(() => import('./containers/KadosDetails/KadosDetails'));
-const Dashboard =  React.lazy(() => import('./containers/Dashboard/Dashboard'));
-const Favorites =  React.lazy(() => import('./containers/Favorites/Favorites'));
-const Settings =  React.lazy(() => import('./containers/Settings/Settings'));
-const Payment =  React.lazy(() => import('./containers/Payment/Payment'));
+const Home = React.lazy(() => import('./containers/Home/Home'));
+const AlertList = React.lazy(() => import('./containers/AlertList/AlertList'));
+const AlertMessages = React.lazy(() => import('./containers/AlertMessages/AlertMessages'));
+const KadosList = React.lazy(() => import('./containers/KadosList/KadosList'));
+const KadosDetails = React.lazy(() => import('./containers/KadosDetails/KadosDetails'));
+const Dashboard = React.lazy(() => import('./containers/Dashboard/Dashboard'));
+const Favorites = React.lazy(() => import('./containers/Favorites/Favorites'));
+const Settings = React.lazy(() => import('./containers/Settings/Settings'));
+const Payment = React.lazy(() => import('./containers/Payment/Payment'));
 
 
 
@@ -50,7 +50,7 @@ const Routes = () =>
         <Route path="/payment">
             <Payment />
         </Route>
-        <Route path="/talent-profile">
+        <Route path="/talent-profile/:talentId">
             <TalentProfile />
         </Route>
         <Route path="/booking">

@@ -77,6 +77,8 @@
     "react-toast-notifications": "^2.4.0",
     "react-verification-code-input": "^1.2.9",
     "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-persist": "^6.0.0",
     "redux-thunk": "^2.3.0",
     "resolve": "1.18.1",
     "resolve-url-loader": "^3.1.2",
