@@ -2,7 +2,7 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import TalentProfile from './containers/TalentProfile/TalentProfile';
+
 import Booking from './containers/Booking/Booking';
 import Category from './containers/Category/Category';
 import SignupTalent from './containers/SignupTalent/SignupTalent';
@@ -11,6 +11,8 @@ import About from './containers/About/About';
 import Account from './containers/Auth/ContinueSignIn/ContinueSignIn';
 import VerificationCode from './containers/VerificationCode/VerificationCode';
 import Logout from './containers/Auth/Logout/Logout';
+
+const TalentProfile = React.lazy(() => import('./containers/TalentProfile/TalentProfile'));
 
 const Home = React.lazy(() => import('./containers/Home/Home'));
 const AlertList = React.lazy(() => import('./containers/AlertList/AlertList'));

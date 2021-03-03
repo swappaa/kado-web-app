@@ -2,12 +2,12 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
+import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
 import '../../App.css';
 import './TalentProfile.css';
-import talentProf from '../../assets/images/banner-surprise-message.png';
 import charityLogo from '../../assets/images/charity logo.png';
 import { ReactComponent as RatingStarFull } from '../../assets/images/svg/Star-Pink-Full.svg';
 import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-Pink-Half.svg';
@@ -16,7 +16,7 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 const TalentProfile = props => {
 
     const { talentId } = useParams()
-    const { onFetchTalentById } = props;
+    const { onFetchTalentById, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -26,10 +26,12 @@ const TalentProfile = props => {
         onFetchTalentById(talentId);
     }, [talentId, onFetchTalentById]);
 
-
     const { service } = props
+
+    if (loading || service === undefined) { return <Spinner /> }
     const { categories } = service
-    const listCategory = categories.map((category) => <li class="list-group-item border-0 py-0">{category}</li>);
+    const listCategory = categories.map((category, i) => <li key={i} className="list-group-item border-0 py-0">{category}</li>);
+
     return (
         <div className="talent-profile">
             <section className="py-5">
@@ -45,7 +47,7 @@ const TalentProfile = props => {
                                         <div className="profile-name theme-pink-color">
                                             <h2 className="display-4 lh-base">{service.stage_name}</h2>
                                             <span className="fs-1 category-details">
-                                                <ul class="list-group list-group-horizontal">
+                                                <ul className="list-group list-group-horizontal">
                                                     {listCategory}
                                                 </ul>
                                             </span>
@@ -180,6 +182,7 @@ const TalentProfile = props => {
             </section>
         </div>
     )
+
 }
 
 
