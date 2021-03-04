@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-kado';
@@ -26,7 +27,13 @@ const TalentProfile = props => {
         onFetchTalentById(talentId);
     }, [talentId, onFetchTalentById]);
 
+
     const { service } = props
+
+    // if (leagues && leagues.length > 0) {
+    //     // update the state to the correct league here and this.props.id is the id that you want
+    //     const league = leagues.find(aLeague => aLeague.id === this.props.id);
+    // }
 
     if (loading || service === undefined) { return <Spinner /> }
     const { categories } = service
@@ -45,10 +52,10 @@ const TalentProfile = props => {
                                 <div className="element-wrapper px-sm-4 mt-4 mt-md-0">
                                     <div className="d-flex flex-wrap justify-content-between position-relative">
                                         <div className="profile-name theme-pink-color">
-                                            <h2 className="display-4 lh-base">{service.stage_name}</h2>
+                                            <h2 className="display-4 lh-base">{service.stage_name || <Skeleton />}</h2>
                                             <span className="fs-1 category-details">
                                                 <ul className="list-group list-group-horizontal">
-                                                    {listCategory}
+                                                    {listCategory || <Skeleton />}
                                                 </ul>
                                             </span>
                                         </div>
@@ -118,7 +125,7 @@ const TalentProfile = props => {
                                         Everybody loved it!
                                         Lily also kindly did it in record time so we could screen it on the day, which was a
                                         massive relief for me.
-                                </p>
+                                        </p>
                                     </div>
                                 </div>
                             </div>
