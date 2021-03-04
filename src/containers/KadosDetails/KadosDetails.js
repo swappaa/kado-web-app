@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import ReactPlayer from 'react-player';
+import 'videojs-watermark';
 
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
@@ -11,10 +13,13 @@ class kadosDetails extends Component {
 
     componentDidMount() {
         localStorage.setItem('path', window.location.pathname);
+
+
+
+
     }
 
     render() {
-
         return (
             <div className="kados-details">
                 <section className="pb-5">
@@ -85,6 +90,15 @@ class kadosDetails extends Component {
                         </div>
                     </div>
                 </section>
+                <div className="mx-auto w-50 mw-100">
+                    <ReactPlayer
+                        className='kado-player'
+                        url='https://kado-profile-content-dev.s3-us-west-2.amazonaws.com/talent/animateddustin.mp4'
+                        width='100%'
+                        height='100%'
+                        controls
+                    />
+                </div>
             </div>
         )
     }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ReactImageProcess from 'react-image-process';
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -7,6 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 
 import '../../App.css';
 import './Home.css';
+import waterMark from '../../assets/images/Watermark.png';
 import banner from '../../assets/images/banner-send-personalized-images.jpg';
 import talentProfile from '../../assets/images/talent/1.png';
 
@@ -170,7 +172,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sepideh</h5>
@@ -186,7 +198,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Erfan</h5>
@@ -202,7 +224,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sogand</h5>
@@ -217,7 +249,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">KamyR</h5>
@@ -232,7 +274,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -247,7 +299,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Morvarid</h5>
@@ -262,7 +324,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Andy</h5>
@@ -277,7 +349,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Navid Firoozi</h5>
@@ -292,7 +374,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Googoosh</h5>
@@ -307,7 +399,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Ebi</h5>
@@ -334,7 +436,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Erfan</h5>
@@ -345,7 +457,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Sogand</h5>
@@ -356,7 +478,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">KamyR</h5>
@@ -367,7 +499,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -378,7 +520,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Morvarid</h5>
@@ -389,7 +541,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Andy</h5>
@@ -400,7 +562,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Navid Firoozi</h5>
@@ -411,7 +583,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Googoosh</h5>
@@ -422,7 +604,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Ebi</h5>
@@ -449,7 +641,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -465,7 +667,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Erfan</h5>
@@ -481,7 +693,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sogand</h5>
@@ -496,7 +718,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">KamyR</h5>
@@ -511,7 +743,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -526,7 +768,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Morvarid</h5>
@@ -541,7 +793,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Andy</h5>
@@ -556,7 +818,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Navid Firoozi</h5>
@@ -571,7 +843,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Googoosh</h5>
@@ -586,7 +868,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Ebi</h5>
@@ -613,7 +905,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Erfan</h5>
@@ -624,7 +926,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Sogand</h5>
@@ -635,7 +947,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">KamyR</h5>
@@ -646,7 +968,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -657,7 +989,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Morvarid</h5>
@@ -668,7 +1010,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Andy</h5>
@@ -679,7 +1031,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Navid Firoozi</h5>
@@ -690,7 +1052,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Googoosh</h5>
@@ -701,7 +1073,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4 font-ave-roman">Ebi</h5>
@@ -728,7 +1110,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Andy</h5>
@@ -743,7 +1135,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Navid Firoozi</h5>
@@ -758,7 +1160,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Googoosh</h5>
@@ -773,7 +1185,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Ebi</h5>
@@ -788,7 +1210,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sepideh</h5>
@@ -804,7 +1236,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Erfan</h5>
@@ -820,7 +1262,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sogand</h5>
@@ -835,7 +1287,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">KamyR</h5>
@@ -850,7 +1312,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Azam Ali</h5>
@@ -865,7 +1337,17 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    <ReactImageProcess
+                                                        mode="waterMark"
+                                                        waterMarkType="image"
+                                                        waterMark={waterMark}
+                                                        width={100}
+                                                        height={100}
+                                                        opacity={0.7}
+                                                        coordinate={[120, 120]}
+                                                    >
+                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                    </ReactImageProcess>
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Morvarid</h5>
@@ -892,7 +1374,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Erfan</h5>
@@ -903,7 +1395,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Sogand</h5>
@@ -914,7 +1416,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">KamyR</h5>
@@ -925,7 +1437,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Azam Ali</h5>
@@ -936,7 +1458,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Morvarid</h5>
@@ -947,7 +1479,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Andy</h5>
@@ -958,7 +1500,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Navid Firoozi</h5>
@@ -969,7 +1521,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Googoosh</h5>
@@ -980,7 +1542,17 @@ class Home extends Component {
                                     <div className="col-lg-2 col-md-4 element-featured-wrapper">
                                         <div className="featured-wrapper text-center position-relative">
                                             <div className="image-wrapper">
-                                                <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                <ReactImageProcess
+                                                    mode="waterMark"
+                                                    waterMarkType="image"
+                                                    waterMark={waterMark}
+                                                    width={100}
+                                                    height={100}
+                                                    opacity={0.7}
+                                                    coordinate={[120, 120]}
+                                                >
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+                                                </ReactImageProcess>
                                             </div>
                                             <div className="featured-talent my-2">
                                                 <h5 className="fs-4">Ebi</h5>
