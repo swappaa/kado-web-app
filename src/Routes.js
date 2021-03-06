@@ -8,6 +8,8 @@ import Category from './containers/Category/Category';
 import SignupTalent from './containers/SignupTalent/SignupTalent';
 import Support from './containers/Support/Support';
 import About from './containers/About/About';
+import PrivacyPolicy from './containers/PrivacyPolicy/PrivacyPolicy';
+import TermsService from './containers/TermsService/TermsService';
 import Account from './containers/Auth/ContinueSignIn/ContinueSignIn';
 import VerificationCode from './containers/VerificationCode/VerificationCode';
 import Logout from './containers/Auth/Logout/Logout';
@@ -72,6 +74,12 @@ const Routes = () =>
         </Route>
         <Route path="/about">
             <About />
+        </Route>
+        <Route path="/privacy-policy">
+            <PrivacyPolicy />
+        </Route>
+        <Route path="/terms-service">
+            <TermsService />
         </Route>
         <Route path="/account">
             <Account />

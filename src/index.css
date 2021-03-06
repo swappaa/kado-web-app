@@ -49,6 +49,26 @@ ul li {
   list-style: none !important;
 }
 
+.roman-list li {
+  list-style: lower-roman !important;
+}
+
+.upper-roman-list li {
+  list-style: upper-roman !important;
+}
+
+.disc-list li {
+  list-style: outside !important;
+}
+
+.number-list li {
+  list-style: inherit !important;
+}
+
+.upper-alpha-list li {
+  list-style: upper-alpha !important;
+}
+
 a {
   color: #414142 !important;
   text-decoration: none !important;
