@@ -11,16 +11,15 @@ instance.defaults.headers.common.Accept = 'application/json';
 instance.defaults.headers['Content-Type'] = 'multipart/form-data';
 instance.interceptors.request.use(async function (config) {
     config.headers.common['Access-Control-Allow-Origin'] = '*';
-    config.headers.common['Access-Control-Allow-Headers'] =
-        'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+    config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
     config.headers.common['Access-Control-Allow-Credentials'] = true;
     config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
     config.headers.common['Content-Type'] = 'application/json';
-
     if (queryParams) {
         config.headers.common.username = queryParams;
         config.headers.common.access_token = token;
-    } return config;
+    }
+    return config;
 });
 
 instance.interceptors.response.use(

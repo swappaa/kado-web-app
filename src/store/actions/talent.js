@@ -32,7 +32,6 @@ export const fetchTalent = (talentId, accessToken) => {
                 dispatch(fetchTalentSuccess(fetchedTalent));
             })
             .catch(err => {
-                console.log(err);
                 dispatch(fetchTalentFail(err));
             });
     };
