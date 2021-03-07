@@ -172,17 +172,9 @@ class Home extends Component {
                                             </div>
                                             <div className="featured-wrapper text-center position-relative">
                                                 <div className="image-wrapper">
-                                                    <ReactImageProcess
-                                                        mode="waterMark"
-                                                        waterMarkType="image"
-                                                        waterMark={waterMark}
-                                                        width={100}
-                                                        height={100}
-                                                        opacity={0.7}
-                                                        coordinate={[120, 120]}
-                                                    >
-                                                        <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
-                                                    </ReactImageProcess>
+
+                                                    <img className="img-fluid w-100" src={talentProfile} alt="talent-img" />
+
                                                 </div>
                                                 <div className="featured-talent my-2">
                                                     <h5 className="fs-4 font-ave-roman">Sepideh</h5>

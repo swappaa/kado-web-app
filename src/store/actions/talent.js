@@ -32,7 +32,28 @@ export const fetchTalent = (talentId, accessToken) => {
                 dispatch(fetchTalentSuccess(fetchedTalent));
             })
             .catch(err => {
+                console.log(err);
                 dispatch(fetchTalentFail(err));
+            });
+    };
+};
+
+export const SubmitApplication = (first_name, last_name, email, phone) => {
+    return dispatch => {
+
+        let formData = new FormData();
+
+        formData.append("first_name", first_name);
+        formData.append("last_name", last_name);
+        formData.append("email", email);
+        formData.append("phone", phone);
+
+        axios.post('talent/submit_application', formData)
+            .then(response => {
+                console.log(response.data);
+            })
+            .catch(err => {
+
             });
     };
 };

@@ -8,5 +8,6 @@ export {
     authCheckState
 } from './auth';
 export {
-    fetchTalent
+    fetchTalent,
+    SubmitApplication
 } from './talent';
