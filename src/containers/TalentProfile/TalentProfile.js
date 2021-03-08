@@ -195,7 +195,7 @@ const TalentProfile = props => {
 
 const mapStateToProps = state => {
     return {
-        service: state.ServiceTalent.talent.talent,
+        service: state.ServiceTalent.talent,
         loading: state.ServiceTalent.loading
     };
 };

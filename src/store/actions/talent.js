@@ -26,6 +26,7 @@ export const fetchTalent = (talentId, accessToken) => {
         dispatch(fetchTalentStart());
         const queryParams = talentId;
 
+
         axios.get(`talent/${queryParams}`)
             .then(async res => {
                 const fetchedTalent = await res.data;
