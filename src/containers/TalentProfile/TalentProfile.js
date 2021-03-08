@@ -29,14 +29,9 @@ const TalentProfile = props => {
 
 
     const { service } = props
-
-    // if (leagues && leagues.length > 0) {
-    //     // update the state to the correct league here and this.props.id is the id that you want
-    //     const league = leagues.find(aLeague => aLeague.id === this.props.id);
-    // }
-
-    if (loading || service === undefined) { return <Spinner /> }
     const { categories } = service
+
+    if (loading || categories == undefined) { return <Spinner /> }
     const listCategory = categories.map((category, i) => <li key={i} className="list-group-item border-0 py-0">{category}</li>);
 
     return (
@@ -46,7 +41,7 @@ const TalentProfile = props => {
                     <div className="profile-wrapper">
                         <div className="row px-5">
                             <div className="col-md-4 prof-picture">
-                                <img className="img-fluid w-100 br-radius" src={service.profile_picture} alt="profile" />
+                                <img className="img-fluid w-100 br-radius" src={service.profile_picture || <Skeleton />} alt="profile" />
                             </div>
                             <div className="col-xl-7 col-md-8">
                                 <div className="element-wrapper px-sm-4 mt-4 mt-md-0">
@@ -77,7 +72,7 @@ const TalentProfile = props => {
                                         <span className="fs-4">Replies in 8.5 hrs</span>
                                     </div>
                                     <div className="profile-details pe-0 pe-lg-5">
-                                        <p className="fs-1 lh-sm mb-4">{service.bio}</p>
+                                        <p className="fs-1 lh-sm mb-4">{service.bio || <Skeleton count={5} />}</p>
                                         <div className="btn-wrapper text-end pe-sm-4">
                                             <a className="text-uppercase theme-pink-color fs-3" href="#">Read More {'>'}</a>
                                         </div>

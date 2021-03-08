@@ -12,10 +12,6 @@ form [type="submit"] {
     object-fit: cover;
 }
 
-.talent-profile .profile-wrapper img {
-    background-color: #414042;
-}
-
 .category-details ul li:first-child {
     padding-left: 0;
 }

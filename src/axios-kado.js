@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const queryParams = 'maryapick';
-const token = localStorage.getItem('token');
+const username = localStorage.getItem('username');
+const access_token = localStorage.getItem('token');
 
 const instance = axios.create({
     baseURL: 'https://atln2zned9.execute-api.us-west-2.amazonaws.com/dev/'
@@ -15,22 +15,23 @@ instance.interceptors.request.use(async function (config) {
     config.headers.common['Access-Control-Allow-Credentials'] = true;
     config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
     config.headers.common['Content-Type'] = 'application/json';
-    if (queryParams) {
-        config.headers.common.username = queryParams;
-        config.headers.common.access_token = token;
+    if (username) {
+        config.headers.common.username = username;
+        config.headers.common.access_token = access_token;
     }
     return config;
 });
 
-instance.interceptors.response.use(
-    function (response) {
-        console.log('>>>>>> API CALL: ', response.config.url);
-        return Promise.resolve(response.data);
-    },
-    function (error) {
-        console.log('>>>>>> API CALL: ', error.response.config.url);
-        return Promise.resolve(error.response.data.message);
-    }
-);
+// instance.interceptors.response.use(
+//     function (response) {
+//         console.log('>>>>>> API CALL: ', response.config.url);
+//         console.log(response.data)
+//         return Promise.resolve(response.data);
+//     },
+//     function (error) {
+//         console.log('>>>>>> API CALL: ', error.response.config.url);
+//         return Promise.resolve(error.response.data.message);
+//     }
+// );
 
 export default instance;
