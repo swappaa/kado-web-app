@@ -29,53 +29,17 @@ const TalentProfile = props => {
 
 
     const { service } = props
-    const { categories } = service
-
-    // let categories;
-    // if (service) {
-    //     categories = service.categories.map((category, i) => {
-    //         return <li key={i} className="list-group-item border-0 py-0">{category || <Skeleton />}</li>;
-    //     });
-    // } else {
-    //     categories = "Loading...";
-    // }
-
-    // console.log(categories)
 
     const category = [];
-
-    // for (let ingredientName in props.ingredients) {
-    //     ingredients.push(
-    //         {
-    //             name: ingredientName,
-    //             amount: props.ingredients[ingredientName]
-    //         }
-    //     );
-    // }
-
 
     for (let categoryName in service.categories) {
         category.push(
             {
-                category: categoryName
+                id: categoryName,
+                name: service.categories[categoryName]
             }
         );
     }
-
-    // const category = [];
-
-    // for (let categoryName; i < 10; i++) {
-    //     category.push({
-    //         country: service.categories
-    //     });
-    // }
-
-    console.log(category)
-
-
-
-
-    // if (loading || service == undefined) { return <Spinner /> }
 
     return (
         <div className="talent-profile">
@@ -93,11 +57,9 @@ const TalentProfile = props => {
                                             <h2 className="display-4 lh-base">{service.stage_name || <Skeleton />}</h2>
                                             <span className="fs-1 category-details">
                                                 <ul className="list-group list-group-horizontal">
-                                                    {/* {categories.map((category, i) => (
-                                                        <li key={i} className="list-group-item border-0 py-0">{category || <Skeleton />}</li>
-                                                    ))} */}
-                                                    {/* {categories} */}
-                                                    {categories}
+                                                    {category.map((category, i) => (
+                                                        <li key={i} className="list-group-item border-0 py-0">{category.name || <Skeleton />}</li>
+                                                    ))}
                                                 </ul>
                                             </span>
                                         </div>
