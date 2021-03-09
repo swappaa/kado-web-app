@@ -31,9 +31,6 @@ const TalentProfile = props => {
     const { service } = props
     const { categories } = service
 
-    if (loading || categories == undefined) { return <Spinner /> }
- 
-
     return (
         <div className="talent-profile">
             <section className="py-5">
