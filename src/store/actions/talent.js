@@ -26,11 +26,10 @@ export const fetchTalent = (talentId, accessToken) => {
         dispatch(fetchTalentStart());
         const queryParams = talentId;
 
-        const config = {
-            headers: { 'content-type': 'application/json' }
-        }
-
-        axios.get(`talent/${queryParams}`, config)
+        // const config = {
+        //     headers: { 'content-type': 'application/json' }
+        // }
+        axios.get('/talent' + queryParams)
             .then(async service => {
                 const fetchedTalent = await service.data.talent;
                 dispatch(fetchTalentSuccess(fetchedTalent));
