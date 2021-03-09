@@ -16,7 +16,7 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 
 const TalentProfile = props => {
 
-    const { talentId } = useParams()
+    const { talentUsername } = useParams()
     const { onFetchTalentById, loading } = props;
 
     useEffect(() => {
@@ -24,8 +24,8 @@ const TalentProfile = props => {
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-        onFetchTalentById(talentId);
-    }, [talentId, onFetchTalentById]);
+        onFetchTalentById(talentUsername);
+    }, [talentUsername, onFetchTalentById]);
 
 
     const { service } = props

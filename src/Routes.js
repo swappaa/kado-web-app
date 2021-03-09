@@ -54,7 +54,7 @@ const Routes = () =>
         <Route path="/payment">
             <Payment />
         </Route>
-        <Route path="/talent-profile/:talentId">
+        <Route path="/talent-profile/:talentUsername">
             <TalentProfile />
         </Route>
         <Route path="/booking">
