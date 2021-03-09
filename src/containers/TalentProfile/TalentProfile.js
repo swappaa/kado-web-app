@@ -37,7 +37,7 @@ const TalentProfile = props => {
     return (
         <div className="talent-profile">
             <section className="py-5">
-                <div className="container-fluid px-5">
+                <div className="container-fluid px-5 f">
                     <div className="profile-wrapper">
                         <div className="row px-5">
                             <div className="col-md-4 prof-picture">
