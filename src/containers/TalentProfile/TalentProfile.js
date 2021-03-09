@@ -31,15 +31,15 @@ const TalentProfile = props => {
     const { service } = props
     // const { categories } = service
 
-    let categories = <Spinner />;
-    if (!loading) {
-        categories = service.categories.map((category, i) => (
-            <div
-                key={i}
-                categories={category.category}
-            />
-        ));
+    let categories;
+    if (service) {
+        categories = service.categories.map((category, i) => {
+            return <div key={i}>{category}</div>;
+        });
+    } else {
+        categories = "Loading...";
     }
+
 
 
     // if (loading || service == undefined) { return <Spinner /> }
@@ -64,6 +64,7 @@ const TalentProfile = props => {
                                                         <li key={i} className="list-group-item border-0 py-0">{category || <Skeleton />}</li>
                                                     ))} */}
                                                     {/* {categories} */}
+                                                    {categories}
                                                 </ul>
                                             </span>
                                         </div>
