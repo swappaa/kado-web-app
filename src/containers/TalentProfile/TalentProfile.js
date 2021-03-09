@@ -29,10 +29,11 @@ const TalentProfile = props => {
 
 
     const { service } = props
-    const { categories } = service
 
-    if (loading || categories == undefined) { return <Spinner /> }
-    // const listCategory = categories.map((category, i) => <li key={i} className="list-group-item border-0 py-0">{category}</li>);
+
+    if (loading || service == undefined) { return <Spinner /> }
+    const { categories } = service
+    const listCategory = categories.map((category, i) => <li key={i} className="list-group-item border-0 py-0">{category}</li>);
 
     return (
         <div className="talent-profile">
@@ -190,7 +191,7 @@ const TalentProfile = props => {
 
 const mapStateToProps = state => {
     return {
-        service: state.ServiceTalent.talent,
+        service: state.ServiceTalent.talent.talent,
         loading: state.ServiceTalent.loading
     };
 };
