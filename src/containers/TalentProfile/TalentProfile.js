@@ -34,7 +34,7 @@ const TalentProfile = props => {
     return (
         <div className="talent-profile">
             <section className="py-5">
-                <div className="container-fluid px-5 f">
+                <div className="container-fluid px-5">
                     <div className="profile-wrapper">
                         <div className="row px-5">
                             <div className="col-md-4 prof-picture">
@@ -47,7 +47,7 @@ const TalentProfile = props => {
                                             <h2 className="display-4 lh-base">{service.stage_name || <Skeleton />}</h2>
                                             <span className="fs-1 category-details">
                                                 <ul className="list-group list-group-horizontal">
-                                                   
+
                                                 </ul>
                                             </span>
                                         </div>
