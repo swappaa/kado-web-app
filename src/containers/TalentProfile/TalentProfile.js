@@ -29,16 +29,49 @@ const TalentProfile = props => {
 
 
     const { service } = props
-    // const { categories } = service
+    const { categories } = service
 
-    let categories;
-    if (service) {
-        categories = service.categories.map((category, i) => {
-            return <div key={i}>{category}</div>;
-        });
-    } else {
-        categories = "Loading...";
+    // let categories;
+    // if (service) {
+    //     categories = service.categories.map((category, i) => {
+    //         return <li key={i} className="list-group-item border-0 py-0">{category || <Skeleton />}</li>;
+    //     });
+    // } else {
+    //     categories = "Loading...";
+    // }
+
+    // console.log(categories)
+
+    const category = [];
+
+    // for (let ingredientName in props.ingredients) {
+    //     ingredients.push(
+    //         {
+    //             name: ingredientName,
+    //             amount: props.ingredients[ingredientName]
+    //         }
+    //     );
+    // }
+
+
+    for (let categoryName in service.categories) {
+        category.push(
+            {
+                category: categoryName
+            }
+        );
     }
+
+    // const category = [];
+
+    // for (let categoryName; i < 10; i++) {
+    //     category.push({
+    //         country: service.categories
+    //     });
+    // }
+
+    console.log(category)
+
 
 
 
