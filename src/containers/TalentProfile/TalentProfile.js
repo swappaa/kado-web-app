@@ -29,7 +29,7 @@ const TalentProfile = props => {
 
 
     const { service } = props
-    const { categories } = service
+
 
     return (
         <div className="talent-profile">
