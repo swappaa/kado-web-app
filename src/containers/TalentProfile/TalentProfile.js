@@ -29,10 +29,20 @@ const TalentProfile = props => {
 
 
     const { service } = props
-    const { categories } = service
+    // const { categories } = service
+
+    let categories = <Spinner />;
+    if (!loading) {
+        categories = service.categories.map((category, i) => (
+            <div
+                key={i}
+                categories={category.category}
+            />
+        ));
+    }
 
 
-    if (loading || service == undefined) { return <Spinner /> }
+    // if (loading || service == undefined) { return <Spinner /> }
 
     return (
         <div className="talent-profile">
@@ -50,9 +60,10 @@ const TalentProfile = props => {
                                             <h2 className="display-4 lh-base">{service.stage_name || <Skeleton />}</h2>
                                             <span className="fs-1 category-details">
                                                 <ul className="list-group list-group-horizontal">
-                                                    {categories.map((category, i) => (
+                                                    {/* {categories.map((category, i) => (
                                                         <li key={i} className="list-group-item border-0 py-0">{category || <Skeleton />}</li>
-                                                    ))}
+                                                    ))} */}
+                                                    {/* {categories} */}
                                                 </ul>
                                             </span>
                                         </div>
