@@ -62,7 +62,7 @@ const TalentCategories = (props) => {
     console.log(talentCategories);
 
     const talentCategoryOutput = talentCategories.map((tc, i) => {
-        return <div className="row featured-wrapper-column mt-5" key={i}>
+        return <div className="row featured-wrapper-column my-3" key={i}>
             <div className="col-12">
                 <div className="element-header py-4 d-flex align-items-center justify-content-between">
                     <h2 className="text-uppercase theme-pink-color display-6">{tc.category}</h2>
@@ -72,11 +72,11 @@ const TalentCategories = (props) => {
             <div className="col-12">
                 <Slider {...settings}>
                     {tc.talents.map((talent, i) => (
-                        <div className="element-featured-wrapper py-3 position-relative col-lg-2" key={i}>
+                        <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 <button className="btn"> </button>
                             </div>
-                            <div className="featured-wrapper text-center position-relative">
+                            <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : `x-fav`}>
                                 <div className="image-wrapper">
                                     <img className="img-fluid w-100" src={talent.profile_picture} alt="talent-img" />
                                 </div>
@@ -97,7 +97,6 @@ const TalentCategories = (props) => {
     return (
         <Aux>
             {talentCategoryOutput}
-            {/* <div>dd</div> */}
         </Aux>
     );
 };
