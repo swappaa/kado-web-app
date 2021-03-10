@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 
-import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -17,15 +16,15 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 const TalentProfile = props => {
 
     const { talentUsername } = useParams()
-    const { onFetchTalentById, loading } = props;
+    const { onFetchTalentByUsername } = props;
 
     useEffect(() => {
         window.scroll({
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-        onFetchTalentById(talentUsername);
-    }, [talentUsername, onFetchTalentById]);
+        onFetchTalentByUsername(talentUsername);
+    }, [talentUsername, onFetchTalentByUsername]);
 
 
     const { service } = props
@@ -206,7 +205,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onFetchTalentById: (talentId) =>
+        onFetchTalentByUsername: (talentId) =>
             dispatch(actions.fetchTalent(talentId))
     };
 };

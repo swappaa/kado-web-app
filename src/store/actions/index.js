@@ -9,5 +9,6 @@ export {
 } from './auth';
 export {
     fetchTalent,
+    fetchTalentByCategories,
     SubmitApplication
 } from './talent';

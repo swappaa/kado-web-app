@@ -21,12 +21,12 @@ export const fetchTalentStart = () => {
     };
 };
 
-export const fetchTalent = (talentId, accessToken) => {
+export const fetchTalent = (talentId) => {
     return dispatch => {
         dispatch(fetchTalentStart());
-        const queryParams = talentId;
+        const username = talentId;
 
-        axios.get(`talent/${queryParams}`,)
+        axios.get(`talent/${username}`)
             .then(async service => {
                 const fetchedTalent = await service.data.talent;
                 dispatch(fetchTalentSuccess(fetchedTalent));
@@ -36,6 +36,43 @@ export const fetchTalent = (talentId, accessToken) => {
             });
     };
 };
+
+export const fetchTalentCategoriesSuccess = (talent) => {
+    return {
+        type: actionTypes.FETCH_TALENT_CATEGORIES_SUCCESS,
+        talentByCategories: talent
+    };
+};
+
+export const fetchTalentCategoriesFail = (error) => {
+    return {
+        type: actionTypes.FETCH_TALENT_CATEGORIES_FAIL,
+        error: error
+    };
+};
+
+export const fetchTalentCategoriesStart = () => {
+    return {
+        type: actionTypes.FETCH_TALENT_CATEGORIES_START
+    };
+};
+
+export const fetchTalentByCategories = (token, user) => {
+    return dispatch => {
+        dispatch(fetchTalentCategoriesStart());
+        const username = user;
+
+        axios.get('talent/categories/list')
+            .then(async talentCategories => {
+                const fetchedTalentCategories = await talentCategories.data.categories;
+                dispatch(fetchTalentCategoriesSuccess(fetchedTalentCategories));
+            })
+            .catch(err => {
+                dispatch(fetchTalentCategoriesFail(err));
+            });
+    };
+};
+
 
 export const SubmitApplication = (first_name, last_name, email, phone) => {
     return dispatch => {
