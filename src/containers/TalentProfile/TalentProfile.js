@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
+import ReadMoreAndLess from 'react-read-more-less';
 
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
@@ -42,7 +43,7 @@ const TalentProfile = props => {
 
     return (
         <div className="talent-profile">
-            <section className="py-5">
+            <section className="pb-5 py-xl-5">
                 <div className="container-fluid px-5">
                     <div className="profile-wrapper">
                         <div className="row px-5">
@@ -80,7 +81,9 @@ const TalentProfile = props => {
                                         <span className="fs-4">Replies in 8.5 hrs</span>
                                     </div>
                                     <div className="profile-details pe-0 pe-lg-5">
-                                        <p className="fs-1 lh-sm mb-4">{service.bio || <Skeleton count={5} />}</p>
+                                        <div className="fs-1 lh-sm mb-4">
+                                            {service.bio}
+                                        </div>
                                         <div className="btn-wrapper text-end pe-sm-4">
                                             <a className="text-uppercase theme-pink-color fs-3" href="#">Read More {'>'}</a>
                                         </div>
@@ -88,7 +91,7 @@ const TalentProfile = props => {
                                     <div className="book-now d-grid my-5">
                                         <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
                                             <span className="display-4 text-uppercase">BOOK NOW</span> <br />
-                                            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video $150.00 ]</span>
+                                            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video ${service.video_fee} ]</span>
                                         </Link>
                                     </div>
                                 </div>

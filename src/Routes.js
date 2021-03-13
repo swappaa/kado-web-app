@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 
 
 import Booking from './containers/Booking/Booking';
-import Category from './containers/Category/Category';
+import Spotlight from './containers/Category/Spotlight';
 import SignupTalent from './containers/SignupTalent/SignupTalent';
 import Support from './containers/Support/Support';
 import About from './containers/About/About';
@@ -60,8 +60,8 @@ const Routes = () =>
         <Route path="/booking">
             <Booking />
         </Route>
-        <Route path="/category">
-            <Category />
+        <Route path="/talent/:talentCategory">
+            <Spotlight />
         </Route>
         <Route path="/signup-talent">
             <SignupTalent />

@@ -16,7 +16,6 @@
     height: 220px;
     object-fit: cover;
     border-radius: 25px;
-    background-color: #404041;
 }
 
 .category-item-wrapper .category-item::before {

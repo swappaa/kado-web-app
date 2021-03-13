@@ -10,5 +10,6 @@ export {
 export {
     fetchTalent,
     fetchTalentByCategories,
+    fetchTalentSpotlight,
     SubmitApplication
 } from './talent';

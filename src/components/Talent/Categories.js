@@ -5,7 +5,6 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
 import Aux from '../../hoc/Auxi/Auxi';
-import talentProfile from '../../assets/images/talent/1.png';
 
 const TalentCategories = (props) => {
     const [clientXonMouseDown, setClientXonMouseDown] = useState(null);
@@ -43,11 +42,6 @@ const TalentCategories = (props) => {
         }
     }
 
-    // const { talentCategories } = props
-    // console.log(talentCategories)
-
-    const talentUsername = 'maryapick';
-
     const talentCategories = [];
 
     for (let talentCategory in props.talentCategories) {
@@ -66,25 +60,26 @@ const TalentCategories = (props) => {
             <div className="col-12">
                 <div className="element-header py-4 d-flex align-items-center justify-content-between">
                     <h2 className="text-uppercase theme-pink-color display-6">{tc.category}</h2>
-                    <Link className="text-uppercase fs-3 font-ave-heavy" to="/category">SEE ALL SINGERS {'>'}</Link>
+                    <Link className="text-uppercase fs-3 font-ave-heavy" to={`/talent/${tc.category}`}>SEE ALL {tc.category} {'>'}</Link>
                 </div>
             </div>
             <div className="col-12">
                 <Slider {...settings}>
-                    {tc.talents.map((talent, i) => (
+                    {/* Map is not a function */}
+                    {Array.from(tc.talents).map((talent, i) => (
                         <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 <button className="btn"> </button>
                             </div>
                             <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : `x-fav`}>
                                 <div className="image-wrapper">
-                                    <img className="img-fluid w-100" src={talent.profile_picture} alt="talent-img" />
+                                    <img className="img-fluid w-100" src={talent.profile_picture} alt={talent.stage_name} />
                                 </div>
                                 <div className="featured-talent my-2">
                                     <h5 className="fs-4 font-ave-roman">{talent.stage_name}</h5>
                                 </div>
-                                <Link className="stretched-link" to={`/talent-profile/${talent.talent}`} onMouseDown={(e) => handleOnMouseDown(e)}
-                                    onClick={(e) => handleOnClick(e)} key={1}
+                                <Link className="stretched-link" to={`/talent-profile/${talent.talent_link_url}`} onMouseDown={(e) => handleOnMouseDown(e)}
+                                    onClick={(e) => handleOnClick(e)} key={i}
                                 ></Link>
                             </div>
                         </div>
@@ -101,4 +96,4 @@ const TalentCategories = (props) => {
     );
 };
 
-export default TalentCategories;
+export default React.memo(TalentCategories);

@@ -53,7 +53,7 @@ class Layout extends Component {
                     isAuth={this.props.isAuthenticated}
                     isSignup={this.SignUpHandler}
                     isSignin={this.SignInHandler} />
-                <main className="py-5">
+                <main className="py-xl-5">
                     {this.props.children}
                 </main>
                 <Auth switchAuthMode={this.state.isSignup} />

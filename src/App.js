@@ -1,5 +1,5 @@
-import React, { useEffect, Suspense  } from 'react';
-import { withRouter, Redirect } from 'react-router-dom';
+import React, { useEffect, Suspense } from 'react';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactNotification from 'react-notifications-component'
 import 'react-notifications-component/dist/theme.css'
@@ -21,12 +21,12 @@ const App = props => {
   }, [onTryAutoSignup]);
 
   return (
-     <Aux>
-        <Layout>
-           <Suspense fallback={<Spinner/>}><Routes /></Suspense> 
-        </Layout>
-        <ReactNotification />
-      </Aux>
+    <Aux>
+      <Layout>
+        <Suspense fallback={<Spinner />}><Routes /></Suspense>
+      </Layout>
+      <ReactNotification />
+    </Aux>
   );
 };
 

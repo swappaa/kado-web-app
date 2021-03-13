@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 // import ReactImageProcess from 'react-image-process';
 
+import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
-import TalentCategories from '../../components/Talent/TalentCategories';
+import TalentCategories from '../../components/Talent/Categories';
 import '../../App.css';
 import './Home.css';
 import waterMark from '../../assets/images/Watermark.png';
@@ -22,19 +22,31 @@ const Home = props => {
         onFetchTalentByCategories(props.token, props.username);
     }, []);
 
-    const talentCategoryList = Object.keys(talentCategories).map((key, index) => (
-        <TalentCategories
-            key={index}
-            talentCategories={talentCategories[key]}
-        />
-    ));
 
-    // console.log(talentCategories);
+    console.log(talentCategories);
 
-    // Object.keys(talentCategories).map((key, index) => {
-    //     // console.log(talentCategories[key]);
-    //     console.log(talentCategories);
-    // });
+    // const category = [];
+
+    // for (let categoryName in talentCategories) {
+    //     category.push(
+    //         {
+    //             category: categoryName,
+    //             talents: talentCategories[categoryName]
+    //         }
+    //     );
+    // }
+
+    // console.log(category);
+
+    let talentCategoryList = <Spinner />;
+    if (!props.loading) {
+        talentCategoryList = Object.keys(talentCategories).map((key, index) => (
+            <TalentCategories
+                key={index}
+                talentCategories={talentCategories[key]}
+            />
+        ));
+    }
 
     return (
         <div className="talent-home">
@@ -163,6 +175,7 @@ const Home = props => {
 const mapStateToProps = state => {
     return {
         talentCategories: state.TalentByCategories,
+        loading: state.ServiceTalent.loading,
         token: state.auth.token,
         username: state.auth.username
     };

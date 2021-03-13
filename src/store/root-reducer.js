@@ -14,7 +14,8 @@ const persistConfig = {
 const rootReducer = combineReducers({
     auth: authReducer,
     ServiceTalent: talentReducer,
-    TalentByCategories: talentReducer
+    TalentByCategories: talentReducer,
+    SpotlightByCategories: talentReducer
 });
 
 
