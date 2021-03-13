@@ -10,7 +10,7 @@ import talentCategoryReducer from '../store/reducers/talentCategory';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ServiceTalent', 'TalentByCategories', 'SpotlightByCategories']
+    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer']
 }
 
 const rootReducer = combineReducers({

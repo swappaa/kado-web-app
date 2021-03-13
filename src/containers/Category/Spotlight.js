@@ -15,8 +15,7 @@ import './Spotlight.css';
 const Spotlight = props => {
 
     const { talentCategory } = useParams()
-    const { onFetchSpotlightByCategories } = props;
-    const { spotlightCategories } = props
+    const { onFetchSpotlightByCategories, spotlightCategories, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -26,8 +25,9 @@ const Spotlight = props => {
         onFetchSpotlightByCategories(talentCategory, props.token, props.username);
     }, [talentCategory, onFetchSpotlightByCategories]);
 
+
     let spotlightCategoryList = <Spinner />;
-    if (!props.loading) {
+    if (!loading) {
         spotlightCategoryList = Object.keys(spotlightCategories).map((key, index) => (
             <SpotlightCategories
                 key={index}
@@ -35,8 +35,6 @@ const Spotlight = props => {
             />
         ));
     }
-
-    console.log(spotlightCategories);
 
     return (
         <Aux>
@@ -109,7 +107,7 @@ const Spotlight = props => {
 const mapStateToProps = state => {
     return {
         spotlightCategories: state.SpotlightByCategories,
-        loading: state.ServiceTalent.loading,
+        loading: state.SpotlightByCategories.loading,
         token: state.auth.token,
         username: state.auth.username
     };

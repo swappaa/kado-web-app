@@ -1,17 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-
-import prof1 from '../../assets/images/banner-surprise-message.png';
-import prof2 from '../../assets/images/banner-send-personalized-images.jpg';
-import prof3 from '../../assets/images/highlighted-kados.png';
-
 
 import Aux from '../../hoc/Auxi/Auxi';
 
-const TalentCategories = (props) => {
+const TalentCategories = React.memo((props) => {
 
     const { spotlightCategories } = props
 
@@ -61,6 +53,8 @@ const TalentCategories = (props) => {
             {allTalentBySpotlight}
         </Aux>
     );
-};
+});
 
-export default TalentCategories;
+export default
+    TalentCategories
+    ;

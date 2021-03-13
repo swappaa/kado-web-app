@@ -38,51 +38,6 @@ export const fetchTalent = (talentId) => {
     };
 };
 
-export const fetchTalentCategoriesSuccess = (talent) => {
-    return {
-        type: actionTypes.FETCH_TALENT_CATEGORIES_SUCCESS,
-        talentByCategories: talent
-    };
-};
-
-export const fetchTalentCategoriesFail = (error) => {
-    return {
-        type: actionTypes.FETCH_TALENT_CATEGORIES_FAIL,
-        error: error
-    };
-};
-
-export const fetchTalentCategoriesStart = () => {
-    return {
-        type: actionTypes.FETCH_TALENT_CATEGORIES_START
-    };
-};
-
-export const fetchTalentByCategories = (token, user) => {
-    return dispatch => {
-        dispatch(fetchTalentCategoriesStart());
-        axios.get('talent/categories/list')
-            .then(async talentCategories => {
-                const fetchedTalentCategories = await talentCategories.data.categories;
-                dispatch(fetchTalentCategoriesSuccess(cleanDeep(fetchedTalentCategories)));
-            })
-            // .then(res => {
-            //     const fetchedCategory = [];
-            //     for (let key in res.data.categories) {
-            //         fetchedCategory.push({
-            //             ...res.data.categories[key]
-            //         });
-            //     }
-            //     console.log(fetchedCategory)
-            //     dispatch(fetchTalentCategoriesSuccess(cleanDeep(fetchedCategory)));
-            // })
-            .catch(err => {
-                dispatch(fetchTalentCategoriesFail(err));
-            });
-    };
-};
-
-
 export const SubmitApplication = (first_name, last_name, email, phone) => {
     return dispatch => {
 

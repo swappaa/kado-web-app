@@ -96,4 +96,4 @@ const TalentCategories = (props) => {
     );
 };
 
-export default React.memo(TalentCategories);
+export default TalentCategories;

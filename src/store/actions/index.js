@@ -7,11 +7,16 @@ export {
     setAuthRedirectPath,
     authCheckState
 } from './auth';
+
 export {
     fetchTalent,
-    fetchTalentByCategories,
     SubmitApplication
 } from './talent';
+
+export {
+    fetchTalentByCategories,
+} from './talentCategory';
+
 
 export {
     fetchTalentSpotlight

@@ -7,6 +7,7 @@ import ReadMoreAndLess from 'react-read-more-less';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import '../../App.css';
 import './TalentProfile.css';
 import charityLogo from '../../assets/images/charity logo.png';
@@ -17,7 +18,7 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 const TalentProfile = props => {
 
     const { talentUsername } = useParams()
-    const { onFetchTalentByUsername } = props;
+    const { onFetchTalentByUsername, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -31,6 +32,8 @@ const TalentProfile = props => {
     const { service } = props
 
     const category = [];
+
+    if (loading && talentUsername !== service.talent_link_url) { return <Spinner /> }
 
     for (let categoryName in service.categories) {
         category.push(
