@@ -10,6 +10,9 @@ export {
 export {
     fetchTalent,
     fetchTalentByCategories,
-    fetchTalentSpotlight,
     SubmitApplication
 } from './talent';
+
+export {
+    fetchTalentSpotlight
+} from './spotlightCategory';

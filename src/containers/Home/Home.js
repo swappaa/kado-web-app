@@ -22,21 +22,8 @@ const Home = props => {
         onFetchTalentByCategories(props.token, props.username);
     }, []);
 
+    console.log(talentCategories)
 
-    console.log(talentCategories);
-
-    // const category = [];
-
-    // for (let categoryName in talentCategories) {
-    //     category.push(
-    //         {
-    //             category: categoryName,
-    //             talents: talentCategories[categoryName]
-    //         }
-    //     );
-    // }
-
-    // console.log(category);
 
     let talentCategoryList = <Spinner />;
     if (!props.loading) {
