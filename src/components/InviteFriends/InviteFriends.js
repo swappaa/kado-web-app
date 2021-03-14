@@ -33,7 +33,7 @@ you will receive a <span className="theme-pink-color">$10</span> credit for <spa
                                         <CopyToClipboard text={code}
                                             onCopy={() => setCopied(true)}>
                                             <div className="btn-wrapper w-50 mw-100 mx-auto">
-                                                <button class="btn btn-hvr text-decoration-none theme-pink-bg-color text-white text-uppercase br-radius-40 font-ave-heavy fs-4 px-4 py-2 w-100">Copy Code</button>
+                                                <button className="btn btn-hvr text-decoration-none theme-pink-bg-color text-white text-uppercase br-radius-40 font-ave-heavy fs-4 px-4 py-2 w-100">Copy Code</button>
                                             </div>
                                         </CopyToClipboard>
 

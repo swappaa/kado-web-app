@@ -110,7 +110,7 @@ const SignupTalent = props => {
                                         influence of our talent
                                         in support of impactful organizations on a mission to make our world a better place.
                                     A portion of all proceeds are donated to the deserving NGOs. <a
-                                                className="theme-pink-color fw-bold" href="#"> Learn More
+                                                className="theme-pink-color fw-bold white-space" href="#"> Learn More
                                          {' >'}</a></p>
                                     </div>
                                 </div>

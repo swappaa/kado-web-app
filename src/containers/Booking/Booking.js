@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+
 import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMessage';
 import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
-
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Booking.css';

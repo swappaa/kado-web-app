@@ -7,11 +7,12 @@ import talentReducer from '../store/reducers/talent';
 import spotlightCategoryReducer from '../store/reducers/spotlightCategory';
 import talentCategoryReducer from '../store/reducers/talentCategory';
 import fanTalentFavoriteReducer from '../store/reducers/fanTalentFavorite';
+import browseReducer from '../store/reducers/browse';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites']
+    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories']
 }
 
 const rootReducer = combineReducers({
@@ -19,7 +20,8 @@ const rootReducer = combineReducers({
     ServiceTalent: talentReducer,
     TalentByCategories: talentCategoryReducer,
     SpotlightByCategories: spotlightCategoryReducer,
-    FanTalentFavorites: fanTalentFavoriteReducer
+    FanTalentFavorites: fanTalentFavoriteReducer,
+    browseSpotlightByCategories: browseReducer
 });
 
 

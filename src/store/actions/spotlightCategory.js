@@ -1,5 +1,4 @@
 import * as actionTypes from './actionsType';
-import cleanDeep from 'clean-deep';
 import axios from '../../axios-kado';
 
 

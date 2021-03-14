@@ -14,13 +14,12 @@ import banner from '../../assets/images/banner-send-personalized-images.jpg';
 
 
 const Home = props => {
-    const { onFetchTalentByCategories } = props;
-    const { talentCategories } = props
+    const { onFetchTalentByCategories, talentCategories } = props;
 
     useEffect(() => {
         localStorage.setItem('path', window.location.pathname);
         onFetchTalentByCategories(props.token, props.username);
-    }, []);
+    }, [onFetchTalentByCategories]);
 
     console.log(talentCategories)
 

@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import Booking from './containers/Booking/Booking';
 import Spotlight from './containers/Category/Spotlight';
+import Browse from './containers/Browse/Browse';
 import SignupTalent from './containers/SignupTalent/SignupTalent';
 import Support from './containers/Support/Support';
 import About from './containers/About/About';
@@ -63,11 +64,11 @@ const Routes = () =>
         <Route path="/talent/:talentCategory">
             <Spotlight />
         </Route>
+        <Route path="/browse">
+            <Browse />
+        </Route>
         <Route path="/signup-talent">
             <SignupTalent />
-        </Route>
-        <Route path="/support">
-            <Support />
         </Route>
         <Route path="/support">
             <Support />

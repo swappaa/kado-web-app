@@ -3,20 +3,23 @@ import { Link } from 'react-router-dom';
 
 import Aux from '../../hoc/Auxi/Auxi';
 
-const TalentCategories = React.memo((props) => {
+const Browse = React.memo((props) => {
 
-    const { spotlightCategories } = props
+    const { spotlightByCategories } = props
 
-    const spotlightByCategories = Object.keys(spotlightCategories).map(function (key) {
-        var spotlight = spotlightCategories[key];
+    const browseSpotlightByCategories = Object.keys(spotlightByCategories).map(function (key) {
+        var spotlight = spotlightByCategories[key];
         spotlight.category = key;
         return spotlight;
     });
 
-    const allTalentBySpotlight = spotlightByCategories.map((ts, tsIndex) => {
-        return <Aux key={tsIndex}>
+    console.log(browseSpotlightByCategories);
+
+
+    const allTalentBySpotlight = browseSpotlightByCategories.map((ts, tsIndex) => {
+        return <div className="col-12 my-5" key={tsIndex}>
             <div className="category-wrapper mb-5 spotlight">
-                <h3 className="text-uppercase theme-pink-color display-6 mx-3">SPOTLIGHT</h3>
+                <h3 className="text-uppercase theme-pink-color display-6 mx-3">SPOTLIGHT {ts.category}</h3>
                 <div className="row row-cols-4 row-cols-md-5 g-3 justify-content-center justify-content-sm-start">
                     {!ts.spotlight || ts.spotlight.map((spotlight, spotIndex) => (
                         <div className="col-2 category-item-wrapper" key={spotIndex}>
@@ -37,7 +40,6 @@ const TalentCategories = React.memo((props) => {
             <div className="category-wrapper all-category">
                 <h3 className="text-uppercase theme-pink-color display-6 mx-3">All {ts.category}</h3>
                 <div className="row row-cols-4 row-cols-md-6 g-3 justify-content-center justify-content-sm-start">
-                    {/* Map is undefined */}
                     {!ts.all || ts.all.map((talent, talentIndex) => (
                         <div className="col-2 category-list-wrapper" key={talentIndex}>
                             <div className="border-0 text-center p-2 position-relative category-item">
@@ -51,10 +53,8 @@ const TalentCategories = React.memo((props) => {
                     ))}
                 </div>
             </div>
-        </Aux>
+        </div>
     });
-
-
 
     return (
         <Aux>
@@ -63,6 +63,4 @@ const TalentCategories = React.memo((props) => {
     );
 });
 
-export default
-    TalentCategories
-    ;
+export default Browse;

@@ -23,48 +23,48 @@ const DisableAccount = () => {
                                         <h6 className="fs-1 font-ave-reg mb-4">We’ll miss you.</h6>
                                         <p className="card-text">Your account will be deactivated after you click “Deactivate Now” below. Please let us know why you’re deactivating.</p>
                                         <form>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Didn’t find the Talent I was looking for.
                                                 </label>
                                             </div>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Too expensive.
                                                 </label>
                                             </div>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Too hard to use.
                                                 </label>
                                             </div>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Just didn’t need it.
                                                 </label>
                                             </div>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Poor quality videos.
                                                 </label>
                                             </div>
-                                            <div class="form-check mb-2">
-                                                <input class="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label class="form-check-label" for="flexRadioDefault1">
+                                            <div className="form-check mb-2">
+                                                <input className="form-check-input" type="radio" name="reason-deactivate-account" />
+                                                <label className="form-check-label" for="flexRadioDefault1">
                                                     Other
                                                 </label>
                                             </div>
                                             <div className="other-wrapper w-50 mw-100 ms-5 mb-5">
-                                                <textarea class="form-control border-dark rounded-lg" rows="6" style={{ borderRadius: '15px' }}></textarea>
+                                                <textarea className="form-control border-dark rounded-lg" rows="6" style={{ borderRadius: '15px' }}></textarea>
                                             </div>
                                             <div className="btn-wrapper w-50 mw-100 mx-auto mb-5 d-grid">
-                                                <button class="btn btn-hvr text-decoration-none theme-pink-bg-color text-white text-uppercase br-radius-40 font-ave-heavy fs-4 w-75 mw-100 mx-auto px-4 py-2" type="button">WAIT! DON’T DEACTIVATE!</button>
-                                                <button class="btn mt-5 fs-4" type="button">Deactivate Now</button>
+                                                <button className="btn btn-hvr text-decoration-none theme-pink-bg-color text-white text-uppercase br-radius-40 font-ave-heavy fs-4 w-75 mw-100 mx-auto px-4 py-2" type="button">WAIT! DON’T DEACTIVATE!</button>
+                                                <button className="btn mt-5 fs-4" type="button">Deactivate Now</button>
                                             </div>
                                         </form>
                                     </div>

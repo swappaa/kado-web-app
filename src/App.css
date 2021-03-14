@@ -147,6 +147,10 @@ thead {
   opacity: .8;
 }
 
+.white-space {
+  white-space: nowrap !important;
+}
+
 /* button:before {
   content: '';
   display: block;

@@ -152,7 +152,7 @@ class Auth extends Component {
                                                         scope="public_profile,user_friends,user_birthday"
                                                         callback={this.responseFacebook}
                                                         icon="fa-facebook me-3"
-                                                        cssClass="my-facebook-button-class my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
+                                                        cssClass="my-facebook-button-className my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
                                                         textButton="SIGNUP WITH FACEBOOK"
                                                         render={renderProps => (
                                                             <button onClick={renderProps.onClick}></button>
@@ -351,7 +351,7 @@ class Auth extends Component {
                                                         scope="public_profile,user_friends"
                                                         callback={this.responseFacebook}
                                                         icon="fa-facebook me-3"
-                                                        cssClass="my-facebook-button-class my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
+                                                        cssClass="my-facebook-button-className my-3 btn br-radius-40 font-ave-heavy fs-4 text-uppercase text-white px-5 py-3 w-50 mw-100"
                                                         render={renderProps => (
                                                             <button onClick={renderProps.onClick}> LOGIN WITH FACEBOOK</button>
                                                         )}

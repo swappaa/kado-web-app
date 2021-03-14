@@ -22,5 +22,13 @@ export {
 } from './spotlightCategory';
 
 export {
+    browseTalentSpotlight
+} from './browse';
+
+export {
     fetchFanTalentFavorite
 } from './fanTalentFavorite';
+
+export {
+    fetchNotification
+} from './notification';

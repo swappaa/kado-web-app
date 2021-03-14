@@ -85,11 +85,19 @@ const TalentProfile = props => {
                                     </div>
                                     <div className="profile-details pe-0 pe-lg-5">
                                         <div className="fs-1 lh-sm mb-4">
-                                            {service.bio}
+                                            {service.bio ?
+                                                <ReadMoreAndLess
+                                                    className="read-more-content"
+                                                    charLimit={250}
+                                                    readMoreText="Read more >"
+                                                    readLessText="Read less >"
+                                                >
+                                                    {service.bio}
+                                                </ReadMoreAndLess> : null}
                                         </div>
-                                        <div className="btn-wrapper text-end pe-sm-4">
+                                        {/* <div className="btn-wrapper text-end pe-sm-4">
                                             <a className="text-uppercase theme-pink-color fs-3" href="#">Read More {'>'}</a>
-                                        </div>
+                                        </div> */}
                                     </div>
                                     <div className="book-now d-grid my-5">
                                         <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
