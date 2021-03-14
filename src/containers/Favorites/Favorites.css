@@ -8,7 +8,6 @@
     height: 220px;
     object-fit: cover;
     border-radius: 35px;
-    background-color: #404041;
 }
 
 .favorite-item-wrapper .favorite-item::before {

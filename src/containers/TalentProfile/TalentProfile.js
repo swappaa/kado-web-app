@@ -17,7 +17,7 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 
 const TalentProfile = props => {
 
-    const { talentUsername } = useParams()
+    const { talentLink } = useParams()
     const { onFetchTalentByUsername, loading } = props;
 
     useEffect(() => {
@@ -25,15 +25,15 @@ const TalentProfile = props => {
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-        onFetchTalentByUsername(talentUsername);
-    }, [talentUsername, onFetchTalentByUsername]);
+        onFetchTalentByUsername(talentLink);
+    }, [talentLink, onFetchTalentByUsername]);
 
 
     const { service } = props
 
     const category = [];
 
-    if (loading && talentUsername !== service.talent_link_url) { return <Spinner /> }
+    if (loading && talentLink !== service.talent_link_url) { return <Spinner /> }
 
     for (let categoryName in service.categories) {
         category.push(

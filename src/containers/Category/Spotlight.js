@@ -81,19 +81,9 @@ const Spotlight = props => {
 
                             <h2 className="text-uppercase theme-pink-color display-4 mx-3 mb-5">{talentCategory}</h2>
 
-                            <div className="category-wrapper mb-5 spotlight">
-                                <h3 className="text-uppercase theme-pink-color display-6 mx-3">SPOTLIGHT</h3>
-                                <div className="row row-cols-4 row-cols-md-5 g-3 justify-content-center justify-content-sm-start">
 
-                                </div>
-                            </div>
+                            {spotlightCategoryList}
 
-                            <div className="category-wrapper all-category">
-                                <h3 className="text-uppercase theme-pink-color display-6 mx-3">All {talentCategory}</h3>
-                                <div className="row row-cols-4 row-cols-md-6 g-3 justify-content-center justify-content-sm-start">
-                                    {spotlightCategoryList}
-                                </div>
-                            </div>
 
                         </div>
                     </div>

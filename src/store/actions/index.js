@@ -17,7 +17,10 @@ export {
     fetchTalentByCategories,
 } from './talentCategory';
 
-
 export {
     fetchTalentSpotlight
 } from './spotlightCategory';
+
+export {
+    fetchFanTalentFavorite
+} from './fanTalentFavorite';
