@@ -18,6 +18,13 @@ const TalentCategories = React.memo((props) => {
             <div className="category-wrapper mb-5 spotlight">
                 <h3 className="text-uppercase theme-pink-color display-6 mx-3">SPOTLIGHT</h3>
                 <div className="row row-cols-4 row-cols-md-5 g-3 justify-content-center justify-content-sm-start">
+                    {ts.spotlight.length === 0 ? (
+                        <div className="col-lg-12 py-3 text-center text-uppercase fs-4">
+                            No Spotlight {ts.category}
+                        </div>
+                    ) : (
+                        null
+                    )}
                     {!ts.spotlight || ts.spotlight.map((spotlight, spotIndex) => (
                         <div className="col-2 category-item-wrapper" key={spotIndex}>
                             <div className="border-0 text-center p-2 position-relative category-item selected">

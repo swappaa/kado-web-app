@@ -151,6 +151,19 @@ thead {
   white-space: nowrap !important;
 }
 
+.fav-btn-wrapper {
+  z-index: 99 !important;
+}
+
+.fav-btn-wrapper button {
+  height: 46px;
+  width: 46px;
+  right: -9px;
+  top: 7px;
+  padding: 0;
+  position: absolute;
+}
+
 /* button:before {
   content: '';
   display: block;

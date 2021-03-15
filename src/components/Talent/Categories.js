@@ -1,4 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import axios from '../../axios-kado';
+import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import * as actions from '../../store/actions/index';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -6,9 +10,11 @@ import "slick-carousel/slick/slick-theme.css";
 
 import Aux from '../../hoc/Auxi/Auxi';
 
-const TalentCategories = (props) => {
+const Categories = (props) => {
     const [clientXonMouseDown, setClientXonMouseDown] = useState(null);
     const [clientYonMouseDown, setClientYonMouseDown] = useState(null);
+    const { onSetTalentIsFavorite } = props;
+    const [searchValue, setSearchValue] = useState("");
 
     const settings = {
         dots: false,
@@ -55,6 +61,19 @@ const TalentCategories = (props) => {
 
     console.log(talentCategories);
 
+    const onSearchHandler = (e) => {
+        let searchTalent = talentCategories.filter(talents => talents.stage_name.includes(e.target.value.toLowerCase()));
+        setSearchValue(e.target.value);
+    };
+
+    const onSetTalentAsFavoriteHandler = (e) => {
+        onSetTalentIsFavorite(e.target.id, true);
+    };
+
+    const removeTalentFromFavorites = (e) => {
+        onSetTalentIsFavorite(e.target.id, false);
+    };
+
     const talentCategoryOutput = talentCategories.map((tc, i) => {
         return <div className="row featured-wrapper-column my-3" key={i}>
             <div className="col-12">
@@ -65,13 +84,16 @@ const TalentCategories = (props) => {
             </div>
             <div className="col-12">
                 <Slider {...settings}>
-                    {/* Map is not a function */}
                     {Array.from(tc.talents).map((talent, i) => (
                         <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
-                                <button className="btn"> </button>
+                                {talent.is_favorite ? (
+                                    <button className="btn removeFavorite" onClick={removeTalentFromFavorites} id={talent.talent}> </button>
+                                ) : (
+                                    <button className="btn addFavorite" onClick={onSetTalentAsFavoriteHandler} id={talent.talent}> </button>
+                                )}
                             </div>
-                            <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : `x-fav`}>
+                            <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
                                 <div className="image-wrapper">
                                     <img className="img-fluid w-100" src={talent.profile_picture} alt={talent.stage_name} />
                                 </div>
@@ -79,7 +101,7 @@ const TalentCategories = (props) => {
                                     <h5 className="fs-4 font-ave-roman">{talent.stage_name}</h5>
                                 </div>
                                 <Link className="stretched-link" to={`/talent-profile/${talent.talent_link_url}`} onMouseDown={(e) => handleOnMouseDown(e)}
-                                    onClick={(e) => handleOnClick(e)} key={i}
+                                    onClick={(e) => handleOnClick(e)}
                                 ></Link>
                             </div>
                         </div>
@@ -91,9 +113,23 @@ const TalentCategories = (props) => {
 
     return (
         <Aux>
+            {/* <input type="text"
+                className="form-control form-control-lg px-4 py-3 br-radius fs-6 border-end-0"
+                placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2"
+                onChange={onSearchHandler} /> */}
             {talentCategoryOutput}
         </Aux>
     );
 };
 
-export default TalentCategories;
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetTalentIsFavorite: (talent_username, isFavorite) =>
+            dispatch(actions.setTalentIsFavorite(talent_username, isFavorite))
+    };
+};
+
+export default connect(
+    null,
+    mapDispatchToProps
+)(withErrorHandler(Categories, axios));

@@ -39,12 +39,14 @@ const Spotlight = props => {
                     <div className="customs-wrapper w-100 mx-auto">
                         <h2 className="text-uppercase theme-pink-color display-4 mx-3 mb-5">Favorites</h2>
                         <div className="favorites-wrapper">
-                            {fanTalentFavoriteList}
+                            <div className="row row-cols-4 row-cols-md-5 g-3 justify-content-center justify-content-sm-start">
+                                {fanTalentFavoriteList}
+                            </div>
                         </div>
                     </div>
                 </div>
             </section>
-        </div>
+        </div >
     )
 }
 

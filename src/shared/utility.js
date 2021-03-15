@@ -5,6 +5,12 @@ export const updateObject = (oldObject, updatedProperties) => {
     }
 }
 
+export default {
+    formatCurrency: function (num) {
+        return '$' + Number(num.toFixed(1)).toLocaleString() + ' ';
+    }
+}
+
 export const checkValidity = (value, rules) => {
     let isValid = true;
     if (!rules) {

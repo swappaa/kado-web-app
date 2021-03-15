@@ -6,6 +6,7 @@ import ReadMoreAndLess from 'react-read-more-less';
 
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import util from "../../shared/utility";
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
 import '../../App.css';
@@ -102,7 +103,7 @@ const TalentProfile = props => {
                                     <div className="book-now d-grid my-5">
                                         <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
                                             <span className="display-4 text-uppercase">BOOK NOW</span> <br />
-                                            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video ${service.video_fee} ]</span>
+                                            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
                                         </Link>
                                     </div>
                                 </div>

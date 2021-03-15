@@ -9,7 +9,6 @@ import * as actions from '../../store/actions/index';
 import TalentCategories from '../../components/Talent/Categories';
 import '../../App.css';
 import './Home.css';
-import waterMark from '../../assets/images/Watermark.png';
 import banner from '../../assets/images/banner-send-personalized-images.jpg';
 
 
@@ -90,7 +89,8 @@ const Home = props => {
                                                 <div className="input-group flex-nowrap">
                                                     <input type="text"
                                                         className="form-control form-control-lg px-4 py-3 br-radius fs-6 border-end-0"
-                                                        placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2" />
+                                                        placeholder="SEARCH" aria-label="SEARCH" aria-describedby="basic-addon2"
+                                                    />
                                                     <span className="input-group-text bg-white del-search border-start-0 border-end-0">
                                                         <a href="#">
                                                             <svg width="13px" height="11px" viewBox="0 0 22 20" version="1.1" xmlns="http://www.w3.org/2000/svg">

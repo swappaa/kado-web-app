@@ -22,7 +22,7 @@ export const fetchTalentCategoriesStart = () => {
     };
 };
 
-export const fetchTalentByCategories = (token, user) => {
+export const fetchTalentByCategories = () => {
     return dispatch => {
         dispatch(fetchTalentCategoriesStart());
         axios.get('talent/categories/list')
@@ -32,6 +32,43 @@ export const fetchTalentByCategories = (token, user) => {
             })
             .catch(err => {
                 dispatch(fetchTalentCategoriesFail(err));
+            });
+    };
+};
+
+export const setTalentIsFavoriteFail = (error) => {
+    return {
+        type: actionTypes.SET_TALENT_IS_FAVORITE_FAIL,
+        error: error
+    };
+};
+
+export const setTalentIsFavoriteStart = () => {
+    return {
+        type: actionTypes.SET_TALENT_IS_FAVORITE_START
+    };
+};
+
+export const setTalentIsFavorite = (talent_username, isFavorite) => {
+    return dispatch => {
+        dispatch(setTalentIsFavoriteStart());
+
+        let options = {
+            method: 'POST'
+        };
+        if (!isFavorite) {
+            options = {
+                method: 'DELETE'
+            };
+        }
+        axios(`talent/favorite/${talent_username}`, options)
+            .then(async favorite => {
+                const setTalentAsFavorite = await favorite.data;
+                console.log(setTalentAsFavorite)
+                dispatch(fetchTalentByCategories());
+            })
+            .catch(err => {
+                dispatch(setTalentIsFavoriteFail(err));
             });
     };
 };

@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Spring } from 'react-spring/renderprops'
 
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import util from "../../shared/utility";
 import axios from '../../axios-kado';
 import * as actions from '../../store/actions/index';
 import '../../App.css';
@@ -155,7 +157,12 @@ const SignupTalent = props => {
                             <div className="col-xl-3 col-lg-12">
                                 <div className="element-wrapper px-5 text-center text-xl-start">
                                     <h5 className="fs-2">
-                                        I make $ <span>630.00</span>
+                                        I make
+                                        <Spring
+                                            from={{ number: 0 }}
+                                            to={{ number: 630 }}>
+                                            {props => <span>{util.formatCurrency(props.number)}</span>}
+                                        </Spring>
                                     </h5>
                                     <p className="fs-5">Charities recieve $ <span>70.00</span></p>
                                 </div>
