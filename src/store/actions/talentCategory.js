@@ -49,6 +49,15 @@ export const setTalentIsFavoriteStart = () => {
     };
 };
 
+export const removeTalentFavorite = (talentUsername) => {
+    return {
+        type: actionTypes.REMOVE_TALENT_FAVORITE,
+        talentUName: talentUsername,
+        category: 'Actor'
+    };
+};
+
+
 export const setTalentIsFavorite = (talent_username, isFavorite) => {
     return dispatch => {
         dispatch(setTalentIsFavoriteStart());

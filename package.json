@@ -79,6 +79,7 @@
     "react-slick": "^0.28.0",
     "react-spring": "^8.0.27",
     "react-switch": "^6.0.0",
+    "react-time-ago": "^6.2.2",
     "react-toast-notifications": "^2.4.0",
     "react-verification-code-input": "^1.2.9",
     "redux": "^4.0.5",

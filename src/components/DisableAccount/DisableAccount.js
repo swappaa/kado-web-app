@@ -25,37 +25,37 @@ const DisableAccount = () => {
                                         <form>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Didn’t find the Talent I was looking for.
                                                 </label>
                                             </div>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Too expensive.
                                                 </label>
                                             </div>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Too hard to use.
                                                 </label>
                                             </div>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Just didn’t need it.
                                                 </label>
                                             </div>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Poor quality videos.
                                                 </label>
                                             </div>
                                             <div className="form-check mb-2">
                                                 <input className="form-check-input" type="radio" name="reason-deactivate-account" />
-                                                <label className="form-check-label" for="flexRadioDefault1">
+                                                <label className="form-check-label" htmlFor="flexRadioDefault1">
                                                     Other
                                                 </label>
                                             </div>

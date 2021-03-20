@@ -5,7 +5,7 @@ import axios from 'axios';
 const username = localStorage.getItem('username');
 const access_token = localStorage.getItem('token');
 const instance = axios.create({
-    baseURL: 'https://0a5suwmf57.execute-api.us-west-2.amazonaws.com/dev/'
+    baseURL: 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/'
 });
 
 instance.defaults.headers.common.Accept = 'application/json';
@@ -23,37 +23,37 @@ instance.interceptors.request.use(async function (config) {
     return config;
 });
 
-export const fetchNotificationSuccess = (notification) => {
+export const fetchAccountSuccess = (account) => {
     return {
-        type: actionTypes.FETCH_NOTIFICATIONS_SUCCESS,
-        notifications: notification
+        type: actionTypes.FETCH_ACCOUNT_SUCCESS,
+        accountDetails: account
     };
 };
 
-export const fetchNotificationFail = (error) => {
+export const fetchAccountFail = (error) => {
     return {
-        type: actionTypes.FETCH_NOTIFICATIONS_FAIL,
+        type: actionTypes.FETCH_ACCOUNT_FAIL,
         error: error
     };
 };
 
-export const fetchNotificationStart = () => {
+export const fetchAccountStart = () => {
     return {
-        type: actionTypes.FETCH_NOTIFICATIONS_START
+        type: actionTypes.FETCH_ACCOUNT_START
     };
 };
 
-export const fetchNotification = () => {
+export const getAccountDetails = () => {
     return dispatch => {
-        dispatch(fetchNotificationStart());
-        instance.get('notifications')
-            .then(async Notifications => {
-                const fetchedFanTalentFavorite = await Notifications.data.notifications;
-                dispatch(fetchNotificationSuccess(cleanDeep(fetchedFanTalentFavorite)));
+        dispatch(fetchAccountStart());
+
+        instance.get('account')
+            .then(async accountDetails => {
+                const fetchedAccountDetails = await accountDetails.data.data;
+                dispatch(fetchAccountSuccess(cleanDeep(fetchedAccountDetails)));
             })
             .catch(err => {
-                dispatch(fetchNotificationFail(err));
+                dispatch(fetchAccountFail(err));
             });
     };
 };
-

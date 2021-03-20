@@ -15,7 +15,8 @@ export {
 
 export {
     fetchTalentByCategories,
-    setTalentIsFavorite
+    setTalentIsFavorite,
+    removeTalentFavorite
 } from './talentCategory';
 
 export {
@@ -33,3 +34,7 @@ export {
 export {
     fetchNotification
 } from './notification';
+
+export {
+    getAccountDetails
+} from './account';

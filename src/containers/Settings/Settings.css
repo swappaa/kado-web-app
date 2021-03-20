@@ -30,8 +30,14 @@
     right: -50px;
 }
 
-.settings .customs-wrapper img.profile-image {
+.settings .talent-profile-wrapper {
+    max-width: 152px;
+    width: 100%;
+    height: 152px;
+    object-fit: cover;
     border: 4px solid #58585a;
+    border-radius: 50rem !important;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 991px) {

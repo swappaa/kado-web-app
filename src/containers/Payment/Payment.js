@@ -21,35 +21,35 @@ class Payment extends Component {
                                 <form className="row g-3 gy-5 w-50   mw-100">
                                     <div className="col-12 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">Name on the Card</label>
+                                        <label htmlFor="floatingInput">Name on the Card</label>
                                     </div>
                                     <div className="col-12 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">Billing Address</label>
+                                        <label htmlFor="floatingInput">Billing Address</label>
                                     </div>
                                     <div className="col-6 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">City</label>
+                                        <label htmlFor="floatingInput">City</label>
                                     </div>
                                     <div className="col-3 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">State</label>
+                                        <label htmlFor="floatingInput">State</label>
                                     </div>
                                     <div className="col-3 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">Zip</label>
+                                        <label htmlFor="floatingInput">Zip</label>
                                     </div>
                                     <div className="col-12 form-floating">
                                         <input type="number" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">Card Number</label>
+                                        <label htmlFor="floatingInput">Card Number</label>
                                     </div>
                                     <div className="col-8 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">Expires</label>
+                                        <label htmlFor="floatingInput">Expires</label>
                                     </div>
                                     <div className="col-4 form-floating">
                                         <input type="text" className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4" placeholder="Name on the Card" />
-                                        <label for="floatingInput">CCV</label>
+                                        <label htmlFor="floatingInput">CCV</label>
                                     </div>
                                     <div className="col-12 text-end">
                                         <p className="font-ave-heavy pe-5 fs-5 text-dark">Total to be charged: <small className="theme-pink-color">$199.00</small></p>

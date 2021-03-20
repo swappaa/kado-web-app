@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -14,7 +14,10 @@ const Categories = (props) => {
     const [clientXonMouseDown, setClientXonMouseDown] = useState(null);
     const [clientYonMouseDown, setClientYonMouseDown] = useState(null);
     const { onSetTalentIsFavorite } = props;
+    const dispatch = useDispatch();
     const [searchValue, setSearchValue] = useState("");
+    const [isFavorite, setFavorite] = useState(false);
+    const [records, setrecords] = useState("");
 
     const settings = {
         dots: false,
@@ -61,18 +64,50 @@ const Categories = (props) => {
 
     console.log(talentCategories);
 
-    const onSearchHandler = (e) => {
-        let searchTalent = talentCategories.filter(talents => talents.stage_name.includes(e.target.value.toLowerCase()));
-        setSearchValue(e.target.value);
-    };
+    // const onSearchHandler = (e) => {
+    //     let searchTalent = talentCategories.filter(talents => talents.stage_name.includes(e.target.value.toLowerCase()));
+    //     setSearchValue(e.target.value);
+    // };
 
     const onSetTalentAsFavoriteHandler = (e) => {
+        setFavorite(true);
         onSetTalentIsFavorite(e.target.id, true);
     };
 
-    const removeTalentFromFavorites = (e) => {
+    // const onTalentFromFavoritesRemoved = talentUsername =>
+    //     dispatch(actions.removeTalentFavorite(talentUsername.target.id));
+
+    const RemoveTalentFromFavorites = (e) => {
+        setFavorite(false);
         onSetTalentIsFavorite(e.target.id, false);
     };
+
+
+    // const RemoveTalentFromFavorites = (e) => {
+    //     e.preventDefault()
+    //     setrecords(RECORDS);
+    //     let records = RECORDS;
+
+    //     const companyName = 'FiveStar Automotives';
+    //     const newQty = 2;
+    //     const sid = 55;
+    //     setrecords({
+    //         records: {
+    //             ...records,
+    //             [companyName]: records[companyName].map(product =>
+    //                 product.SparePartID === sid
+    //                     ? {
+    //                         ...product,
+    //                         Qty: 2333,
+    //                         TotalPrice: 1000
+    //                     }
+    //                     : product
+    //             )
+    //         }
+    //     });
+
+    //     console.log(records)
+    // }
 
     const talentCategoryOutput = talentCategories.map((tc, i) => {
         return <div className="row featured-wrapper-column my-3" key={i}>
@@ -88,7 +123,7 @@ const Categories = (props) => {
                         <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 {talent.is_favorite ? (
-                                    <button className="btn removeFavorite" onClick={removeTalentFromFavorites} id={talent.talent}> </button>
+                                    <button className="btn removeFavorite" onClick={RemoveTalentFromFavorites} id={talent.talent}> </button>
                                 ) : (
                                     <button className="btn addFavorite" onClick={onSetTalentAsFavoriteHandler} id={talent.talent}> </button>
                                 )}
@@ -125,7 +160,7 @@ const Categories = (props) => {
 const mapDispatchToProps = dispatch => {
     return {
         onSetTalentIsFavorite: (talent_username, isFavorite) =>
-            dispatch(actions.setTalentIsFavorite(talent_username, isFavorite))
+            dispatch(actions.removeTalentFavorite(talent_username, isFavorite))
     };
 };
 

@@ -4,8 +4,7 @@ const username = localStorage.getItem('username');
 const access_token = localStorage.getItem('token');
 
 const instance = axios.create({
-    // baseURL: 'https://atln2zned9.execute-api.us-west-2.amazonaws.com/dev/'
-    baseURL: 'https://0a5suwmf57.execute-api.us-west-2.amazonaws.com/dev/'
+    baseURL: 'https://atln2zned9.execute-api.us-west-2.amazonaws.com/dev/'
 });
 
 instance.defaults.headers.common.Accept = 'application/json';

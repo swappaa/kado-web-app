@@ -7,6 +7,16 @@
     height: 196px !important;
 }
 
+.alerts-list .notif-profile-wrapper {
+    max-width: 152px;
+    width: 100%;
+    height: 152px;
+    object-fit: cover;
+    border: 4px solid #ee2a59;
+    border-radius: 50rem !important;
+    overflow: hidden;
+}
+
 @media screen and (max-width: 767px) {
     .customs-wrapper img.profile-image {
         max-width: 116px;

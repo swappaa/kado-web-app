@@ -96,7 +96,7 @@
   width: 100%;
   height: 152px;
   object-fit: cover;
-  border: 4px solid #ee2a59;
+  /* border: 4px solid #ee2a59; */
 }
 
 .customs-wrapper ul li:nth-child(odd), .customs-wrapper .requested-list .card:nth-child(even) {

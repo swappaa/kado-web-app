@@ -8,11 +8,13 @@ import spotlightCategoryReducer from '../store/reducers/spotlightCategory';
 import talentCategoryReducer from '../store/reducers/talentCategory';
 import fanTalentFavoriteReducer from '../store/reducers/fanTalentFavorite';
 import browseReducer from '../store/reducers/browse';
+import notificationReducer from '../store/reducers/notification';
+import accountReducer from '../store/reducers/account';
 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories']
+    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories', 'notifications', 'accountDetails']
 }
 
 const rootReducer = combineReducers({
@@ -21,7 +23,9 @@ const rootReducer = combineReducers({
     TalentByCategories: talentCategoryReducer,
     SpotlightByCategories: spotlightCategoryReducer,
     FanTalentFavorites: fanTalentFavoriteReducer,
-    browseSpotlightByCategories: browseReducer
+    browseSpotlightByCategories: browseReducer,
+    notifications: notificationReducer,
+    accountDetails: accountReducer
 });
 
 
