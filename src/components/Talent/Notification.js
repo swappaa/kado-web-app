@@ -1,7 +1,6 @@
 import React, { memo } from 'react';
 import { Link } from 'react-router-dom';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import PropTypes from 'prop-types'
 import ReactTimeAgo from 'react-time-ago';
 import Aux from '../../hoc/Auxi/Auxi';
 
@@ -25,7 +24,7 @@ const notification = (props) => {
                         </div>
                         <div className="align-self-start notif-date-wrapper white-space-nowrap">
                             <span className="font-ave-book me-2 fs-5">
-                                {notification.message_date ? <ReactTimeAgo date={notification.message_date} locale="en-US" /> : null}
+                                {notification.message_date ? <ReactTimeAgo date={new Date(notification.message_date)} locale="en-US" /> : null}
                             </span>
                             <svg width="23px" height="20px" viewBox="0 0 23 28" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -45,9 +44,5 @@ const notification = (props) => {
         </Aux>
     );
 };
-
-notification.propTypes = {
-    date: PropTypes.instanceOf(Date).isRequired
-}
 
 export default memo(notification);
