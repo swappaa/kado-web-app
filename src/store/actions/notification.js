@@ -8,9 +8,9 @@ const instance = axios.create({
     baseURL: 'https://0a5suwmf57.execute-api.us-west-2.amazonaws.com/dev/'
 });
 
-instance.defaults.headers.common.Accept = 'application/json';
-instance.defaults.headers['Content-Type'] = 'multipart/form-data';
-instance.interceptors.request.use(async function (config) {
+axios.defaults.headers.common.Accept = 'application/json';
+axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+axios.interceptors.request.use(async function (config) {
     config.headers.common['Access-Control-Allow-Origin'] = '*';
     config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
     config.headers.common['Access-Control-Allow-Credentials'] = true;
@@ -46,7 +46,7 @@ export const fetchNotificationStart = () => {
 export const fetchNotification = () => {
     return dispatch => {
         dispatch(fetchNotificationStart());
-        instance.get('notifications')
+        axios.get('https://0a5suwmf57.execute-api.us-west-2.amazonaws.com/dev/notifications')
             .then(async Notifications => {
                 const fetchedFanTalentFavorite = await Notifications.data.notifications;
                 dispatch(fetchNotificationSuccess(cleanDeep(fetchedFanTalentFavorite)));

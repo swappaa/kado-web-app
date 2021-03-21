@@ -5,7 +5,6 @@ import ReactTimeAgo from 'react-time-ago';
 import Aux from '../../hoc/Auxi/Auxi';
 
 const notification = (props) => {
-    console.log('notif')
     let notificationsList = Object.keys(props.notification)
         .map(notifKey => {
             return [...Array(props.notification[notifKey])].map((notification, i) => {
