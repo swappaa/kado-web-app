@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 import ReactTimeAgo from 'react-time-ago';
 import Aux from '../../hoc/Auxi/Auxi';
 

@@ -7,7 +7,6 @@ import 'react-notifications-component/dist/theme.css'
 import Aux from 'hoc/Auxi/Auxi';
 import Layout from 'hoc/Layout/Layout';
 import Routes from 'Routes';
-import Spinner from 'components/UI/Spinner/Spinner';
 import * as actions from 'store/actions/index';
 
 import 'App.css';
@@ -23,7 +22,7 @@ const App = props => {
   return (
     <Aux>
       <Layout>
-        <Suspense fallback={<Spinner />}><Routes /></Suspense>
+        <Suspense fallback={null}><Routes /></Suspense>
       </Layout>
       <ReactNotification />
     </Aux>

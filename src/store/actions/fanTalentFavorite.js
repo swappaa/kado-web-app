@@ -22,9 +22,18 @@ export const fetchFanTalentFavoriteStart = () => {
     };
 };
 
-export const fetchFanTalentFavorite = (token, user) => {
+export const fetchFanTalentFavorite = (access_token, username) => {
     return dispatch => {
         dispatch(fetchFanTalentFavoriteStart());
+
+        axios.interceptors.request.use(async function (config) {
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
         axios.get('talent/favorite/')
             .then(async FanTalentFavorites => {
                 const fetchedFanTalentFavorite = await FanTalentFavorites.data.favorites;

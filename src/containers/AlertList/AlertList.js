@@ -25,9 +25,11 @@ const AlertList = props => {
 
     const error = useSelector(state => state.notifications.error);
     const loading = useSelector(state => state.notifications.loading);
+    const token = useSelector(state => state.auth.token);
+    const username = useSelector(state => state.auth.username);
 
     const onFetchNotifications = useCallback(
-        () => dispatch(actions.fetchNotification()),
+        () => dispatch(actions.fetchNotification(token, username)),
         [dispatch]
     );
 
@@ -36,9 +38,8 @@ const AlertList = props => {
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-        onFetchNotifications();
+        onFetchNotifications(token, username);
     }, [onFetchNotifications]);
-
 
     let notificationList = [1, 2, 3].map((n) => <SkeletonNotification key={n} />);
 
@@ -64,5 +65,3 @@ const AlertList = props => {
     )
 }
 export default AlertList;
-
-

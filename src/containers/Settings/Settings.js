@@ -23,12 +23,13 @@ const Settings = props => {
         return state.accountDetails.account;
     });
 
-    const error = useSelector(state => state.accountDetails.error);
     const accountType = useSelector(state => state.auth.accountType);
     const isAuthenticated = useSelector(state => state.auth.token !== null);
+    const token = useSelector(state => state.auth.token);
+    const username = useSelector(state => state.auth.username);
 
     const onGetAccountDetails = useCallback(
-        () => dispatch(actions.getAccountDetails()),
+        () => dispatch(actions.getAccountDetails(token, username)),
         [dispatch]
     );
 
@@ -37,7 +38,7 @@ const Settings = props => {
             top: 0
         });
         localStorage.setItem('path', window.location.pathname);
-        onGetAccountDetails();
+        onGetAccountDetails(token, username);
     }, [onGetAccountDetails]);
 
 
