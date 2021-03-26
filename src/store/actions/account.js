@@ -26,9 +26,6 @@ export const getAccountDetails = (access_token, username) => {
     return dispatch => {
         dispatch(fetchAccountStart());
 
-        console.log(access_token)
-        console.log(username)
-
         axios.defaults.headers.common.Accept = 'application/json';
         axios.defaults.headers['Content-Type'] = 'multipart/form-data';
         axios.interceptors.request.use(async function (config) {

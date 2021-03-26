@@ -45,10 +45,9 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
-export const auth = (email, password, isSignup) => {
+export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
-
 
         let formData = new FormData();
 
@@ -56,16 +55,11 @@ export const auth = (email, password, isSignup) => {
         formData.append("password", password);
         formData.append("returnSecureToken", true);
 
-        let url = null;
-        if (!isSignup) {
-            url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email';
-        }
-
         const config = {
             headers: { 'content-type': 'application/json' }
         }
 
-        axios.post(url, formData, config)
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email', formData, config)
             .then(response => {
                 console.log(response.data);
                 const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
@@ -88,8 +82,19 @@ export const signUp = (name, username, email, password, birth_day) => {
     return dispatch => {
         dispatch(authStart());
 
+        let formData = new FormData();
+
+        formData.append("name", name);
+        formData.append("username", username);
+        formData.append("email", email);
+        formData.append("password", password);
+        formData.append("birth_day", birth_day);
+
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+
         const authData = {
-            account_status: "",
             name: name,
             username: username,
             email: email,
@@ -99,9 +104,7 @@ export const signUp = (name, username, email, password, birth_day) => {
 
         console.log(authData);
 
-        let url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/email';
-
-        axios.post(url, authData)
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/email', formData, config)
             .then(response => {
                 console.log(response);
             })

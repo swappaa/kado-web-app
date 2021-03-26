@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import ReadMoreAndLess from 'react-read-more-less';
 
+import Aux from '../../hoc/Auxi/Auxi';
+import Auth from '../../containers/Auth/SignIn';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import util from "../../shared/utility";
@@ -17,9 +19,13 @@ import { ReactComponent as RatingStarHalf } from '../../assets/images/svg/Star-P
 
 
 const TalentProfile = props => {
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
 
     const { talentLink } = useParams()
     const { onFetchTalentByUsername, loading } = props;
+
 
     useEffect(() => {
         window.scroll({
@@ -44,6 +50,23 @@ const TalentProfile = props => {
             }
         );
     }
+
+    let bookNow = (props.isAuthenticated ?
+        <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
+            <span className="display-4 text-uppercase">BOOK NOW</span> <br />
+            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
+        </Link > :
+        <Aux>
+            <Auth
+                show={show}
+                closed={handleClose} />
+            <button onClick={() => setShow(true)} className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
+                <span className="display-4 text-uppercase">BOOK NOW</span> <br />
+                <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
+            </button>
+        </Aux>
+
+    );
 
     return (
         <div className="talent-profile">
@@ -101,10 +124,7 @@ const TalentProfile = props => {
                                         </div> */}
                                     </div>
                                     <div className="book-now d-grid my-5">
-                                        <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr">
-                                            <span className="display-4 text-uppercase">BOOK NOW</span> <br />
-                                            <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
-                                        </Link>
+                                        {bookNow}
                                     </div>
                                 </div>
                             </div>
@@ -213,6 +233,7 @@ const TalentProfile = props => {
 
 const mapStateToProps = state => {
     return {
+        isAuthenticated: state.auth.token !== null,
         service: state.ServiceTalent.talent,
         loading: state.ServiceTalent.loading
     };

@@ -13,10 +13,6 @@ class kadosDetails extends Component {
 
     componentDidMount() {
         localStorage.setItem('path', window.location.pathname);
-
-
-
-
     }
 
     render() {

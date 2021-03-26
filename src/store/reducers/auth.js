@@ -9,8 +9,7 @@ const initialState = {
     username: null,
     error: null,
     loading: false,
-    authRedirectPath: '/',
-    isModalOpen: true
+    authRedirectPath: '/'
 };
 
 const authStart = (state, action) => {

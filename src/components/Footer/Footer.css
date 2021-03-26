@@ -23,6 +23,40 @@ footer ul li:last-child a::before {
 
 footer .element-signup-talent button {
     border-radius: 36px;
+    position: relative;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    white-space: nowrap;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+footer .element-signup-talent button::before {
+    border-radius: 36px;
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgb(64, 64, 65);
+    -webkit-transform: translate3d(-100%, -50%, 0);
+    transform: translate3d(-100%, -50%, 0);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    -webkit-transition: -webkit-transform 200ms ease;
+    transition: -webkit-transform 200ms ease;
+    transition: transform 200ms ease;
+    transition: transform 200ms ease, -webkit-transform 200ms ease;
+}
+
+footer .element-signup-talent button:hover::before {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
 }
 
 footer .download-app img {

@@ -1,67 +1,69 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Aux from '../Auxi/Auxi';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Footer/Footer';
-import Auth from '../../containers/Auth/Auth';
+import Auth from '../../containers/Auth/SignIn';
+import SignUp from '../../containers/Auth/SignUp';
 import InviteFriends from '../../components/InviteFriends/InviteFriends';
 import { connect } from 'react-redux';
 
-class Layout extends Component {
+const Layout = props => {
+    const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
+    const [showLogin, setShowLogin] = useState(false);
+    const [showSignup, setShowSignup] = useState(false);
 
-    state = {
-        showSideDrawer: false,
-        isSignup: true
+    const handleCloseLogin = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+
+    const handleCloseSignup = () => setShowSignup(false);
+    const handleShowSignup = () => setShowSignup(true);
+
+    const sideDrawerClosedHandler = () => {
+        setSideDrawerIsVisible(false);
+    };
+
+    const sideDrawerToggleHandler = () => {
+        setSideDrawerIsVisible(!sideDrawerIsVisible);
+    };
+
+    let inviteFriends = null;
+    if (props.isAuthenticated) {
+        inviteFriends = <InviteFriends />
     }
 
-    SideDrawerClosedHandler = () => {
-        this.setState({ showSideDrawer: false });
-    }
-
-    SignInHandler = () => {
-        this.setState({ isSignup: false });
-    }
-
-    SignUpHandler = () => {
-        this.setState({ isSignup: true });
-    }
-
-    drawerToggleClicked = () => {
-        this.setState((prevState) => {
-            return { showSideDrawer: !prevState.showSideDrawer }
-        });
-    }
-
-    render() {
-
-        let inviteFriends = null;
-        if (this.props.isAuthenticated) {
-            inviteFriends = <InviteFriends />
-        }
-
-        return (
+    let formAuth = null;
+    if (!props.isAuthenticated) {
+        formAuth =
             <Aux>
-                <Toolbar
-                    isAuth={this.props.isAuthenticated}
-                    drawerToggleClicked={this.drawerToggleClicked}
-                    isSignup={this.SignUpHandler}
-                    isSignin={this.SignInHandler}
-                    open={this.state.showSideDrawer} />
-                <SideDrawer
-                    open={this.state.showSideDrawer}
-                    closed={this.SideDrawerClosedHandler}
-                    isAuth={this.props.isAuthenticated}
-                    isSignup={this.SignUpHandler}
-                    isSignin={this.SignInHandler} />
-                <main className="py-xl-5">
-                    {this.props.children}
-                </main>
-                <Auth switchAuthMode={this.state.isSignup} />
-                {inviteFriends}
-                <Footer />
+                <Auth
+                    show={showLogin}
+                    closed={handleCloseLogin} />
+                <SignUp show={showSignup}
+                    closed={handleCloseSignup} />
             </Aux>
-        )
     }
+
+    return (
+        <Aux>
+            <Toolbar
+                isAuth={props.isAuthenticated}
+                drawerToggleClicked={sideDrawerToggleHandler}
+                open={sideDrawerIsVisible}
+                isSignin={handleShowLogin}
+                isSignup={handleShowSignup} />
+            <SideDrawer
+                open={sideDrawerIsVisible}
+                closed={sideDrawerClosedHandler}
+                isAuth={props.isAuthenticated} />
+            <main className="py-xl-5">
+                {props.children}
+            </main>
+            {formAuth}
+            {inviteFriends}
+            <Footer />
+        </Aux>
+    )
 }
 
 const mapStateToProps = state => {

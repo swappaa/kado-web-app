@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux';
 
 import NavigationItem from './NavigationItem/NavigationItem';
+import Auth from '../../../containers/Auth/SignIn';
 import Aux from '../../../hoc/Auxi/Auxi';
 import classes from './NavigationItems.module.css';
 
-const navigationItems = props => {
 
+const NavigationItems = props => {
     let routes = (
         <NavigationItem exact link="/browse" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
             <svg width="45pt" height="53pt" viewBox="0 0 45 53" version="1.1"
@@ -104,12 +105,12 @@ const navigationItems = props => {
             {!props.isAuthenticated ?
                 <Aux>
                     <li>
-                        <button onClick={props.AuthSignUpMode} data-bs-toggle="modal" data-bs-target="#signapp-modal" className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase ${classes['sign-up-btn']}`}>
+                        <button onClick={props.AuthSignUpMode} className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase ${classes['sign-up-btn']}`}>
                             <span> Sign up</span>
                         </button>
                     </li>
                     <li>
-                        <button onClick={props.AuthSignInMode} data-bs-toggle="modal" data-bs-target="#signin-modal"
+                        <button onClick={props.AuthSignInMode}
                             className="btn btn-sign bg-transparent d-flex align-items-center text-decoration-none text-uppercase font-ave-reg">
                             <span className="me-3 fs-6 nav-item">Sign in</span>
                             <svg width="46px" height="48px" viewBox="0 0 59 62" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -138,4 +139,4 @@ const mapStateToProps = state => {
 export default
     connect(
         mapStateToProps
-    )(navigationItems);
+    )(NavigationItems);
