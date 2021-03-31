@@ -18,7 +18,7 @@
 }
 
 @media screen and (max-width: 767px) {
-    .customs-wrapper img.profile-image {
+    .customs-wrapper img.profile-image, .alerts-list .notif-profile-wrapper {
         max-width: 116px;
         height: 116px;
     }
@@ -42,7 +42,7 @@
 }
 
 @media screen and (max-width: 440px) {
-    .customs-wrapper img.profile-image {
+    .customs-wrapper img.profile-image, .alerts-list .notif-profile-wrapper {
         max-width: 86px;
         height: 86px;
     }

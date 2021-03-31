@@ -45,3 +45,43 @@ export const fetchFanTalentFavorite = (access_token, username) => {
     };
 };
 
+export const removeTalentFavoriteSuccess = (idx) => {
+    return {
+        type: actionTypes.REMOVE_TALENT_FAVORITE_SUCCESS,
+        talentIndex: idx
+    };
+};
+
+export const removeTalentFavoriteFail = (error) => {
+    return {
+        type: actionTypes.REMOVE_TALENT_FAVORITE_FAIL,
+        error: error
+    };
+};
+
+export const removeTalentFavoriteStart = () => {
+    return {
+        type: actionTypes.REMOVE_TALENT_FAVORITE_START
+    };
+};
+
+
+export const removeTalentFavorite = (index, talent_username) => {
+    return dispatch => {
+        dispatch(removeTalentFavoriteStart());
+        dispatch(removeTalentFavoriteSuccess(index));
+
+        let options = {
+            method: 'DELETE'
+        };
+
+        axios(`talent/favorite/${talent_username}`, options)
+            .then(async favorite => {
+                const setTalentAsFavorite = await favorite.data;
+                // dispatch(fetchFanTalentFavorite(setTalentAsFavorite));
+            })
+            .catch(err => {
+                dispatch(removeTalentFavoriteFail(err));
+            });
+    };
+};

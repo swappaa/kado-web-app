@@ -6,6 +6,7 @@ import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
 import { store } from 'react-notifications-component';
 
+import Aux from '../../hoc/Auxi/Auxi';
 import Modal from '../../components/UI/Modal/ModalXL';
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
 
@@ -17,10 +18,11 @@ const Auth = props => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { talentCategories, authRedirectPath, onSetAuthRedirectPath } = props;
+    const { onFetchTalentByCategories, talentCategories, authRedirectPath, onSetAuthRedirectPath } = props;
 
     useEffect(() => {
         if (!talentCategories && authRedirectPath !== '/') {
+            onFetchTalentByCategories(props.token, props.username);
             onSetAuthRedirectPath();
         }
     }, [talentCategories, authRedirectPath, onSetAuthRedirectPath]);
@@ -31,6 +33,7 @@ const Auth = props => {
     }
 
     const responseFacebook = (response) => {
+        console.log(response)
         props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
     }
 
@@ -62,7 +65,10 @@ const Auth = props => {
 
     let authRedirect = null;
     if (props.isAuthenticated) {
-        authRedirect = <Redirect to={props.authRedirectPath} />
+        onFetchTalentByCategories(props.token, props.username);
+        authRedirect = <Aux>
+            <Redirect to={props.authRedirectPath} />;
+        </Aux>
     }
 
     return (
@@ -211,16 +217,17 @@ const mapStateToProps = state => {
         error: state.auth.error,
         talentCategories: state.TalentByCategories,
         isAuthenticated: state.auth.token !== null,
-        authRedirectPath: state.auth.authRedirectPath,
-        isModalOpen: state.auth.isModalOpen
+        username: state.auth.username,
+        authRedirectPath: state.auth.authRedirectPath
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onAuth: (email, password, isSignup) => dispatch(actions.auth(email, password)),
+        onAuth: (email, password) => dispatch(actions.auth(email, password)),
         onFBAuth: (accessToken, expiresIn, userID) => dispatch(actions.authFB(accessToken, expiresIn, userID)),
-        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
+        onFetchTalentByCategories: (token, username) => dispatch(actions.fetchTalentByCategories(token, username))
     };
 };
 

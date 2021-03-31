@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { connect, useDispatch } from 'react-redux';
+import { connect } from 'react-redux';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -13,11 +13,6 @@ import Aux from '../../hoc/Auxi/Auxi';
 const Categories = (props) => {
     const [clientXonMouseDown, setClientXonMouseDown] = useState(null);
     const [clientYonMouseDown, setClientYonMouseDown] = useState(null);
-    const { onSetTalentIsFavorite } = props;
-    const dispatch = useDispatch();
-    const [searchValue, setSearchValue] = useState("");
-    const [isFavorite, setFavorite] = useState(false);
-    const [records, setrecords] = useState("");
 
     const settings = {
         dots: false,
@@ -27,6 +22,7 @@ const Categories = (props) => {
         slidesToScroll: 2,
         variableWidth: true,
         focusOnSelect: true,
+        rtl: false,
         responsive: [
             {
                 breakpoint: 575,
@@ -64,53 +60,9 @@ const Categories = (props) => {
 
     console.log(talentCategories);
 
-    // const onSearchHandler = (e) => {
-    //     let searchTalent = talentCategories.filter(talents => talents.stage_name.includes(e.target.value.toLowerCase()));
-    //     setSearchValue(e.target.value);
-    // };
 
-    const onSetTalentAsFavoriteHandler = (e) => {
-        setFavorite(true);
-        onSetTalentIsFavorite(e.target.id, true);
-    };
-
-    // const onTalentFromFavoritesRemoved = talentUsername =>
-    //     dispatch(actions.removeTalentFavorite(talentUsername.target.id));
-
-    const RemoveTalentFromFavorites = (e) => {
-        setFavorite(false);
-        onSetTalentIsFavorite(e.target.id, false);
-    };
-
-
-    // const RemoveTalentFromFavorites = (e) => {
-    //     e.preventDefault()
-    //     setrecords(RECORDS);
-    //     let records = RECORDS;
-
-    //     const companyName = 'FiveStar Automotives';
-    //     const newQty = 2;
-    //     const sid = 55;
-    //     setrecords({
-    //         records: {
-    //             ...records,
-    //             [companyName]: records[companyName].map(product =>
-    //                 product.SparePartID === sid
-    //                     ? {
-    //                         ...product,
-    //                         Qty: 2333,
-    //                         TotalPrice: 1000
-    //                     }
-    //                     : product
-    //             )
-    //         }
-    //     });
-
-    //     console.log(records)
-    // }
-
-    const talentCategoryOutput = talentCategories.map((tc, i) => {
-        return <div className="row featured-wrapper-column my-3" key={i}>
+    const talentCategoryOutput = talentCategories.map((tc, key) => {
+        return <div className="row featured-wrapper-column my-3" key={key}>
             <div className="col-12">
                 <div className="element-header py-4 d-flex align-items-center justify-content-between">
                     <h2 className="text-uppercase theme-pink-color display-6">{tc.category}</h2>
@@ -122,11 +74,11 @@ const Categories = (props) => {
                     {Array.from(tc.talents).map((talent, i) => (
                         <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
-                                {talent.is_favorite ? (
-                                    <button className="btn removeFavorite" onClick={RemoveTalentFromFavorites} id={talent.talent}> </button>
-                                ) : (
-                                    <button className="btn addFavorite" onClick={onSetTalentAsFavoriteHandler} id={talent.talent}> </button>
-                                )}
+                                <button className="btn addFavorite"
+                                    onClick={() => {
+                                        props.setTalentIsFavorite(tc.category, i, talent.talent, talent.is_favorite)
+                                    }}>
+                                </button>
                             </div>
                             <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
                                 <div className="image-wrapper">

@@ -12,7 +12,7 @@ import '../../App.css';
 import './Favorites.css';
 
 const Spotlight = props => {
-    const { onFetchFanTalentFavorite, fanTalentFavorites, loading } = props;
+    const { onFetchFanTalentFavorite, onRemoveTalentFavorite, fanTalentFavorites, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -21,6 +21,11 @@ const Spotlight = props => {
         localStorage.setItem('path', window.location.pathname);
         onFetchFanTalentFavorite(props.token, props.username);
     }, [onFetchFanTalentFavorite]);
+    console.log(fanTalentFavorites)
+
+    const removeTalentFavorite = (key, talentUN) => {
+        onRemoveTalentFavorite(key, talentUN);
+    }
 
     let fanTalentFavoriteList = <Spinner />;
     if (!loading) {
@@ -28,6 +33,7 @@ const Spotlight = props => {
             <Favorites
                 key={index}
                 fanTalentFavorites={fanTalentFavorites[key]}
+                deleteFavorite={removeTalentFavorite}
             />
         ));
     }
@@ -63,7 +69,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchFanTalentFavorite: (token, username) =>
-            dispatch(actions.fetchFanTalentFavorite(token, username))
+            dispatch(actions.fetchFanTalentFavorite(token, username)),
+        onRemoveTalentFavorite: (key, talentUN) => dispatch(actions.removeTalentFavorite(key, talentUN))
     };
 };
 

@@ -22,9 +22,25 @@ export const fetchTalentCategoriesStart = () => {
     };
 };
 
-export const fetchTalentByCategories = () => {
+export const fetchTalentByCategories = (access_token, username) => {
     return dispatch => {
         dispatch(fetchTalentCategoriesStart());
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'application/json';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
         axios.get('talent/categories/list')
             .then(async talentCategories => {
                 const fetchedTalentCategories = await talentCategories.data.categories;
@@ -49,32 +65,35 @@ export const setTalentIsFavoriteStart = () => {
     };
 };
 
-export const removeTalentFavorite = (talentUsername) => {
+export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFavorite) => {
     return {
-        type: actionTypes.REMOVE_TALENT_FAVORITE,
-        talentUName: talentUsername,
-        category: 'Actor'
+        type: actionTypes.SET_TALENT_IS_FAVORITE_SUCCESS,
+        category: category,
+        key: key,
+        talentUName: talent_username,
+        isFavorite: isFavorite
     };
 };
 
 
-export const setTalentIsFavorite = (talent_username, isFavorite) => {
+export const setTalentIsFavorite = (category, key, talent_username, isFavorite) => {
     return dispatch => {
+        // let isFav = isFavorite ? 'false' : 'true';
         dispatch(setTalentIsFavoriteStart());
+        dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite));
 
         let options = {
-            method: 'POST'
+            method: 'DELETE'
         };
         if (!isFavorite) {
             options = {
-                method: 'DELETE'
+                method: 'POST'
             };
         }
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
-                console.log(setTalentAsFavorite)
-                dispatch(fetchTalentByCategories());
+                // dispatch(fetchTalentByCategories());
             })
             .catch(err => {
                 dispatch(setTalentIsFavoriteFail(err));

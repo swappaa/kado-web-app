@@ -1,12 +1,8 @@
-import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import axios from '../../axios-kado';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actions from '../../store/actions/index';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import FlipMove from 'react-flip-move';
 
 import Aux from '../../hoc/Auxi/Auxi';
-
 
 const Favorites = React.memo((props) => {
     const { fanTalentFavorites, onSetTalentIsFavorite } = props
@@ -15,14 +11,6 @@ const Favorites = React.memo((props) => {
         var talentFavorite = fanTalentFavorites[key];
         return talentFavorite;
     });
-
-    const onSetTalentAsFavoriteHandler = (e) => {
-        onSetTalentIsFavorite(e.target.id, true);
-    };
-
-    const removeTalentFromFavorites = (e) => {
-        onSetTalentIsFavorite(e.target.id, false);
-    };
 
     const allFanTalentFavorite = talentFavorites.map((favorite, i) => {
         return <Aux key={i}>
@@ -33,13 +21,13 @@ const Favorites = React.memo((props) => {
             ) : (
                 null
             )}
+
             <div className="col-2 favorite-item-wrapper position-relative">
                 <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
-                    {favorite.is_favorite ? (
-                        <button className="btn removeFavorite" onClick={removeTalentFromFavorites} id={favorite.talent}> </button>
-                    ) : (
-                        <button className="btn addFavorite" onClick={onSetTalentAsFavoriteHandler} id={favorite.talent}> </button>
-                    )}
+                    <button className="btn removeFavorite" onClick={() => {
+                        props.deleteFavorite(i, favorite.talent)
+                    }}>
+                    </button>
                 </div>
                 <div className="border-0 text-center p-2 position-relative favorite-item" data-fav={favorite.is_favorite ? 'y-fav' : 'x-fav'}>
                     <img className="img-fluid w-100" src={favorite.profile_picture}
@@ -52,10 +40,9 @@ const Favorites = React.memo((props) => {
                     ></Link>
                 </div>
             </div>
+
         </Aux>
     });
-
-
 
     return (
         <Aux>
@@ -64,15 +51,4 @@ const Favorites = React.memo((props) => {
     );
 });
 
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSetTalentIsFavorite: (talent_username, isFavorite) =>
-            dispatch(actions.setTalentIsFavorite(talent_username, isFavorite))
-    };
-};
-
-export default connect(
-    null,
-    mapDispatchToProps
-)(withErrorHandler(Favorites, axios));
+export default Favorites;

@@ -61,7 +61,6 @@ export const auth = (email, password) => {
 
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email', formData, config)
             .then(response => {
-                console.log(response.data);
                 const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
                 localStorage.setItem('token', response.data.AccessToken);
                 localStorage.setItem('refreshToken', response.data.RefreshToken);

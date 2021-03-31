@@ -15,8 +15,7 @@ export {
 
 export {
     fetchTalentByCategories,
-    setTalentIsFavorite,
-    removeTalentFavorite
+    setTalentIsFavorite
 } from './talentCategory';
 
 export {
@@ -28,7 +27,8 @@ export {
 } from './browse';
 
 export {
-    fetchFanTalentFavorite
+    fetchFanTalentFavorite,
+    removeTalentFavorite
 } from './fanTalentFavorite';
 
 export {

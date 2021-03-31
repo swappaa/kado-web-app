@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { connect } from 'react-redux';
 
 import NavigationItem from './NavigationItem/NavigationItem';
-import Auth from '../../../containers/Auth/SignIn';
 import Aux from '../../../hoc/Auxi/Auxi';
 import classes from './NavigationItems.module.css';
 

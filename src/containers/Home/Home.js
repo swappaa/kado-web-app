@@ -13,7 +13,7 @@ import banner from '../../assets/images/banner-send-personalized-images.jpg';
 
 
 const Home = props => {
-    const { onFetchTalentByCategories, talentCategories } = props;
+    const { onFetchTalentByCategories, onSetTalentFavorite, talentCategories } = props;
 
     useEffect(() => {
         localStorage.setItem('path', window.location.pathname);
@@ -22,6 +22,9 @@ const Home = props => {
 
     console.log(talentCategories)
 
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite);
+    }
 
     let talentCategoryList = <Spinner />;
     if (!props.loading) {
@@ -29,6 +32,7 @@ const Home = props => {
             <TalentCategories
                 key={index}
                 talentCategories={talentCategories[key]}
+                setTalentIsFavorite={setTalentIsFavorite}
             />
         ));
     }
@@ -170,7 +174,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchTalentByCategories: (token, username) =>
-            dispatch(actions.fetchTalentByCategories(token, username))
+            dispatch(actions.fetchTalentByCategories(token, username)),
+        onSetTalentFavorite: (category, key, talentUN, isFavorite) => dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite))
     };
 };
 

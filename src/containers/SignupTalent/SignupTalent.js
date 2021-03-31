@@ -214,7 +214,7 @@ const SignupTalent = props => {
                                         placeholder="NOTE" />
                                 </div>
                                 <div className="col-lg-12 d-grid text-center mt-5 w-100">
-                                    <button className="btn btn-lg text-upperase py-3 fs-1 text-uppercase theme-pink-bg-color text-white btn-hvr"
+                                    <button className="btn btn-lg text-upperase py-3 fs-1 text-uppercase theme-pink-bg-color text-white btn-hvr rounded-pill"
                                         type="submit">Submit
                             Application</button>
                                 </div>
