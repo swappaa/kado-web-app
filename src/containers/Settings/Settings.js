@@ -8,7 +8,6 @@ import * as actions from '../../store/actions/index';
 import Aux from '../../hoc/Auxi/Auxi';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import DisableAccount from '../../components/DisableAccount/DisableAccount';
-import prof1 from '../../assets/images/banner-surprise-message.png';
 import '../../App.css';
 import './Settings.css';
 

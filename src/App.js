@@ -22,7 +22,9 @@ const App = props => {
   return (
     <Aux>
       <Layout>
-        <Suspense fallback={null}><Routes /></Suspense>
+        <Suspense fallback={null}>
+          <Routes />
+        </Suspense>
       </Layout>
       <ReactNotification />
     </Aux>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
@@ -37,7 +37,7 @@ const AlertList = props => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
+        // localStorage.setItem('path', window.location.pathname);
         onFetchNotifications(token, username);
     }, [onFetchNotifications]);
 

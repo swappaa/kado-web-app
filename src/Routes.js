@@ -1,7 +1,7 @@
 
-import React from 'react'
-import { Switch, Route } from 'react-router-dom'
-
+import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import './404.css';
 
 import Booking from './containers/Booking/Booking';
 import Spotlight from './containers/Category/Spotlight';
@@ -26,7 +26,6 @@ const Dashboard = React.lazy(() => import('./containers/Dashboard/Dashboard'));
 const Favorites = React.lazy(() => import('./containers/Favorites/Favorites'));
 const Settings = React.lazy(() => import('./containers/Settings/Settings'));
 const Payment = React.lazy(() => import('./containers/Payment/Payment'));
-
 
 
 const Routes = () =>
@@ -91,12 +90,30 @@ const Routes = () =>
         <Route path="/logout">
             <Logout />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
             <Home />
         </Route>
+        <Route path="*">
+            <NoMatch />
+        </Route>
     </Switch>
-
 export default Routes
+
+
+function NoMatch() {
+    return (
+        <div id="notfound">
+            <div class="notfound">
+                <div class="notfound-404">
+                    <h1>Oops!</h1>
+                    <h2>404 - The Page can't be found</h2>
+                </div>
+                <Link className="btn btn-hvr  theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 text-uppercase" to="/">Go To Homepage</Link>
+            </div>
+        </div>
+    );
+}
+
 
 
 
