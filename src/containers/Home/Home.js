@@ -175,7 +175,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchTalentByCategories: (token, username) =>
             dispatch(actions.fetchTalentByCategories(token, username)),
-        onSetTalentFavorite: (category, key, talentUN, isFavorite) => dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite))
+        onSetTalentFavorite: (category, key, talentUN, isFavorite) =>
+            dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite))
     };
 };
 

@@ -14,7 +14,7 @@ import accountReducer from '../store/reducers/account';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories', 'notifications', 'accountDetails']
+    whitelist: ['auth', 'ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories', 'notifications', 'accountDetails']
 }
 
 const rootReducer = combineReducers({

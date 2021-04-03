@@ -15,7 +15,7 @@ import './Spotlight.css';
 const Spotlight = props => {
 
     const { talentCategory } = useParams()
-    const { onFetchSpotlightByCategories, spotlightCategories, loading } = props;
+    const { onFetchSpotlightByCategories, onSetTalentFavorite, spotlightCategories, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -25,6 +25,9 @@ const Spotlight = props => {
         onFetchSpotlightByCategories(talentCategory, props.token, props.username);
     }, [talentCategory, onFetchSpotlightByCategories]);
 
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray);
+    }
 
     let spotlightCategoryList = <Spinner />;
     if (!loading) {
@@ -32,6 +35,7 @@ const Spotlight = props => {
             <SpotlightCategories
                 key={index}
                 spotlightCategories={spotlightCategories[key]}
+                setTalentIsFavorite={setTalentIsFavorite}
             />
         ));
     }
@@ -106,7 +110,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchSpotlightByCategories: (category, token, username) =>
-            dispatch(actions.fetchTalentSpotlight(category, token, username))
+            dispatch(actions.fetchTalentSpotlight(category, token, username)),
+        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray) =>
+            dispatch(actions.spotTalentIsFavorite(category, key, talentUN, isFavorite, isArray))
     };
 };
 

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import Aux from '../../hoc/Auxi/Auxi';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import SkeletonBrowse from '../../Skeletons/Browse';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -13,7 +13,7 @@ import './Browse.css';
 
 const Spotlight = props => {
 
-    const { onBrowseSpotlightByCategories, spotlightByCategories, loading } = props;
+    const { onBrowseSpotlightByCategories, onSetTalentFavorite, spotlightByCategories, loading } = props;
 
     useEffect(() => {
         window.scroll({
@@ -23,12 +23,17 @@ const Spotlight = props => {
         onBrowseSpotlightByCategories(props.token, props.username);
     }, [onBrowseSpotlightByCategories]);
 
-    let spotlightCategoryList = <Spinner />;
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray);
+    }
+
+    let spotlightCategoryList = <SkeletonBrowse />;
     if (!loading) {
         spotlightCategoryList = Object.keys(spotlightByCategories).map((key, index) => (
             <TalentCategories
                 key={index}
                 spotlightByCategories={spotlightByCategories[key]}
+                setTalentIsFavorite={setTalentIsFavorite}
             />
         ));
     }
@@ -97,7 +102,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onBrowseSpotlightByCategories: (token, username) =>
-            dispatch(actions.browseTalentSpotlight(token, username))
+            dispatch(actions.browseTalentSpotlight(token, username)),
+        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray) =>
+            dispatch(actions.talentIsFavorite(category, key, talentUN, isFavorite, isArray))
     };
 };
 

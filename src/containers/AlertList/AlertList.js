@@ -4,13 +4,13 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import SkeletonNotification from '../../Skeletons/SkeletonNotification';
 
 import * as actions from '../../store/actions/index';
 import Notification from '../../components/Talent/Notification';
 import '../../App.css';
 import './AlertList.css';
-import SkeletonNotification from '../../Skeletons/SkeletonNotification';
+
 
 TimeAgo.addLocale(en)
 

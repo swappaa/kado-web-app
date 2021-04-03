@@ -74,7 +74,7 @@ const Categories = (props) => {
                     {Array.from(tc.talents).map((talent, i) => (
                         <div className="element-featured-wrapper py-3 position-relative" key={i}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
-                                <button className="btn addFavorite"
+                                <button className="btn"
                                     onClick={() => {
                                         props.setTalentIsFavorite(tc.category, i, talent.talent, talent.is_favorite)
                                     }}>

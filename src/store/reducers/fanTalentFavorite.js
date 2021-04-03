@@ -30,12 +30,11 @@ const removeTalentFavoriteFail = (state, action) => {
 };
 
 const removeTalentFavoriteSuccess = (state, action) => {
-    const updatedSt = {
-        fanTalentfavorites: state.fanTalentfavorites.filter((index) => index !== action.talentIndex),
+    const updatedFanTalentFavorites = {
+        fanTalentfavorites: state.fanTalentfavorites.filter((index) => index.talent !== action.talent_username),
         loading: false
     }
-    console.log(updatedSt)
-    return updateObject(state, updatedSt);
+    return updateObject(state, updatedFanTalentFavorites);
 };
 
 const reducer = (state = initialState, action) => {

@@ -19,11 +19,13 @@ export {
 } from './talentCategory';
 
 export {
-    fetchTalentSpotlight
+    fetchTalentSpotlight,
+    spotTalentIsFavorite
 } from './spotlightCategory';
 
 export {
-    browseTalentSpotlight
+    browseTalentSpotlight,
+    talentIsFavorite
 } from './browse';
 
 export {

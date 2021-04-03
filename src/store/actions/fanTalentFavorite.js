@@ -45,10 +45,10 @@ export const fetchFanTalentFavorite = (access_token, username) => {
     };
 };
 
-export const removeTalentFavoriteSuccess = (idx) => {
+export const removeTalentFavoriteSuccess = (talent_username) => {
     return {
         type: actionTypes.REMOVE_TALENT_FAVORITE_SUCCESS,
-        talentIndex: idx
+        talent_username: talent_username
     };
 };
 
@@ -66,10 +66,10 @@ export const removeTalentFavoriteStart = () => {
 };
 
 
-export const removeTalentFavorite = (index, talent_username) => {
+export const removeTalentFavorite = (talent_username) => {
     return dispatch => {
         dispatch(removeTalentFavoriteStart());
-        dispatch(removeTalentFavoriteSuccess(index));
+        dispatch(removeTalentFavoriteSuccess(talent_username));
 
         let options = {
             method: 'DELETE'
@@ -78,7 +78,6 @@ export const removeTalentFavorite = (index, talent_username) => {
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
-                // dispatch(fetchFanTalentFavorite(setTalentAsFavorite));
             })
             .catch(err => {
                 dispatch(removeTalentFavoriteFail(err));

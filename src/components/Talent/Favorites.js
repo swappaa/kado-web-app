@@ -1,31 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import FlipMove from 'react-flip-move';
+import cleanDeep from 'clean-deep';
 
 import Aux from '../../hoc/Auxi/Auxi';
 
 const Favorites = React.memo((props) => {
-    const { fanTalentFavorites, onSetTalentIsFavorite } = props
+    const { fanTalentFavorites } = props
+
 
     const talentFavorites = Object.keys(fanTalentFavorites).map(function (key) {
         var talentFavorite = fanTalentFavorites[key];
         return talentFavorite;
     });
 
-    const allFanTalentFavorite = talentFavorites.map((favorite, i) => {
-        return <Aux key={i}>
-            {talentFavorites.length === 0 ? (
-                <div className="col-lg-12 py-3 text-center text-uppercase fs-4">
-                    No Spotlight
-                </div>
-            ) : (
-                null
-            )}
+    const tae = cleanDeep(fanTalentFavorites)
 
+    if (tae.length === 0) {
+        return <div className="col-lg-12 py-3 text-center fs-4">
+            You haven't added any talent to your favorites.
+        </div>
+    }
+
+    const allFanTalentFavorite = talentFavorites.map((favorite, favKey) => {
+        return <Aux key={favKey}>
             <div className="col-2 favorite-item-wrapper position-relative">
                 <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                     <button className="btn removeFavorite" onClick={() => {
-                        props.deleteFavorite(i, favorite.talent)
+                        props.deleteFavorite(favorite.talent)
                     }}>
                     </button>
                 </div>
@@ -40,8 +42,7 @@ const Favorites = React.memo((props) => {
                     ></Link>
                 </div>
             </div>
-
-        </Aux>
+        </Aux>;
     });
 
     return (

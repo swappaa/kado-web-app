@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import Spinner from '../../components/UI/Spinner/Spinner';
+import SkeletonFavorites from '../../Skeletons/Favorites';
 import axios from '../../axios-kado';
 import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
@@ -21,13 +22,12 @@ const Spotlight = props => {
         localStorage.setItem('path', window.location.pathname);
         onFetchFanTalentFavorite(props.token, props.username);
     }, [onFetchFanTalentFavorite]);
-    console.log(fanTalentFavorites)
 
     const removeTalentFavorite = (key, talentUN) => {
         onRemoveTalentFavorite(key, talentUN);
     }
 
-    let fanTalentFavoriteList = <Spinner />;
+    let fanTalentFavoriteList = [1, 2, 3, 4, 5, 6].map((n) => <SkeletonFavorites key={n} />);
     if (!loading) {
         fanTalentFavoriteList = Object.keys(fanTalentFavorites).map((key, index) => (
             <Favorites
@@ -35,7 +35,7 @@ const Spotlight = props => {
                 fanTalentFavorites={fanTalentFavorites[key]}
                 deleteFavorite={removeTalentFavorite}
             />
-        ));
+        ))
     }
 
     return (

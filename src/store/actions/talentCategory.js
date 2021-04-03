@@ -52,10 +52,14 @@ export const fetchTalentByCategories = (access_token, username) => {
     };
 };
 
-export const setTalentIsFavoriteFail = (error) => {
+export const setTalentIsFavoriteFail = (error, category, key, talent_username, isFavorite) => {
     return {
         type: actionTypes.SET_TALENT_IS_FAVORITE_FAIL,
-        error: error
+        error: error,
+        category: category,
+        key: key,
+        talentUName: talent_username,
+        isFavorite: isFavorite
     };
 };
 
@@ -78,7 +82,6 @@ export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFav
 
 export const setTalentIsFavorite = (category, key, talent_username, isFavorite) => {
     return dispatch => {
-        // let isFav = isFavorite ? 'false' : 'true';
         dispatch(setTalentIsFavoriteStart());
         dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite));
 
@@ -93,10 +96,9 @@ export const setTalentIsFavorite = (category, key, talent_username, isFavorite) 
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
-                // dispatch(fetchTalentByCategories());
             })
             .catch(err => {
-                dispatch(setTalentIsFavoriteFail(err));
+                dispatch(setTalentIsFavoriteFail(err, category, key, talent_username, isFavorite));
             });
     };
 };

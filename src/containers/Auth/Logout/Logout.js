@@ -14,9 +14,12 @@ const Logout = props => {
     return <Redirect to="/" />;
 };
 
+
 const mapDispatchToProps = dispatch => {
     return {
-        onLogout: () => dispatch(actions.logout())
+        onLogout: () => dispatch(actions.logout()),
+        onFetchTalentByCategories: () =>
+            dispatch(actions.fetchTalentByCategories()),
     };
 };
 

@@ -36,3 +36,55 @@ export const fetchTalentSpotlight = (category, token, user) => {
     };
 };
 
+export const setTalentIsFavoriteFail = (error, category, key, talent_username, isFavorite, isArray) => {
+    return {
+        type: actionTypes.SET_SPOT_TALENT_IS_FAVORITE_FAIL,
+        error: error,
+        category: category,
+        key: key,
+        talentUName: talent_username,
+        isFavorite: isFavorite,
+        isArray: isArray
+    };
+};
+
+export const setTalentIsFavoriteStart = () => {
+    return {
+        type: actionTypes.SET_SPOT_TALENT_IS_FAVORITE_START
+    };
+};
+
+export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFavorite, isArray) => {
+    return {
+        type: actionTypes.SET_SPOT_TALENT_IS_FAVORITE_SUCCESS,
+        category: category,
+        key: key,
+        talentUName: talent_username,
+        isFavorite: isFavorite,
+        isArray: isArray
+    };
+};
+
+
+export const spotTalentIsFavorite = (category, key, talent_username, isFavorite, isArray) => {
+    return dispatch => {
+        dispatch(setTalentIsFavoriteStart());
+        dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite, isArray));
+        let options = {
+            method: 'DELETE'
+        };
+        if (!isFavorite) {
+            options = {
+                method: 'POST'
+            };
+        }
+        axios(`talent/favorite/${talent_username}`, options)
+            .then(async favorite => {
+                const setTalentAsFavorite = await favorite.data;
+                // dispatch(fetchTalentSpotlight(localStorage.getItem('token'), localStorage.getItem('username')));
+            })
+            .catch(err => {
+                dispatch(setTalentIsFavoriteFail(err, category, key, talent_username, isFavorite, isArray));
+            });
+    };
+};

@@ -36,7 +36,12 @@ const setTalentIsFavoriteSuccess = (state, action) => {
 };
 
 const setTalentIsFavoriteFail = (state, action) => {
-    return updateObject(state, { loading: false });
+    const updatedTalentCategories = updateObject(state.talentCategories, state.talentCategories[action.category][action.key].is_favorite = false);
+    const updatedState = {
+        talentCategories: updatedTalentCategories,
+        loading: false
+    }
+    return updateObject(state, updatedState);
 };
 
 const reducer = (state = initialState, action) => {
