@@ -10,7 +10,7 @@ const browse = () => {
                 </h3>
                 <div className="row row-cols-4 row-cols-md-5 g-3 justify-content-center justify-content-sm-start">
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -23,7 +23,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -36,7 +36,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -49,7 +49,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -62,7 +62,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -75,7 +75,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -95,7 +95,7 @@ const browse = () => {
                 </h3>
                 <div className="row row-cols-4 row-cols-md-6 g-3 justify-content-center justify-content-sm-start">
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -103,7 +103,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -111,7 +111,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -119,7 +119,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -127,7 +127,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>
@@ -135,7 +135,7 @@ const browse = () => {
                         </div>
                     </div>
                     <div className="col-2 category-item-wrapper position-relative">
-                        <div className="border-0 text-center p-2 position-relative category-item">
+                        <div className="border-0 text-center p-2 position-relative category-item" data-fav="x-fav">
                             <div className="profileWrapper" style={{ borderRadius: '35px', overflow: 'hidden' }}>
                                 <Skeleton height={240} width={220} />
                             </div>

@@ -42,7 +42,6 @@ const AlertList = props => {
     }, [onFetchNotifications]);
 
     let notificationList = [1, 2, 3].map((n) => <SkeletonNotification key={n} />);
-
     if (!loading) {
         notificationList = (
             <Notification notification={notif} />

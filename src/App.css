@@ -164,6 +164,10 @@ thead {
   position: absolute;
 }
 
+.profileWrapper span>span, span>.react-loading-skeleton {
+  border-radius: 35px;
+}
+
 /* button:before {
   content: '';
   display: block;
