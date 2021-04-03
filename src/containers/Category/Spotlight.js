@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
 
 import Aux from '../../hoc/Auxi/Auxi';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import SkeletonSpotlight from '../../Skeletons/Spotlight';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -29,7 +29,7 @@ const Spotlight = props => {
         onSetTalentFavorite(category, index, talentUN, isFavorite, isArray);
     }
 
-    let spotlightCategoryList = <Spinner />;
+    let spotlightCategoryList = <SkeletonSpotlight />;
     if (!loading) {
         spotlightCategoryList = Object.keys(spotlightCategories).map((key, index) => (
             <SpotlightCategories
