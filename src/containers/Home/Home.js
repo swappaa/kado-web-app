@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-// import ReactImageProcess from 'react-image-process';
 
 import Spinner from '../../components/UI/Spinner/Spinner';
 import axios from '../../axios-kado';
@@ -22,8 +21,8 @@ const Home = props => {
 
     console.log(talentCategories)
 
-    const setTalentIsFavorite = (category, index, talentUN, isFavorite) => {
-        onSetTalentFavorite(category, index, talentUN, isFavorite);
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite, stage_name) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite, stage_name);
     }
 
     let talentCategoryList = <Spinner />;
@@ -175,8 +174,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchTalentByCategories: (token, username) =>
             dispatch(actions.fetchTalentByCategories(token, username)),
-        onSetTalentFavorite: (category, key, talentUN, isFavorite) =>
-            dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite))
+        onSetTalentFavorite: (category, key, talentUN, isFavorite, stage_name) =>
+            dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite, stage_name))
     };
 };
 

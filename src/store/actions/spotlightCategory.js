@@ -1,6 +1,6 @@
 import * as actionTypes from './actionsType';
 import axios from '../../axios-kado';
-
+import { toast } from "react-toastify";
 
 export const fetchTalentSpotlightSuccess = (spotlight) => {
     return {
@@ -66,10 +66,11 @@ export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFav
 };
 
 
-export const spotTalentIsFavorite = (category, key, talent_username, isFavorite, isArray) => {
+export const spotTalentIsFavorite = (category, key, talent_username, isFavorite, isArray, stage_name) => {
     return dispatch => {
         dispatch(setTalentIsFavoriteStart());
         dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite, isArray));
+
         let options = {
             method: 'DELETE'
         };
@@ -81,10 +82,17 @@ export const spotTalentIsFavorite = (category, key, talent_username, isFavorite,
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
+
+                if (!isFavorite) {
+                    toast.success(`You added ${stage_name} from favorites ❤ !`);
+                } else {
+                    toast.success(`You removed ${stage_name} from favorites!`);
+                }
                 // dispatch(fetchTalentSpotlight(localStorage.getItem('token'), localStorage.getItem('username')));
             })
             .catch(err => {
                 dispatch(setTalentIsFavoriteFail(err, category, key, talent_username, isFavorite, isArray));
+                toast.error(`Please try again!`);
             });
     };
 };

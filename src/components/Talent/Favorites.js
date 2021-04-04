@@ -27,7 +27,7 @@ const Favorites = React.memo((props) => {
             <div className="col-2 favorite-item-wrapper position-relative">
                 <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                     <button className="btn removeFavorite" onClick={() => {
-                        props.deleteFavorite(favorite.talent)
+                        props.deleteFavorite(favorite.talent, favorite.stage_name)
                     }}>
                     </button>
                 </div>

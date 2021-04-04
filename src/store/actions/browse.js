@@ -1,6 +1,7 @@
 import * as actionTypes from './actionsType';
 import cleanDeep from 'clean-deep';
 import axios from '../../axios-kado';
+import { toast } from "react-toastify";
 
 export const browseTalentSpotlightSuccess = (spotlight) => {
     return {
@@ -82,7 +83,7 @@ export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFav
 };
 
 
-export const talentIsFavorite = (category, key, talent_username, isFavorite, isArray) => {
+export const talentIsFavorite = (category, key, talent_username, isFavorite, isArray, stage_name) => {
     return dispatch => {
         dispatch(setTalentIsFavoriteStart());
         dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite, isArray));
@@ -99,9 +100,16 @@ export const talentIsFavorite = (category, key, talent_username, isFavorite, isA
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
                 dispatch(browseTalentSpotlight(localStorage.getItem('token'), localStorage.getItem('username')));
+
+                if (!isFavorite) {
+                    toast.success(`You added ${stage_name} from favorites ❤ !`);
+                } else {
+                    toast.success(`You removed ${stage_name} from favorites!`);
+                }
             })
             .catch(err => {
                 dispatch(setTalentIsFavoriteFail(err, category, key, talent_username, isFavorite, isArray));
+                toast.error(`Please try again!`);
             });
     };
 };

@@ -23,8 +23,8 @@ const Spotlight = props => {
         onBrowseSpotlightByCategories(props.token, props.username);
     }, [onBrowseSpotlightByCategories]);
 
-    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray) => {
-        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray);
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray, stage_name) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray, stage_name);
     }
 
     let spotlightCategoryList = <SkeletonBrowse />;
@@ -103,8 +103,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onBrowseSpotlightByCategories: (token, username) =>
             dispatch(actions.browseTalentSpotlight(token, username)),
-        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray) =>
-            dispatch(actions.talentIsFavorite(category, key, talentUN, isFavorite, isArray))
+        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray, stage_name) =>
+            dispatch(actions.talentIsFavorite(category, key, talentUN, isFavorite, isArray, stage_name))
     };
 };
 

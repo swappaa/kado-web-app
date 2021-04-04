@@ -1,6 +1,7 @@
 import * as actionTypes from './actionsType';
 import cleanDeep from 'clean-deep';
 import axios from '../../axios-kado';
+import { toast } from "react-toastify";
 
 export const fetchTalentCategoriesSuccess = (talent) => {
     return {
@@ -80,10 +81,11 @@ export const setTalentIsFavoriteSuccess = (category, key, talent_username, isFav
 };
 
 
-export const setTalentIsFavorite = (category, key, talent_username, isFavorite) => {
+export const setTalentIsFavorite = (category, key, talent_username, isFavorite, stage_name) => {
     return dispatch => {
         dispatch(setTalentIsFavoriteStart());
         dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite));
+        toast.success(`You added ${stage_name} from favorites ❤ !`);
 
         let options = {
             method: 'DELETE'

@@ -29,7 +29,7 @@ const TalentCategories = React.memo((props) => {
                         <div className="col-2 category-item-wrapper position-relative" key={spotIndex}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 <button className="btn removeFavorite" onClick={() => {
-                                    props.setTalentIsFavorite(ts.category, spotIndex, spotlight.talent, spotlight.is_favorite, 'spotlight')
+                                    props.setTalentIsFavorite(ts.category, spotIndex, spotlight.talent, spotlight.is_favorite, 'spotlight', spotlight.stage_name)
                                 }}>
                                 </button>
                             </div>
@@ -55,7 +55,7 @@ const TalentCategories = React.memo((props) => {
                         <div className="col-2 category-list-wrapper position-relative" key={talentIndex}>
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 <button className="btn removeFavorite" onClick={() => {
-                                    props.setTalentIsFavorite(ts.category, talentIndex, talent.talent, talent.is_favorite, 'all')
+                                    props.setTalentIsFavorite(ts.category, talentIndex, talent.talent, talent.is_favorite, 'all', talent.stage_name)
                                 }}>
                                 </button>
                             </div>

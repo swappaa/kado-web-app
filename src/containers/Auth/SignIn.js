@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
-import { store } from 'react-notifications-component';
+
+
 
 import Aux from '../../hoc/Auxi/Auxi';
 import Modal from '../../components/UI/Modal/ModalXL';
@@ -14,7 +15,6 @@ import '../../App.css';
 import './Auth.css';
 
 const Auth = props => {
-
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
@@ -22,7 +22,7 @@ const Auth = props => {
 
     useEffect(() => {
         if (!talentCategories && authRedirectPath !== '/') {
-            onFetchTalentByCategories(props.token, props.username);
+            onFetchTalentByCategories(localStorage.getItem('token'), localStorage.getItem('username'));
             onSetAuthRedirectPath();
         }
     }, [talentCategories, authRedirectPath, onSetAuthRedirectPath]);
@@ -45,27 +45,8 @@ const Auth = props => {
         btnSubmit = <ButtonSpinner />
     }
 
-    if (props.error) {
-        if (props.error !== null) {
-            store.addNotification({
-                message: 'Error! ' + props.error,
-                type: "danger",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: false,
-                    showIcon: true
-                }
-            });
-        }
-    }
-
     let authRedirect = null;
     if (props.isAuthenticated) {
-        onFetchTalentByCategories(props.token, props.username);
         authRedirect = <Aux>
             <Redirect to={props.authRedirectPath} />;
         </Aux>
@@ -230,5 +211,6 @@ const mapDispatchToProps = dispatch => {
         onFetchTalentByCategories: (token, username) => dispatch(actions.fetchTalentByCategories(token, username))
     };
 };
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(Auth);

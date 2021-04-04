@@ -5,7 +5,6 @@ import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
 import $ from 'jquery';
-import { store } from 'react-notifications-component';
 
 import Modal from '../../components/UI/Modal/ModalXL';
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
@@ -49,24 +48,6 @@ const SignUp = props => {
 
     if (props.loading) {
         btnSubmit = <ButtonSpinner />
-    }
-
-    if (props.error) {
-        if (props.error !== null) {
-            store.addNotification({
-                message: 'Error! ' + props.error,
-                type: "danger",
-                insert: "top",
-                container: "top-right",
-                animationIn: ["animate__animated", "animate__fadeIn"],
-                animationOut: ["animate__animated", "animate__fadeOut"],
-                dismiss: {
-                    duration: 5000,
-                    onScreen: false,
-                    showIcon: true
-                }
-            });
-        }
     }
 
     let authRedirect = null;

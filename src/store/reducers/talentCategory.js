@@ -36,7 +36,7 @@ const setTalentIsFavoriteSuccess = (state, action) => {
 };
 
 const setTalentIsFavoriteFail = (state, action) => {
-    const updatedTalentCategories = updateObject(state.talentCategories, state.talentCategories[action.category][action.key].is_favorite = false);
+    const updatedTalentCategories = updateObject(state.talentCategories, state.talentCategories[action.category][action.key].is_favorite = action.isFavorite ? true : false);
     const updatedState = {
         talentCategories: updatedTalentCategories,
         loading: false

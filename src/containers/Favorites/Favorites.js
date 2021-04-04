@@ -23,8 +23,8 @@ const Spotlight = props => {
         onFetchFanTalentFavorite(props.token, props.username);
     }, [onFetchFanTalentFavorite]);
 
-    const removeTalentFavorite = (key, talentUN) => {
-        onRemoveTalentFavorite(key, talentUN);
+    const removeTalentFavorite = (talentUN, StageName) => {
+        onRemoveTalentFavorite(talentUN, StageName);
     }
 
     let fanTalentFavoriteList = [1, 2, 3, 4, 5, 6].map((n) => <SkeletonFavorites key={n} />);

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import * as actionTypes from './actionsType';
+import { toast } from "react-toastify";
 
 export const authStart = () => {
     return {
@@ -73,6 +74,7 @@ export const auth = (email, password) => {
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
+                toast.error(err.response.data.message);
             });
     };
 };

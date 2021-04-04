@@ -25,8 +25,8 @@ const Spotlight = props => {
         onFetchSpotlightByCategories(talentCategory, props.token, props.username);
     }, [talentCategory, onFetchSpotlightByCategories]);
 
-    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray) => {
-        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray);
+    const setTalentIsFavorite = (category, index, talentUN, isFavorite, isArray, stage_name) => {
+        onSetTalentFavorite(category, index, talentUN, isFavorite, isArray, stage_name);
     }
 
     let spotlightCategoryList = <SkeletonSpotlight />;
@@ -111,8 +111,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchSpotlightByCategories: (category, token, username) =>
             dispatch(actions.fetchTalentSpotlight(category, token, username)),
-        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray) =>
-            dispatch(actions.spotTalentIsFavorite(category, key, talentUN, isFavorite, isArray))
+        onSetTalentFavorite: (category, key, talentUN, isFavorite, isArray, stage_name) =>
+            dispatch(actions.spotTalentIsFavorite(category, key, talentUN, isFavorite, isArray, stage_name))
     };
 };
 

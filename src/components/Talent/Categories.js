@@ -76,7 +76,7 @@ const Categories = (props) => {
                             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
                                 <button className="btn"
                                     onClick={() => {
-                                        props.setTalentIsFavorite(tc.category, i, talent.talent, talent.is_favorite)
+                                        props.setTalentIsFavorite(tc.category, i, talent.talent, talent.is_favorite, talent.stage_name)
                                     }}>
                                 </button>
                             </div>

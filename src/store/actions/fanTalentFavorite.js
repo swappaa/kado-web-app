@@ -1,6 +1,7 @@
 import * as actionTypes from './actionsType';
 import cleanDeep from 'clean-deep';
 import axios from '../../axios-kado';
+import { toast } from "react-toastify";
 
 export const fetchFanTalentFavoriteSuccess = (favorite) => {
     return {
@@ -66,10 +67,11 @@ export const removeTalentFavoriteStart = () => {
 };
 
 
-export const removeTalentFavorite = (talent_username) => {
+export const removeTalentFavorite = (talent_username, stage_name) => {
     return dispatch => {
         dispatch(removeTalentFavoriteStart());
         dispatch(removeTalentFavoriteSuccess(talent_username));
+        toast.success(`You removed ${stage_name} from favorites!`);
 
         let options = {
             method: 'DELETE'
@@ -78,9 +80,11 @@ export const removeTalentFavorite = (talent_username) => {
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
+
             })
             .catch(err => {
                 dispatch(removeTalentFavoriteFail(err));
+                toast.error(`Please try again!`);
             });
     };
 };
