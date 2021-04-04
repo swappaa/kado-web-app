@@ -15,7 +15,8 @@ export {
 
 export {
     fetchTalentByCategories,
-    setTalentIsFavorite
+    setTalentIsFavorite,
+    setSearchTerm
 } from './talentCategory';
 
 export {

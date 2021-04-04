@@ -85,7 +85,6 @@ export const setTalentIsFavorite = (category, key, talent_username, isFavorite, 
     return dispatch => {
         dispatch(setTalentIsFavoriteStart());
         dispatch(setTalentIsFavoriteSuccess(category, key, talent_username, isFavorite));
-        toast.success(`You added ${stage_name} from favorites ❤ !`);
 
         let options = {
             method: 'DELETE'
@@ -98,9 +97,22 @@ export const setTalentIsFavorite = (category, key, talent_username, isFavorite, 
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
                 const setTalentAsFavorite = await favorite.data;
+                if (!isFavorite) {
+                    toast.success(`You added ${stage_name} from favorites ❤ !`);
+                } else {
+                    toast.success(`You removed ${stage_name} from favorites!`);
+                }
             })
             .catch(err => {
                 dispatch(setTalentIsFavoriteFail(err, category, key, talent_username, isFavorite));
+                toast.error(`You can't add ${stage_name} from favorites at this time!`);
             });
+    };
+};
+
+export const setSearchTerm = (search_value) => {
+    return {
+        type: actionTypes.SEARCH_TALENT,
+        search_value: search_value,
     };
 };
