@@ -32,8 +32,9 @@ export const fetchTalent = (talentId) => {
                 const fetchedTalent = await service.data.talent;
                 dispatch(fetchTalentSuccess(fetchedTalent));
             })
-            .catch(err => {
-                dispatch(fetchTalentFail(err));
+            .catch(async err => {
+                let error = 'talent not found'
+                dispatch(fetchTalentFail(error));
             });
     };
 };

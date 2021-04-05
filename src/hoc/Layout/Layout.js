@@ -38,9 +38,11 @@ const Layout = props => {
             <Aux>
                 <Auth
                     show={showLogin}
-                    closed={handleCloseLogin} />
+                    closed={handleCloseLogin}
+                    isSignup={handleShowSignup} />
                 <SignUp show={showSignup}
-                    closed={handleCloseSignup} />
+                    closed={handleCloseSignup}
+                    isSignin={handleShowLogin} />
             </Aux>
     }
 
@@ -55,7 +57,9 @@ const Layout = props => {
             <SideDrawer
                 open={sideDrawerIsVisible}
                 closed={sideDrawerClosedHandler}
-                isAuth={props.isAuthenticated} />
+                isAuth={props.isAuthenticated}
+                isSignin={handleShowLogin}
+                isSignup={handleShowSignup} />
             <main className="py-xl-5">
                 {props.children}
             </main>

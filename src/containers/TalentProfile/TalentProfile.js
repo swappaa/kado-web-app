@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, Redirect } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import ReadMoreAndLess from 'react-read-more-less';
 
@@ -40,7 +40,17 @@ const TalentProfile = props => {
 
     const category = [];
 
-    if (loading && talentLink !== service.talent_link_url) { return <Spinner /> }
+    if (props.error && talentLink !== service.talent_link_url) {
+        return (
+            <div>
+                <Redirect to={`/talent-profile-404/${talentLink}`} />
+            </div>
+        )
+    }
+
+    if (loading && talentLink !== service.talent_link_url) {
+        return <Spinner />
+    }
 
     for (let categoryName in service.categories) {
         category.push(
@@ -50,6 +60,7 @@ const TalentProfile = props => {
             }
         );
     }
+
 
     let bookNow = (props.isAuthenticated ?
         <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
@@ -235,7 +246,8 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.token !== null,
         service: state.ServiceTalent.talent,
-        loading: state.ServiceTalent.loading
+        loading: state.ServiceTalent.loading,
+        error: state.ServiceTalent.error
     };
 };
 

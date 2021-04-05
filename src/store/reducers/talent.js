@@ -3,22 +3,27 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     talent: [],
-    loading: false
+    loading: false,
+    error: null,
 };
 
 const fetchTalentStart = (state, action) => {
-    return updateObject(state, { loading: true });
+    return updateObject(state, { loading: true, error: null });
 };
 
 const fetchTalentSuccess = (state, action) => {
     return updateObject(state, {
         loading: false,
+        error: null,
         talent: action.selectedService
     });
 };
 
 const fetchTalentFail = (state, action) => {
-    return updateObject(state, { loading: false });
+    return updateObject(state, {
+        loading: true,
+        error: action.error
+    });
 };
 
 const reducer = (state = initialState, action) => {

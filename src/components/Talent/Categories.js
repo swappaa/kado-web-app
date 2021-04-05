@@ -19,18 +19,42 @@ const Categories = (props) => {
         dots: false,
         arrows: false,
         infinite: false,
-        slidesToShow: 1,
-        slidesToScroll: 2,
+        slidesToShow: 6,
+        slidesToScroll: 6,
         variableWidth: true,
         focusOnSelect: true,
+        swipeToSlide: false,
+        initialSlide: 0,
         rtl: false,
         responsive: [
             {
+                breakpoint: 1800,
+                settings: {
+                    slidesToShow: 4,
+                    slidesToScroll: 4
+                }
+            },
+            {
+                breakpoint: 1500,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3
+                }
+            },
+            {
+                breakpoint: 767,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2
+                }
+            },
+            {
                 breakpoint: 575,
                 settings: {
+                    slidesToShow: 1,
                     slidesToScroll: 1
                 }
-            }
+            },
         ]
     };
 

@@ -232,9 +232,9 @@ const SignUp = props => {
                                                         className="text-decoration-underline">Privacy Policy</Link>.</label>
                                             </div>
                                             <div className="py-5 text-center">
-                                                <h6 className="fs-5 text-dark">Already have an account? <Link data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signin-modal"
-                                                    className="theme-pink-color link-danger text-decoration-underline"
-                                                >Sign in</Link>
+                                                <h6 className="fs-5 text-dark">Already have an account? <button onClick={() => { props.closed(); props.isSignin() }}
+                                                    className="btn theme-pink-color link-danger text-decoration-underline fs-5"
+                                                >Sign in</button>
                                                 </h6>
                                                 {btnSubmit}
                                                 <label className="text-dark form-check-label font-ave-book"

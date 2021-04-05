@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 
 import SearchBar from '../../components/Talent/SearchBar';
-import Spinner from '../../components/UI/Spinner/Spinner';
+import SkeletonCategories from '../../Skeletons/Categories';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
 import * as actions from '../../store/actions/index';
@@ -42,7 +42,7 @@ const Home = props => {
     //     ));
     // }
 
-    let talentCategoryList = <Spinner />;
+    let talentCategoryList = [1, 2].map((n) => <SkeletonCategories key={n} />);
     if (talentCategories && !props.loading) {
         talentCategoryList = Object.keys(talentCategories).map((tc, key) => {
             return <div className="row featured-wrapper-column my-3" key={key}>

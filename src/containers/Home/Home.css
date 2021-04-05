@@ -115,6 +115,11 @@
     width: 100%;
 }
 
+.talent-home .slick-track {
+    margin-left: unset;
+    margin-right: unset;
+}
+
 /* .featured-wrapper .image-wrapper img {
     object-fit: cover;
     animation-name: load-fade-in !important;

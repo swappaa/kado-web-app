@@ -22,13 +22,32 @@ const Settings = props => {
         return state.accountDetails.account;
     });
 
+    const privacy = useSelector(state => {
+        return state.accountDetails.privacy;
+    });
+
+    const tos = useSelector(state => {
+        return state.accountDetails.tos;
+    });
+
     const accountType = useSelector(state => state.auth.accountType);
     const isAuthenticated = useSelector(state => state.auth.token !== null);
     const token = useSelector(state => state.auth.token);
     const username = useSelector(state => state.auth.username);
+    const locale = useSelector(state => state.accountDetails.account.locale);
 
     const onGetAccountDetails = useCallback(
         () => dispatch(actions.getAccountDetails(token, username)),
+        [dispatch]
+    );
+
+    const onGetTOS = useCallback(
+        () => dispatch(actions.getTOS(locale)),
+        [dispatch]
+    );
+
+    const onGetPrivacy = useCallback(
+        () => dispatch(actions.getPrivacy(locale)),
         [dispatch]
     );
 
@@ -38,6 +57,8 @@ const Settings = props => {
         });
         localStorage.setItem('path', window.location.pathname);
         onGetAccountDetails(token, username);
+        onGetTOS(locale);
+        onGetPrivacy(locale);
     }, [onGetAccountDetails]);
 
 
@@ -358,22 +379,11 @@ const Settings = props => {
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
+                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy.body}</p>
                                                                 </td>
                                                             </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
-                                                                </td>
-                                                            </tr>
+
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -389,20 +399,8 @@ const Settings = props => {
                                                         <tbody>
                                                             <tr>
                                                                 <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
-                                                                </td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td>
-                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam vulputate consequat justo in lacinia. Vestibulum dapibus justo urna. Ut varius porttitor venenatis. Praesent elementum nunc quis justo suscipit, id ullamcorper diam efficitur. Maecenas sodales arcu felis, euismod pharetra magna pulvinar sit amet. Nunc augue urna, pretium vitae blandit eu, luctus a leo. Duis sit amet neque vitae quam vulputate vulputate vel vel tellus. Donec vitae eros fermentum, effic tur est a, finibus odio. Vestibulum eu ipsu</p>
+                                                                    <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos.body}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

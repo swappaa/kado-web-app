@@ -39,5 +39,7 @@ export {
 } from './notification';
 
 export {
-    getAccountDetails
+    getAccountDetails,
+    getTOS,
+    getPrivacy
 } from './account';

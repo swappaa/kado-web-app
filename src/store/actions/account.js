@@ -51,3 +51,45 @@ export const getAccountDetails = (access_token, username) => {
             });
     };
 };
+
+export const fetchTOSSuccess = (tos) => {
+    return {
+        type: actionTypes.FETCH_TOS_SUCCESS,
+        tos: tos
+    };
+};
+
+export const getTOS = (locale) => {
+    let newlocale = locale
+    if (locale === 'en-US') {
+        newlocale = 'en_US'
+    }
+    return dispatch => {
+        axios.get(`https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/tos/${newlocale}`)
+            .then(async tos => {
+                const getTOS = await tos.data.tos;
+                dispatch(fetchTOSSuccess(getTOS));
+            })
+    };
+};
+
+export const fetchPrivacySuccess = (privacy) => {
+    return {
+        type: actionTypes.FETCH_PRIVACY_SUCCESS,
+        privacy: privacy
+    };
+};
+
+export const getPrivacy = (locale) => {
+    let newlocale = locale
+    if (locale === 'en-US') {
+        newlocale = 'en_US'
+    }
+    return dispatch => {
+        axios.get(`https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/privacy/${newlocale}`)
+            .then(async privacy => {
+                const getPrivacy = await privacy.data.privacy;
+                dispatch(fetchPrivacySuccess(getPrivacy));
+            })
+    };
+};

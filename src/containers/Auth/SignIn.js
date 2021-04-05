@@ -168,9 +168,9 @@ const Auth = props => {
                                                 <p><Link className="fs-5 text-dark font-ave-book">Forgot password?</Link></p>
                                             </div>
                                             <div className="py-5 text-center">
-                                                <h6 className="fs-5 text-dark">Don't have an account? <Link data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#signapp-modal"
-                                                    className="theme-pink-color link-danger text-decoration-underline"
-                                                >Sign up</Link>
+                                                <h6 className="fs-5 text-dark">Don't have an account? <button onClick={() => { props.closed(); props.isSignup() }} type="button"
+                                                    className="btn theme-pink-color link-danger text-decoration-underline fs-5"
+                                                >Sign up</button>
                                                 </h6>
                                                 {btnSubmit}
                                                 <label className="text-dark form-check-label font-ave-book"

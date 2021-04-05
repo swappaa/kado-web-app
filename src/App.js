@@ -1,7 +1,7 @@
 import React, { useEffect, Suspense } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { ToastContainer, Slide, Zoom, Flip, Bounce } from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Aux from 'hoc/Auxi/Auxi';
@@ -26,7 +26,7 @@ const App = props => {
           <Routes />
         </Suspense>
       </Layout>
-      <ToastContainer limit={3} transition={Bounce} />
+      <ToastContainer limit={3} />
     </Aux>
   );
 };
