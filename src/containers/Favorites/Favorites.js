@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import Spinner from '../../components/UI/Spinner/Spinner';
 import SkeletonFavorites from '../../Skeletons/Favorites';
 import axios from '../../axios-kado';
 import { connect } from 'react-redux';
@@ -19,7 +18,6 @@ const Spotlight = props => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
         onFetchFanTalentFavorite(props.token, props.username);
     }, [onFetchFanTalentFavorite]);
 
@@ -74,7 +72,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
+export default withAuthorization(connect(
     mapStateToProps,
     mapDispatchToProps
-)(withErrorHandler(Spotlight, axios));
+)(withErrorHandler(Spotlight, axios)));

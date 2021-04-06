@@ -1,8 +1,4 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
-import axios from '../../axios-kado';
-import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import * as actions from '../../store/actions/index';
 import { Link } from 'react-router-dom';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -13,7 +9,6 @@ import Aux from '../../hoc/Auxi/Auxi';
 const Categories = (props) => {
     const [clientXonMouseDown, setClientXonMouseDown] = useState(null);
     const [clientYonMouseDown, setClientYonMouseDown] = useState(null);
-    const [searchTerm, setSearchTerm] = useState('ar');
 
     const settings = {
         dots: false,

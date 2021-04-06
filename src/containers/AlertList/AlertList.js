@@ -63,4 +63,4 @@ const AlertList = props => {
         </div >
     )
 }
-export default AlertList;
+export default withAuthorization(AlertList);

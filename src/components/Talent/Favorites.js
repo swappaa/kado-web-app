@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FlipMove from 'react-flip-move';
+// import FlipMove from 'react-flip-move';
 import cleanDeep from 'clean-deep';
 
 import Aux from '../../hoc/Auxi/Auxi';

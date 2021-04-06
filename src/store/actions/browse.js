@@ -98,9 +98,7 @@ export const talentIsFavorite = (category, key, talent_username, isFavorite, isA
         }
         axios(`talent/favorite/${talent_username}`, options)
             .then(async favorite => {
-                const setTalentAsFavorite = await favorite.data;
                 dispatch(browseTalentSpotlight(localStorage.getItem('token'), localStorage.getItem('username')));
-
                 if (!isFavorite) {
                     toast.success(`You added ${stage_name} from favorites ❤ !`);
                 } else {

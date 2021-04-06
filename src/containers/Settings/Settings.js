@@ -55,11 +55,10 @@ const Settings = props => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
         onGetAccountDetails(token, username);
         onGetTOS(locale);
         onGetPrivacy(locale);
-    }, [onGetAccountDetails]);
+    }, [onGetAccountDetails, onGetTOS, onGetPrivacy]);
 
 
     const handleChangeNotif = nextChecked => {
@@ -427,4 +426,4 @@ const Settings = props => {
 }
 
 
-export default withRouter(Settings);
+export default withAuthorization(withRouter(Settings));

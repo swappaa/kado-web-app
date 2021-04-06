@@ -5,6 +5,7 @@ import Aux from '../../hoc/Auxi/Auxi';
 import SkeletonBrowse from '../../Skeletons/Browse';
 import axios from '../../axios-kado';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
+import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import * as actions from '../../store/actions/index';
 import TalentCategories from '../../components/Talent/Browse';
 import '../../App.css';
@@ -19,7 +20,6 @@ const Spotlight = props => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
         onBrowseSpotlightByCategories(props.token, props.username);
     }, [onBrowseSpotlightByCategories]);
 
@@ -108,7 +108,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(
+export default withAuthorization(connect(
     mapStateToProps,
     mapDispatchToProps
-)(withErrorHandler(Spotlight, axios));
+)(withErrorHandler(Spotlight, axios)));

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router-dom'
 
 const withAuthorization = Component => {
-    class WithAuthorization extends Component {
+    class WithAuthorization extends React.Component {
 
         render() {
             const { auth } = this.props
