@@ -379,7 +379,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy.body || <Skeleton />}</p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy.body ? privacy.body : null}</p>
                                                                 </td>
                                                             </tr>
 
@@ -399,7 +399,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos.body || <Skeleton />}</p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos.body ? tos.body : null}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>
