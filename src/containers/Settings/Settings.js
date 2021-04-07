@@ -130,7 +130,7 @@ const Settings = props => {
     return (
         <Aux>
             <div className="settings">
-                <section className="py-5">
+                <section className="pb-5">
                     <div className="container-fluid px-5">
                         <div className="customs-wrapper w-100 mx-auto">
                             <div className="setting-wrapper">
@@ -379,7 +379,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy.body}</p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy.body || <Skeleton />}</p>
                                                                 </td>
                                                             </tr>
 
@@ -399,7 +399,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos.body}</p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos.body || <Skeleton />}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

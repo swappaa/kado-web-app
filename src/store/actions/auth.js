@@ -38,10 +38,48 @@ export const logout = () => {
     };
 };
 
+export const refreshCredentialSuccess = (access_token) => {
+    return {
+        type: actionTypes.REFRESH_CREDENTIAL_SUCCESS,
+        accessToken: access_token
+    };
+};
+
+export const refreshCredentials = (refreshToken) => {
+    return dispatch => {
+        dispatch(authStart());
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'application/json';
+            if (refreshToken) {
+                config.headers.common.refresh_token = refreshToken;
+            }
+            return config;
+        });
+
+        axios.get('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/refresh')
+            .then(response => {
+                const expiresIn = '3600';
+                const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+                localStorage.setItem('token', response.data.access_token);
+                localStorage.setItem('expirationDate', expirationDate);
+                dispatch(refreshCredentialSuccess(response.data.access_token));
+                dispatch(checkAuthTimeout(expiresIn));
+            })
+    };
+};
+
 export const checkAuthTimeout = (expirationTime) => {
     return dispatch => {
         setTimeout(() => {
-            dispatch(logout());
+            const refreshToken = localStorage.getItem('refreshToken');
+            dispatch(refreshCredentials(refreshToken));
         }, expirationTime * 1000);
     };
 };
@@ -174,7 +212,8 @@ export const authCheckState = () => {
         } else {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
             if (expirationDate <= new Date()) {
-                dispatch(logout());
+                const refreshToken = localStorage.getItem('refreshToken');
+                dispatch(refreshCredentials(refreshToken));
             } else {
                 const idToken = localStorage.getItem('idToken');
                 const refreshToken = localStorage.getItem('refreshToken');
