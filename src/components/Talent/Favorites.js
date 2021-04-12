@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 // import FlipMove from 'react-flip-move';
-import cleanDeep from 'clean-deep';
 
 import Aux from '../../hoc/Auxi/Auxi';
 
@@ -14,9 +13,9 @@ const Favorites = React.memo((props) => {
         return talentFavorite;
     });
 
-    const tae = cleanDeep(fanTalentFavorites)
+    const checkEmptyFavorites = fanTalentFavorites
 
-    if (tae.length === 0) {
+    if (checkEmptyFavorites.length === 0) {
         return <div className="col-lg-12 py-3 text-center fs-4">
             You haven't added any talent to your favorites.
         </div>
@@ -36,7 +35,11 @@ const Favorites = React.memo((props) => {
                         alt={favorite.stage_name} />
                     <h5 className="mt-3 fs-4">{favorite.stage_name}</h5>
                     <div className="py-1 pb-0">
-                        <small>Singer / Songwriter</small>
+                        <ul className="list-group list-group-horizontal justify-content-center bg-transparent">
+                            {!favorite.categories || favorite.categories.map((category, categoryIndex) => (
+                                <li key={categoryIndex} className="list-group-item border-0 py-0"> <small>{category}</small></li>
+                            ))}
+                        </ul>
                     </div>
                     <Link className="stretched-link" to={`/talent-profile/${favorite.talent_link_url}`}
                     ></Link>

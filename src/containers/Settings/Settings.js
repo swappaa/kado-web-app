@@ -185,7 +185,7 @@ const Settings = props => {
                                                                 </th>
                                                                 <td>
                                                                     <div className="talent-profile-wrapper">
-                                                                        <img src={acct.profile_picture || <Skeleton circle={true} height={100} width={100} />}
+                                                                        <img src={acct.profile_picture ? acct.profile_picture || <Skeleton circle={true} height={100} width={100} /> : null}
                                                                             className="profile-image rounded-pill" alt={acct.name} />
                                                                     </div>
                                                                 </td>
@@ -379,7 +379,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3"></p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy && privacy.body ? privacy.body : null}</p>
                                                                 </td>
                                                             </tr>
 
@@ -399,7 +399,7 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3"></p>
+                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos && tos.body ? tos.body : null}</p>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

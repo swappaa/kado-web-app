@@ -26,7 +26,10 @@ const App = props => {
           <Routes />
         </Suspense>
       </Layout>
-      <ToastContainer limit={3} />
+      <ToastContainer
+        limit={3}
+        position="bottom-left"
+        hideProgressBar={true} />
     </Aux>
   );
 };

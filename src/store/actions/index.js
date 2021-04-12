@@ -5,7 +5,8 @@ export {
     FBSignUp,
     logout,
     setAuthRedirectPath,
-    authCheckState
+    authCheckState,
+    emailVerification
 } from './auth';
 
 export {

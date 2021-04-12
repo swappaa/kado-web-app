@@ -20,6 +20,21 @@
     opacity: .8;
 }
 
+.verif-code .styles_react-code-input-container__tpiKG {
+    width: 100% !important;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.signapp-modal .verif-code .row>div input {
+    border: 0;
+    border-bottom: 2px solid #000;
+    margin: 0 15px;
+    border-radius: 0;
+    font-size: 3rem;
+    font-family: Avenir-Heavy;
+}
+
 @media screen and (max-width: 1199px) {
     .fb-btn-wrapper button {
         font-size: 16px !important;

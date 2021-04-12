@@ -84,6 +84,7 @@ export const checkAuthTimeout = (expirationTime) => {
     };
 };
 
+
 export const auth = (email, password) => {
     return dispatch => {
         dispatch(authStart());
@@ -113,6 +114,65 @@ export const auth = (email, password) => {
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
                 toast.error(err.response.data.message);
+                if (err.response.data.message == 'User is not confirmed.') {
+                    // dispatch(emailConfirmationStart());
+                }
+            });
+    };
+};
+
+export const emailConfirmationStart = () => {
+    return {
+        type: actionTypes.EMAIL_CONFIRMATION_START
+    };
+};
+
+export const emailConfirmationFail = (error) => {
+    return {
+        type: actionTypes.EMAIL_CONFIRMATION_FAIL,
+        error: error
+    };
+};
+
+export const emailConfirmationSuccess = (token, idToken, refreshToken, accountType, email) => {
+    return {
+        type: actionTypes.AUTH_SUCCESS,
+        accessToken: token,
+        idToken: idToken,
+        refreshToken: refreshToken,
+        accountType: accountType,
+        username: email
+    };
+};
+
+export const emailVerification = (username, password, pincode) => {
+    return dispatch => {
+        let formData = new FormData();
+
+        formData.append("username", username);
+        formData.append("password", password);
+        formData.append("code", pincode);
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/email/confirm', formData, config)
+            .then(response => {
+                console.log(response.data)
+                const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+                localStorage.setItem('token', response.data.AccessToken);
+                localStorage.setItem('refreshToken', response.data.RefreshToken);
+                localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('idToken', response.data.IdToken);
+                localStorage.setItem('accountType', response.data.account_type);
+                localStorage.setItem('username', username);
+                dispatch(authSuccess(response.data.AccessToken, response.data.IdToken, response.data.RefreshToken, response.data.account_type, username));
+                dispatch(checkAuthTimeout(response.data.ExpiresIn));
+            })
+            .catch(err => {
+                dispatch(emailConfirmationFail(err.response.data.message));
+                toast.error(err.response.data.message);
             });
     };
 };
@@ -133,22 +193,13 @@ export const signUp = (name, username, email, password, birth_day) => {
             headers: { 'content-type': 'multipart/form-data' }
         }
 
-        const authData = {
-            name: name,
-            username: username,
-            email: email,
-            password: password,
-            birth_day: birth_day
-        };
-
-        console.log(authData);
-
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signup/email', formData, config)
             .then(response => {
-                console.log(response);
+                dispatch(emailConfirmationStart());
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
+                toast.error(err.response.data.message);
             });
     };
 };

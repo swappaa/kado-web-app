@@ -32,7 +32,11 @@ const Browse = React.memo((props) => {
                                     alt={spotlight.stage_name} />
                                 <h5 className="mt-3 fs-4">{spotlight.stage_name}</h5>
                                 <div className="py-1 pb-0">
-                                    <small>{spotlight.talent}</small>
+                                    <ul className="list-group list-group-horizontal justify-content-center bg-transparent">
+                                        {!spotlight.categories || spotlight.categories.map((category, categoryIndex) => (
+                                            <li key={categoryIndex} className="list-group-item border-0 py-0"> <small>{category}</small></li>
+                                        ))}
+                                    </ul>
                                 </div>
                                 <Link className="stretched-link" to={`/talent-profile/${spotlight.talent_link_url}`}
                                 ></Link>

@@ -14,12 +14,11 @@ import banner from '../../assets/images/banner-send-personalized-images.jpg';
 
 
 const Home = props => {
-    const { onFetchTalentByCategories, onSetTalentFavorite, onSetSearchTerm, talentCategories } = props;
+    const { onFetchTalentByCategories, onSetTalentFavorite, onSetSearchTerm, talentCategories, token } = props;
 
     useEffect(() => {
-        localStorage.setItem('path', window.location.pathname);
         onFetchTalentByCategories(props.token, props.username);
-    }, [onFetchTalentByCategories]);
+    }, [onFetchTalentByCategories, token]);
 
     console.log(talentCategories)
 
@@ -166,7 +165,7 @@ const mapStateToProps = state => {
         talentCategories: state.TalentByCategories.talentCategories,
         loading: state.TalentByCategories.loading,
         searchTalent: state.TalentByCategories.searchTalent,
-        token: state.auth.token,
+        token: state.auth.token !== null,
         username: state.auth.username
     };
 };

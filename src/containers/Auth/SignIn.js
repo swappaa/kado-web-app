@@ -18,11 +18,10 @@ const Auth = props => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const { onFetchTalentByCategories, talentCategories, authRedirectPath, onSetAuthRedirectPath } = props;
+    const { talentCategories, authRedirectPath, onSetAuthRedirectPath } = props;
 
     useEffect(() => {
         if (!talentCategories && authRedirectPath !== '/') {
-            onFetchTalentByCategories(localStorage.getItem('token'), localStorage.getItem('username'));
             onSetAuthRedirectPath();
         }
     }, [talentCategories, authRedirectPath, onSetAuthRedirectPath]);
@@ -34,7 +33,7 @@ const Auth = props => {
 
     const responseFacebook = (response) => {
         console.log(response)
-        props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
+        // props.onFBAuth(response.accessToken, response.expiresIn, response.userID);
     }
 
     let btnSubmit = <button
@@ -176,8 +175,8 @@ const Auth = props => {
                                                 <label className="text-dark form-check-label font-ave-book"
                                                 >By
                                 signing in you agree to kâdo’s <br />
-                                                    <Link className="text-decoration-underline" >Terms of Service</Link> & <Link
-                                                        className="text-decoration-underline" >Privacy Policy</Link>.</label>
+                                                    <Link className="text-decoration-underline" to="/terms-service" onClick={props.closed}> Terms of Service</Link> & <Link
+                                                        className="text-decoration-underline" to="/privacy-policy" onClick={props.closed}> Privacy Policy</Link>.</label>
                                             </div>
                                         </form>
                                     </div>
@@ -207,8 +206,7 @@ const mapDispatchToProps = dispatch => {
     return {
         onAuth: (email, password) => dispatch(actions.auth(email, password)),
         onFBAuth: (accessToken, expiresIn, userID) => dispatch(actions.authFB(accessToken, expiresIn, userID)),
-        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/')),
-        onFetchTalentByCategories: (token, username) => dispatch(actions.fetchTalentByCategories(token, username))
+        onSetAuthRedirectPath: () => dispatch(actions.setAuthRedirectPath('/'))
     };
 };
 

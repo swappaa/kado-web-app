@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import Favorites from '../../components/Talent/Favorites';
 
+
 import '../../App.css';
 import './Favorites.css';
 

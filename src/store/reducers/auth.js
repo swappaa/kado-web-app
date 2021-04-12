@@ -9,7 +9,9 @@ const initialState = {
     username: null,
     error: null,
     loading: false,
-    authRedirectPath: '/'
+    authRedirectPath: '/',
+    isEmailConfirmation: false,
+    isValidVerifyCode: false
 };
 
 const authStart = (state, action) => {
@@ -25,7 +27,9 @@ const authSuccess = (state, action) => {
         username: action.username,
         error: null,
         loading: false,
-        isModalOpen: false
+        isModalOpen: false,
+        isEmailConfirmation: false,
+        isValidVerifyCode: false
     });
 };
 
@@ -50,6 +54,18 @@ const setRefreshCredentials = (state, action) => {
     });
 };
 
+const emailConfirmationStart = (state, action) => {
+    return updateObject(state, { error: null, loading: true, isEmailConfirmation: true });
+};
+
+const emailConfirmationFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error,
+        loading: false,
+        isValidVerifyCode: true
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state, action);
@@ -58,6 +74,8 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
         case actionTypes.REFRESH_CREDENTIAL_SUCCESS: return setRefreshCredentials(state, action);
+        case actionTypes.EMAIL_CONFIRMATION_START: return emailConfirmationStart(state, action);
+        case actionTypes.EMAIL_CONFIRMATION_FAIL: return emailConfirmationFail(state, action);
         default:
             return state;
     }
