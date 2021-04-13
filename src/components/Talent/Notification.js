@@ -5,6 +5,15 @@ import ReactTimeAgo from 'react-time-ago';
 import Aux from '../../hoc/Auxi/Auxi';
 
 const notification = (props) => {
+    const checkEmptyNotif = props.notification
+
+    if (checkEmptyNotif.length === 0) {
+        return <div className="col-lg-12 py-3 text-center fs-4">
+            <b>Nothing yet!</b> <br />
+            <small>We'll let you know when something comes up.</small>
+        </div>
+    }
+
     let notificationsList = Object.keys(props.notification)
         .map(notifKey => {
             return [...Array(props.notification[notifKey])].map((notification, i) => {

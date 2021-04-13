@@ -7,8 +7,10 @@ import FacebookLogin from 'react-facebook-login';
 import ReactCodeInput from 'react-verification-code-input';
 import $ from 'jquery';
 
+import Aux from '../../hoc/Auxi/Auxi';
 import Modal from '../../components/UI/Modal/ModalXL';
 import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinner';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import DatePicker from '../../components/UI/DatePicker/DatePicker';
 
 import '../../App.css';
@@ -66,6 +68,7 @@ const SignUp = props => {
         authRedirect = <Redirect to={props.authRedirectPath} />
     }
 
+
     const onPinComplete = code => {
         setLoading(true);
         if (username && password) {
@@ -73,6 +76,52 @@ const SignUp = props => {
         }
     };
 
+    const submitVerificationHandler = (event) => {
+        event.preventDefault();
+        console.log(pinCode)
+        props.onEmailVerification(username, password, pinCode);
+    }
+
+    let verificationEmail = <Spinner />;
+    if (!email && props.isConfirmationEmail) {
+        verificationEmail =
+            <Aux>
+                <div className="input-group mb-4">
+                    <span
+                        className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
+                        <svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="#000000">
+                                <path fill="#000000" opacity="1.00"
+                                    d=" M 11.32 0.00 L 13.54 0.00 C 17.49 0.45 20.99 4.52 19.41 8.52 C 17.35 14.42 7.74 14.45 5.61 8.59 C 4.00 4.62 7.41 0.56 11.32 0.00 Z" />
+                                <path fill="#000000" opacity="1.00"
+                                    d=" M 0.01 17.91 C 1.66 15.39 4.19 13.92 7.09 13.30 C 10.44 15.38 14.57 15.36 17.92 13.30 C 20.79 13.94 23.39 15.38 25.00 17.91 L 25.00 18.67 C 22.48 22.25 18.45 24.45 14.14 25.00 L 11.00 25.00 C 6.65 24.54 2.58 22.34 0.00 18.78 L 0.00 16.62 L 0.01 17.91 Z" />
+                            </g>
+                        </svg>
+                    </span>
+                    <input type="text" onChange={e => setUsername(e.target.value)}
+                        className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
+                        placeholder="Username" aria-label="Username" required />
+                </div>
+                <div className="input-group mb-4">
+                    <span
+                        className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
+                        <svg width="25px" height="25px" viewBox="0 0 21 25" version="1.1"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <g id="#000000">
+                                <path fill="#000000" opacity="1.00"
+                                    d=" M 9.31 0.00 L 11.48 0.00 C 16.22 0.37 19.28 4.75 18.88 9.32 C 19.41 9.36 20.47 9.44 21.00 9.47 L 21.00 24.58 C 20.89 24.68 20.67 24.89 20.56 25.00 L 0.48 25.00 C 0.36 24.89 0.12 24.68 0.00 24.57 L 0.00 9.45 C 0.53 9.42 1.59 9.36 2.13 9.34 C 1.73 4.83 4.67 0.53 9.31 0.00 M 5.75 9.37 C 8.92 9.38 12.09 9.38 15.26 9.37 C 15.55 6.54 14.12 3.25 10.90 3.18 C 7.41 2.73 5.27 6.22 5.75 9.37 M 7.93 15.78 C 8.24 16.23 8.87 17.14 9.18 17.59 C 9.08 18.39 8.89 20.00 8.80 20.80 C 9.65 20.80 11.35 20.80 12.21 20.80 C 12.11 20.00 11.92 18.40 11.82 17.61 C 12.13 17.15 12.75 16.24 13.06 15.78 C 12.35 12.99 8.66 13.00 7.93 15.78 Z" />
+                            </g>
+                        </svg>
+                    </span>
+                    <input type="password" onChange={e => setPassword(e.target.value)}
+                        className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4"
+                        placeholder="Password" aria-label="Password" required />
+                </div>
+            </Aux>
+    } else {
+        verificationEmail = null;
+    }
 
     return (
         (props.isConfirmationEmail ?
@@ -88,7 +137,8 @@ const SignUp = props => {
                         <div className="modal-body px-5">
                             <div className="customs-wrapper w-100 mx-auto">
                                 <div className="verif-code my-5">
-                                    <form className="row flex-column align-items-center py-5 text-center w-50 mx-auto">
+                                    <form onSubmit={submitVerificationHandler} className="row flex-column align-items-center py-5 text-center w-50 mx-auto">
+                                        {verificationEmail}
                                         <ReactCodeInput
                                             className="mx-auto"
                                             type="number"

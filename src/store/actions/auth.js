@@ -33,6 +33,7 @@ export const logout = () => {
     localStorage.removeItem('idToken');
     localStorage.removeItem('accountType');
     localStorage.removeItem('username');
+    localStorage.removeItem('persist:root');
     return {
         type: actionTypes.AUTH_LOGOUT
     };
