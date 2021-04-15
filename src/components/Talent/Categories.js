@@ -103,7 +103,7 @@ const Categories = (props) => {
                     <div className="featured-talent my-2">
                         <h5 className="fs-4 font-ave-roman">{talent.stage_name}</h5>
                     </div>
-                    <Link className="stretched-link" to={`/talent-profile/${talent.talent_link_url}`} onMouseDown={(e) => handleOnMouseDown(e)}
+                    <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`} onMouseDown={(e) => handleOnMouseDown(e)}
                         onClick={(e) => handleOnClick(e)}
                     ></Link>
                 </div>

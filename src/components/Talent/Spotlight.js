@@ -40,7 +40,7 @@ const TalentCategories = React.memo((props) => {
                                 <div className="py-1 pb-0">
                                     <small>{spotlight.talent}</small>
                                 </div>
-                                <Link className="stretched-link" to={`/talent-profile/${spotlight.talent_link_url}`}
+                                <Link className="stretched-link" to={`/${spotlight.talent_link_url}`}
                                 ></Link>
                             </div>
                         </div>
@@ -63,7 +63,7 @@ const TalentCategories = React.memo((props) => {
                                 <img className="img-fluid w-100" src={talent.profile_picture}
                                     alt={talent.stage_name} />
                                 <h5 className="fs-4 font-ave-roman my-2">{talent.stage_name}</h5>
-                                <Link className="stretched-link" to={`/talent-profile/${talent.talent_link_url}`}
+                                <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`}
                                 ></Link>
                             </div>
                         </div>

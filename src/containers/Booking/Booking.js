@@ -1,12 +1,18 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import { FileDrop } from 'react-file-drop';
+import { toast } from "react-toastify";
 
+import * as actions from '../../store/actions/index';
+import Spinner from '../../components/UI/Spinner/Spinner';
 import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMessage';
 import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Booking.css';
-import prof1 from '../../assets/images/banner-send-personalized-images.jpg';
 import recepientMyself from '../../assets/images/svg/myself.svg';
 import recepientFriend from '../../assets/images/svg/friend.svg';
 import tips from '../../assets/images/svg/tips.svg';
@@ -31,26 +37,101 @@ import roast from '../../assets/images/svg/occasion/roast.svg';
 import thankyou from '../../assets/images/svg/occasion/thank you.svg';
 import wedding from '../../assets/images/svg/occasion/wedding.svg';
 
-class Booking extends Component {
+const Booking = props => {
+    const { service } = props
+    const { talentLink } = useParams();
+    const { onFetchTalentByUsername, loading } = props;
+    const [talent] = useState(service.talent_link_url);
+    const [recipient, setRecipient] = useState('');
+    const [recipientName, setRecipientName] = useState('');
+    const [recipientPhoto, setRecipientPhoto] = useState('');
+    const [pronoun, setPronoun] = useState('');
+    const [occasion, setOccasion] = useState('None');
+    const [instructions, setInstructions] = useState('');
+    const [chars_instruct_left, setCharsInstructLeft] = useState(0);
+    const [language, setLanguage] = useState('English');
+    const fileInputRef = useRef(null);
+    const [couponCode, setCouponCode] = useState('');
 
-    componentDidMount() {
+    useEffect(() => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
+        onFetchTalentByUsername(talentLink);
+    }, [talentLink, onFetchTalentByUsername]);
+
+
+
+    if (loading && talentLink !== service.talent_link_url) {
+        return <Spinner />
     }
 
-    render() {
-        return (
-            <Aux>
-                <div className="booking">
-                    <section className="pb-5">
-                        <div className="container-fluid px-5">
-                            <div className="customs-wrapper w-100 mx-auto">
-                                <h2 className="text-uppercase theme-pink-color display-4 mb-4">BOOKING A KÂDO</h2>
-                            </div>
+    const onRecipientValueChange = (event) => {
+        setRecipient(event.target.value);
+    }
+
+    const onInstructionsValueChange = (event) => {
+        setInstructions(event.target.value);
+        setCharsInstructLeft(event.target.value.length)
+    }
+
+    const onFileInputChange = (event) => {
+        const { files } = event.target;
+        let size = files[0].size;
+        let type = files[0].name;
+
+
+        if (!type.match(/\.(jpg|jpeg|png|gif)$/)) {
+            toast.error("File does not support. You must use .png or .jpg");
+            return false;
+        }
+
+        if (size > 15015936) {
+            toast.error("Please upload a file smaller than 15 MB");
+            return false;
+        }
+
+        setRecipientPhoto(files);
+    }
+
+    const onTargetClick = () => {
+        fileInputRef.current.click()
+    }
+
+    const onDropFile = (file) => {
+        let size = file[0].size;
+        let type = file[0].name;
+        console.log(file)
+
+        if (!type.match(/\.(jpg|jpeg|png|gif)$/)) {
+            toast.error("File does not support. You must use .png or .jpg");
+            return false;
+        }
+
+        if (size > 15015936) {
+            toast.error("Please upload a file smaller than 15 MB");
+            // window.alert("Please upload a file smaller than 10 MB");
+            return false;
+        }
+        setRecipientPhoto(file);
+    }
+
+    const submitCreateKadoHandler = (event) => {
+        event.preventDefault();
+        props.onCreateNewKado(props.token, props.username, talent, recipientName, occasion, language, instructions, recipient, recipientPhoto, couponCode);
+    }
+
+    return (
+        <Aux>
+            <div className="booking">
+                <section className="pb-5">
+                    <div className="container-fluid px-5">
+                        <div className="customs-wrapper w-100 mx-auto">
+                            <h2 className="text-uppercase theme-pink-color display-4 mb-4">BOOKING A KÂDO</h2>
                         </div>
-                        <div className="booking-wrapper-proc">
+                    </div>
+                    <div className="booking-wrapper-proc">
+                        <form onSubmit={submitCreateKadoHandler}>
                             <div className="row row-cols-1 g-0">
                                 <div className="col request step">
                                     <div className="container-fluid px-5">
@@ -64,10 +145,10 @@ class Booking extends Component {
                                                     </div>
                                                     <div className="col-lg-8">
                                                         <div className="card-body d-flex align-items-center justify-content-center justify-content-lg-start">
-                                                            <img src={prof1}
+                                                            <img src={service.profile_picture || <Skeleton />}
                                                                 className="profile-image rounded-pill card-img-top me-4 border-0"
-                                                                alt="request-profile" />
-                                                            <h5 className="card-title fs-1">KamyR</h5>
+                                                                alt={service.stage_name} />
+                                                            <h5 className="card-title fs-1">{service.stage_name}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -92,7 +173,9 @@ class Booking extends Component {
                                                                     <img className="img-fluid svg-icon" src={recepientMyself}
                                                                         alt="myself" />
                                                                     <div className="form-check">
-                                                                        <input className="form-check-input" type="checkbox" value="" />
+                                                                        <input className="form-check-input" type="radio" value="Myself" name="recipient"
+                                                                            checked={recipient === "Myself" ? true : false}
+                                                                            onChange={onRecipientValueChange} />
                                                                         <label className="form-check-label fs-5">
                                                                             Myself
                                                                 </label>
@@ -102,7 +185,10 @@ class Booking extends Component {
                                                                     <img className="img-fluid svg-icon" src={recepientFriend}
                                                                         alt="friend" />
                                                                     <div className="form-check">
-                                                                        <input className="form-check-input" type="checkbox" value="" />
+                                                                        <input className="form-check-input" type="radio" value="Friend" name="recipient"
+                                                                            checked={recipient === "Friend" ? true : false}
+                                                                            onChange={onRecipientValueChange}
+                                                                        />
                                                                         <label className="form-check-label fs-5">
                                                                             Friend
                                                                 </label>
@@ -117,7 +203,7 @@ class Booking extends Component {
                                                                     </span>
                                                                     <input type="text"
                                                                         className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
-                                                                        placeholder="Recipient Name" aria-label="Recipient Name" />
+                                                                        placeholder="Recipient Name" aria-label="Recipient Name" onChange={(e) => setRecipientName(e.target.value)} required />
                                                                 </div>
                                                                 <div className="input-group mb-4">
                                                                     <span
@@ -126,14 +212,22 @@ class Booking extends Component {
                                                                     </span>
                                                                     <input type="text"
                                                                         className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
-                                                                        placeholder="Pronoun" aria-label="Pronoun" />
+                                                                        placeholder="Pronoun" aria-label="Pronoun" onChange={(e) => setPronoun(e.target.value)} required />
                                                                 </div>
                                                                 <div className="d-flex flex-wrap align-items-center mb-3">
                                                                     <span className="fs-4 text-muted">Recipient Pic (Optional)</span>
-                                                                    <button
-                                                                        className="my-3 btn br-radius-40 fs-5 text-dark py-2 px-5 border border-dark mx-auto">
-                                                                        Upload
-                                                    </button>
+                                                                    <FileDrop
+                                                                        onTargetClick={onTargetClick}
+                                                                        onDrop={(files, event) => onDropFile(files)}>
+                                                                        Drag it here
+                                                                </FileDrop>
+
+                                                                    <input
+                                                                        onChange={onFileInputChange}
+                                                                        ref={fileInputRef}
+                                                                        type="file"
+                                                                        className="hidden invisible"
+                                                                    />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -156,203 +250,246 @@ class Booking extends Component {
                                                     <div className="col-lg-8 py-4 p-0 p-sm-4 p-lg-0">
                                                         <div className="row g-3 justify-content-center justify-content-lg-start">
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'B-Day' ? "active" : null}>
                                                                     <img src={birthday}
                                                                         className="img-fluid occasion-icon mx-auto" alt="birthday" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">B-Day</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link"
+                                                                        onClick={() => {
+                                                                            setOccasion('B-Day')
+                                                                        }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Wedding' ? "active" : null}>
                                                                     <img src={wedding}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Wedding" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Wedding</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link"
+                                                                        onClick={() => {
+                                                                            setOccasion('Wedding')
+                                                                        }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Anniversary' ? "active" : null}>
                                                                     <img src={anniversary}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Anniversary" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Anniversary</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link"
+                                                                        onClick={() => {
+                                                                            setOccasion('Anniversary')
+                                                                        }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Friendship' ? "active" : null}>
                                                                     <img src={friendship}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Friendship" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Friendship</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Friendship')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Love' ? "active" : null}>
                                                                     <img src={love}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Love" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Love</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Love')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Condolences' ? "active" : null}>
                                                                     <img src={condolences}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Condolences" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Condolences</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Condolences')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Apology' ? "active" : null}>
                                                                     <img src={apology}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Apology" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Apology</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Apology')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Thank You' ? "active" : null}>
                                                                     <img src={thankyou}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Thank You" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Thank You</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Thank You')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Christmas' ? "active" : null}>
                                                                     <img src={christmas}
                                                                         className="img-fluid occasion-icon mx-auto" alt="Christmas" />
                                                                     <div className="py-1 pb-0">
                                                                         <small className="text-uppercase">Christmas</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Christmas')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Nowruz' ? "active" : null}>
                                                                     <img src={nowruz}
                                                                         className="img-fluid occasion-icon mx-auto" alt="nowruz" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">nowruz</small>
+                                                                        <small className="text-uppercase">Nowruz</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Nowruz')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Get Well' ? "active" : null}>
                                                                     <img src={getwell}
                                                                         className="img-fluid occasion-icon mx-auto" alt="get well" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">get well</small>
+                                                                        <small className="text-uppercase">Get Well</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Get Well')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'New Home' ? "active" : null}>
                                                                     <img src={newhome}
                                                                         className="img-fluid occasion-icon mx-auto" alt="new home" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">new home</small>
+                                                                        <small className="text-uppercase">New Home</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('New Home')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Congrats' ? "active" : null}>
                                                                     <img src={congrats}
                                                                         className="img-fluid occasion-icon mx-auto" alt="congrats" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">congrats</small>
+                                                                        <small className="text-uppercase">Congrats</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Congrats')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Motivate' ? "active" : null}>
                                                                     <img src={motivate}
                                                                         className="img-fluid occasion-icon mx-auto" alt="motivate" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">motivate</small>
+                                                                        <small className="text-uppercase">Motivate</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Motivate')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Celebration' ? "active" : null}>
                                                                     <img src={celebration}
                                                                         className="img-fluid occasion-icon mx-auto" alt="celebration" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">celebration</small>
+                                                                        <small className="text-uppercase">Celebration</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Celebration')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Miss You' ? "active" : null}>
                                                                     <img src={missyou}
                                                                         className="img-fluid occasion-icon mx-auto" alt="miss you" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">miss you</small>
+                                                                        <small className="text-uppercase">Miss You</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Miss You')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Roast' ? "active" : null}>
                                                                     <img src={roast}
                                                                         className="img-fluid occasion-icon mx-auto" alt="roast" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">roast</small>
+                                                                        <small className="text-uppercase">Roast</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Roast')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'None' ? "active" : null}>
                                                                     <img src={none}
                                                                         className="img-fluid occasion-icon mx-auto" alt="none" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">none</small>
+                                                                        <small className="text-uppercase">None</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('None')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Hanukkah' ? "active" : null}>
                                                                     <img src={hanukkah}
                                                                         className="img-fluid occasion-icon mx-auto" alt="hanukkah" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">hanukkah</small>
+                                                                        <small className="text-uppercase">Hanukkah</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Hanukkah')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                             <div className="col-2 occasion-item">
-                                                                <div className="border-0 text-center p-2 position-relative">
+                                                                <div className="border-0 text-center p-2 position-relative" data-on={occasion === 'Easter' ? "active" : null}>
                                                                     <img src={easter}
                                                                         className="img-fluid occasion-icon mx-auto" alt="easter" />
                                                                     <div className="py-1 pb-0">
-                                                                        <small className="text-uppercase">easter</small>
+                                                                        <small className="text-uppercase">Easter</small>
                                                                     </div>
-                                                                    <a href="#" className="stretched-link"></a>
+                                                                    <a className="stretched-link" onClick={() => {
+                                                                        setOccasion('Easter')
+                                                                    }}></a>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -362,7 +499,7 @@ class Booking extends Component {
                                                             </span>
                                                             <input type="text"
                                                                 className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0 bg-transparent"
-                                                                placeholder="Other" aria-label="Other" />
+                                                                placeholder="Other" aria-label="Other" onChange={e => setOccasion(e.target.value)} />
                                                         </div>
                                                     </div>
                                                 </div>
@@ -392,11 +529,11 @@ class Booking extends Component {
                                                         kâdos!</label>
                                                                     <button className="btn stretched-link" data-bs-toggle="modal" data-bs-target="#tips-modal" ></button>
                                                                 </div>
-                                                                <textarea className="form-control border-dark rounded-0"
-                                                                    rows="6"></textarea>
+                                                                <textarea maxLength={400} className="form-control border-dark rounded-0"
+                                                                    rows="6" onChange={onInstructionsValueChange} required></textarea>
                                                                 <div className="py-3">
                                                                     <span
-                                                                        className="count-text float-end theme-pink-color fs-3 font-ave-heavy">400</span>
+                                                                        className="count-text float-end theme-pink-color fs-3 font-ave-heavy">{chars_instruct_left}/400</span>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -421,22 +558,30 @@ class Booking extends Component {
                                                             <div className="row row-cols-2 g-4 w-75 mw-100 btn-wrapper">
                                                                 <div className="col text-center">
                                                                     <button className="btn text-uppercase bg-white fs-4 py-2"
-                                                                        type="button">English</button>
+                                                                        type="button" onClick={() => {
+                                                                            setLanguage('English')
+                                                                        }} data-on={language === 'English' ? "active" : null}>English</button>
                                                                 </div>
                                                                 <div className="col text-center">
                                                                     <button className="btn text-uppercase bg-white fs-4 py-2"
-                                                                        type="button">Mix
+                                                                        type="button" onClick={() => {
+                                                                            setLanguage('Mix')
+                                                                        }} data-on={language === 'Mix' ? "active" : null}>Mix
                                                                         is
                                                         ok</button>
                                                                 </div>
                                                                 <div className="col text-center">
                                                                     <button className="btn text-uppercase bg-white fs-4 py-2"
-                                                                        type="button">Persian
+                                                                        type="button" onClick={() => {
+                                                                            setLanguage('Persian')
+                                                                        }} data-on={language === 'Persian' ? "active" : null}>Persian
                                                         (farsi)</button>
                                                                 </div>
                                                                 <div className="col text-center">
                                                                     <button className="btn text-uppercase bg-white fs-4 py-2"
-                                                                        type="button">No
+                                                                        type="button" onClick={() => {
+                                                                            setLanguage('No Reference')
+                                                                        }} data-on={language === 'No Reference' ? "active" : null}>No
                                                         Reference</button>
                                                                 </div>
                                                             </div>
@@ -498,8 +643,8 @@ class Booking extends Component {
                                                         <div className="text-end fs-5 text-muted font-ave-book pe-4">
                                                             <p>Clicking Book does not guarantee the Talent will accept
                                                             your request. All kâdo requests are filled at the Talent’s
-                                                            discretion. Requests must comply with our
-                                                                 <a className="text-decoration-underline me-2" href="#">Terms of Service</a>
+                                                            discretion. Requests must comply with our &nbsp;
+                                                            <a className="text-decoration-underline me-2" href="#">Terms of Service</a>
                                                                 and   <a className="text-decoration-underline ms-2" href="#">Privacy Policies</a>.
                                                                 </p>
                                                         </div>
@@ -508,7 +653,7 @@ class Booking extends Component {
                                                         <div className="card-body px-0 w-75 mw-100">
                                                             <div className="book-now d-grid my-3">
 
-                                                                <button data-bs-toggle="modal" data-bs-target="#success-modal" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-4 btn-hvr">
+                                                                <button type="submit" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-4 btn-hvr">
                                                                     <span className="display-4 text-uppercase">BOOK NOW</span>
                                                                 </button>
                                                             </div>
@@ -520,14 +665,37 @@ class Booking extends Component {
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                </div>
-                <SuccessfulBooking />
-                <Tips />
-            </Aux>
-        )
-    }
+                        </form>
+                    </div>
+                </section>
+            </div>
+            <SuccessfulBooking />
+            <Tips />
+        </Aux>
+    )
 }
 
-export default withAuthorization(Booking);
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.token !== null,
+        service: state.ServiceTalent.talent,
+        loading: state.ServiceTalent.loading,
+        error: state.ServiceTalent.error,
+        token: state.auth.token,
+        username: state.auth.username
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchTalentByUsername: (talentId) =>
+            dispatch(actions.fetchTalent(talentId)),
+        onCreateNewKado: (token, username, talent, recipientName, occasion, language, instructions, recipient, recipient_photo, couponCode) =>
+            dispatch(actions.ceateNewKado(token, username, talent, recipientName, occasion, language, instructions, recipient, recipient_photo, couponCode))
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withAuthorization(Booking));

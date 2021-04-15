@@ -48,7 +48,7 @@ const Home = props => {
                 <div className="col-12">
                     <div className="element-header py-4 d-flex align-items-center justify-content-between">
                         <h2 className="text-uppercase theme-pink-color display-6">{tc}</h2>
-                        <Link className="text-uppercase fs-3 font-ave-heavy" to={`/talent/${tc}`}>SEE ALL {tc} {'>'}</Link>
+                        <Link className="text-uppercase fs-3 font-ave-heavy" to={`/talents/${tc}`}>SEE ALL {tc} {'>'}</Link>
                     </div>
                 </div>
                 <TalentCategories

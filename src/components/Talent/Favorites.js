@@ -41,7 +41,7 @@ const Favorites = React.memo((props) => {
                             ))}
                         </ul>
                     </div>
-                    <Link className="stretched-link" to={`/talent-profile/${favorite.talent_link_url}`}
+                    <Link className="stretched-link" to={`/talent/${favorite.talent_link_url}`}
                     ></Link>
                 </div>
             </div>

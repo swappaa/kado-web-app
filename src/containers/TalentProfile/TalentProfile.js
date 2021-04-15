@@ -31,22 +31,15 @@ const TalentProfile = props => {
         window.scroll({
             top: 0
         });
-        localStorage.setItem('path', window.location.pathname);
         onFetchTalentByUsername(talentLink);
     }, [talentLink, onFetchTalentByUsername]);
 
 
     const { service } = props
 
-    const category = [];
+    console.log(service)
 
-    if (props.error && talentLink !== service.talent_link_url) {
-        return (
-            <div>
-                <Redirect to={`/talent-profile-404/${talentLink}`} />
-            </div>
-        )
-    }
+    const category = [];
 
     if (loading && talentLink !== service.talent_link_url) {
         return <Spinner />
@@ -63,7 +56,7 @@ const TalentProfile = props => {
 
 
     let bookNow = (props.isAuthenticated ?
-        <Link to="/booking" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
+        <Link to={`/${service.talent_link_url}/booking`} className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
             <span className="display-4 text-uppercase">BOOK NOW</span> <br />
             <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
         </Link > :

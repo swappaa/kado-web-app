@@ -38,7 +38,7 @@ const Browse = React.memo((props) => {
                                         ))}
                                     </ul>
                                 </div>
-                                <Link className="stretched-link" to={`/talent-profile/${spotlight.talent_link_url}`}
+                                <Link className="stretched-link" to={`/talent/${spotlight.talent_link_url}`}
                                 ></Link>
                             </div>
                         </div>
@@ -61,7 +61,7 @@ const Browse = React.memo((props) => {
                                 <img className="img-fluid w-100" src={talent.profile_picture}
                                     alt={talent.stage_name} />
                                 <h5 className="fs-4 font-ave-roman my-2">{talent.stage_name}</h5>
-                                <Link className="stretched-link" to={`/talent-profile/${talent.talent_link_url}`}
+                                <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`}
                                 ></Link>
                             </div>
                         </div>

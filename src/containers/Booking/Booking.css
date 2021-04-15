@@ -36,12 +36,13 @@
 }
 
 .booking-wrapper-proc .occasion-item small {
-    font-size: 9px;
+    font-size: 8px;
 }
 
 .booking-wrapper-proc .occasion-item>div {
     background-color: #fff;
     border-radius: 15px;
+    border: 2px solid transparent;
 }
 
 .booking-wrapper-proc .occasion-item:hover img {
@@ -69,11 +70,20 @@
     transform: scale(1.025);
 }
 
+.booking-wrapper-proc .occasion-item>[data-on="active"] {
+    border: 2px solid #58595b !important;
+}
+
 .booking-wrapper-proc .language button {
     max-width: 276px;
     width: 100%;
     border-radius: 16px;
     color: #58585a;
+    border: 2px solid transparent;
+}
+
+.booking-wrapper-proc .language button[data-on="active"] {
+    border: 2px solid #58595b !important;
 }
 
 .language button:hover {
@@ -90,6 +100,33 @@
 .booking .payment input~span {
     background-color: #58585a !important;
     border: 2px solid #58585a;
+}
+
+.file-drop {
+    border-radius: 40px;
+    color: #212529 !important;
+    font-size: 1.25rem !important;
+    padding-top: .5rem !important;
+    padding-bottom: .5rem !important;
+    padding-right: 3rem !important;
+    padding-left: 3rem !important;
+    margin-top: 1rem !important;
+    margin-bottom: 1rem !important;
+    margin-right: auto !important;
+    margin-left: auto !important;
+    border: 1px solid #dee2e6 !important;
+    border-color: #212529 !important;
+    cursor: pointer;
+}
+
+.file-drop>.file-drop-target.file-drop-dragging-over-frame {
+    z-index: 50;
+    opacity: 1;
+    font-weight: bold;
+}
+
+.file-drop>.file-drop-target.file-drop-dragging-over-target {
+    color: #ee2a59;
 }
 
 @media screen and (max-width: 1400px) {

@@ -53,13 +53,13 @@ const Routes = () =>
         <Route path="/payment">
             <Payment />
         </Route>
-        <Route path="/talent-profile/:talentLink">
+        <Route path="/talent/:talentLink">
             <TalentProfile />
         </Route>
-        <Route path="/booking">
+        <Route path="/:talentLink/booking">
             <Booking />
         </Route>
-        <Route path="/talent/:talentCategory">
+        <Route path="/talents/:talentCategory">
             <Spotlight />
         </Route>
         <Route path="/browse">

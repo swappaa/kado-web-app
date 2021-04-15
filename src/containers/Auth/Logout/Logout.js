@@ -17,9 +17,7 @@ const Logout = props => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLogout: () => dispatch(actions.logout()),
-        onFetchTalentByCategories: () =>
-            dispatch(actions.fetchTalentByCategories()),
+        onLogout: () => dispatch(actions.logout())
     };
 };
 

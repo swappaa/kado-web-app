@@ -15,6 +15,11 @@ export {
 } from './talent';
 
 export {
+    ceateNewKado
+} from './kado';
+
+
+export {
     fetchTalentByCategories,
     setTalentIsFavorite,
     setSearchTerm
