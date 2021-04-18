@@ -15,14 +15,14 @@ export {
 } from './talent';
 
 export {
-    ceateNewKado
+    createNewKado,
+    validateCoupon
 } from './kado';
 
 
 export {
     fetchTalentByCategories,
-    setTalentIsFavorite,
-    setSearchTerm
+    setTalentIsFavorite
 } from './talentCategory';
 
 export {
@@ -49,3 +49,9 @@ export {
     getTOS,
     getPrivacy
 } from './account';
+
+export {
+    searchTalents
+} from './searchTalent';
+
+

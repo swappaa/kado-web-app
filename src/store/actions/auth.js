@@ -115,7 +115,7 @@ export const auth = (email, password) => {
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
                 toast.error(err.response.data.message);
-                if (err.response.data.message == 'User is not confirmed.') {
+                if (err.response.data.message === 'User is not confirmed.') {
                     // dispatch(emailConfirmationStart());
                 }
             });

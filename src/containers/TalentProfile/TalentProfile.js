@@ -56,7 +56,7 @@ const TalentProfile = props => {
 
 
     let bookNow = (props.isAuthenticated ?
-        <Link to={`/${service.talent_link_url}/booking`} className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
+        <Link to={`/${service.talent_link_url}/book`} className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-3 btn-hvr" >
             <span className="display-4 text-uppercase">BOOK NOW</span> <br />
             <span className="text-trans-unset fs-4 font-ave-reg">[ Personal Video {service.video_fee ? util.formatCurrency(service.video_fee) : null}  ]</span>
         </Link > :

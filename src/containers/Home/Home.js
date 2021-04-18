@@ -27,7 +27,7 @@ const Home = props => {
     }
 
     const setSearchTerm = (searchValue) => {
-        onSetSearchTerm(searchValue);
+        onSetSearchTerm(props.access_token, props.username, searchValue);
     }
 
     // let talentCategoryList = <Spinner />;
@@ -54,7 +54,6 @@ const Home = props => {
                 <TalentCategories
                     key={key}
                     category={tc}
-                    searchTalent={props.searchTalent}
                     talentCategories={talentCategories[tc]}
                     setTalentIsFavorite={setTalentIsFavorite}
                 />
@@ -116,6 +115,24 @@ const Home = props => {
                                         <div className="col-sm-5">
                                             <div className="searchbox-wrapper">
                                                 <SearchBar setSearchTerm={setSearchTerm} searchTalent={props.searchTalent} />
+                                                <div className="talent-result">
+                                                    <ul className="list-group talent-search-wrapper">
+                                                        {props.searchTalent.map((talent, index) =>
+                                                            <li className="list-group-item d-flex align-items-center border-0 position-relative" key={index} data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
+                                                                <img className="img-fluid me-3" src={talent.profile_picture} alt={talent.stage_name} />
+                                                                <div className="dropdown-notifications-item-content">
+                                                                    <div className="talent-content-details">
+                                                                        {talent.stage_name}
+                                                                    </div>
+                                                                    <ul className="category-wrapper">
+                                                                        <li className="border-0 text-muted"><small>Singer</small></li>
+                                                                    </ul>
+                                                                </div>
+                                                                <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`}></Link>
+                                                            </li>
+                                                        )}
+                                                    </ul>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -164,8 +181,9 @@ const mapStateToProps = state => {
     return {
         talentCategories: state.TalentByCategories.talentCategories,
         loading: state.TalentByCategories.loading,
-        searchTalent: state.TalentByCategories.searchTalent,
+        searchTalent: state.searchTalentResult.searchTalentResult,
         token: state.auth.token !== null,
+        access_token: state.auth.token,
         username: state.auth.username
     };
 };
@@ -176,8 +194,8 @@ const mapDispatchToProps = dispatch => {
             dispatch(actions.fetchTalentByCategories(token, username)),
         onSetTalentFavorite: (category, key, talentUN, isFavorite, stage_name) =>
             dispatch(actions.setTalentIsFavorite(category, key, talentUN, isFavorite, stage_name)),
-        onSetSearchTerm: (searchValue) =>
-            dispatch(actions.setSearchTerm(searchValue))
+        onSetSearchTerm: (token, username, searchValue) =>
+            dispatch(actions.searchTalents(token, username, searchValue))
     };
 };
 

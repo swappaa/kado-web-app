@@ -10,6 +10,8 @@ import fanTalentFavoriteReducer from '../store/reducers/fanTalentFavorite';
 import browseReducer from '../store/reducers/browse';
 import notificationReducer from '../store/reducers/notification';
 import accountReducer from '../store/reducers/account';
+import kadoReducer from '../store/reducers/kado';
+import searchTalentReducer from '../store/reducers/searchTalent';
 
 const persistConfig = {
     key: 'root',
@@ -25,7 +27,9 @@ const rootReducer = combineReducers({
     FanTalentFavorites: fanTalentFavoriteReducer,
     browseSpotlightByCategories: browseReducer,
     notifications: notificationReducer,
-    accountDetails: accountReducer
+    accountDetails: accountReducer,
+    kado: kadoReducer,
+    searchTalentResult: searchTalentReducer
 });
 
 

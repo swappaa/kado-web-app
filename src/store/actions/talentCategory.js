@@ -109,10 +109,3 @@ export const setTalentIsFavorite = (category, key, talent_username, isFavorite, 
             });
     };
 };
-
-export const setSearchTerm = (search_value) => {
-    return {
-        type: actionTypes.SEARCH_TALENT,
-        search_value: search_value,
-    };
-};

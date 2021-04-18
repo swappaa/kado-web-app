@@ -8,14 +8,9 @@ export const ceateNewKadoStart = () => {
     };
 };
 
-export const ceateNewKadoSuccess = (token, idToken, refreshToken, accountType, email) => {
+export const ceateNewKadoSuccess = (isModal) => {
     return {
-        type: actionTypes.AUTH_SUCCESS,
-        accessToken: token,
-        idToken: idToken,
-        refreshToken: refreshToken,
-        accountType: accountType,
-        username: email
+        type: actionTypes.CREATE_NEW_KADO_SUCCESS
     };
 };
 
@@ -26,7 +21,7 @@ export const ceateNewKadoFail = (error) => {
     };
 };
 
-export const ceateNewKado = (access_token, username, talent, recipientName, occasion, language, instructions, recipient, recipient_photo, couponCode) => {
+export const createNewKado = (access_token, username, talent, recipientName, occasion, language, instructions, pronoun, recipient_photo, couponCode) => {
     return dispatch => {
         dispatch(ceateNewKadoStart());
 
@@ -37,7 +32,7 @@ export const ceateNewKado = (access_token, username, talent, recipientName, occa
         console.log(occasion)
         console.log(language)
         console.log(instructions)
-        console.log(recipient)
+        console.log(pronoun)
         console.log(recipient_photo)
         console.log(couponCode)
 
@@ -48,7 +43,7 @@ export const ceateNewKado = (access_token, username, talent, recipientName, occa
         formData.append("request_occasion", occasion);
         formData.append("request_language", language);
         formData.append("request_instructions", instructions);
-        formData.append("request_nature", recipient);
+        formData.append("request_pronoun", pronoun);
         formData.append("recipient_photo", recipient_photo);
         formData.append("coupon_code", couponCode);
 
@@ -69,8 +64,7 @@ export const ceateNewKado = (access_token, username, talent, recipientName, occa
 
         axios.post('https://aesdvqqk1k.execute-api.us-west-2.amazonaws.com/dev/kados/', formData)
             .then(response => {
-                // dispatch(ceateNewKadoSuccess());
-                toast.success(response.data.message);
+                dispatch(ceateNewKadoSuccess());
             })
             .catch(err => {
                 // dispatch(ceateNewKadoFail(err.response.data.message));
@@ -78,3 +72,32 @@ export const ceateNewKado = (access_token, username, talent, recipientName, occa
             });
     };
 };
+
+export const validateCouponSuccess = (coupon) => {
+    return {
+        type: actionTypes.VALIDATE_COUPON_SUCCESS,
+        coupon: coupon
+    };
+};
+
+export const validateCouponStart = () => {
+    return {
+        type: actionTypes.VALIDATE_COUPON_START
+    };
+};
+
+export const validateCoupon = (couponCode) => {
+    return dispatch => {
+        dispatch(validateCouponStart());
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+        axios.get(`https://aesdvqqk1k.execute-api.us-west-2.amazonaws.com/dev/kados/coupon/${couponCode}`, config)
+            .then(async coupon_code => {
+                const coupon = await coupon_code.data;
+                dispatch(validateCouponSuccess(coupon));
+            })
+    };
+};
+

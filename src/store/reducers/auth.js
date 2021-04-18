@@ -27,7 +27,6 @@ const authSuccess = (state, action) => {
         username: action.username,
         error: null,
         loading: false,
-        isModalOpen: false,
         isEmailConfirmation: false,
         isValidVerifyCode: false
     });

@@ -80,13 +80,39 @@ const Categories = (props) => {
 
     // console.log(talentCategories);
 
-    const talentCategoryOutput = props.talentCategories.filter((val) => {
-        if (!props.searchTalent) {
-            return val
-        } else if (val.stage_name.toLowerCase().includes(props.searchTalent.toLowerCase()) || val.talent.toLowerCase().includes(props.searchTalent.toLowerCase())) {
-            return val
-        }
-    }).map((talent, key) => {
+    // const talentCategoryOutput = props.talentCategories.filter((val) => {
+    //     if (!props.searchTalent) {
+    //         return val
+    //     } else if (val.stage_name.toLowerCase().includes(props.searchTalent.toLowerCase()) || val.talent.toLowerCase().includes(props.searchTalent.toLowerCase())) {
+    //         return val
+    //     }
+    // }).map((talent, key) => {
+    //     return <div className="col-12" key={key}>
+    //         <div className="element-featured-wrapper py-3 position-relative" >
+    //             <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">
+    //                 <button className="btn"
+    //                     onClick={() => {
+    //                         props.setTalentIsFavorite(props.category, key, talent.talent, talent.is_favorite, talent.stage_name)
+    //                     }}>
+    //                 </button>
+    //             </div>
+    //             <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
+    //                 <div className="image-wrapper">
+    //                     <img className="img-fluid w-100" src={talent.profile_picture} alt={talent.stage_name} />
+    //                 </div>
+    //                 <div className="featured-talent my-2">
+    //                     <h5 className="fs-4 font-ave-roman">{talent.stage_name}</h5>
+    //                 </div>
+    //                 <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`} onMouseDown={(e) => handleOnMouseDown(e)}
+    //                     onClick={(e) => handleOnClick(e)}
+    //                 ></Link>
+    //             </div>
+    //         </div>
+    //     </div>
+    // });
+
+
+    const talentCategoryOutput = props.talentCategories.map((talent, key) => {
         return <div className="col-12" key={key}>
             <div className="element-featured-wrapper py-3 position-relative" >
                 <div className="position-absolute top-0 start-100 translate-middle fav-btn-wrapper">

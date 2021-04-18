@@ -4,12 +4,13 @@ import { useParams } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import { FileDrop } from 'react-file-drop';
 import { toast } from "react-toastify";
+import { PayPalButton } from "react-paypal-button-v2";
 
 import * as actions from '../../store/actions/index';
 import Spinner from '../../components/UI/Spinner/Spinner';
-import SuccessfulBooking from '../../components/SuccessfulMessage/SuccessfulMessage';
 import Tips from '../../components/Tips/Tips';
 import Aux from '../../hoc/Auxi/Auxi';
+import Modal from '../../components/UI/Modal/Modal';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import '../../App.css';
 import './Booking.css';
@@ -38,11 +39,11 @@ import thankyou from '../../assets/images/svg/occasion/thank you.svg';
 import wedding from '../../assets/images/svg/occasion/wedding.svg';
 
 const Booking = props => {
-    const { service } = props
+    const { onFetchTalentByUsername, loading, service, coupon, isModalSuccess } = props;
+    const { status } = coupon;
     const { talentLink } = useParams();
-    const { onFetchTalentByUsername, loading } = props;
     const [talent] = useState(service.talent_link_url);
-    const [recipient, setRecipient] = useState('');
+    const [recipient, setRecipient] = useState('Friend');
     const [recipientName, setRecipientName] = useState('');
     const [recipientPhoto, setRecipientPhoto] = useState('');
     const [pronoun, setPronoun] = useState('');
@@ -52,19 +53,21 @@ const Booking = props => {
     const [language, setLanguage] = useState('English');
     const fileInputRef = useRef(null);
     const [couponCode, setCouponCode] = useState('');
+    const [modalCreateKadoNewSuccess, SetModalCreateKadoNewSuccess] = useState(false);
+
 
     useEffect(() => {
-        window.scroll({
-            top: 0
-        });
+        document.title = `Kado - Book a Kado from ${service.stage_name}`;
+        if (isModalSuccess) {
+            SetModalCreateKadoNewSuccess(true)
+        }
+
+        if (status === 'live') {
+            setCouponCode(' ');
+        }
+
         onFetchTalentByUsername(talentLink);
-    }, [talentLink, onFetchTalentByUsername]);
-
-
-
-    if (loading && talentLink !== service.talent_link_url) {
-        return <Spinner />
-    }
+    }, [talentLink, onFetchTalentByUsername, isModalSuccess, status]);
 
     const onRecipientValueChange = (event) => {
         setRecipient(event.target.value);
@@ -79,6 +82,8 @@ const Booking = props => {
         const { files } = event.target;
         let size = files[0].size;
         let type = files[0].name;
+
+        console.log(files)
 
 
         if (!type.match(/\.(jpg|jpeg|png|gif)$/)) {
@@ -118,7 +123,39 @@ const Booking = props => {
 
     const submitCreateKadoHandler = (event) => {
         event.preventDefault();
-        props.onCreateNewKado(props.token, props.username, talent, recipientName, occasion, language, instructions, recipient, recipientPhoto, couponCode);
+        props.onCreateNewKado(props.token, props.username, talent, recipientName, occasion, language, instructions, pronoun, recipientPhoto, couponCode);
+    }
+
+    const modalSuccessCloseHandler = () => {
+        SetModalCreateKadoNewSuccess(false);
+    };
+
+    const promoCode = (event) => {
+        event.preventDefault();
+        if (couponCode) {
+            props.onValidateCoupon(couponCode);
+        }
+    }
+
+    if (status == 'live') {
+        console.log('yehey');
+    }
+
+    let btnCoupon = <a className="text-white" onClick={promoCode} style={{ cursor: 'pointer' }}>Apply</a>;
+
+    if (props.loading) {
+        btnCoupon = <a className="text-white" onClick={promoCode} style={{ cursor: 'pointer' }}>
+            <div className="spinner-border" role="status">
+                <span className="visually-hidden">Loading...</span>
+            </div>
+        </a>
+    }
+
+    let couponMessage = null;
+    if (props.coupon.message != 'ok') {
+        couponMessage = <div className="invalid-feedback d-block">
+            {props.coupon.message}
+        </div>
     }
 
     return (
@@ -195,41 +232,42 @@ const Booking = props => {
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div className="Recipient-pic-wrapper w-50 mx-auto">
-                                                                <div className="input-group mb-4">
-                                                                    <span
-                                                                        className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
+                                                            {recipient === "Friend" ?
+                                                                <div className="Recipient-pic-wrapper w-50 mx-auto">
+                                                                    <div className="input-group mb-4">
+                                                                        <span
+                                                                            className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
 
-                                                                    </span>
-                                                                    <input type="text"
-                                                                        className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
-                                                                        placeholder="Recipient Name" aria-label="Recipient Name" onChange={(e) => setRecipientName(e.target.value)} required />
-                                                                </div>
-                                                                <div className="input-group mb-4">
-                                                                    <span
-                                                                        className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
+                                                                        </span>
+                                                                        <input type="text"
+                                                                            className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
+                                                                            placeholder="Recipient Name" aria-label="Recipient Name" onChange={(e) => setRecipientName(e.target.value)} required />
+                                                                    </div>
+                                                                    <div className="input-group mb-4">
+                                                                        <span
+                                                                            className="input-group-text border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 bg-transparent px-0">
 
-                                                                    </span>
-                                                                    <input type="text"
-                                                                        className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
-                                                                        placeholder="Pronoun" aria-label="Pronoun" onChange={(e) => setPronoun(e.target.value)} required />
-                                                                </div>
-                                                                <div className="d-flex flex-wrap align-items-center mb-3">
-                                                                    <span className="fs-4 text-muted">Recipient Pic (Optional)</span>
-                                                                    <FileDrop
-                                                                        onTargetClick={onTargetClick}
-                                                                        onDrop={(files, event) => onDropFile(files)}>
-                                                                        Drag it here
+                                                                        </span>
+                                                                        <input type="text"
+                                                                            className="form-control form-control-lg border border-2 border-dark border-top-0 border-end-0 border-start-0 rounded-0 fs-4 px-0"
+                                                                            placeholder="Pronoun" aria-label="Pronoun" onChange={(e) => setPronoun(e.target.value)} required />
+                                                                    </div>
+                                                                    <div className="d-flex flex-wrap align-items-center mb-3">
+                                                                        <span className="fs-4 text-muted">Recipient Pic (Optional)</span>
+                                                                        <FileDrop
+                                                                            onTargetClick={onTargetClick}
+                                                                            onDrop={(files, event) => onDropFile(files)}>
+                                                                            Drag it here
                                                                 </FileDrop>
 
-                                                                    <input
-                                                                        onChange={onFileInputChange}
-                                                                        ref={fileInputRef}
-                                                                        type="file"
-                                                                        className="hidden invisible"
-                                                                    />
-                                                                </div>
-                                                            </div>
+                                                                        <input
+                                                                            onChange={onFileInputChange}
+                                                                            ref={fileInputRef}
+                                                                            type="file"
+                                                                            className="hidden invisible"
+                                                                        />
+                                                                    </div>
+                                                                </div> : null}
                                                         </div>
                                                     </div>
                                                 </div>
@@ -606,9 +644,12 @@ const Booking = props => {
                                                         <div className="card-body px-0 w-50 mw-100 p-0">
                                                             <h2 className="font-ave-heavy">DO YOU HAVE A PROMO CODE?</h2>
                                                             <div className="input-group mb-3">
-                                                                <input type="text" className="form-control rounded-0 border border-2 py-3" />
-                                                                <span className="input-group-text fs-5 px-4 rounded-0"><a className="text-white" href="#">Apply</a></span>
+                                                                <input type="text" className="form-control rounded-0 border border-2 py-3" onChange={(e) => setCouponCode(e.target.value)} value={couponCode} />
+                                                                <span className="input-group-text fs-5 px-4 rounded-0">
+                                                                    {btnCoupon}
+                                                                </span>
                                                             </div>
+                                                            {couponMessage}
                                                             <ul className="list-group pe-5 bg-transparent">
                                                                 <li className="d-flex justify-content-between align-items-center font-ave-reg fs-4 bg-transparent px-4 py-2 text-muted">
                                                                     Video  Message
@@ -627,6 +668,38 @@ const Booking = props => {
                                                                 <span className="badge bg-transparent rounded-pill text-muted fs-2">$110.00</span>
                                                                 </li>
                                                             </ul>
+                                                            <div className="payment-method">
+                                                                <PayPalButton
+                                                                    createOrder={(data, actions) => {
+                                                                        return actions.order.create({
+                                                                            purchase_units: [{
+                                                                                amount: {
+                                                                                    currency_code: "USD",
+                                                                                    value: "0.01"
+                                                                                }
+                                                                            }],
+                                                                            // application_context: {
+                                                                            //   shipping_preference: "NO_SHIPPING" // default is "GET_FROM_FILE"
+                                                                            // }
+                                                                        });
+                                                                    }}
+                                                                    onApprove={(data, actions) => {
+                                                                        // Capture the funds from the transaction
+                                                                        return actions.order.capture().then(function (details) {
+                                                                            // Show a success message to your buyer
+                                                                            alert("Transaction completed by " + details.payer.name.given_name);
+
+                                                                            // OPTIONAL: Call your server to save the transaction
+                                                                            return fetch("/paypal-transaction-complete", {
+                                                                                method: "post",
+                                                                                body: JSON.stringify({
+                                                                                    orderID: data.orderID
+                                                                                })
+                                                                            });
+                                                                        });
+                                                                    }}
+                                                                />
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -656,6 +729,7 @@ const Booking = props => {
                                                                 <button type="submit" className="font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 py-4 btn-hvr">
                                                                     <span className="display-4 text-uppercase">BOOK NOW</span>
                                                                 </button>
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -669,8 +743,34 @@ const Booking = props => {
                     </div>
                 </section>
             </div>
-            <SuccessfulBooking />
             <Tips />
+            <Modal show={modalCreateKadoNewSuccess} hide={modalSuccessCloseHandler}>
+                <div id="success-modal">
+                    <div className="modal-content rounded-0 border-0">
+                        <div className="modal-header px-5 border-0">
+                            <h5 className="modal-title text-uppercase theme-pink-color display-4">Thank you</h5>
+                            <button type="button" className="btn-close rounded-circle border border-2 border-dark"
+                                data-bs-dismiss="modal" aria-label="Close" onClick={modalSuccessCloseHandler}></button>
+                        </div>
+                        <div className="modal-body px-5">
+                            <div className="card mb-3 border-0 py-5">
+                                <div className="row g-0">
+                                    <div className="col-4">
+                                        <svg xmlns="http://www.w3.org/2000/svg" className="img-fluid" width="258px" height="258px" viewBox="0 0 512 512"><title>submit thank you</title><g id="Layer_2" data-name="Layer 2"><g id="Capa_1" data-name="Capa 1"><path d="M492.25,285.42a10,10,0,0,0-4.14-13.52,156.8,156.8,0,0,0-172.94,17.27L299,273l26.39-26.39a10,10,0,0,0-14.14-14.14l-26.39,26.39-64.38-64.39A139.8,139.8,0,0,0,231.84,45.31a10,10,0,1,0-17.66,9.38,119.08,119.08,0,0,1-8,125.48l-42.42-42.43a24.55,24.55,0,0,0-40.4,8.91L1.53,479a24.59,24.59,0,0,0,22.94,33A24.82,24.82,0,0,0,33,510.47L365.35,388.65a24.55,24.55,0,0,0,8.91-40.4L329.4,303.39a136.82,136.82,0,0,1,149.33-13.83,10,10,0,0,0,13.52-4.14Zm-333,157.47L69.12,352.73l25-68.15L227.43,417.91ZM110.41,460.8,51.2,401.59l10.33-28.17,77.05,77.05ZM26.14,491.69a4.54,4.54,0,0,1-5.83-5.82l23.3-63.58,46.1,46.1Zm335.2-125.11a4.41,4.41,0,0,1-2.87,3.29L297,392.4l-56.88-56.87A10,10,0,0,0,226,349.67L276.29,400l-28.17,10.33L101.68,263.88,112,235.71,162.33,286a10,10,0,1,0,14.14-14.14L119.6,215l22.53-61.48a4.43,4.43,0,0,1,3.29-2.87,4.84,4.84,0,0,1,1-.11,4.35,4.35,0,0,1,3.16,1.34L360.12,362.4a4.41,4.41,0,0,1,1.22,4.18Z" /><path d="M301.6,79.8a10,10,0,0,0,10-10,15.2,15.2,0,0,1,15.19-15.18A35.23,35.23,0,0,0,362,19.43a10,10,0,0,0-20,0,15.21,15.21,0,0,1-15.18,15.19A35.22,35.22,0,0,0,291.6,69.8,10,10,0,0,0,301.6,79.8Z" /><path d="M390.32,174.19a36.38,36.38,0,0,0,36.34-36.34A16.36,16.36,0,0,1,443,121.51a10,10,0,0,0,0-20,36.38,36.38,0,0,0-36.34,36.34,16.36,16.36,0,0,1-16.34,16.34,10,10,0,0,0,0,20Z" /><path d="M448,193.48a32,32,0,1,0,32-32A32,32,0,0,0,448,193.48Zm32-12a12,12,0,1,1-12,12A12,12,0,0,1,480,181.48Z" /><path d="M315.11,169.85a32,32,0,1,0-32-32A32,32,0,0,0,315.11,169.85Zm0-44a12,12,0,1,1-12,12A12,12,0,0,1,315.11,125.85Z" /><path d="M128,64A32,32,0,1,0,96,32,32,32,0,0,0,128,64Zm0-44a12,12,0,1,1-12,12A12,12,0,0,1,128,20Z" /><path d="M452.5,351.06a10,10,0,0,0-14.14,14.14l9.43,9.43a10,10,0,0,0,14.14-14.15Z" /><path d="M499.64,398.2a10,10,0,0,0-14.14,14.14l9.43,9.43a10,10,0,0,0,14.14-14.14Z" /><path d="M494.93,351.06l-9.43,9.43a10,10,0,1,0,14.14,14.14l9.43-9.43a10,10,0,0,0-14.14-14.14Z" /><path d="M447.79,398.2l-9.43,9.43a10,10,0,1,0,14.14,14.14l9.43-9.43a10,10,0,0,0-14.14-14.14Z" /><path d="M492.57,29.43a10,10,0,0,0,7.07-2.93l9.43-9.43A10,10,0,0,0,494.93,2.93l-9.43,9.43a10,10,0,0,0,7.07,17.07Z" /><path d="M445.43,76.57a10,10,0,0,0,7.07-2.93l9.43-9.43a10,10,0,0,0-14.14-14.14l-9.43,9.43a10,10,0,0,0,7.07,17.07Z" /><path d="M499.64,50.07A10,10,0,0,0,485.5,64.21l9.43,9.43A10,10,0,0,0,509.07,59.5Z" /><path d="M447.79,26.5a10,10,0,0,0,14.14-14.14L452.5,2.93a10,10,0,1,0-14.14,14.14Z" /><path d="M201.22,300.78a10,10,0,1,0,7.07,2.93A10.08,10.08,0,0,0,201.22,300.78Z" /><path d="M347.12,196.62l-7.25,7.25A10,10,0,1,0,354,218l7.25-7.25a10,10,0,0,0-14.14-14.14Z" /></g></g></svg>
+                                    </div>
+                                    <div className="col-8">
+                                        <div className="card-body fs-2 text-dark font-ave-reg">
+                                            <p className="card-text">Thanks for submitting a kâdo request.</p>
+                                            <p className="card-text">Please give the Talent up to 7 days to review and reply</p>
+                                            <p className="card-text"> View your request <a href="" className="theme-pink-color">here</a>.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Modal>
         </Aux>
     )
 }
@@ -679,10 +779,12 @@ const mapStateToProps = state => {
     return {
         isAuthenticated: state.auth.token !== null,
         service: state.ServiceTalent.talent,
-        loading: state.ServiceTalent.loading,
-        error: state.ServiceTalent.error,
         token: state.auth.token,
-        username: state.auth.username
+        username: state.auth.username,
+        coupon: state.kado.coupon,
+        isModalSuccess: state.kado.isModalSuccess,
+        loading: state.kado.loading,
+        error: state.kado.error
     };
 };
 
@@ -690,8 +792,10 @@ const mapDispatchToProps = dispatch => {
     return {
         onFetchTalentByUsername: (talentId) =>
             dispatch(actions.fetchTalent(talentId)),
-        onCreateNewKado: (token, username, talent, recipientName, occasion, language, instructions, recipient, recipient_photo, couponCode) =>
-            dispatch(actions.ceateNewKado(token, username, talent, recipientName, occasion, language, instructions, recipient, recipient_photo, couponCode))
+        onCreateNewKado: (token, username, talent, recipientName, occasion, language, instructions, pronoun, recipient_photo, couponCode) =>
+            dispatch(actions.createNewKado(token, username, talent, recipientName, occasion, language, instructions, pronoun, recipient_photo, couponCode)),
+        onValidateCoupon: (couponCode) =>
+            dispatch(actions.validateCoupon(couponCode)),
     };
 };
 

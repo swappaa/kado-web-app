@@ -44,28 +44,9 @@ const setTalentIsFavoriteFail = (state, action) => {
     return updateObject(state, updatedState);
 };
 
-const searchTalent = (state, action) => {
-    // .filter((val) => {
-    //     if (searchTerm == '') {
-    //         return val
-    //     } else if (val.stage_name.toLowerCase().includes(searchTerm.toLowerCase()) || val.talent.toLowerCase().includes(searchTerm.toLowerCase())) {
-    //         return val
-    //     }
-    // })
-
-
-    // state.talentCategories.Actor.filter((val) => {
-    //     if (action.search_value == '') {
-    //         return updateObject(state, val);
-    //     } else if (val.stage_name.toLowerCase().includes(action.search_value.toLowerCase()) || val.talent.toLowerCase().includes(action.search_value.toLowerCase())) {
-    //         return updateObject(state, val);
-    //     }
-    // })
-
-    // const works = state.contents.filter((val) => val.includes(value));
-    // return { ...state, value, works };
-    return updateObject(state, { searchTalent: action.search_value });
-};
+// const searchTalent = (state, action) => {
+//     return updateObject(state, { searchTalent: action.search_value });
+// };
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -75,7 +56,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_TALENT_IS_FAVORITE_START: return setTalentIsFavoriteStart(state, action);
         case actionTypes.SET_TALENT_IS_FAVORITE_SUCCESS: return setTalentIsFavoriteSuccess(state, action);
         case actionTypes.SET_TALENT_IS_FAVORITE_FAIL: return setTalentIsFavoriteFail(state, action);
-        case actionTypes.SEARCH_TALENT: return searchTalent(state, action);
         default: return state;
     }
 };

@@ -71,6 +71,7 @@
     "react-loading-skeleton": "^2.2.0",
     "react-notifications": "^1.7.2",
     "react-notifications-component": "^3.0.3",
+    "react-paypal-button-v2": "^2.6.3",
     "react-player": "^2.9.0",
     "react-radio-buttons": "^1.2.2",
     "react-rating": "^2.0.5",

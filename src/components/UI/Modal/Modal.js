@@ -1,22 +1,22 @@
 import React from 'react';
+import { Modal } from "react-bootstrap";
 
-import classes from './Modal.module.css';
 import Aux from '../../../hoc/Auxi/Auxi';
-import Backdrop from '../Backdrop/Backdrop';
 
 const modal = props => {
     return (
         <Aux>
-            <Backdrop show={props.show} clicked={props.modalClosed} />
-            <div
-                className={classes.Modal}
-                style={{
-                    transform: props.show ? 'translateY(0)' : 'translateY(-100vh)',
-                    opacity: props.show ? '1' : '0'
-                }}
-            >
+            <Modal
+                show={props.show}
+                backdrop={true}
+                onHide={props.hide}
+                keyboard={false}
+                size="xl"
+                aria-labelledby="contained-modal-title-vcenter"
+                centered
+                animation={false}>
                 {props.children}
-            </div>
+            </Modal>
         </Aux>
     );
 };
