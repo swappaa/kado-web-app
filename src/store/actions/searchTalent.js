@@ -14,6 +14,13 @@ export const searchTalentStart = () => {
     };
 };
 
+export const searchTalentFail = (error) => {
+    return {
+        type: actionTypes.SEARCH_TALENT_FAIL,
+        error: error
+    };
+};
+
 export const searchTalents = (access_token, username, search_param) => {
     return dispatch => {
 
@@ -40,7 +47,7 @@ export const searchTalents = (access_token, username, search_param) => {
                 dispatch(searchTalentSuccess(searchResult));
             })
             .catch(err => {
-
+                dispatch(searchTalentFail(err));
             });
     };
 };

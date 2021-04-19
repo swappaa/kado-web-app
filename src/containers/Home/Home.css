@@ -114,8 +114,6 @@
     max-width: 556px;
     width: 100%;
     z-index: 99;
-    animation: udlite-search-form-autocomplete-expand 150ms cubic-bezier(0, 0, .38, .9);
-    transform-origin: top;
     -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
     box-shadow: 0 2px 10px rgba(0, 0, 0, .2);
     margin-top: 1rem;
@@ -125,6 +123,8 @@
     max-height: 30rem;
     overflow-y: auto;
     overflow-x: hidden;
+    animation: animate-search 150ms cubic-bezier(0, 0, .38, .9);
+    transform-origin: top;
 }
 
 .talent-home .talent-search-wrapper img {
@@ -156,6 +156,30 @@
     top: 8px;
     z-index: 9;
     left: 9%;
+}
+
+.talent-home .category-wrapper>li::before {
+    content: '/';
+    position: relative;
+    left: -4px;
+    top: 2px;
+}
+
+.talent-home .category-wrapper>li:first-child::before {
+    display: none;
+}
+
+.talent-home .category-wrapper>li:first-child {
+    margin-left: 0 !important;
+}
+
+@keyframes animate-search {
+    from {
+        transform: scaleY(0)
+    }
+    to {
+        transform: scaleY(1)
+    }
 }
 
 /* the slides */

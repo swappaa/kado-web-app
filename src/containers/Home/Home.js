@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 
 import SearchBar from '../../components/Talent/SearchBar';
@@ -15,6 +15,7 @@ import banner from '../../assets/images/banner-send-personalized-images.jpg';
 
 const Home = props => {
     const { onFetchTalentByCategories, onSetTalentFavorite, onSetSearchTerm, talentCategories, token } = props;
+    const [hasFocus, setFocus] = useState(false);
 
     useEffect(() => {
         onFetchTalentByCategories(props.token, props.username);
@@ -28,6 +29,17 @@ const Home = props => {
 
     const setSearchTerm = (searchValue) => {
         onSetSearchTerm(props.access_token, props.username, searchValue);
+    }
+
+    const setSearchFocus = (val) => {
+        if (val === false) {
+            setTimeout(() => {
+                setFocus(val)
+            }, 250);
+        } else {
+            setFocus(val)
+        }
+        console.log(hasFocus)
     }
 
     // let talentCategoryList = <Spinner />;
@@ -59,6 +71,31 @@ const Home = props => {
                 />
             </div >
         })
+    }
+
+    let searchSuggestion = null;
+    if (props.searchTalent.length === 0) {
+        searchSuggestion = null
+    } else {
+        searchSuggestion = (
+            <ul className="list-group talent-search-wrapper">
+                {props.searchTalent.map((talent, index) =>
+                    <li className="list-group-item d-flex align-items-center border-0 position-relative" key={index} data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
+                        <img className="img-fluid me-3" src={talent.profile_picture} alt={talent.stage_name} />
+                        <div className="dropdown-notifications-item-content">
+                            <div className="talent-content-details">
+                                {talent.stage_name}
+                            </div>
+                            <ul className="category-wrapper d-flex">
+                                {!talent.categories || talent.categories.map((category, categoryIndex) => (
+                                    <li key={categoryIndex} className="border-0 text-muted mx-1"><small>{category}</small></li>
+                                ))}
+                            </ul>
+                        </div>
+                        <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`}></Link>
+                    </li>)}
+            </ul>
+        )
     }
 
     return (
@@ -114,24 +151,9 @@ const Home = props => {
                                         <label className="col-sm-7 text-uppercase display-6 text-center text-sm-start my-4 my-sm-0 fw-bold" style={{ color: '#000' }}>Find your favorite star now!</label>
                                         <div className="col-sm-5">
                                             <div className="searchbox-wrapper">
-                                                <SearchBar setSearchTerm={setSearchTerm} searchTalent={props.searchTalent} />
+                                                <SearchBar setSearchTerm={setSearchTerm} searchTalent={props.searchTalent} setSearchFocus={setSearchFocus} />
                                                 <div className="talent-result">
-                                                    <ul className="list-group talent-search-wrapper">
-                                                        {props.searchTalent.map((talent, index) =>
-                                                            <li className="list-group-item d-flex align-items-center border-0 position-relative" key={index} data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
-                                                                <img className="img-fluid me-3" src={talent.profile_picture} alt={talent.stage_name} />
-                                                                <div className="dropdown-notifications-item-content">
-                                                                    <div className="talent-content-details">
-                                                                        {talent.stage_name}
-                                                                    </div>
-                                                                    <ul className="category-wrapper">
-                                                                        <li className="border-0 text-muted"><small>Singer</small></li>
-                                                                    </ul>
-                                                                </div>
-                                                                <Link className="stretched-link" to={`/talent/${talent.talent_link_url}`}></Link>
-                                                            </li>
-                                                        )}
-                                                    </ul>
+                                                    {hasFocus ? searchSuggestion : null}
                                                 </div>
                                             </div>
                                         </div>

@@ -9,6 +9,12 @@ const SearchBar = props => {
                 onChange={(event) => {
                     props.setSearchTerm(event.target.value.replace(/^.*?(?=[-_\+\^#%&$\*:<';`>\!@?/\{\|\}\[\]\\\)\(]).*$/g, ''))
                 }}
+                onFocus={() => {
+                    props.setSearchFocus(true)
+                }}
+                onBlur={() => {
+                    props.setSearchFocus(false)
+                }}
             />
             {props.searchTalent ? <span className="input-group-text bg-white del-search border-start-0 border-end-0">
                 <button className="btn" href="#" onClick={(event) => {
