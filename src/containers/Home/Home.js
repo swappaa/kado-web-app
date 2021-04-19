@@ -18,6 +18,7 @@ const Home = props => {
     const [hasFocus, setFocus] = useState(false);
 
     useEffect(() => {
+        document.title = `Kado - Send personalized messages to your family and friends from the stars they love!`;
         onFetchTalentByCategories(props.token, props.username);
     }, [onFetchTalentByCategories, token]);
 
@@ -35,7 +36,7 @@ const Home = props => {
         if (val === false) {
             setTimeout(() => {
                 setFocus(val)
-            }, 250);
+            }, 200);
         } else {
             setFocus(val)
         }
