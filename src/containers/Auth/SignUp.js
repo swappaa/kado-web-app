@@ -5,6 +5,7 @@ import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
 import ReactCodeInput from 'react-verification-code-input';
+import { Helmet } from "react-helmet";
 import $ from 'jquery';
 
 import Aux from '../../hoc/Auxi/Auxi';
@@ -126,6 +127,10 @@ const SignUp = props => {
     return (
         (props.isConfirmationEmail ?
             <Modal show={props.show} onClick={props.closed}>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Email Verification</title>
+                </Helmet>
                 {authRedirect}
                 <div className="signapp-modal" id="signapp-modal">
                     <div className="modal-content rounded-0 border-0">
@@ -163,6 +168,10 @@ const SignUp = props => {
                 </div>
             </Modal> :
             <Modal show={props.show} onClick={props.closed}>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Signup</title>
+                </Helmet>
                 {authRedirect}
                 <div className="signapp-modal" id="signapp-modal">
                     <div className="modal-content rounded-0 border-0">

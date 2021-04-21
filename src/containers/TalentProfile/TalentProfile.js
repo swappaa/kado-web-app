@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useParams, Link, Redirect } from 'react-router-dom';
 import Skeleton from 'react-loading-skeleton';
 import ReadMoreAndLess from 'react-read-more-less';
+import { Helmet } from "react-helmet";
 
 import Aux from '../../hoc/Auxi/Auxi';
 import Auth from '../../containers/Auth/SignIn';
@@ -24,8 +25,7 @@ const TalentProfile = props => {
     const handleClose = () => setShow(false);
 
     const { talentLink } = useParams()
-    const { onFetchTalentByUsername, loading } = props;
-
+    const { onFetchTalentByUsername, loading, service } = props;
 
     useEffect(() => {
         window.scroll({
@@ -34,8 +34,6 @@ const TalentProfile = props => {
         onFetchTalentByUsername(talentLink);
     }, [talentLink, onFetchTalentByUsername]);
 
-
-    const { service } = props
 
     console.log(service)
 
@@ -74,6 +72,11 @@ const TalentProfile = props => {
 
     return (
         <div className="talent-profile">
+            <Helmet titleTemplate="Kado - %s">
+                <meta charSet="utf-8" />
+                <title>{service.stage_name}</title>
+            </Helmet>
+
             <section className="pb-5 py-xl-5">
                 <div className="container-fluid px-5">
                     <div className="profile-wrapper">

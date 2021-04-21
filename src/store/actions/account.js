@@ -93,3 +93,46 @@ export const getPrivacy = (locale) => {
             })
     };
 };
+
+export const disabledAccountSuccess = () => {
+    return {
+        type: actionTypes.DISABLED_ACCOUNT_SUCCESS,
+    };
+};
+
+export const disabledAccountFail = () => {
+    return {
+        type: actionTypes.DISABLED_ACCOUNT_FAIL,
+    };
+};
+
+export const disableAccount = (access_token, username, termination_reason) => {
+    return dispatch => {
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'application/json';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        let formData = new FormData();
+
+        formData.append("termination_reason", termination_reason);
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/terminate', formData)
+            .then(response => {
+                dispatch(disabledAccountSuccess());
+            })
+            .catch(err => {
+                dispatch(disabledAccountFail());
+            });
+    };
+};

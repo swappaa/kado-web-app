@@ -123,7 +123,8 @@ const Categories = (props) => {
                     </button>
                 </div>
                 <div className="featured-wrapper text-center position-relative" data-fav={talent.is_favorite ? 'y-fav' : 'x-fav'}>
-                    <div className="image-wrapper">
+                    <div className="image-wrapper position-relative">
+                        <div className="grad-overlay-img"></div>
                         <img className="img-fluid w-100" src={talent.profile_picture} alt={talent.stage_name} />
                     </div>
                     <div className="featured-talent my-2">

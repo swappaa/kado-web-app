@@ -65,7 +65,8 @@
 
 .talent-home .featured-wrapper .image-wrapper {
     border-radius: 25px;
-    border: 2px solid transparent;
+    /* border: 2px solid transparent; */
+    background: rgb(37, 37, 37) none repeat scroll 0% 0%;
     overflow: hidden;
 }
 

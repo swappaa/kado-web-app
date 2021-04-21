@@ -420,7 +420,7 @@ const Settings = props => {
                     </div>
                 </section>
             </div>
-            <DisableAccount />
+            <DisableAccount accessToken={token} userName={username} />
         </Aux>
     )
 }

@@ -3,7 +3,10 @@ import { updateObject } from '../../shared/utility';
 
 const initialState = {
     account: [],
-    loading: false
+    loading: false,
+    tos: [],
+    privacy: [],
+    disabledAccount: false
 };
 
 const fetchAccountStart = (state, action) => {
@@ -33,6 +36,12 @@ const fetchPrivacySuccess = (state, action) => {
     });
 };
 
+const disabledAccountSuccess = (state, action) => {
+    return updateObject(state, {
+        disabledAccount: true
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_ACCOUNT_START: return fetchAccountStart(state, action);
@@ -40,6 +49,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ACCOUNT_FAIL: return fetchAccountFail(state, action);
         case actionTypes.FETCH_TOS_SUCCESS: return fetchTOSSuccess(state, action);
         case actionTypes.FETCH_PRIVACY_SUCCESS: return fetchPrivacySuccess(state, action);
+        case actionTypes.DISABLED_ACCOUNT_SUCCESS: return disabledAccountSuccess(state, action);
         default: return state;
     }
 };

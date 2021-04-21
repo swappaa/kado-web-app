@@ -67,6 +67,7 @@
     "react-facebook-login": "^4.1.1",
     "react-file-drop": "^3.1.2",
     "react-flip-move": "^3.0.4",
+    "react-helmet": "^6.1.0",
     "react-image-process": "^0.2.4",
     "react-loading-skeleton": "^2.2.0",
     "react-notifications": "^1.7.2",

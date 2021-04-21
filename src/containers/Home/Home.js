@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import { Helmet } from "react-helmet";
 
 import SearchBar from '../../components/Talent/SearchBar';
 import SkeletonCategories from '../../Skeletons/Categories';
@@ -18,7 +19,6 @@ const Home = props => {
     const [hasFocus, setFocus] = useState(false);
 
     useEffect(() => {
-        document.title = `Kado - Send personalized messages to your family and friends from the stars they love!`;
         onFetchTalentByCategories(props.token, props.username);
     }, [onFetchTalentByCategories, token]);
 
@@ -61,7 +61,7 @@ const Home = props => {
                 <div className="col-12">
                     <div className="element-header py-4 d-flex align-items-center justify-content-between">
                         <h2 className="text-uppercase theme-pink-color display-6">{tc}</h2>
-                        <Link className="text-uppercase fs-3 font-ave-heavy" to={`/talents/${tc}`}>SEE ALL {tc} {'>'}</Link>
+                        <Link className="text-uppercase fs-3 font-ave-heavy" to={`/browse/${tc}`}>SEE ALL {tc} {'>'}</Link>
                     </div>
                 </div>
                 <TalentCategories
@@ -101,6 +101,12 @@ const Home = props => {
 
     return (
         <div className="talent-home">
+            <Helmet
+                titleTemplate="Kado - %s">
+                <meta charSet="utf-8" />
+                <title>Send personalized messages to your family and friends from the stars they love!</title>
+            </Helmet>
+
             <section>
                 <div className="container-fluid px-5">
                     <div className="banner-wrapper text-white theme-pink-bg-color">

@@ -47,7 +47,8 @@ export {
 export {
     getAccountDetails,
     getTOS,
-    getPrivacy
+    getPrivacy,
+    disableAccount
 } from './account';
 
 export {

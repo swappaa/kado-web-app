@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import * as actions from '../../store/actions/index';
 import FacebookLogin from 'react-facebook-login';
-
+import { Helmet } from "react-helmet";
 
 
 import Aux from '../../hoc/Auxi/Auxi';
@@ -53,6 +53,11 @@ const Auth = props => {
 
     return (
         <Modal show={props.show} onClick={props.closed}>
+            <Helmet>
+                <meta charSet="utf-8" />
+                <title>Signin</title>
+            </Helmet>
+
             {authRedirect}
             <div className="signapp-modal" id="signin-modal">
                 <div className="modal-content rounded-0 border-0">
