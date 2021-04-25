@@ -9,6 +9,7 @@ const Logout = props => {
 
     useEffect(() => {
         onLogout();
+        window.location.reload();
     }, [onLogout]);
 
     return <Redirect to="/" />;

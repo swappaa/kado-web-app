@@ -12,15 +12,14 @@ import '../../App.css';
 import './Settings.css';
 
 const Settings = props => {
-
-    const [pushNotification, isPushNotification] = useState(false);
-    const [recieveEmails, isRecieveEmails] = useState(false);
-
-    const dispatch = useDispatch();
-
     const acct = useSelector(state => {
         return state.accountDetails.account;
     });
+
+    const [pushNotification, isPushNotification] = useState(acct.notifications_enabled);
+    const [recieveEmails, isRecieveEmails] = useState(acct.emails_enabled);
+
+    const dispatch = useDispatch();
 
     const privacy = useSelector(state => {
         return state.accountDetails.privacy;
@@ -51,6 +50,11 @@ const Settings = props => {
         [dispatch]
     );
 
+    const onSetNotifications = useCallback(
+        (notification, isAllow) => dispatch(actions.setNotifications(token, username, notification, isAllow)),
+        [dispatch]
+    );
+
     useEffect(() => {
         window.scroll({
             top: 0
@@ -61,12 +65,12 @@ const Settings = props => {
     }, [onGetAccountDetails, onGetTOS, onGetPrivacy]);
 
 
-    const handleChangeNotif = nextChecked => {
-        isPushNotification(nextChecked);
+    const handlePushNotif = (isAllow) => {
+        onSetNotifications('notification', isAllow)
     }
 
-    const handleChangeEmail = nextChecked => {
-        isRecieveEmails(nextChecked);
+    const handleReceiveEmail = (isAllow) => {
+        onSetNotifications('email', isAllow)
     }
 
     const handleLogout = () => {
@@ -250,7 +254,7 @@ const Settings = props => {
                                                                     <div className="me-3">
                                                                         <Switch
                                                                             checked={pushNotification}
-                                                                            onChange={handleChangeNotif}
+                                                                            onChange={e => { isPushNotification(e); handlePushNotif(!pushNotification) }}
                                                                             onColor="#ee2a59"
                                                                             onHandleColor="#231f20"
                                                                             handleDiameter={30}
@@ -276,7 +280,7 @@ const Settings = props => {
                                                                     <div className="me-3">
                                                                         <Switch
                                                                             checked={recieveEmails}
-                                                                            onChange={handleChangeEmail}
+                                                                            onChange={e => { isRecieveEmails(e); handleReceiveEmail(!recieveEmails) }}
                                                                             onColor="#ee2a59"
                                                                             onHandleColor="#231f20"
                                                                             handleDiameter={30}
@@ -379,7 +383,8 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy && privacy.body ? privacy.body : null}</p>
+                                                                    {privacy && privacy.body ? privacy.body : null}
+                                                                    {/* <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy && privacy.body ? privacy.body : null}</p> */}
                                                                 </td>
                                                             </tr>
 

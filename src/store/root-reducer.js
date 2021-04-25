@@ -19,7 +19,7 @@ const persistConfig = {
     whitelist: ['auth', 'ServiceTalent', 'TalentByCategories', 'spotlightCategoryReducer', 'FanTalentFavorites', 'browseSpotlightByCategories', 'notifications', 'accountDetails']
 }
 
-const rootReducer = combineReducers({
+const appReducer = combineReducers({
     auth: authReducer,
     ServiceTalent: talentReducer,
     TalentByCategories: talentCategoryReducer,
@@ -30,7 +30,15 @@ const rootReducer = combineReducers({
     accountDetails: accountReducer,
     kado: kadoReducer,
     searchTalentResult: searchTalentReducer
-});
+})
+
+const rootReducer = (state, action) => {
+    if (action.type === 'AUTH_LOGOUT') {
+        state = undefined
+    }
+
+    return appReducer(state, action)
+}
 
 
 export default persistReducer(persistConfig, rootReducer);

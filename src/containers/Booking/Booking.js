@@ -96,7 +96,7 @@ const Booking = props => {
             return false;
         }
 
-        setRecipientPhoto(files);
+        setRecipientPhoto(files[0]);
     }
 
     const onTargetClick = () => {
@@ -106,7 +106,7 @@ const Booking = props => {
     const onDropFile = (file) => {
         let size = file[0].size;
         let type = file[0].name;
-        console.log(file)
+        console.log(file[0])
 
         if (!type.match(/\.(jpg|jpeg|png|gif)$/)) {
             toast.error("File does not support. You must use .png or .jpg");
@@ -118,7 +118,7 @@ const Booking = props => {
             // window.alert("Please upload a file smaller than 10 MB");
             return false;
         }
-        setRecipientPhoto(file);
+        setRecipientPhoto(file[0]);
     }
 
     const submitCreateKadoHandler = (event) => {

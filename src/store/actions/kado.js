@@ -45,6 +45,7 @@ export const createNewKado = (access_token, username, talent, recipientName, occ
         formData.append("request_instructions", instructions);
         formData.append("request_pronoun", pronoun);
         formData.append("recipient_photo", recipient_photo);
+        // formData.append("recipient_photo", new Blob(recipient_photo, { type: 'image/jpg' })); // false
         formData.append("coupon_code", couponCode);
 
         axios.defaults.headers.common.Accept = 'application/json';
@@ -101,3 +102,102 @@ export const validateCoupon = (couponCode) => {
     };
 };
 
+export const fetchAllKadosRequestsSuccess = (allKadosRequests) => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_REQUESTS_SUCCESS,
+        AllKadosRequests: allKadosRequests
+    };
+};
+
+export const fetchAllKadosRequestsFail = (error) => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_REQUESTS_FAIL,
+        error: error
+    };
+};
+
+export const fetchAllKadosRequestsStart = () => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_REQUESTS_START
+    };
+};
+
+export const getAllKadosRequests = (access_token, username) => {
+    return dispatch => {
+        dispatch(fetchAllKadosRequestsStart());
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'multipart/form-data';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        axios.get('https://aesdvqqk1k.execute-api.us-west-2.amazonaws.com/dev/kados/requests')
+            .then(async allKadosRequests => {
+                const fetchedAllKadosRequest = await allKadosRequests.data.kados;
+                dispatch(fetchAllKadosRequestsSuccess(fetchedAllKadosRequest));
+            })
+            .catch(err => {
+                dispatch(fetchAllKadosRequestsFail(err));
+            });
+    };
+};
+
+export const fetchAllKadosSentSuccess = (allKadosSent) => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_SENT_SUCCESS,
+        AllKadosSent: allKadosSent
+    };
+};
+
+export const fetchAllKadosSentFail = (error) => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_SENT_FAIL,
+        error: error
+    };
+};
+
+export const fetchAllKadosSentStart = () => {
+    return {
+        type: actionTypes.FETCH_ALL_KADOS_SENT_START
+    };
+};
+
+export const getAllKadosSent = (access_token, username) => {
+    return dispatch => {
+        dispatch(fetchAllKadosSentStart());
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'multipart/form-data';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        axios.get('https://aesdvqqk1k.execute-api.us-west-2.amazonaws.com/dev/kados/sent')
+            .then(async allKadosSent => {
+                const fetchedAllKadosSent = await allKadosSent.data.kados;
+                dispatch(fetchAllKadosSentSuccess(fetchedAllKadosSent));
+            })
+            .catch(err => {
+                dispatch(fetchAllKadosSentFail(err));
+            });
+    };
+};

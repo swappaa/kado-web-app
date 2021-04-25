@@ -184,12 +184,12 @@ thead {
 
 .Toastify__toast--success {
   font-size: .875rem;
-  background-color: rgba(255, 255, 255, .85);
+  background-color: #404041;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, .1);
   box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15);
   border-radius: .25rem;
-  color: #ee2a59;
+  color: #fff;
 }
 
 /* button:before {

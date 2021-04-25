@@ -23,14 +23,22 @@
     --bs-table-accent-bg: #e9eaeb;
 }
 
-.kados-list .talent-profile-wrapper img.profile-image {
+.kados-list .table>tbody tr td .talent-profile-wrapper {
     max-width: 142px;
     height: 142px;
     border: 4px solid #58585a;
+    overflow: hidden;
+    margin: 0 auto;
 }
 
 .kados-list table .day-sent {
     display: block;
+}
+
+.kados-list .nav-tabs .nav-item.show .nav-link, .kados-list .nav-tabs .nav-link.active {
+    color: #fff !important;
+    background-color: #58595b;
+    border-color: unset;
 }
 
 @media screen and (max-width: 767px) {

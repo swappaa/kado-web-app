@@ -38,7 +38,7 @@ const Routes = () =>
         <Route path="/kados-list">
             <KadosList />
         </Route>
-        <Route path="/kados-details">
+        <Route path="/kado/:kadoLink">
             <KadosDetails />
         </Route>
         <Route path="/dashboard">

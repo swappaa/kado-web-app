@@ -22,12 +22,11 @@ export const fetchTalentStart = () => {
     };
 };
 
-export const fetchTalent = (talentId) => {
+export const fetchTalentByURL = (talent_url) => {
     return dispatch => {
         dispatch(fetchTalentStart());
-        const username = talentId;
 
-        axios.get(`talent/${username}`)
+        axios.get(`/talent/url/${talent_url}`)
             .then(async service => {
                 const fetchedTalent = await service.data.talent;
                 dispatch(fetchTalentSuccess(fetchedTalent));
@@ -35,6 +34,22 @@ export const fetchTalent = (talentId) => {
             .catch(async err => {
                 let error = 'talent not found'
                 dispatch(fetchTalentFail(error));
+            });
+    };
+};
+
+export const fetchTalent = (talentId) => {
+    return dispatch => {
+        dispatch(fetchTalentStart());
+        const username = talentId;
+
+        axios.get(`/talent/${username}`)
+            .then(async service => {
+                const fetchedTalent = await service.data.talent;
+                dispatch(fetchTalentSuccess(fetchedTalent));
+            })
+            .catch(async err => {
+                dispatch(fetchTalentByURL(talentId));
             });
     };
 };

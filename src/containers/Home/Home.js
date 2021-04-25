@@ -19,7 +19,7 @@ const Home = props => {
     const [hasFocus, setFocus] = useState(false);
 
     useEffect(() => {
-        onFetchTalentByCategories(props.token, props.username);
+        onFetchTalentByCategories(props.access_token, props.username);
     }, [onFetchTalentByCategories, token]);
 
     console.log(talentCategories)
