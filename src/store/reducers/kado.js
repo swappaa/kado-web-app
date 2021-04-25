@@ -6,8 +6,7 @@ const initialState = {
     loading: false,
     isModalSuccess: false,
     coupon: [],
-    AllKadosRequests: [],
-    AllKadosSent: []
+    AllKadosRequests: []
 };
 
 const createNewKadoStart = (state, action) => {
@@ -62,26 +61,6 @@ const fetAllKadosRequestsFail = (state, action) => {
     });
 };
 
-const fetAllKadosSentStart = (state, action) => {
-    return updateObject(state, { error: null, loading: true, isModalSuccess: false });
-};
-
-const fetAllKadosSentSuccess = (state, action) => {
-    return updateObject(state, {
-        error: null,
-        loading: false,
-        AllKadosSent: action.AllKadosSent
-    });
-};
-
-const fetAllKadosSentFail = (state, action) => {
-    return updateObject(state, {
-        error: action.error,
-        loading: false,
-        isModalSuccess: false
-    });
-};
-
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.CREATE_NEW_KADO_START: return createNewKadoStart(state, action);
@@ -92,9 +71,6 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ALL_KADOS_REQUESTS_START: return fetAllKadosRequestsStart(state, action);
         case actionTypes.FETCH_ALL_KADOS_REQUESTS_SUCCESS: return fetAllKadosRequestsSuccess(state, action);
         case actionTypes.FETCH_ALL_KADOS_REQUESTS_FAIL: return fetAllKadosRequestsFail(state, action);
-        case actionTypes.FETCH_ALL_KADOS_SENT_START: return fetAllKadosSentStart(state, action);
-        case actionTypes.FETCH_ALL_KADOS_SENT_SUCCESS: return fetAllKadosSentSuccess(state, action);
-        case actionTypes.FETCH_ALL_KADOS_SENT_FAIL: return fetAllKadosSentFail(state, action);
         default:
             return state;
     }

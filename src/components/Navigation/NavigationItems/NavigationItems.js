@@ -55,7 +55,7 @@ const NavigationItems = props => {
                         <span className={`text-white ${classes['count-message']}`}>2</span>
                         <span className={`fs-5 d-block theme-pink-color ${classes['nav-item']}`} >alerts</span>
                     </NavigationItem>
-                    <NavigationItem exact link="/kados-list" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
+                    <NavigationItem exact link="/kados" classes="d-flex flex-row flex-lg-column align-items-center text-decoration-none text-center">
                         <svg width="59pt" height="54pt" viewBox="0 0 59 54" version="1.1"
                             xmlns="http://www.w3.org/2000/svg">
                             <g id="#ee2a59ff">

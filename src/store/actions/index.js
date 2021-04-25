@@ -17,10 +17,8 @@ export {
 export {
     createNewKado,
     validateCoupon,
-    getAllKadosRequests,
-    getAllKadosSent
+    getAllKadosRequests
 } from './kado';
-
 
 export {
     fetchTalentByCategories,

@@ -35,12 +35,6 @@
     display: block;
 }
 
-.kados-list .nav-tabs .nav-item.show .nav-link, .kados-list .nav-tabs .nav-link.active {
-    color: #fff !important;
-    background-color: #58595b;
-    border-color: unset;
-}
-
 @media screen and (max-width: 767px) {
     .kados-list .talent-profile-wrapper img.profile-image {
         max-width: 100px;
