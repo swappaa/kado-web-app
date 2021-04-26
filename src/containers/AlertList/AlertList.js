@@ -4,8 +4,8 @@ import TimeAgo from 'javascript-time-ago'
 import en from 'javascript-time-ago/locale/en'
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import withErrorHandler from '../../hoc/withErrorHandler/withErrorHandler';
-import SkeletonNotification from '../../Skeletons/SkeletonNotification';
 
+import SkeletonNotification from '../../Skeletons/SkeletonNotification';
 import * as actions from '../../store/actions/index';
 import Notification from '../../components/Talent/Notification';
 import '../../App.css';

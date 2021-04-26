@@ -19,7 +19,7 @@ const TalentProfile = React.lazy(() => import('./containers/TalentProfile/Talent
 const Home = React.lazy(() => import('./containers/Home/Home'));
 const AlertList = React.lazy(() => import('./containers/AlertList/AlertList'));
 const AlertMessages = React.lazy(() => import('./containers/AlertMessages/AlertMessages'));
-const KadosList = React.lazy(() => import('./containers/KadosList/KadosList'));
+const KadosRequests = React.lazy(() => import('./containers/KadosRequest/KadosRequest'));
 const KadosDetails = React.lazy(() => import('./containers/KadosDetails/KadosDetails'));
 const Dashboard = React.lazy(() => import('./containers/Dashboard/Dashboard'));
 const Favorites = React.lazy(() => import('./containers/Favorites/Favorites'));
@@ -36,7 +36,7 @@ const Routes = () =>
             <AlertMessages />
         </Route>
         <Route path="/kados">
-            <KadosList />
+            <KadosRequests />
         </Route>
         <Route path="/kado/:kadoLink">
             <KadosDetails />
