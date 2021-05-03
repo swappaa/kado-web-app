@@ -258,7 +258,7 @@ const Booking = props => {
                                                                             onTargetClick={onTargetClick}
                                                                             onDrop={(files, event) => onDropFile(files)}>
                                                                             Drag it here
-                                                                </FileDrop>
+                                                                        </FileDrop>
 
                                                                         <input
                                                                             onChange={onFileInputChange}

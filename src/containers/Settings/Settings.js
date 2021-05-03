@@ -1,7 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Switch from "react-switch";
+import { toast } from "react-toastify";
+import { FileDrop } from 'react-file-drop';
 
 import Skeleton from 'react-loading-skeleton';
 import * as actions from '../../store/actions/index';
@@ -18,6 +20,8 @@ const Settings = props => {
 
     const [pushNotification, isPushNotification] = useState(acct.notifications_enabled);
     const [recieveEmails, isRecieveEmails] = useState(acct.emails_enabled);
+    const fileInputRef = useRef(null);
+    const [profilePicture, setProfilePicture] = useState('');
 
     const dispatch = useDispatch();
 
@@ -34,19 +38,10 @@ const Settings = props => {
     const token = useSelector(state => state.auth.token);
     const username = useSelector(state => state.auth.username);
     const locale = useSelector(state => state.accountDetails.account.locale);
+    const loading = useSelector(state => state.accountDetails.loading);
 
     const onGetAccountDetails = useCallback(
         () => dispatch(actions.getAccountDetails(token, username)),
-        [dispatch]
-    );
-
-    const onGetTOS = useCallback(
-        () => dispatch(actions.getTOS(locale)),
-        [dispatch]
-    );
-
-    const onGetPrivacy = useCallback(
-        () => dispatch(actions.getPrivacy(locale)),
         [dispatch]
     );
 
@@ -55,15 +50,23 @@ const Settings = props => {
         [dispatch]
     );
 
+    const onUpdateProfile = useCallback(
+        (profile_picture) => dispatch(actions.updateProfile(token, username, profile_picture)),
+        [dispatch]
+    );
+
+
     useEffect(() => {
         window.scroll({
             top: 0
         });
-        onGetAccountDetails(token, username);
-        onGetTOS(locale);
-        onGetPrivacy(locale);
-    }, [onGetAccountDetails, onGetTOS, onGetPrivacy]);
 
+        onGetAccountDetails(token, username);
+
+        if (profilePicture) {
+            onUpdateProfile(profilePicture)
+        }
+    }, [onGetAccountDetails, profilePicture]);
 
     const handlePushNotif = (isAllow) => {
         onSetNotifications('notification', isAllow)
@@ -75,6 +78,28 @@ const Settings = props => {
 
     const handleLogout = () => {
         props.history.push('/logout')
+    }
+
+    const onFileInputChange = (event) => {
+        const { files } = event.target;
+        let size = files[0].size;
+        let type = files[0].name;
+
+        if (!type.match(/\.(jpg|jpeg|png|gif)$/)) {
+            toast.error("File does not support. You must use .png or .jpg");
+            return false;
+        }
+
+        if (size > 15015936) {
+            toast.error("Please upload a file smaller than 15 MB");
+            return false;
+        }
+
+        setProfilePicture(files[0]);
+    }
+
+    const onTargetClick = () => {
+        fileInputRef.current.click()
     }
 
     const isLoggedIn = isAuthenticated;
@@ -129,6 +154,14 @@ const Settings = props => {
                                             Payments & Credits
             </button>
         )
+    }
+
+
+    let loadingOnPhoto = null;
+    if (loading) {
+        loadingOnPhoto = <div className="spinner-border" role="status">
+            <span className="visually-hidden">Loading...</span>
+        </div>
     }
 
     return (
@@ -187,14 +220,33 @@ const Settings = props => {
                                                                 <th>
                                                                     Photo
                                                                 </th>
-                                                                <td>
-                                                                    <div className="talent-profile-wrapper">
-                                                                        <img src={acct.profile_picture ? acct.profile_picture || <Skeleton circle={true} height={100} width={100} /> : null}
-                                                                            className="profile-image rounded-pill" alt={acct.name} />
+                                                                <td className="position-relative">
+                                                                    <div className="talent-profile-wrapper overflow-hidden">
+                                                                        <FileDrop
+                                                                            onTargetClick={onTargetClick}>
+                                                                            <svg xmlns="http://www.w3.org/2000/svg" width="30px" height="30px" fill="currentColor" className="bi bi-plus-circle position-absolute top-0 start-100 translate-middle" viewBox="0 0 16 16">
+                                                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z" />
+                                                                            </svg>
+                                                                        </FileDrop>
+
+                                                                        <input
+                                                                            onChange={onFileInputChange}
+                                                                            ref={fileInputRef}
+                                                                            type="file"
+                                                                            className="hidden invisible d-none"
+                                                                        />
+                                                                        <div className="position-relative">
+                                                                            <div className="position-absolute top-50 start-50 translate-middle">
+                                                                                {loadingOnPhoto}
+                                                                            </div>
+                                                                            <img src={acct.profile_picture ? acct.profile_picture || <Skeleton circle={true} height={100} width={100} /> : null}
+                                                                                className="profile-image rounded-pill" alt={acct.name} />
+                                                                        </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
-                                                                    <button className="btn theme-pink-color fs-3">Edit</button>
+
                                                                 </td>
                                                             </tr>
                                                             <tr>
@@ -383,11 +435,10 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    {privacy && privacy.body ? privacy.body : null}
-                                                                    {/* <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{privacy && privacy.body ? privacy.body : null}</p> */}
+                                                                    <div dangerouslySetInnerHTML={{ __html: privacy && privacy.body ? privacy.body : null }} >
+                                                                    </div>
                                                                 </td>
                                                             </tr>
-
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -404,7 +455,8 @@ const Settings = props => {
                                                             <tr>
                                                                 <td>
                                                                     <h3 className="font-ave-roman fs-2 theme-pink-color d-none">SECTION TITLE</h3>
-                                                                    <p className="fs-4 font-ave-reg lh-sm d-block mb-3">{tos && tos.body ? tos.body : null}</p>
+                                                                    <div dangerouslySetInnerHTML={{ __html: tos && tos.body ? tos.body : null }} >
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         </tbody>

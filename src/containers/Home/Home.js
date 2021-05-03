@@ -22,8 +22,6 @@ const Home = props => {
         onFetchTalentByCategories(props.access_token, props.username);
     }, [onFetchTalentByCategories, token]);
 
-    console.log(talentCategories)
-
     const setTalentIsFavorite = (category, index, talentUN, isFavorite, stage_name) => {
         onSetTalentFavorite(category, index, talentUN, isFavorite, stage_name);
     }
@@ -42,17 +40,6 @@ const Home = props => {
         }
         console.log(hasFocus)
     }
-
-    // let talentCategoryList = <Spinner />;
-    // if (!props.loading) {
-    //     talentCategoryList = Object.keys(talentCategories).map((key, index) => (
-    //         <TalentCategories
-    //             key={index}
-    //             talentCategories={talentCategories[key]}
-    //             setTalentIsFavorite={setTalentIsFavorite}
-    //         />
-    //     ));
-    // }
 
     let talentCategoryList = [1, 2].map((n) => <SkeletonCategories key={n} />);
     if (talentCategories && !props.loading) {

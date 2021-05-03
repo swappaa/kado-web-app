@@ -39,8 +39,6 @@ const SignUp = props => {
             setLoading(false);
             _CodeInputRef && _CodeInputRef.current.__clearvalues__();
         }
-
-
     }, [authRedirectPath, onSetAuthRedirectPath, pinCode, isValidVerifyCode]);
 
     const termsConditionToggleClicked = () => {

@@ -45,7 +45,10 @@ export const getAccountDetails = (access_token, username) => {
         axios.get('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account')
             .then(async accountDetails => {
                 const fetchedAccountDetails = await accountDetails.data.data;
+                console.log(fetchedAccountDetails);
                 dispatch(fetchAccountSuccess(cleanDeep(fetchedAccountDetails)));
+                dispatch(getTOS(fetchedAccountDetails.locale));
+                dispatch(getPrivacy(fetchedAccountDetails.locale));
             })
             .catch(err => {
                 dispatch(fetchAccountFail(err));
@@ -173,6 +176,59 @@ export const setNotifications = (access_token, username, notification, isAllow) 
             })
             .catch(err => {
                 toast.error(err);
+            });
+    };
+};
+
+export const updateProfileStart = () => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_START
+    };
+};
+
+export const updateProfileSuccess = () => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_SUCCESS
+    };
+};
+
+export const updateProfileFail = (error) => {
+    return {
+        type: actionTypes.UPDATE_PROFILE_FAIL,
+        error: error
+    };
+};
+
+export const updateProfile = (access_token, username, fan_photo) => {
+    return dispatch => {
+        dispatch(updateProfileStart());
+
+        let formData = new FormData();
+        formData.append("profile_picture", fan_photo);
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET,PUT';
+            config.headers.common['Content-Type'] = 'multipart/form-data';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        axios.put('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account', formData)
+            .then(response => {
+                toast.success('Success');
+                dispatch(updateProfileSuccess());
+            })
+            .catch(err => {
+                toast.error(err);
+                dispatch(updateProfileFail(err));
             });
     };
 };

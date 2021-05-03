@@ -17,7 +17,8 @@ export {
 export {
     createNewKado,
     validateCoupon,
-    getAllKadosRequests
+    getAllKadosRequests,
+    getKadoDetails
 } from './kado';
 
 export {
@@ -49,7 +50,8 @@ export {
     getTOS,
     getPrivacy,
     disableAccount,
-    setNotifications
+    setNotifications,
+    updateProfile
 } from './account';
 
 export {

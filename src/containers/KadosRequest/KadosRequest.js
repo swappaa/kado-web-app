@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -37,8 +37,8 @@ const KadosRequests = props => {
         kadosRequests = allKadosRequests.map((kados, index) => (
             <tr key={index}>
                 <td width="200" >
-                    <div className="fs-2 text-center w-50 mx-auto sent-wrapper">
-                        {kados.placed_date ? moment(kados.placed_date, 'DD/MM/YY').format("MMMM") : null}
+                    <div className="fs-2 text-center text-uppercase w-50 mx-auto sent-wrapper">
+                        {kados.placed_date ? moment(kados.placed_date, 'DD/MM/YY').format("MMM") : null}
                         <span className="display-2 day-sent">{kados.placed_date ? moment(kados.placed_date, 'DD/MM/YY').format("DD") : null}</span>
                         {kados.placed_date ? moment(kados.placed_date, 'DD/MM/YY').format("YYYY") : null}
                     </div>
@@ -108,7 +108,6 @@ const KadosRequests = props => {
             </tr>
         ));
     }
-
 
     return (
         <div className="kados-list">

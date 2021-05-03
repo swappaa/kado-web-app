@@ -102,7 +102,7 @@
     border: 2px solid #58585a;
 }
 
-.file-drop {
+.booking .file-drop {
     border-radius: 40px;
     color: #212529 !important;
     font-size: 1.25rem !important;
@@ -119,13 +119,13 @@
     cursor: pointer;
 }
 
-.file-drop>.file-drop-target.file-drop-dragging-over-frame {
+.booking .file-drop>.file-drop-target.file-drop-dragging-over-frame {
     z-index: 50;
     opacity: 1;
     font-weight: bold;
 }
 
-.file-drop>.file-drop-target.file-drop-dragging-over-target {
+.booking .file-drop>.file-drop-target.file-drop-dragging-over-target {
     color: #ee2a59;
 }
 

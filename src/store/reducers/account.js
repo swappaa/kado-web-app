@@ -24,6 +24,20 @@ const fetchAccountFail = (state, action) => {
     return updateObject(state, { loading: false });
 };
 
+const updateProfileStart = (state, action) => {
+    return updateObject(state, { loading: true });
+};
+
+const updateProfileSuccess = (state, action) => {
+    return updateObject(state, {
+        loading: false
+    });
+};
+
+const updateProfileFail = (state, action) => {
+    return updateObject(state, { loading: false });
+};
+
 const fetchTOSSuccess = (state, action) => {
     return updateObject(state, {
         tos: action.tos
@@ -47,6 +61,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_ACCOUNT_START: return fetchAccountStart(state, action);
         case actionTypes.FETCH_ACCOUNT_SUCCESS: return fetchAccountSuccess(state, action);
         case actionTypes.FETCH_ACCOUNT_FAIL: return fetchAccountFail(state, action);
+        case actionTypes.UPDATE_PROFILE_START: return updateProfileStart(state, action);
+        case actionTypes.UPDATE_PROFILE_SUCCESS: return updateProfileSuccess(state, action);
+        case actionTypes.UPDATE_PROFILE_FAIL: return updateProfileFail(state, action);
         case actionTypes.FETCH_TOS_SUCCESS: return fetchTOSSuccess(state, action);
         case actionTypes.FETCH_PRIVACY_SUCCESS: return fetchPrivacySuccess(state, action);
         case actionTypes.DISABLED_ACCOUNT_SUCCESS: return disabledAccountSuccess(state, action);

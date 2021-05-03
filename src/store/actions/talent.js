@@ -1,5 +1,5 @@
 import * as actionTypes from './actionsType';
-import cleanDeep from 'clean-deep';
+import { toast } from "react-toastify";
 import axios from '../../axios-kado';
 
 export const fetchTalentSuccess = (service) => {
@@ -54,22 +54,41 @@ export const fetchTalent = (talentId) => {
     };
 };
 
-export const SubmitApplication = (first_name, last_name, email, phone) => {
+export const SubmitApplication = (fullname, username, stage_name, email, password, phone, instagram, facebook, twitter, tiktok, youtube, website, notes) => {
     return dispatch => {
-
         let formData = new FormData();
 
-        formData.append("first_name", first_name);
-        formData.append("last_name", last_name);
+        formData.append("name", fullname);
+        formData.append("username", username);
+        formData.append("stage_name", stage_name);
         formData.append("email", email);
+        formData.append("password", password);
         formData.append("phone", phone);
+        formData.append("instagram", instagram);
+        formData.append("facebook", facebook);
+        formData.append("twitter", twitter);
+        formData.append("tiktok", tiktok);
+        formData.append("youtube", youtube);
+        formData.append("website", website);
+        formData.append("bio", notes);
 
         axios.post('talent/submit_application', formData)
             .then(response => {
-                console.log(response.data);
+                console.log(response.message);
             })
+            // .catch(function (res) {
+            //     if (res instanceof Error) {
+            //         console.log(res.message);
+            //     } else {
+            //         console.log(res.data);
+            //     }
+            // });
             .catch(err => {
+                var obj = err.data.message;
 
+                console.log(obj)
+                // toast.error(err.response.data.message);
+                // toast.error(err.response.message);
             });
     };
 };

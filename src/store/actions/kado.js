@@ -151,3 +151,53 @@ export const getAllKadosRequests = (access_token, username) => {
             });
     };
 };
+
+export const fetchKadoDetailsSuccess = (KadoDetails) => {
+    return {
+        type: actionTypes.FETCH_KADO_DETAILS_SUCCESS,
+        KadoDetails: KadoDetails
+    };
+};
+
+export const fetchKadoDetailsFail = (error) => {
+    return {
+        type: actionTypes.FETCH_KADO_DETAILS_FAIL,
+        error: error
+    };
+};
+
+export const fetchKadoDetailsStart = () => {
+    return {
+        type: actionTypes.FETCH_KADO_DETAILS_START
+    };
+};
+
+export const getKadoDetails = (access_token, username, kado_id) => {
+    return dispatch => {
+        dispatch(fetchKadoDetailsStart());
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'multipart/form-data';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET';
+            config.headers.common['Content-Type'] = 'multipart/form-data';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        axios.get(`https://aesdvqqk1k.execute-api.us-west-2.amazonaws.com/dev/kados/status/${kado_id}`)
+            .then(async allKadoDetails => {
+                const fetchedKadoDetails = await allKadoDetails.data.kado_logs;
+                dispatch(fetchKadoDetailsSuccess(fetchedKadoDetails));
+            })
+            .catch(err => {
+                dispatch(fetchKadoDetailsFail(err));
+            });
+    };
+};

@@ -6,7 +6,8 @@ const initialState = {
     loading: false,
     isModalSuccess: false,
     coupon: [],
-    AllKadosRequests: []
+    AllKadosRequests: [],
+    KadoDetails: []
 };
 
 const createNewKadoStart = (state, action) => {
@@ -41,11 +42,11 @@ const validateCoupon = (state, action) => {
     });
 };
 
-const fetAllKadosRequestsStart = (state, action) => {
+const getAllKadosRequestsStart = (state, action) => {
     return updateObject(state, { error: null, loading: true, isModalSuccess: false });
 };
 
-const fetAllKadosRequestsSuccess = (state, action) => {
+const getAllKadosRequestsSuccess = (state, action) => {
     return updateObject(state, {
         error: null,
         loading: false,
@@ -53,7 +54,27 @@ const fetAllKadosRequestsSuccess = (state, action) => {
     });
 };
 
-const fetAllKadosRequestsFail = (state, action) => {
+const getAllKadosRequestsFail = (state, action) => {
+    return updateObject(state, {
+        error: action.error,
+        loading: false,
+        isModalSuccess: false
+    });
+};
+
+const getKadoDetailsStart = (state, action) => {
+    return updateObject(state, { error: null, loading: true, isModalSuccess: false });
+};
+
+const getKadoDetailsSuccess = (state, action) => {
+    return updateObject(state, {
+        error: null,
+        loading: false,
+        KadoDetails: action.KadoDetails
+    });
+};
+
+const getKadoDetailsFail = (state, action) => {
     return updateObject(state, {
         error: action.error,
         loading: false,
@@ -68,9 +89,12 @@ const reducer = (state = initialState, action) => {
         case actionTypes.CREATE_NEW_KADO_FAIL: return createNewKadoFail(state, action);
         case actionTypes.VALIDATE_COUPON_START: return validateCouponStart(state, action);
         case actionTypes.VALIDATE_COUPON_SUCCESS: return validateCoupon(state, action);
-        case actionTypes.FETCH_ALL_KADOS_REQUESTS_START: return fetAllKadosRequestsStart(state, action);
-        case actionTypes.FETCH_ALL_KADOS_REQUESTS_SUCCESS: return fetAllKadosRequestsSuccess(state, action);
-        case actionTypes.FETCH_ALL_KADOS_REQUESTS_FAIL: return fetAllKadosRequestsFail(state, action);
+        case actionTypes.FETCH_ALL_KADOS_REQUESTS_START: return getAllKadosRequestsStart(state, action);
+        case actionTypes.FETCH_ALL_KADOS_REQUESTS_SUCCESS: return getAllKadosRequestsSuccess(state, action);
+        case actionTypes.FETCH_ALL_KADOS_REQUESTS_FAIL: return getAllKadosRequestsFail(state, action);
+        case actionTypes.FETCH_KADO_DETAILS_START: return getKadoDetailsStart(state, action);
+        case actionTypes.FETCH_KADO_DETAILS_SUCCESS: return getKadoDetailsSuccess(state, action);
+        case actionTypes.FETCH_KADO_DETAILS_FAIL: return getKadoDetailsFail(state, action);
         default:
             return state;
     }

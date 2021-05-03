@@ -102,15 +102,21 @@ export const auth = (email, password) => {
 
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email', formData, config)
             .then(response => {
-                const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
-                localStorage.setItem('token', response.data.AccessToken);
-                localStorage.setItem('refreshToken', response.data.RefreshToken);
-                localStorage.setItem('expirationDate', expirationDate);
-                localStorage.setItem('idToken', response.data.IdToken);
-                localStorage.setItem('accountType', response.data.account_type);
-                localStorage.setItem('username', email);
-                dispatch(authSuccess(response.data.AccessToken, response.data.IdToken, response.data.RefreshToken, response.data.account_type, email));
-                dispatch(checkAuthTimeout(response.data.ExpiresIn));
+                if (response.data.account_type === 'talent') {
+                    const errorMessage = "User does not exist.";
+                    toast.error(errorMessage);
+                    dispatch(authFail(errorMessage));
+                } else {
+                    const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+                    localStorage.setItem('token', response.data.AccessToken);
+                    localStorage.setItem('refreshToken', response.data.RefreshToken);
+                    localStorage.setItem('expirationDate', expirationDate);
+                    localStorage.setItem('idToken', response.data.IdToken);
+                    localStorage.setItem('accountType', response.data.account_type);
+                    localStorage.setItem('username', email);
+                    dispatch(authSuccess(response.data.AccessToken, response.data.IdToken, response.data.RefreshToken, response.data.account_type, email));
+                    dispatch(checkAuthTimeout(response.data.ExpiresIn));
+                }
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
@@ -173,7 +179,7 @@ export const emailVerification = (username, password, pincode) => {
             })
             .catch(err => {
                 dispatch(emailConfirmationFail(err.response.data.message));
-                toast.error(err.response.data.message);
+                toast.error(err.response.message);
             });
     };
 };
@@ -244,8 +250,6 @@ export const FBSignUp = (name, username, email, profile_picture) => {
             });
     };
 };
-
-
 
 export const setAuthRedirectPath = (path) => {
     return {
