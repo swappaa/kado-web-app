@@ -223,7 +223,7 @@ export const updateProfile = (access_token, username, fan_photo) => {
 
         axios.put('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account', formData)
             .then(response => {
-                toast.success('Success');
+                toast.success('Profile has been updated');
                 dispatch(updateProfileSuccess());
             })
             .catch(err => {

@@ -4,6 +4,7 @@ import { updateObject } from '../../shared/utility';
 const initialState = {
     account: [],
     loading: false,
+    uploadingProfile: false,
     tos: [],
     privacy: [],
     disabledAccount: false
@@ -25,17 +26,17 @@ const fetchAccountFail = (state, action) => {
 };
 
 const updateProfileStart = (state, action) => {
-    return updateObject(state, { loading: true });
+    return updateObject(state, { uploadingProfile: true });
 };
 
 const updateProfileSuccess = (state, action) => {
     return updateObject(state, {
-        loading: false
+        uploadingProfile: false
     });
 };
 
 const updateProfileFail = (state, action) => {
-    return updateObject(state, { loading: false });
+    return updateObject(state, { uploadingProfile: false });
 };
 
 const fetchTOSSuccess = (state, action) => {

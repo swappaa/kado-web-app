@@ -22,6 +22,7 @@ const Settings = props => {
     const [recieveEmails, isRecieveEmails] = useState(acct.emails_enabled);
     const fileInputRef = useRef(null);
     const [profilePicture, setProfilePicture] = useState('');
+    const [showForm, setShowForm] = useState('');
 
     const dispatch = useDispatch();
 
@@ -38,7 +39,7 @@ const Settings = props => {
     const token = useSelector(state => state.auth.token);
     const username = useSelector(state => state.auth.username);
     const locale = useSelector(state => state.accountDetails.account.locale);
-    const loading = useSelector(state => state.accountDetails.loading);
+    const uploadingProfile = useSelector(state => state.accountDetails.uploadingProfile);
 
     const onGetAccountDetails = useCallback(
         () => dispatch(actions.getAccountDetails(token, username)),
@@ -158,8 +159,8 @@ const Settings = props => {
 
 
     let loadingOnPhoto = null;
-    if (loading) {
-        loadingOnPhoto = <div className="spinner-border" role="status">
+    if (uploadingProfile) {
+        loadingOnPhoto = <div className="spinner-border theme-pink-color" role="status">
             <span className="visually-hidden">Loading...</span>
         </div>
     }
@@ -177,10 +178,6 @@ const Settings = props => {
                                         <button className="btn nav-link active text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-personal-info-tab" data-bs-toggle="pill" href="#v-pills-personal-info" role="tab" aria-controls="v-pills-personal-info" aria-selected="true">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="29px" height="30px" className="me-3" viewBox="0 0 16.6 18.54"><g id="Layer_2" data-name="Layer 2"><g id="FAN_Settings" data-name="FAN Settings"><path className="cls-1" d="M8.3,0a4.82,4.82,0,1,0,4.82,4.82A4.83,4.83,0,0,0,8.3,0Z" /><path className="cls-1" d="M16.57,13.48a4.8,4.8,0,0,0-.49-.89A6,6,0,0,0,11.94,10a.93.93,0,0,0-.61.14,5.13,5.13,0,0,1-6.06,0A.81.81,0,0,0,4.66,10a5.94,5.94,0,0,0-4.14,2.6,4.81,4.81,0,0,0-.48.89.47.47,0,0,0,0,.4,8.81,8.81,0,0,0,.57.84,7.72,7.72,0,0,0,1,1.09,11.24,11.24,0,0,0,1,.84,9.6,9.6,0,0,0,11.44,0,8.59,8.59,0,0,0,1-.84,9.23,9.23,0,0,0,1-1.09,6.54,6.54,0,0,0,.57-.84A.36.36,0,0,0,16.57,13.48Z" /></g></g></svg>
                                             Personal Info
-                                        </button>
-                                        <button className="btn nav-link text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-email-tab" data-bs-toggle="pill" href="#v-pills-email" role="tab" aria-controls="v-pills-email" aria-selected="false">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="29px" height="30px" className="me-3" viewBox="0 0 21.71 15.9"><title>email</title><g id="Layer_2" data-name="Layer 2"><g id="FAN_Settings" data-name="FAN Settings"><path d="M19,0H2.74A2.74,2.74,0,0,0,0,2.74V13.16A2.74,2.74,0,0,0,2.74,15.9H19a2.74,2.74,0,0,0,2.74-2.74V2.74A2.74,2.74,0,0,0,19,0Zm-.43,1.77L10.85,7.7,3.17,1.77ZM19,14.13H2.74a1,1,0,0,1-1-1V2.92l8.54,6.6a.88.88,0,0,0,1.09,0l8.54-6.6V13.16A1,1,0,0,1,19,14.13Z" /></g></g></svg>
-                                            Email
                                         </button>
                                         <button className="btn nav-link text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="29px" height="30px" className="me-3" viewBox="0 0 14.11 18.82"><title>password</title><g id="Layer_2" data-name="Layer 2"><g id="FAN_Settings" data-name="FAN Settings"><path className="cls-1" d="M13.72,7.06H12.55V5.49a5.49,5.49,0,0,0-11,0V7.06H.39A.39.39,0,0,0,0,7.45v9.8a1.57,1.57,0,0,0,1.57,1.57h11a1.56,1.56,0,0,0,1.56-1.57V7.45A.38.38,0,0,0,13.72,7.06ZM8.23,15.25a.37.37,0,0,1-.1.3.39.39,0,0,1-.29.13H6.27A.39.39,0,0,1,6,15.55a.41.41,0,0,1-.1-.3L6.13,13a1.54,1.54,0,0,1-.64-1.26,1.57,1.57,0,1,1,3.13,0A1.52,1.52,0,0,1,8,13Zm2-8.19H3.92V5.49a3.14,3.14,0,1,1,6.27,0Z" /></g></g></svg>
@@ -249,23 +246,39 @@ const Settings = props => {
 
                                                                 </td>
                                                             </tr>
-                                                            <tr>
+                                                            <tr style={(showForm === 'name') ? { backgroundColor: '#f7f8f8' } : null}>
                                                                 <th>
-                                                                    First Name
+                                                                    Name
                                                                 </th>
                                                                 <td className="font-ave-heavy fs-2">
-                                                                    {acct.first_name || <Skeleton />}
+                                                                    {showForm === 'name' ?
+                                                                        <form>
+                                                                            <div class="mb-2">
+                                                                                <label class="form-label fs-5">Full Name</label>
+                                                                                <input type="text" class="form-control" value={acct.name} />
+                                                                            </div>
+                                                                            <button type="submit" class="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5">Submit</button>
+                                                                            <button type="button" class="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4 ms-3" onClick={() => {
+                                                                                setShowForm('')
+                                                                            }}>Cancel</button>
+                                                                        </form>
+                                                                        : acct.name}
                                                                 </td>
                                                                 <td >
-                                                                    <button className="btn theme-pink-color fs-3">Edit</button>
+                                                                    {showForm === 'name' ?
+                                                                        null : <button className="btn theme-pink-color fs-3" onClick={() => {
+                                                                            setShowForm('name')
+                                                                        }}>Edit</button>}
+
                                                                 </td>
+
                                                             </tr>
                                                             <tr>
                                                                 <th>
-                                                                    Last Name
+                                                                    Email
                                                                 </th>
                                                                 <td className="font-ave-heavy fs-2">
-                                                                    {acct.last_name || <Skeleton />}
+                                                                    {acct.email}
                                                                 </td>
                                                                 <td>
                                                                     <button className="btn theme-pink-color fs-3">Edit</button>
@@ -279,7 +292,7 @@ const Settings = props => {
                                                                     {acct.username || <Skeleton />}
                                                                 </td>
                                                                 <td >
-                                                                    <button className="btn theme-pink-color fs-3">Edit</button>
+
                                                                 </td>
                                                             </tr>
                                                         </tbody>
@@ -287,7 +300,6 @@ const Settings = props => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="tab-pane fade" id="v-pills-email" role="tabpanel" aria-labelledby="v-pills-email-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
                                             <div className="element-header mb-5">
