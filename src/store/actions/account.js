@@ -225,10 +225,98 @@ export const updateProfile = (access_token, username, fan_photo) => {
             .then(response => {
                 toast.success('Profile has been updated');
                 dispatch(updateProfileSuccess());
+                dispatch(getAccountDetails(access_token, username));
             })
             .catch(err => {
                 toast.error(err);
                 dispatch(updateProfileFail(err));
             });
+    };
+};
+
+export const updateAccountSuccess = () => {
+    return {
+        type: actionTypes.UPDATE_ACCOUNT_SUCCESS,
+    };
+};
+
+export const updateAccountFail = (error) => {
+    return {
+        type: actionTypes.UPDATE_ACCOUNT_FAIL,
+        error: error
+    };
+};
+
+export const updateAccountStart = () => {
+    return {
+        type: actionTypes.UPDATE_ACCOUNT_START
+    };
+};
+
+export const updateAcct = (access_token, username, field, val) => {
+    return dispatch => {
+        dispatch(updateAccountStart());
+
+        let formData = new FormData();
+        let url = null;
+        switch (field) {
+            case 'name':
+                formData.append("name", val);
+                url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account';
+                break;
+            case 'email':
+                formData.append("access_token", access_token);
+                formData.append("new_email", val);
+                url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/change_email';
+                break;
+            default:
+                break;
+        }
+
+        axios.defaults.headers.common.Accept = 'application/json';
+        axios.defaults.headers['Content-Type'] = 'application/json';
+        axios.interceptors.request.use(async function (config) {
+            config.headers.common['Access-Control-Allow-Origin'] = '*';
+            config.headers.common['Access-Control-Allow-Headers'] = 'Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token';
+            config.headers.common['Access-Control-Allow-Credentials'] = true;
+            config.headers.common['Access-Control-Allow-Method'] = 'OPTIONS,POST,GET,PUT';
+            config.headers.common['Content-Type'] = 'application/json';
+            if (username) {
+                config.headers.common.username = username;
+                config.headers.common.access_token = access_token;
+            }
+            return config;
+        });
+
+        switch (field) {
+            case 'name':
+                axios.put(url, formData)
+                    .then(response => {
+                        toast.success('Account has been updated');
+                        dispatch(updateAccountSuccess());
+                        dispatch(getAccountDetails(access_token, username));
+                    })
+                    .catch(err => {
+                        toast.error(err);
+                        dispatch(updateAccountFail(err));
+                    });
+                break;
+            case 'email':
+                axios.post(url, formData)
+                    .then(response => {
+                        toast.success('Account has been updated');
+                        dispatch(updateAccountSuccess());
+                        dispatch(getAccountDetails(access_token, username));
+                    })
+                    .catch(err => {
+                        toast.error(err);
+                        dispatch(updateAccountFail(err));
+                    });
+                break;
+            default:
+                break;
+        }
+
+
     };
 };

@@ -4,8 +4,11 @@ import { withRouter } from 'react-router-dom';
 import Switch from "react-switch";
 import { toast } from "react-toastify";
 import { FileDrop } from 'react-file-drop';
+import ReactCodeInput from 'react-verification-code-input';
+import { Helmet } from "react-helmet";
 
 import Skeleton from 'react-loading-skeleton';
+import Modal from '../../components/UI/Modal/ModalXL';
 import * as actions from '../../store/actions/index';
 import Aux from '../../hoc/Auxi/Auxi';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
@@ -20,9 +23,15 @@ const Settings = props => {
 
     const [pushNotification, isPushNotification] = useState(acct.notifications_enabled);
     const [recieveEmails, isRecieveEmails] = useState(acct.emails_enabled);
+    const [profPicture, setProfPicture] = useState(acct.profile_picture);
     const fileInputRef = useRef(null);
     const [profilePicture, setProfilePicture] = useState('');
     const [showForm, setShowForm] = useState('');
+    const [accountName, setAccountName] = useState(acct.name);
+    const [accountEmail, setAccountEmail] = useState(acct.email);
+    const [pinloading, setPinLoading] = useState(false);
+    const [pinCode, setPinCode] = useState('');
+    const _CodeInputRef = React.createRef();
 
     const dispatch = useDispatch();
 
@@ -40,6 +49,8 @@ const Settings = props => {
     const username = useSelector(state => state.auth.username);
     const locale = useSelector(state => state.accountDetails.account.locale);
     const uploadingProfile = useSelector(state => state.accountDetails.uploadingProfile);
+    const loading = useSelector(state => state.accountDetails.loading);
+    const isChangeEmailVerify = useSelector(state => state.accountDetails.isChangeEmailVerify);
 
     const onGetAccountDetails = useCallback(
         () => dispatch(actions.getAccountDetails(token, username)),
@@ -56,18 +67,31 @@ const Settings = props => {
         [dispatch]
     );
 
+    const onUpdateAcct = useCallback(
+        (showForm, val) => dispatch(actions.updateAcct(token, username, showForm, val)),
+        [dispatch]
+    );
 
     useEffect(() => {
         window.scroll({
             top: 0
         });
-
         onGetAccountDetails(token, username);
+    }, [onGetAccountDetails]);
 
+    useEffect(() => {
         if (profilePicture) {
             onUpdateProfile(profilePicture)
         }
-    }, [onGetAccountDetails, profilePicture]);
+    }, [profilePicture]);
+
+    useEffect(() => {
+        isPushNotification(acct?.notifications_enabled)
+        isRecieveEmails(acct?.emails_enabled)
+        setAccountName(acct?.name)
+        setProfPicture(acct?.profile_picture + '?v=' + Date.now())
+    }, [acct])
+
 
     const handlePushNotif = (isAllow) => {
         onSetNotifications('notification', isAllow)
@@ -165,8 +189,77 @@ const Settings = props => {
         </div>
     }
 
+    const submitUpdateAcctNameHandler = (event) => {
+        event.preventDefault();
+        onUpdateAcct(showForm, accountName)
+    }
+
+    const submitUpdateAcctEmailHandler = (event) => {
+        event.preventDefault();
+        onUpdateAcct(showForm, accountEmail)
+    }
+
+    let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5">Submit</button>;
+    if (loading) {
+        updateAccount = <button className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 px-5 d-flex align-items-center" type="button" disabled>
+            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            Loading...
+            </button>
+    }
+
+    const submitVerificationHandler = (event) => {
+        event.preventDefault();
+        // props.onEmailVerification(username, password, pinCode);
+    }
+
+    const onPinComplete = code => {
+        setPinLoading(true);
+        // if (username && password) {
+        //     props.onEmailVerification(username, password, code);
+        // }
+    };
+
     return (
         <Aux>
+            {isChangeEmailVerify ? <Modal show={props.show} onClick={props.closed}>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>Email Verification</title>
+                </Helmet>
+                <div className="signapp-modal" id="signapp-modal">
+                    <div className="modal-content rounded-0 border-0">
+                        <div className="modal-header px-5 border-0">
+                            <h5 className="modal-title text-uppercase theme-pink-color display-4">Enter Email VERIFICATION CODE</h5>
+                            <button type="button" className="btn-close rounded-circle border border-2 border-dark"
+                                data-bs-dismiss="modal" aria-label="Close" onClick={props.closed}></button>
+                        </div>
+                        <div className="modal-body px-5">
+                            <div className="customs-wrapper w-100 mx-auto">
+                                <div className="verif-code my-5">
+                                    <form onSubmit={submitVerificationHandler} className="row flex-column align-items-center py-5 text-center w-50 mx-auto">
+                                        <ReactCodeInput
+                                            className="mx-auto"
+                                            type="number"
+                                            fields={6}
+                                            fieldWidth={45}
+                                            onChange={value => setPinCode(value)}
+                                            onComplete={onPinComplete}
+                                            loading={pinloading}
+                                            ref={_CodeInputRef}
+                                            values={pinCode}
+                                        />
+                                        <p className="my-5 fs-5" style={{ color: '#959595' }}>Please enter the 6-digit code we sent to your email.</p>
+                                        <div className="btn-wrapper">
+                                            <button className="btn btn-hvr theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4 px-4 py-2 text-uppercase w-50">Submit</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </Modal> : null}
             <div className="settings">
                 <section className="pb-5">
                     <div className="container-fluid px-5">
@@ -237,7 +330,7 @@ const Settings = props => {
                                                                             <div className="position-absolute top-50 start-50 translate-middle">
                                                                                 {loadingOnPhoto}
                                                                             </div>
-                                                                            <img src={acct.profile_picture ? acct.profile_picture || <Skeleton circle={true} height={100} width={100} /> : null}
+                                                                            <img src={acct.profile_picture ? profPicture || <Skeleton circle={true} height={100} width={100} /> : null}
                                                                                 className="profile-image rounded-pill" alt={acct.name} />
                                                                         </div>
                                                                     </div>
@@ -252,15 +345,17 @@ const Settings = props => {
                                                                 </th>
                                                                 <td className="font-ave-heavy fs-2">
                                                                     {showForm === 'name' ?
-                                                                        <form>
-                                                                            <div class="mb-2">
-                                                                                <label class="form-label fs-5">Full Name</label>
-                                                                                <input type="text" class="form-control" value={acct.name} />
+                                                                        <form onSubmit={submitUpdateAcctNameHandler}>
+                                                                            <div className="mb-2">
+                                                                                <label className="form-label fs-5">Full Name</label>
+                                                                                <input type="text" className="form-control" value={accountName} onChange={(e) => setAccountName(e.target.value)} required />
                                                                             </div>
-                                                                            <button type="submit" class="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5">Submit</button>
-                                                                            <button type="button" class="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4 ms-3" onClick={() => {
-                                                                                setShowForm('')
-                                                                            }}>Cancel</button>
+                                                                            <div className="d-flex">
+                                                                                {updateAccount}
+                                                                                <button type="button" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4 ms-3" onClick={() => {
+                                                                                    setShowForm('')
+                                                                                }}>Cancel</button>
+                                                                            </div>
                                                                         </form>
                                                                         : acct.name}
                                                                 </td>
@@ -278,10 +373,26 @@ const Settings = props => {
                                                                     Email
                                                                 </th>
                                                                 <td className="font-ave-heavy fs-2">
-                                                                    {acct.email}
+                                                                    {showForm === 'email' ?
+                                                                        <form onSubmit={submitUpdateAcctEmailHandler}>
+                                                                            <div className="mb-2">
+                                                                                <label className="form-label fs-5">New Email</label>
+                                                                                <input type="text" className="form-control" value={accountEmail} onChange={(e) => setAccountEmail(e.target.value)} required />
+                                                                            </div>
+                                                                            <div className="d-flex">
+                                                                                {updateAccount}
+                                                                                <button type="button" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4 ms-3" onClick={() => {
+                                                                                    setShowForm('')
+                                                                                }}>Cancel</button>
+                                                                            </div>
+                                                                        </form>
+                                                                        : acct.email}
                                                                 </td>
                                                                 <td>
-                                                                    <button className="btn theme-pink-color fs-3">Edit</button>
+                                                                    {showForm === 'email' ?
+                                                                        null : <button className="btn theme-pink-color fs-3" onClick={() => {
+                                                                            setShowForm('email')
+                                                                        }}>Edit</button>}
                                                                 </td>
                                                             </tr>
                                                             <tr>

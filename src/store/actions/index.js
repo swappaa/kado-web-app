@@ -51,7 +51,8 @@ export {
     getPrivacy,
     disableAccount,
     setNotifications,
-    updateProfile
+    updateProfile,
+    updateAcct
 } from './account';
 
 export {

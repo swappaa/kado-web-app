@@ -7,7 +7,8 @@ const initialState = {
     uploadingProfile: false,
     tos: [],
     privacy: [],
-    disabledAccount: false
+    disabledAccount: false,
+    isChangeEmailVerify: true
 };
 
 const fetchAccountStart = (state, action) => {
@@ -57,6 +58,20 @@ const disabledAccountSuccess = (state, action) => {
     });
 };
 
+const updateAccountStart = (state, action) => {
+    return updateObject(state, { loading: true });
+};
+
+const updateAccountSuccess = (state, action) => {
+    return updateObject(state, {
+        loading: false
+    });
+};
+
+const updateAccountFail = (state, action) => {
+    return updateObject(state, { loading: false });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_ACCOUNT_START: return fetchAccountStart(state, action);
@@ -65,6 +80,9 @@ const reducer = (state = initialState, action) => {
         case actionTypes.UPDATE_PROFILE_START: return updateProfileStart(state, action);
         case actionTypes.UPDATE_PROFILE_SUCCESS: return updateProfileSuccess(state, action);
         case actionTypes.UPDATE_PROFILE_FAIL: return updateProfileFail(state, action);
+        case actionTypes.UPDATE_ACCOUNT_START: return updateAccountStart(state, action);
+        case actionTypes.UPDATE_ACCOUNT_SUCCESS: return updateAccountSuccess(state, action);
+        case actionTypes.UPDATE_ACCOUNT_FAIL: return updateAccountFail(state, action);
         case actionTypes.FETCH_TOS_SUCCESS: return fetchTOSSuccess(state, action);
         case actionTypes.FETCH_PRIVACY_SUCCESS: return fetchPrivacySuccess(state, action);
         case actionTypes.DISABLED_ACCOUNT_SUCCESS: return disabledAccountSuccess(state, action);
