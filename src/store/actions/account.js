@@ -304,9 +304,7 @@ export const updateAcct = (access_token, username, field, val) => {
             case 'email':
                 axios.post(url, formData)
                     .then(response => {
-                        toast.success('Account has been updated');
                         dispatch(updateAccountSuccess());
-                        dispatch(getAccountDetails(access_token, username));
                     })
                     .catch(err => {
                         toast.error(err);
@@ -318,5 +316,35 @@ export const updateAcct = (access_token, username, field, val) => {
         }
 
 
+    };
+};
+
+export const changeEmailVerify = (access_token, username, code) => {
+    return dispatch => {
+        dispatch(updateAccountStart());
+
+        let formData = new FormData();
+        formData.append("access_token", access_token);
+        formData.append("code", code);
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/change_email/verify', formData, config)
+            .then(response => {
+                toast.success('Account has been updated');
+                dispatch(getAccountDetails(access_token, username));
+            })
+            .catch(err => {
+                toast.error(err.response.data.message);
+                dispatch(updateAccountFail(err.response.data.message));
+            });
+    }
+};
+
+export const closeVerifyForm = () => {
+    return {
+        type: actionTypes.CLOSE_VERIFY_FORM
     };
 };

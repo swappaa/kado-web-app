@@ -52,7 +52,9 @@ export {
     disableAccount,
     setNotifications,
     updateProfile,
-    updateAcct
+    updateAcct,
+    closeVerifyForm,
+    changeEmailVerify
 } from './account';
 
 export {

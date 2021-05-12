@@ -21,17 +21,18 @@ const Settings = props => {
         return state.accountDetails.account;
     });
 
-    const [pushNotification, isPushNotification] = useState(acct.notifications_enabled);
-    const [recieveEmails, isRecieveEmails] = useState(acct.emails_enabled);
+    const [pushNotification, isPushNotification] = useState(false);
+    const [recieveEmails, isRecieveEmails] = useState(false);
     const [profPicture, setProfPicture] = useState(acct.profile_picture);
     const fileInputRef = useRef(null);
     const [profilePicture, setProfilePicture] = useState('');
     const [showForm, setShowForm] = useState('');
+    const [isVerifyCode, setVerifyCode] = useState(false);
     const [accountName, setAccountName] = useState(acct.name);
     const [accountEmail, setAccountEmail] = useState(acct.email);
     const [pinloading, setPinLoading] = useState(false);
-    const [pinCode, setPinCode] = useState('');
-    const _CodeInputRef = React.createRef();
+    const [pinCode, setPinCode] = useState([]);
+    const _CodeInputRef = React.createRef(null);
 
     const dispatch = useDispatch();
 
@@ -51,6 +52,7 @@ const Settings = props => {
     const uploadingProfile = useSelector(state => state.accountDetails.uploadingProfile);
     const loading = useSelector(state => state.accountDetails.loading);
     const isChangeEmailVerify = useSelector(state => state.accountDetails.isChangeEmailVerify);
+    const isValidVerifyCode = useSelector(state => state.accountDetails.isValidVerifyCode);
 
     const onGetAccountDetails = useCallback(
         () => dispatch(actions.getAccountDetails(token, username)),
@@ -69,6 +71,16 @@ const Settings = props => {
 
     const onUpdateAcct = useCallback(
         (showForm, val) => dispatch(actions.updateAcct(token, username, showForm, val)),
+        [dispatch]
+    );
+
+    const onCloseVerifyForm = useCallback(
+        () => dispatch(actions.closeVerifyForm()),
+        [dispatch]
+    );
+
+    const onChangeEmailVerify = useCallback(
+        (code) => dispatch(actions.changeEmailVerify(token, username, code)),
         [dispatch]
     );
 
@@ -92,6 +104,19 @@ const Settings = props => {
         setProfPicture(acct?.profile_picture + '?v=' + Date.now())
     }, [acct])
 
+    useEffect(() => {
+        if (isChangeEmailVerify) {
+            setVerifyCode(true)
+        }
+    }, [isChangeEmailVerify]);
+
+    useEffect(() => {
+        if (pinCode.length >= 6 && isValidVerifyCode) {
+            setPinLoading(false);
+            _CodeInputRef && _CodeInputRef.current.__clearvalues__();
+        }
+
+    }, [pinCode, isValidVerifyCode]);
 
     const handlePushNotif = (isAllow) => {
         onSetNotifications('notification', isAllow)
@@ -181,7 +206,6 @@ const Settings = props => {
         )
     }
 
-
     let loadingOnPhoto = null;
     if (uploadingProfile) {
         loadingOnPhoto = <div className="spinner-border theme-pink-color" role="status">
@@ -199,7 +223,7 @@ const Settings = props => {
         onUpdateAcct(showForm, accountEmail)
     }
 
-    let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5">Submit</button>;
+    let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5" disabled={accountEmail === acct.email ? true : false}>Submit</button>;
     if (loading) {
         updateAccount = <button className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 px-5 d-flex align-items-center" type="button" disabled>
             <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
@@ -209,29 +233,35 @@ const Settings = props => {
 
     const submitVerificationHandler = (event) => {
         event.preventDefault();
-        // props.onEmailVerification(username, password, pinCode);
+        onChangeEmailVerify(pinCode);
     }
 
     const onPinComplete = code => {
         setPinLoading(true);
-        // if (username && password) {
-        //     props.onEmailVerification(username, password, code);
-        // }
+        onChangeEmailVerify(code)
+    };
+
+    const handleCloseVerifyCode = () => {
+        setVerifyCode(false);
+        onCloseVerifyForm(pinCode);
+    }
+    const handlePincodeChange = vals => {
+        if (vals.length >= 6) {
+            setPinCode(vals)
+        } else if (vals.length === 0) {
+
+        }
     };
 
     return (
         <Aux>
-            {isChangeEmailVerify ? <Modal show={props.show} onClick={props.closed}>
-                <Helmet>
-                    <meta charSet="utf-8" />
-                    <title>Email Verification</title>
-                </Helmet>
+            <Modal show={isVerifyCode}>
                 <div className="signapp-modal" id="signapp-modal">
                     <div className="modal-content rounded-0 border-0">
                         <div className="modal-header px-5 border-0">
                             <h5 className="modal-title text-uppercase theme-pink-color display-4">Enter Email VERIFICATION CODE</h5>
                             <button type="button" className="btn-close rounded-circle border border-2 border-dark"
-                                data-bs-dismiss="modal" aria-label="Close" onClick={props.closed}></button>
+                                data-bs-dismiss="modal" aria-label="Close" onClick={handleCloseVerifyCode}></button>
                         </div>
                         <div className="modal-body px-5">
                             <div className="customs-wrapper w-100 mx-auto">
@@ -242,11 +272,10 @@ const Settings = props => {
                                             type="number"
                                             fields={6}
                                             fieldWidth={45}
-                                            onChange={value => setPinCode(value)}
+                                            onChange={handlePincodeChange}
                                             onComplete={onPinComplete}
                                             loading={pinloading}
                                             ref={_CodeInputRef}
-                                            values={pinCode}
                                         />
                                         <p className="my-5 fs-5" style={{ color: '#959595' }}>Please enter the 6-digit code we sent to your email.</p>
                                         <div className="btn-wrapper">
@@ -259,7 +288,7 @@ const Settings = props => {
                         </div>
                     </div>
                 </div>
-            </Modal> : null}
+            </Modal>
             <div className="settings">
                 <section className="pb-5">
                     <div className="container-fluid px-5">
@@ -368,7 +397,7 @@ const Settings = props => {
                                                                 </td>
 
                                                             </tr>
-                                                            <tr>
+                                                            <tr style={(showForm === 'email') ? { backgroundColor: '#f7f8f8' } : null}>
                                                                 <th>
                                                                     Email
                                                                 </th>
@@ -428,7 +457,7 @@ const Settings = props => {
                                                                 <td>
                                                                     <div className="me-3">
                                                                         <Switch
-                                                                            checked={pushNotification}
+                                                                            checked={pushNotification ? true : false}
                                                                             onChange={e => { isPushNotification(e); handlePushNotif(!pushNotification) }}
                                                                             onColor="#ee2a59"
                                                                             onHandleColor="#231f20"
@@ -454,7 +483,7 @@ const Settings = props => {
                                                                 <td>
                                                                     <div className="me-3">
                                                                         <Switch
-                                                                            checked={recieveEmails}
+                                                                            checked={recieveEmails ? true : false}
                                                                             onChange={e => { isRecieveEmails(e); handleReceiveEmail(!recieveEmails) }}
                                                                             onColor="#ee2a59"
                                                                             onHandleColor="#231f20"

@@ -8,7 +8,8 @@ const initialState = {
     tos: [],
     privacy: [],
     disabledAccount: false,
-    isChangeEmailVerify: true
+    isChangeEmailVerify: false,
+    isValidVerifyCode: false
 };
 
 const fetchAccountStart = (state, action) => {
@@ -64,12 +65,18 @@ const updateAccountStart = (state, action) => {
 
 const updateAccountSuccess = (state, action) => {
     return updateObject(state, {
-        loading: false
+        loading: false,
+        isChangeEmailVerify: true,
+        isValidVerifyCode: false
     });
 };
 
 const updateAccountFail = (state, action) => {
-    return updateObject(state, { loading: false });
+    return updateObject(state, { loading: false, isChangeEmailVerify: false, isValidVerifyCode: true });
+};
+
+const closeVerifyForm = (state, action) => {
+    return updateObject(state, { isChangeEmailVerify: false });
 };
 
 const reducer = (state = initialState, action) => {
@@ -86,6 +93,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.FETCH_TOS_SUCCESS: return fetchTOSSuccess(state, action);
         case actionTypes.FETCH_PRIVACY_SUCCESS: return fetchPrivacySuccess(state, action);
         case actionTypes.DISABLED_ACCOUNT_SUCCESS: return disabledAccountSuccess(state, action);
+        case actionTypes.CLOSE_VERIFY_FORM: return closeVerifyForm(state, action);
         default: return state;
     }
 };
