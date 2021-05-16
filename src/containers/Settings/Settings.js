@@ -107,6 +107,8 @@ const Settings = props => {
     useEffect(() => {
         if (isChangeEmailVerify) {
             setVerifyCode(true)
+        } else {
+            setVerifyCode(false)
         }
     }, [isChangeEmailVerify]);
 

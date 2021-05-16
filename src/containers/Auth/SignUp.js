@@ -51,6 +51,7 @@ const SignUp = props => {
     }
 
     const responseFacebook = (response) => {
+        console.log(response)
         props.onFBSignUp(response.name, response.email, response.email, response.picture.data.url);
     }
 

@@ -333,8 +333,9 @@ export const changeEmailVerify = (access_token, username, code) => {
 
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/change_email/verify', formData, config)
             .then(response => {
-                toast.success('Account has been updated');
+                toast.success('Your email has been changed!');
                 dispatch(getAccountDetails(access_token, username));
+                dispatch(closeVerifyForm());
             })
             .catch(err => {
                 toast.error(err.response.data.message);

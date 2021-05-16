@@ -84,9 +84,10 @@ export const SubmitApplication = (fullname, username, stage_name, email, passwor
             //     }
             // });
             .catch(err => {
-                var obj = err.data.message;
+                console.log(err)
+                // var obj = err.data.message;
 
-                console.log(obj)
+                // console.log(obj)
                 // toast.error(err.response.data.message);
                 // toast.error(err.response.message);
             });

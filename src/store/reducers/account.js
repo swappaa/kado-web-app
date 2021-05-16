@@ -72,7 +72,7 @@ const updateAccountSuccess = (state, action) => {
 };
 
 const updateAccountFail = (state, action) => {
-    return updateObject(state, { loading: false, isChangeEmailVerify: false, isValidVerifyCode: true });
+    return updateObject(state, { loading: false, isChangeEmailVerify: true, isValidVerifyCode: true });
 };
 
 const closeVerifyForm = (state, action) => {
