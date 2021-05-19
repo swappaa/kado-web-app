@@ -72,24 +72,108 @@ export const SubmitApplication = (fullname, username, stage_name, email, passwor
         formData.append("website", website);
         formData.append("bio", notes);
 
-        axios.post('talent/submit_application', formData)
-            .then(response => {
-                console.log(response.message);
-            })
-            // .catch(function (res) {
-            //     if (res instanceof Error) {
-            //         console.log(res.message);
-            //     } else {
-            //         console.log(res.data);
-            //     }
-            // });
-            .catch(err => {
-                console.log(err)
-                // var obj = err.data.message;
+        // axios.interceptors.response.use((response) => {
+        //     return response;
+        // }, function (error) {
+        //     // Do something with response error
+        //     if (error.response.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     if (error.response.status === 403) {
+        //         console.log('duplicate');
+        //     }
+        //     return Promise.reject(error.response);
+        // });
 
-                // console.log(obj)
-                // toast.error(err.response.data.message);
-                // toast.error(err.response.message);
+
+        axios.post('talent/submit_application', formData)
+            .catch(function (error) {
+                let errorObject = JSON.parse(JSON.stringify(error));
+                console.log(errorObject);
+                // console.log(error.toJSON());
             });
+        //     .catch(function (error) {
+        //         if (error.response) {
+        //             // The request was made and the server responded with a status code
+        //             // that falls out of the range of 2xx
+        //             console.log(error.response.data);
+        //             console.log(error.response.status);
+        //             console.log(error.response.headers);
+        //         } else if (error.request) {
+        //             // The request was made but no response was received
+        //             // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        //             // http.ClientRequest in node.js
+        //             console.log(error.request);
+        //         } else {
+        //             // Something happened in setting up the request that triggered an Error
+        //             console.log('Error', error.message);
+        //         }
+        //         console.log(error.config);
+        //     });
+        // // .then(response => {
+        //     console.log(response.status);
+
+
+        //     // if (response.status === 403) {
+        //     //     console.log('duplicate');
+        //     // }
+        // })
+        // .catch(function (error) {
+        //     console.log(error.status);
+        //     // console.log(error.toJSON());
+        // });
+        // .catch(function (error) {
+        //     if (error.response) {
+        //         // The request was made and the server responded with a status code
+        //         // that falls out of the range of 2xx
+        //         console.log(error.response.data);
+        //         console.log(error.response.status);
+        //         console.log(error.response.headers);
+        //     } else if (error.request) {
+        //         // The request was made but no response was received
+        //         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        //         // http.ClientRequest in node.js
+        //         console.log(error.request);
+        //     } else {
+        //         // Something happened in setting up the request that triggered an Error
+        //         console.log('Error', error.message);
+        //     }
+        //     console.log(error.config);
+        // });
+        // .catch((err) => {
+        //     // err.response.status(403).json({ message: 'Something went wrong' });
+        //     if (err.response.status === 403) {
+        //         console.log('duplicate');
+        //     }
+        // });
+        // .catch(function (error) {
+        //     if (error.status === 401) {
+        //         console.log('unauthorized, logging out ...');
+        //     }
+        //     if (error.status === 403) {
+        //         console.log('duplicate');
+        //     }
+        //     // return Promise.reject(error.response);
+        // });
+        //     function (error) {
+        //         console.log('>>>>>> API CALL: ', error.response.config.url);
+        //         return Promise.resolve(error.response.data.message);
+        //     }
+        // .catch(err => {
+        //     console.log(err.response.data.message)
+        //     // var obj = err.data.message;
+
+        //     // console.log(obj)
+        //     // toast.error(err.response.data.message);
+        //     // toast.error(err.response.message);
+        // });
+        // .catch(async err => {
+        //     const errorMessage = await err.response;
+        //     console.log(errorMessage)
+        // })
+
+
+
+
     };
 };

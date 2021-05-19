@@ -33,6 +33,7 @@ const Settings = props => {
     const [pinloading, setPinLoading] = useState(false);
     const [pinCode, setPinCode] = useState([]);
     const _CodeInputRef = React.createRef(null);
+    const [securePassword, setSecurePassword] = useState('');
 
     const dispatch = useDispatch();
 
@@ -81,6 +82,11 @@ const Settings = props => {
 
     const onChangeEmailVerify = useCallback(
         (code) => dispatch(actions.changeEmailVerify(token, username, code)),
+        [dispatch]
+    );
+
+    const onResetSecurePassword = useCallback(
+        () => dispatch(actions.resetPasswordInitiate(username)),
         [dispatch]
     );
 
@@ -254,6 +260,16 @@ const Settings = props => {
 
         }
     };
+
+    const onPasswordChange = (event) => {
+        setSecurePassword(event.target.value);
+        // setCharsInstructLeft(event.target.value.length)
+    }
+
+    const submitSecurePasswordHandler = (event) => {
+        event.preventDefault();
+        onResetSecurePassword();
+    }
 
     return (
         <Aux>
@@ -442,7 +458,43 @@ const Settings = props => {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div className="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">...</div>
+                                        <div className="tab-pane fade" id="v-pills-password" role="tabpanel" aria-labelledby="v-pills-password-tab">
+                                            <div className="element-header">
+                                                <h2 className="font-ave-heavy text-uppercase fs-1">Set a secure password</h2>
+                                            </div>
+                                            <div className="element-body">
+                                                <div className="table-responsive">
+                                                    <table className="table table-borderless">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td className="font-ave-heavy fs-2">
+                                                                    <form onSubmit={submitSecurePasswordHandler}>
+                                                                        <div className="mb-2">
+                                                                            <input type="password" className="form-control" onChange={onPasswordChange} required />
+                                                                        </div>
+                                                                        <div className="d-flex">
+                                                                            <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4" onClick={() => {
+                                                                                setShowForm('')
+                                                                            }}>Continue</button>
+                                                                        </div>
+                                                                    </form>
+                                                                </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td className="font-ave-heavy">
+                                                                    <ul class="list-group list-group-flush bg-transparent">
+                                                                        <li class="list-group-item bg-transparent border-0 py-0">Minimum 8 characters</li>
+                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 lowercase and 1 uppercase letter</li>
+                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 number</li>
+                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 special character</li>
+                                                                    </ul>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div className="tab-pane fade" id="v-pills-notifications" role="tabpanel" aria-labelledby="v-pills-notifications-tab">
                                             <div className="element-header mb-5">
                                                 <h2 className="font-ave-heavy text-uppercase fs-1">NOTIFICATIONS</h2>
@@ -510,13 +562,11 @@ const Settings = props => {
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div className="tab-pane fade" id="v-pills-vacation-mode" role="tabpanel" aria-labelledby="v-pills-vacation-mode-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-record-greeting" role="tabpanel" aria-labelledby="v-pills-record-greeting-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-booking-fees" role="tabpanel" aria-labelledby="v-pills-booking-fees-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-donation-settings" role="tabpanel" aria-labelledby="v-pills-donation-settings-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-payout-settings" role="tabpanel" aria-labelledby="v-pills-payout-settings-tab">...</div>
-
                                         <div className="tab-pane fade" id="v-pills-payment-credits" role="tabpanel" aria-labelledby="v-pills-payment-credits-tab">
                                             <div className="element-header">
                                                 <h2 className="font-ave-heavy text-uppercase fs-1">PAYMENT & CREDITS</h2>
@@ -618,9 +668,7 @@ const Settings = props => {
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div className="tab-pane fade" id="v-pills-get-support" role="tabpanel" aria-labelledby="v-pills-get-support-tab">...</div>
-
                                         <div className="tab-pane fade" id="v-pills-become-talent" role="tabpanel" aria-labelledby="v-pills-become-talent-tab">...</div>
                                         <div className="tab-pane fade" id="v-pills-signout" role="tabpanel" aria-labelledby="v-pills-signout-tab">...</div>
                                     </div>

@@ -54,7 +54,8 @@ export {
     updateProfile,
     updateAcct,
     closeVerifyForm,
-    changeEmailVerify
+    changeEmailVerify,
+    resetPasswordInitiate
 } from './account';
 
 export {

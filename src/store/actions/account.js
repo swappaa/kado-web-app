@@ -344,6 +344,25 @@ export const changeEmailVerify = (access_token, username, code) => {
     }
 };
 
+export const resetPasswordInitiate = (username) => {
+    return dispatch => {
+        let formData = new FormData();
+        formData.append("username", username);
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/reset_password/initiate', formData, config)
+            .then(response => {
+
+            })
+            .catch(err => {
+                toast.error(err.response.data.message);
+            });
+    }
+};
+
 export const closeVerifyForm = () => {
     return {
         type: actionTypes.CLOSE_VERIFY_FORM
