@@ -55,7 +55,8 @@ export {
     updateAcct,
     closeVerifyForm,
     changeEmailVerify,
-    resetPasswordInitiate
+    resetPasswordInitiate,
+    resetPasswordChange
 } from './account';
 
 export {

@@ -346,6 +346,8 @@ export const changeEmailVerify = (access_token, username, code) => {
 
 export const resetPasswordInitiate = (username) => {
     return dispatch => {
+        dispatch(updateAccountStart());
+
         let formData = new FormData();
         formData.append("username", username);
 
@@ -355,10 +357,38 @@ export const resetPasswordInitiate = (username) => {
 
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/reset_password/initiate', formData, config)
             .then(response => {
-
+                dispatch(updateAccountSuccess());
             })
             .catch(err => {
                 toast.error(err.response.data.message);
+            });
+    }
+};
+
+export const resetPasswordChange = (username, password, code) => {
+    return dispatch => {
+        dispatch(updateAccountStart());
+        console.log(username);
+        console.log(password);
+        console.log(code);
+
+
+        let formData = new FormData();
+        formData.append("username", username);
+        formData.append("password", password);
+        formData.append("code", code);
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/reset_password/change', formData, config)
+            .then(response => {
+                dispatch(closeVerifyForm());
+            })
+            .catch(err => {
+                toast.error(err.response.data.message);
+                dispatch(updateAccountFail(err.response.data.message));
             });
     }
 };

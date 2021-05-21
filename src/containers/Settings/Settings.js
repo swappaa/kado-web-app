@@ -13,6 +13,7 @@ import * as actions from '../../store/actions/index';
 import Aux from '../../hoc/Auxi/Auxi';
 import withAuthorization from '../../hoc/withAuthorization/withAuthorization';
 import DisableAccount from '../../components/DisableAccount/DisableAccount';
+import ButtonSpinner from '../../components/UI/ButtonSpinner/ButtonSpinnerSM';
 import '../../App.css';
 import './Settings.css';
 
@@ -27,6 +28,7 @@ const Settings = props => {
     const fileInputRef = useRef(null);
     const [profilePicture, setProfilePicture] = useState('');
     const [showForm, setShowForm] = useState('');
+    const [tabActive, setTabActive] = useState('personal-info');
     const [isVerifyCode, setVerifyCode] = useState(false);
     const [accountName, setAccountName] = useState(acct.name);
     const [accountEmail, setAccountEmail] = useState(acct.email);
@@ -87,6 +89,11 @@ const Settings = props => {
 
     const onResetSecurePassword = useCallback(
         () => dispatch(actions.resetPasswordInitiate(username)),
+        [dispatch]
+    );
+
+    const onResetPasswordChange = useCallback(
+        (code, securePassword) => dispatch(actions.resetPasswordChange(username, securePassword, code)),
         [dispatch]
     );
 
@@ -231,22 +238,29 @@ const Settings = props => {
         onUpdateAcct(showForm, accountEmail)
     }
 
+    let resetPassword = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4" onClick={() => { setShowForm('') }}>Continue</button>;
     let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5" disabled={accountEmail === acct.email ? true : false}>Submit</button>;
     if (loading) {
-        updateAccount = <button className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 px-5 d-flex align-items-center" type="button" disabled>
-            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-            Loading...
-            </button>
+        updateAccount = <ButtonSpinner />;
+        resetPassword = <ButtonSpinner />;
     }
 
     const submitVerificationHandler = (event) => {
         event.preventDefault();
-        onChangeEmailVerify(pinCode);
+        if (tabActive === 'personal-info') {
+            onChangeEmailVerify(pinCode)
+        } else if (tabActive === 'password') {
+            onResetPasswordChange(pinCode, securePassword)
+        }
     }
 
     const onPinComplete = code => {
         setPinLoading(true);
-        onChangeEmailVerify(code)
+        if (tabActive === 'personal-info') {
+            onChangeEmailVerify(code)
+        } else if (tabActive === 'password') {
+            onResetPasswordChange(code, securePassword)
+        }
     };
 
     const handleCloseVerifyCode = () => {
@@ -315,11 +329,11 @@ const Settings = props => {
                                 <div className="d-flex align-items-start">
                                     <div className="nav flex-column nav-pills me-3 position-relative" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                                         <h2 className="text-uppercase theme-pink-color display-4 mx-3 mb-3">Settings</h2>
-                                        <button className="btn nav-link active text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-personal-info-tab" data-bs-toggle="pill" href="#v-pills-personal-info" role="tab" aria-controls="v-pills-personal-info" aria-selected="true">
+                                        <button onClick={() => { setTabActive('personal-info') }} className="btn nav-link active text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-personal-info-tab" data-bs-toggle="pill" href="#v-pills-personal-info" role="tab" aria-controls="v-pills-personal-info" aria-selected="true">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="29px" height="30px" className="me-3" viewBox="0 0 16.6 18.54"><g id="Layer_2" data-name="Layer 2"><g id="FAN_Settings" data-name="FAN Settings"><path className="cls-1" d="M8.3,0a4.82,4.82,0,1,0,4.82,4.82A4.83,4.83,0,0,0,8.3,0Z" /><path className="cls-1" d="M16.57,13.48a4.8,4.8,0,0,0-.49-.89A6,6,0,0,0,11.94,10a.93.93,0,0,0-.61.14,5.13,5.13,0,0,1-6.06,0A.81.81,0,0,0,4.66,10a5.94,5.94,0,0,0-4.14,2.6,4.81,4.81,0,0,0-.48.89.47.47,0,0,0,0,.4,8.81,8.81,0,0,0,.57.84,7.72,7.72,0,0,0,1,1.09,11.24,11.24,0,0,0,1,.84,9.6,9.6,0,0,0,11.44,0,8.59,8.59,0,0,0,1-.84,9.23,9.23,0,0,0,1-1.09,6.54,6.54,0,0,0,.57-.84A.36.36,0,0,0,16.57,13.48Z" /></g></g></svg>
                                             Personal Info
                                         </button>
-                                        <button className="btn nav-link text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">
+                                        <button onClick={() => { setTabActive('password') }} className="btn nav-link text-start text-dark fs-2  d-flex align-items-center rounded-0" id="v-pills-password-tab" data-bs-toggle="pill" href="#v-pills-password" role="tab" aria-controls="v-pills-password" aria-selected="false">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="29px" height="30px" className="me-3" viewBox="0 0 14.11 18.82"><title>password</title><g id="Layer_2" data-name="Layer 2"><g id="FAN_Settings" data-name="FAN Settings"><path className="cls-1" d="M13.72,7.06H12.55V5.49a5.49,5.49,0,0,0-11,0V7.06H.39A.39.39,0,0,0,0,7.45v9.8a1.57,1.57,0,0,0,1.57,1.57h11a1.56,1.56,0,0,0,1.56-1.57V7.45A.38.38,0,0,0,13.72,7.06ZM8.23,15.25a.37.37,0,0,1-.1.3.39.39,0,0,1-.29.13H6.27A.39.39,0,0,1,6,15.55a.41.41,0,0,1-.1-.3L6.13,13a1.54,1.54,0,0,1-.64-1.26,1.57,1.57,0,1,1,3.13,0A1.52,1.52,0,0,1,8,13Zm2-8.19H3.92V5.49a3.14,3.14,0,1,1,6.27,0Z" /></g></g></svg>
                                             Password
                                         </button>
@@ -473,9 +487,7 @@ const Settings = props => {
                                                                             <input type="password" className="form-control" onChange={onPasswordChange} required />
                                                                         </div>
                                                                         <div className="d-flex">
-                                                                            <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4" onClick={() => {
-                                                                                setShowForm('')
-                                                                            }}>Continue</button>
+                                                                            {resetPassword}
                                                                         </div>
                                                                     </form>
                                                                 </td>
