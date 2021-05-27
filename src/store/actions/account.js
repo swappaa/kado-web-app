@@ -361,6 +361,7 @@ export const resetPasswordInitiate = (username) => {
             })
             .catch(err => {
                 toast.error(err.response.data.message);
+                dispatch(fetchAccountFail(err.response.data.message));
             });
     }
 };
@@ -368,10 +369,6 @@ export const resetPasswordInitiate = (username) => {
 export const resetPasswordChange = (username, password, code) => {
     return dispatch => {
         dispatch(updateAccountStart());
-        console.log(username);
-        console.log(password);
-        console.log(code);
-
 
         let formData = new FormData();
         formData.append("username", username);
@@ -384,6 +381,7 @@ export const resetPasswordChange = (username, password, code) => {
 
         axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/reset_password/change', formData, config)
             .then(response => {
+                toast.success('Your password has been changed!');
                 dispatch(closeVerifyForm());
             })
             .catch(err => {

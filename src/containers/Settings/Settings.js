@@ -121,7 +121,8 @@ const Settings = props => {
         if (isChangeEmailVerify) {
             setVerifyCode(true)
         } else {
-            setVerifyCode(false)
+            setVerifyCode(false);
+            setSecurePassword('');
         }
     }, [isChangeEmailVerify]);
 
@@ -238,8 +239,8 @@ const Settings = props => {
         onUpdateAcct(showForm, accountEmail)
     }
 
-    let resetPassword = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4" onClick={() => { setShowForm('') }}>Continue</button>;
-    let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5" disabled={accountEmail === acct.email ? true : false}>Submit</button>;
+    let resetPassword = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-4" onClick={() => { setShowForm('') }} disabled={securePassword ? false : true}>Continue</button>;
+    let updateAccount = <button type="submit" className="btn font-ave-heavy btn theme-pink-bg-color text-white br-radius-40 text-uppercase px-5" disabled={showForm === 'name' ? accountName === acct.name ? true : false : accountEmail === acct.email ? true : false}>Submit</button>;
     if (loading) {
         updateAccount = <ButtonSpinner />;
         resetPassword = <ButtonSpinner />;

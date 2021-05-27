@@ -76,7 +76,7 @@ const updateAccountFail = (state, action) => {
 };
 
 const closeVerifyForm = (state, action) => {
-    return updateObject(state, { isChangeEmailVerify: false });
+    return updateObject(state, { loading: false, isChangeEmailVerify: false });
 };
 
 const reducer = (state = initialState, action) => {

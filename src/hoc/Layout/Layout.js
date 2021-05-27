@@ -4,7 +4,7 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../containers/Auth/SignIn';
-import SignUp from '../../containers/Auth/SignUp';
+import SignUp from '../../containers/Auth/InviteCode';
 import InviteFriends from '../../components/InviteFriends/InviteFriends';
 import { connect } from 'react-redux';
 
