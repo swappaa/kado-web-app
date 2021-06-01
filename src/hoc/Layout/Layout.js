@@ -58,7 +58,8 @@ const Layout = props => {
                 drawerToggleClicked={sideDrawerToggleHandler}
                 open={sideDrawerIsVisible}
                 isSignin={handleShowLogin}
-                isSignup={handleShowSignup} />
+                isSignup={handleShowSignup}
+                isReferralCode={handleShowReferralCode} />
             <SideDrawer
                 open={sideDrawerIsVisible}
                 closed={sideDrawerClosedHandler}
@@ -73,6 +74,7 @@ const Layout = props => {
             <ReferralCode
                 show={showReferralCode}
                 closed={handleCloseReferralCode}
+                isSignup={handleShowSignup}
                 isReferralCode={handleShowReferralCode} />
             <Footer />
         </Aux>

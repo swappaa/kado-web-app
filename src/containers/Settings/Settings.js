@@ -268,6 +268,7 @@ const Settings = props => {
         setVerifyCode(false);
         onCloseVerifyForm(pinCode);
     }
+
     const handlePincodeChange = vals => {
         if (vals.length >= 6) {
             setPinCode(vals)

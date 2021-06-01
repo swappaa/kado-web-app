@@ -1,49 +1,61 @@
-import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import React, { useState, useEffect, useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import * as actions from '../../store/actions/index';
 import ReactCodeInput from 'react-verification-code-input';
 import { Helmet } from "react-helmet";
 
-import Aux from '../../hoc/Auxi/Auxi';
 import Modal from '../../components/UI/Modal/ModalXL';
-
 
 import '../../App.css';
 import './Auth.css';
 
 const InviteCode = props => {
 
-    const [loading, setLoading] = useState(false);
-    const [pinCode, setPinCode] = useState('');
-    const _CodeInputRef = React.createRef();
+    const [pinloading, setPinLoading] = useState(false);
+    const [pinCode, setPinCode] = useState([]);
+    const _CodeInputRef = React.createRef(null);
 
-    const { isValidVerifyCode } = props;
+    const dispatch = useDispatch();
+
+    const isValidReferralCode = useSelector(state => state.accountDetails.isValidVerifyCode);
+
+    const onValidateReferralCode = useCallback(
+        (code) => dispatch(actions.resetPasswordChange(code)),
+        [dispatch]
+    );
 
     useEffect(() => {
-
-        if (pinCode.length >= 6 && isValidVerifyCode) {
-            setLoading(false);
+        if (pinCode.length >= 6 && isValidReferralCode) {
+            setPinLoading(false);
             _CodeInputRef && _CodeInputRef.current.__clearvalues__();
         }
-    }, [pinCode, isValidVerifyCode]);
+
+    }, [pinCode, isValidReferralCode]);
+
+    const submitValidateReferralCodeHandler = (event) => {
+        event.preventDefault();
+        onValidateReferralCode(pinCode)
+    }
 
     const onPinComplete = code => {
-        setLoading(true);
-        props.onEmailVerification(code);
+        setPinLoading(true);
+        onValidateReferralCode(code)
     };
 
-    const submitVerificationHandler = (event) => {
-        event.preventDefault();
-        console.log(pinCode)
-        props.onEmailVerification(pinCode);
-    }
+    const handlePincodeChange = vals => {
+        if (vals.length >= 6) {
+            setPinCode(vals)
+        } else if (vals.length === 0) {
+
+        }
+    };
+
 
     return (
         <Modal show={props.show} onClick={props.closed}>
             <Helmet>
                 <meta charSet="utf-8" />
-                <title>Invite Code</title>
+                <title>Enter Invite Code</title>
             </Helmet>
 
             <div className="signapp-modal" id="signapp-modal">
@@ -56,21 +68,22 @@ const InviteCode = props => {
                     <div className="modal-body px-5">
                         <div className="customs-wrapper w-100 mx-auto">
                             <div className="verif-code my-5">
-                                <form onSubmit={submitVerificationHandler} className="row flex-column align-items-center py-5 text-center w-50 mx-auto">
+                                <form onSubmit={submitValidateReferralCodeHandler} className="row flex-column align-items-center py-5 text-center w-50 mx-auto">
                                     <ReactCodeInput
                                         className="mx-auto"
                                         type="number"
                                         fields={6}
                                         fieldWidth={45}
-                                        onChange={value => setPinCode(value)}
+                                        onChange={handlePincodeChange}
                                         onComplete={onPinComplete}
-                                        loading={loading}
+                                        loading={pinloading}
                                         ref={_CodeInputRef}
-                                        values={pinCode}
                                     />
                                     <p className="my-5 fs-5" style={{ color: '#959595' }}>If you received a code, please enter it above.</p>
                                     <div className="btn-wrapper">
-                                        <button className="btn btn-hvr theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4 px-4 py-2 text-uppercase w-50">Submit</button>
+                                        <button className="btn btn-hvr theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-4 px-4 py-2 text-uppercase w-50">Continue</button>
+                                        <br />
+                                        <button className="btn mt-4 font-ave-heavy text-muted" onClick={() => { props.closed(); props.isSignup() }}>Skip This {' >'}</button>
                                     </div>
                                 </form>
                             </div>
