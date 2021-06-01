@@ -6,7 +6,8 @@ export {
     logout,
     setAuthRedirectPath,
     authCheckState,
-    emailVerification
+    emailVerification,
+    signInEmailAuthChallenge
 } from './auth';
 
 export {

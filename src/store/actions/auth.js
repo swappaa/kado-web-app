@@ -120,11 +120,60 @@ export const auth = (email, password) => {
             })
             .catch(err => {
                 dispatch(authFail(err.response.data.message));
-                toast.error(err.response.data.message);
+                if (err.response.data.message === 'NEW_PASSWORD_REQUIRED') {
+                    const option = 'authChallengeAccountType';
+                    dispatch(checkAccountType(email, err.response.data.message, err.response.data.session, option));
+                } else {
+                    toast.error(err.response.data.message);
+                }
                 if (err.response.data.message === 'User is not confirmed.') {
                     // dispatch(emailConfirmationStart());
                 }
             });
+    };
+};
+
+export const signInEmailAuthChallenge = (email, password) => {
+    return dispatch => {
+        dispatch(authStart());
+
+        const formData = new FormData()
+
+        formData.append("challengeName", localStorage.getItem('challengeName'));
+        formData.append("session", localStorage.getItem('session'));
+
+        const details = JSON.stringify({ USERNAME: email, NEW_PASSWORD: password });
+        formData.append('challengeResponse', details);
+
+        const config = {
+            headers: { 'content-type': 'multipart/form-data' }
+        }
+
+        axios.post('https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/signin/email/challenge', formData, config)
+            .then(response => {
+                console.log(response)
+                const expirationDate = new Date(new Date().getTime() + response.data.ExpiresIn * 1000);
+                localStorage.setItem('token', response.data.AccessToken);
+                localStorage.setItem('refreshToken', response.data.RefreshToken);
+                localStorage.setItem('expirationDate', expirationDate);
+                localStorage.setItem('idToken', response.data.IdToken);
+                localStorage.setItem('accountType', response.data.account_type);
+                localStorage.setItem('username', email);
+                dispatch(authSuccess(response.data.AccessToken, response.data.IdToken, response.data.RefreshToken, response.data.account_type, email));
+                dispatch(checkAuthTimeout(response.data.ExpiresIn));
+            })
+            .catch(err => {
+                dispatch(authFail(err.response.data.message));
+                toast.error(err.response.data.message);
+            });
+    };
+};
+
+export const authChallengeStart = (challengeName, session) => {
+    return {
+        type: actionTypes.AUTH_CHALLENGE_START,
+        challengeName: challengeName,
+        session: session
     };
 };
 
@@ -269,7 +318,10 @@ export const authCheckState = () => {
             const expirationDate = new Date(localStorage.getItem('expirationDate'));
             if (expirationDate <= new Date()) {
                 const refreshToken = localStorage.getItem('refreshToken');
+                const username = localStorage.getItem('username');
                 dispatch(refreshCredentials(refreshToken));
+                dispatch(checkAccountType(username));
+                dispatch(checkAccountStatus(username));
             } else {
                 const idToken = localStorage.getItem('idToken');
                 const refreshToken = localStorage.getItem('refreshToken');
@@ -279,5 +331,41 @@ export const authCheckState = () => {
                 dispatch(checkAuthTimeout((expirationDate.getTime() - new Date().getTime()) / 1000));
             }
         }
+    };
+};
+
+export const checkAccountStatus = (username) => {
+    return dispatch => {
+        axios.get(`https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/status/${username}`)
+            .then(response => {
+                const account_status = response.data.account_status;
+                if (account_status !== "active") {
+                    dispatch(logout());
+                }
+            })
+    };
+};
+
+export const checkAccountType = (username, challengeName, session, option) => {
+    return dispatch => {
+        axios.get(`https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/type/${username}`)
+            .then(response => {
+                const account_type = response.data.account_type;
+                if (account_type !== 'fan') {
+                    if (option !== 'authChallengeAccountType') {
+                        dispatch(logout());
+                    } else {
+                        const errorMessage = "User does not exist.";
+                        toast.error(errorMessage);
+                    }
+                } else {
+                    if (option === 'validateAccountType') {
+                        localStorage.setItem('username', username);
+                        localStorage.setItem('challengeName', challengeName);
+                        localStorage.setItem('session', session);
+                        dispatch(authChallengeStart(challengeName, session));
+                    }
+                }
+            })
     };
 };

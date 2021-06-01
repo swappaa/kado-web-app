@@ -495,11 +495,11 @@ const Settings = props => {
                                                             </tr>
                                                             <tr>
                                                                 <td className="font-ave-heavy">
-                                                                    <ul class="list-group list-group-flush bg-transparent">
-                                                                        <li class="list-group-item bg-transparent border-0 py-0">Minimum 8 characters</li>
-                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 lowercase and 1 uppercase letter</li>
-                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 number</li>
-                                                                        <li class="list-group-item bg-transparent border-0 py-0">Atleast 1 special character</li>
+                                                                    <ul className="list-group list-group-flush bg-transparent">
+                                                                        <li className="list-group-item bg-transparent border-0 py-0">Minimum 8 characters</li>
+                                                                        <li className="list-group-item bg-transparent border-0 py-0">Atleast 1 lowercase and 1 uppercase letter</li>
+                                                                        <li className="list-group-item bg-transparent border-0 py-0">Atleast 1 number</li>
+                                                                        <li className="list-group-item bg-transparent border-0 py-0">Atleast 1 special character</li>
                                                                     </ul>
                                                                 </td>
                                                             </tr>

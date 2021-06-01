@@ -29,6 +29,7 @@ const toolbar = (props) => (
                             isAuthenticated={props.isAuth}
                             AuthSignUpMode={props.isSignup}
                             AuthSignInMode={props.isSignin}
+                            AuthReferralCode={props.isReferralCode}
                         />
                     </div>
                 </div>

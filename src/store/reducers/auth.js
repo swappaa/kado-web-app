@@ -28,7 +28,8 @@ const authSuccess = (state, action) => {
         error: null,
         loading: false,
         isEmailConfirmation: false,
-        isValidVerifyCode: false
+        isValidVerifyCode: false,
+        isAuthChallenge: false
     });
 };
 
@@ -53,6 +54,10 @@ const setRefreshCredentials = (state, action) => {
     });
 };
 
+const signInEmailAuthChallengeStart = (state, action) => {
+    return updateObject(state, { isAuthChallenge: true });
+};
+
 const emailConfirmationStart = (state, action) => {
     return updateObject(state, { error: null, loading: true, isEmailConfirmation: true });
 };
@@ -73,6 +78,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_LOGOUT: return authLogout(state, action);
         case actionTypes.SET_AUTH_REDIRECT_PATH: return setAuthRedirectPath(state, action);
         case actionTypes.REFRESH_CREDENTIAL_SUCCESS: return setRefreshCredentials(state, action);
+        case actionTypes.AUTH_CHALLENGE_START: return signInEmailAuthChallengeStart(state, action);
         case actionTypes.EMAIL_CONFIRMATION_START: return emailConfirmationStart(state, action);
         case actionTypes.EMAIL_CONFIRMATION_FAIL: return emailConfirmationFail(state, action);
         default:

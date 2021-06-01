@@ -14,50 +14,29 @@ import './Auth.css';
 
 const InviteCode = props => {
 
-    const [isAcceptTerms, setAcceptTerms] = useState(false);
-    const [fullname, setFullname] = useState('');
-    const [username, setUsername] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('')
     const [loading, setLoading] = useState(false);
     const [pinCode, setPinCode] = useState('');
     const _CodeInputRef = React.createRef();
 
-    const { authRedirectPath, onSetAuthRedirectPath, isValidVerifyCode } = props;
+    const { isValidVerifyCode } = props;
 
     useEffect(() => {
-        if (authRedirectPath !== '/') {
-            onSetAuthRedirectPath();
-        }
 
         if (pinCode.length >= 6 && isValidVerifyCode) {
             setLoading(false);
             _CodeInputRef && _CodeInputRef.current.__clearvalues__();
         }
-    }, [authRedirectPath, onSetAuthRedirectPath, pinCode, isValidVerifyCode]);
-
-    const submitSignUpHandler = (event) => {
-        event.preventDefault();
-        props.onSignUp(fullname, username, email, password, event.target.date_picker.value);
-    }
-
-    let authRedirect = null;
-    if (props.isAuthenticated) {
-        authRedirect = <Redirect to={props.authRedirectPath} />
-    }
-
+    }, [pinCode, isValidVerifyCode]);
 
     const onPinComplete = code => {
         setLoading(true);
-        if (username && password) {
-            props.onEmailVerification(username, password, code);
-        }
+        props.onEmailVerification(code);
     };
 
     const submitVerificationHandler = (event) => {
         event.preventDefault();
         console.log(pinCode)
-        props.onEmailVerification(username, password, pinCode);
+        props.onEmailVerification(pinCode);
     }
 
     return (
@@ -66,7 +45,7 @@ const InviteCode = props => {
                 <meta charSet="utf-8" />
                 <title>Invite Code</title>
             </Helmet>
-            {authRedirect}
+
             <div className="signapp-modal" id="signapp-modal">
                 <div className="modal-content rounded-0 border-0">
                     <div className="modal-header px-5 border-0">
@@ -104,24 +83,4 @@ const InviteCode = props => {
 }
 
 
-const mapStateToProps = state => {
-    return {
-        loading: state.auth.loading,
-        error: state.auth.error,
-        isAuthenticated: state.auth.token !== null,
-        authRedirectPath: state.auth.authRedirectPath,
-        isConfirmationEmail: state.auth.isEmailConfirmation,
-        isValidVerifyCode: state.auth.isValidVerifyCode
-    };
-};
-
-const mapDispatchToProps = dispatch => {
-    return {
-        onSignUp: (name, username, email, password, date_picker) => dispatch(actions.signUp(name, username, email, password, date_picker)),
-        onFBSignUp: (name, username, email, profile_picture) => dispatch(actions.FBSignUp(name, username, email, profile_picture)),
-        onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
-        onEmailVerification: (username, password, pincode) => dispatch(actions.emailVerification(username, password, pincode)),
-    };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(InviteCode);
+export default InviteCode;

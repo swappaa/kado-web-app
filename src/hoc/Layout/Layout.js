@@ -4,7 +4,8 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../containers/Auth/SignIn';
-import SignUp from '../../containers/Auth/InviteCode';
+import SignUp from '../../containers/Auth/SignUp';
+import ReferralCode from '../../containers/Auth/InviteCode'
 import InviteFriends from '../../components/InviteFriends/InviteFriends';
 import { connect } from 'react-redux';
 
@@ -12,12 +13,16 @@ const Layout = props => {
     const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
+    const [showReferralCode, setShowReferralCode] = useState(false);
 
     const handleCloseLogin = () => setShowLogin(false);
     const handleShowLogin = () => setShowLogin(true);
 
     const handleCloseSignup = () => setShowSignup(false);
     const handleShowSignup = () => setShowSignup(true);
+
+    const handleCloseReferralCode = () => setShowReferralCode(false);
+    const handleShowReferralCode = () => setShowReferralCode(true);
 
     const sideDrawerClosedHandler = () => {
         setSideDrawerIsVisible(false);
@@ -65,6 +70,10 @@ const Layout = props => {
             </main>
             {formAuth}
             {inviteFriends}
+            <ReferralCode
+                show={showReferralCode}
+                closed={handleCloseReferralCode}
+                isReferralCode={handleShowReferralCode} />
             <Footer />
         </Aux>
     )

@@ -104,7 +104,7 @@ const NavigationItems = props => {
             {!props.isAuthenticated ?
                 <Aux>
                     <li>
-                        <button onClick={props.AuthSignUpMode} className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase ${classes['sign-up-btn']}`}>
+                        <button onClick={props.AuthReferralCode} className={`btn btn-hvr d-flex align-items-center text-decoration-none theme-pink-bg-color text-white br-radius-40 font-ave-heavy fs-5 sign-up-btn me-0 me-lg-4 text-uppercase ${classes['sign-up-btn']}`}>
                             <span> Sign up</span>
                         </button>
                     </li>
