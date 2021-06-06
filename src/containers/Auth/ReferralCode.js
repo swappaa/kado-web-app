@@ -5,11 +5,12 @@ import ReactCodeInput from 'react-verification-code-input';
 import { Helmet } from "react-helmet";
 
 import Modal from '../../components/UI/Modal/ModalXL';
+import SignUp from '../../containers/Auth/SignUp';
 
 import '../../App.css';
 import './Auth.css';
 
-const InviteCode = props => {
+const ReferralCode = props => {
 
     const [pinloading, setPinLoading] = useState(false);
     const [pinCode, setPinCode] = useState([]);
@@ -17,20 +18,20 @@ const InviteCode = props => {
 
     const dispatch = useDispatch();
 
-    const isValidReferralCode = useSelector(state => state.accountDetails.isValidVerifyCode);
+    const referral_code = useSelector(state => state.auth.referral_code);
 
     const onValidateReferralCode = useCallback(
-        (code) => dispatch(actions.resetPasswordChange(code)),
+        (code) => dispatch(actions.referralCode(code)),
         [dispatch]
     );
 
     useEffect(() => {
-        if (pinCode.length >= 6 && isValidReferralCode) {
+        if (pinCode.length >= 6 && referral_code) {
             setPinLoading(false);
             _CodeInputRef && _CodeInputRef.current.__clearvalues__();
+            setPinLoading(false);
         }
-
-    }, [pinCode, isValidReferralCode]);
+    }, [pinCode, referral_code]);
 
     const submitValidateReferralCodeHandler = (event) => {
         event.preventDefault();
@@ -96,4 +97,4 @@ const InviteCode = props => {
 }
 
 
-export default InviteCode;
+export default ReferralCode;

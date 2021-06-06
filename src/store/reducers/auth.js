@@ -11,7 +11,9 @@ const initialState = {
     loading: false,
     authRedirectPath: '/',
     isEmailConfirmation: false,
-    isValidVerifyCode: false
+    isValidVerifyCode: false,
+    isValidReferralCode: false,
+    referral_code: null
 };
 
 const authStart = (state, action) => {
@@ -70,6 +72,13 @@ const emailConfirmationFail = (state, action) => {
     });
 };
 
+const validateReferralCode = (state, action) => {
+    return updateObject(state, {
+        isValidReferralCode: action.isValidReferralCode,
+        referral_code: action.referral_code
+    });
+};
+
 const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.AUTH_START: return authStart(state, action);
@@ -81,6 +90,7 @@ const reducer = (state = initialState, action) => {
         case actionTypes.AUTH_CHALLENGE_START: return signInEmailAuthChallengeStart(state, action);
         case actionTypes.EMAIL_CONFIRMATION_START: return emailConfirmationStart(state, action);
         case actionTypes.EMAIL_CONFIRMATION_FAIL: return emailConfirmationFail(state, action);
+        case actionTypes.VALIDATE_REFERRAL_CODE: return validateReferralCode(state, action);
         default:
             return state;
     }

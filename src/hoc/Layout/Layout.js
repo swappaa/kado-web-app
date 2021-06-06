@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
+
 import Aux from '../Auxi/Auxi';
 import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 import Toolbar from '../../components/Navigation/Toolbar/Toolbar';
 import Footer from '../../components/Footer/Footer';
 import Auth from '../../containers/Auth/SignIn';
 import SignUp from '../../containers/Auth/SignUp';
-import ReferralCode from '../../containers/Auth/InviteCode'
+import ReferralCode from '../../containers/Auth/ReferralCode'
 import InviteFriends from '../../components/InviteFriends/InviteFriends';
 import { connect } from 'react-redux';
 
 const Layout = props => {
+    const isValidReferralCode = useSelector(state => state.auth.isValidReferralCode);
+
     const [sideDrawerIsVisible, setSideDrawerIsVisible] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [showSignup, setShowSignup] = useState(false);
@@ -51,6 +55,13 @@ const Layout = props => {
             </Aux>
     }
 
+    useEffect(() => {
+        if (isValidReferralCode) {
+            setShowReferralCode(false);
+            setShowSignup(true);
+        }
+    }, [isValidReferralCode]);
+
     return (
         <Aux>
             <Toolbar
@@ -75,7 +86,8 @@ const Layout = props => {
                 show={showReferralCode}
                 closed={handleCloseReferralCode}
                 isSignup={handleShowSignup}
-                isReferralCode={handleShowReferralCode} />
+                isReferralCode={handleShowReferralCode}
+            />
             <Footer />
         </Aux>
     )
@@ -83,7 +95,8 @@ const Layout = props => {
 
 const mapStateToProps = state => {
     return {
-        isAuthenticated: state.auth.token !== null
+        isAuthenticated: state.auth.token !== null,
+        isValidReferralCode: state.auth.isValidReferralCode
     };
 }
 export default connect(mapStateToProps)(Layout);

@@ -47,7 +47,7 @@ const SignUp = props => {
 
     const submitSignUpHandler = (event) => {
         event.preventDefault();
-        props.onSignUp(fullname, username, email, password, event.target.date_picker.value);
+        props.onSignUp(fullname, username, email, password, event.target.date_picker.value, props.referralCode);
     }
 
     const responseFacebook = (response) => {
@@ -376,6 +376,7 @@ const mapStateToProps = state => {
         loading: state.auth.loading,
         error: state.auth.error,
         isAuthenticated: state.auth.token !== null,
+        referralCode: state.auth.referral_code,
         authRedirectPath: state.auth.authRedirectPath,
         isConfirmationEmail: state.auth.isEmailConfirmation,
         isValidVerifyCode: state.auth.isValidVerifyCode
@@ -384,7 +385,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSignUp: (name, username, email, password, date_picker) => dispatch(actions.signUp(name, username, email, password, date_picker)),
+        onSignUp: (name, username, email, password, date_picker, referral_code) => dispatch(actions.signUp(name, username, email, password, date_picker, referral_code)),
         onFBSignUp: (name, username, email, profile_picture) => dispatch(actions.FBSignUp(name, username, email, profile_picture)),
         onSetAuthRedirectPath: (path) => dispatch(actions.setAuthRedirectPath(path)),
         onEmailVerification: (username, password, pincode) => dispatch(actions.emailVerification(username, password, pincode)),

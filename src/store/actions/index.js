@@ -7,7 +7,8 @@ export {
     setAuthRedirectPath,
     authCheckState,
     emailVerification,
-    signInEmailAuthChallenge
+    signInEmailAuthChallenge,
+    referralCode
 } from './auth';
 
 export {

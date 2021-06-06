@@ -233,9 +233,11 @@ export const emailVerification = (username, password, pincode) => {
     };
 };
 
-export const signUp = (name, username, email, password, birth_day) => {
+export const signUp = (name, username, email, password, birth_day, referral_code) => {
     return dispatch => {
         dispatch(authStart());
+
+        console.log(referral_code)
 
         let formData = new FormData();
 
@@ -244,6 +246,7 @@ export const signUp = (name, username, email, password, birth_day) => {
         formData.append("email", email);
         formData.append("password", password);
         formData.append("birth_day", birth_day);
+        formData.append("referral_code", referral_code);
 
         const config = {
             headers: { 'content-type': 'multipart/form-data' }
@@ -257,6 +260,26 @@ export const signUp = (name, username, email, password, birth_day) => {
                 dispatch(authFail(err.response.data.message));
                 toast.error(err.response.data.message);
             });
+    };
+};
+
+export const setValidReferralCode = (isValidReferralCode, referral_code) => {
+    return {
+        type: actionTypes.VALIDATE_REFERRAL_CODE,
+        isValidReferralCode: isValidReferralCode,
+        referral_code: referral_code
+    };
+};
+
+export const referralCode = (referral_code) => {
+    return dispatch => {
+        axios.get(`https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/referral/${referral_code}`)
+            .then(response => {
+                dispatch(setValidReferralCode(response.data.is_valid, referral_code));
+                if (response.data.is_valid != true) {
+                    toast.error('Invalid Referral Code');
+                }
+            })
     };
 };
 
