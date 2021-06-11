@@ -283,6 +283,29 @@ export const referralCode = (referral_code) => {
     };
 };
 
+export const sendEmailResetLink = (email) => {
+    return dispatch => {
+        dispatch(authStart());
+
+        let formData = new FormData();
+        formData.append("email", email);
+
+        let url = 'https://y6vlqlglfa.execute-api.us-west-2.amazonaws.com/dev/account/reset_link';
+
+        const config = {
+            headers: { 'content-type': 'application/json' }
+        }
+
+        axios.post(url, formData, config)
+            .then(response => {
+                console.log(response);
+            })
+            .catch(err => {
+                toast.error(err.response.data.message);
+            });
+    };
+};
+
 export const authFB = (AccessToken, ExpiresIn, idToken) => {
     return dispatch => {
         dispatch(authStart());
@@ -299,9 +322,13 @@ export const FBSignUp = (name, username, email, profile_picture) => {
     return dispatch => {
         dispatch(authStart());
 
+        console.log(name);
+        console.log(username);
+        console.log(email);
+        console.log(profile_picture);
+
         let formData = new FormData();
 
-        formData.append("account_status", '');
         formData.append("name", name);
         formData.append("username", username);
         formData.append("email", email);
@@ -318,7 +345,8 @@ export const FBSignUp = (name, username, email, profile_picture) => {
                 console.log(response);
             })
             .catch(err => {
-                dispatch(authFail(err.response.data.message));
+                console.log(err);
+                // dispatch(authFail(err.response.data.message));
             });
     };
 };

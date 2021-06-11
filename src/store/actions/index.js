@@ -8,7 +8,8 @@ export {
     authCheckState,
     emailVerification,
     signInEmailAuthChallenge,
-    referralCode
+    referralCode,
+    sendEmailResetLink
 } from './auth';
 
 export {

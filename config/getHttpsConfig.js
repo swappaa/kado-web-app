@@ -24,8 +24,7 @@ function validateKeyAndCerts({ cert, key, keyFile, crtFile }) {
     crypto.privateDecrypt(key, encrypted);
   } catch (err) {
     throw new Error(
-      `The certificate key "${chalk.yellow(keyFile)}" is invalid.\n${
-        err.message
+      `The certificate key "${chalk.yellow(keyFile)}" is invalid.\n${err.message
       }`
     );
   }
@@ -45,22 +44,38 @@ function readEnvFile(file, type) {
 
 // Get the https config
 // Return cert files if provided in env, otherwise just true or false
+// function getHttpsConfig() {
+//   const { SSL_CRT_FILE, SSL_KEY_FILE, HTTPS } = process.env;
+//   const isHttps = HTTPS === 'true';
+
+//   if (isHttps && SSL_CRT_FILE && SSL_KEY_FILE) {
+//     const crtFile = path.resolve(paths.appPath, SSL_CRT_FILE);
+//     const keyFile = path.resolve(paths.appPath, SSL_KEY_FILE);
+//     const config = {
+//       cert: readEnvFile(crtFile, './install.pem'),
+//       key: readEnvFile(keyFile, './install-key.pem'),
+//     };
+
+//     validateKeyAndCerts({ ...config, keyFile, crtFile });
+//     return config;
+//   }
+//   return isHttps;
+// }
+
+
 function getHttpsConfig() {
   const { SSL_CRT_FILE, SSL_KEY_FILE, HTTPS } = process.env;
   const isHttps = HTTPS === 'true';
 
-  if (isHttps && SSL_CRT_FILE && SSL_KEY_FILE) {
-    const crtFile = path.resolve(paths.appPath, SSL_CRT_FILE);
-    const keyFile = path.resolve(paths.appPath, SSL_KEY_FILE);
-    const config = {
-      cert: readEnvFile(crtFile, 'SSL_CRT_FILE'),
-      key: readEnvFile(keyFile, 'SSL_KEY_FILE'),
-    };
+  const crtFile = path.resolve(paths.appPath, './install.pem');
+  const keyFile = path.resolve(paths.appPath, './install-key.pem');
+  const config = {
+    cert: readEnvFile('./install.pem'),
+    key: readEnvFile('./install-key.pem'),
+  };
 
-    validateKeyAndCerts({ ...config, keyFile, crtFile });
-    return config;
-  }
-  return isHttps;
+  validateKeyAndCerts({ ...config, keyFile, crtFile });
+  return config;
 }
 
 module.exports = getHttpsConfig;

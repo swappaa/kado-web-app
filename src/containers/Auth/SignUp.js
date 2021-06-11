@@ -52,7 +52,8 @@ const SignUp = props => {
 
     const responseFacebook = (response) => {
         console.log(response)
-        props.onFBSignUp(response.name, response.email, response.email, response.picture.data.url);
+        console.log(response.picture.data.url)
+        props.onFBSignUp(response.name, response.userID, response.email, response.picture.data.url);
     }
 
     let btnSubmit = <button
@@ -208,7 +209,7 @@ const SignUp = props => {
                                                 <FacebookLogin
                                                     appId="3024473317658669"
                                                     autoLoad={false}
-                                                    fields="name,email,picture"
+                                                    fields="name,email,picture.width(800).height(800)"
                                                     scope="public_profile,user_friends,user_birthday"
                                                     callback={responseFacebook}
                                                     icon="fa-facebook me-3"
